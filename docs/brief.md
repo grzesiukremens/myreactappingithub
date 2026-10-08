@@ -155,6 +155,19 @@ Cel terminowy (do potwierdzenia): **sklep gotowy ok. 10–13.11.2026**, żeby re
 
 ---
 
-## 8. Otwarte pytania
+## 8. Stan sklepu Shopify (8.10.2026)
+
+- Sklep: Vellano Jubiler (`0ui2yq-ix.myshopify.com`), plan Basic, waluta PLN, kraj Polska.
+- Sklep jest chroniony hasłem (niewidoczny dla klientów).
+- Motyw: Horizon (aktywny). Zmiany w plikach motywu przez API są możliwe tylko na nieopublikowanej kopii; publikację robi właściciel w panelu.
+- Język domyślny: angielski. Do zmiany na polski w panelu: Ustawienia → Języki.
+- Produkty: brak. Kolekcje: tylko „Home page”.
+- Strony: Contact, **Zwroty** (`/pages/zwroty`, tekst do uzupełnienia przez właściciela).
+- Stopka: Zwroty, Kontakt, Szukaj.
+- Płatności: nieskonfigurowane (brak portfeli cyfrowych).
+- Domena: brak własnej (tylko myshopify.com).
+- Logo: kierunki i prompty do ChatGPT: https://claude.ai/artifact/8YnhnMrGaXmzxQ9pdm1LnK
+
+## 9. Otwarte pytania
 
 Aktualna lista pytań jest w rozmowie. Po odpowiedziach ta sekcja zostanie zastąpiona decyzjami.
