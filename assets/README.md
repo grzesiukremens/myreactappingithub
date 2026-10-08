@@ -15,4 +15,8 @@
 | `products/real-madryt/zawieszka-real-madryt-pod-katem.webp` | ujęcie pod kątem | `gid://shopify/MediaImage/66816885260630` |
 | `products/real-madryt/zawieszka-real-madryt-na-lancuszku.webp` | zestaw na łańcuszku (zdjęcie główne) | `gid://shopify/MediaImage/66816885293398` |
 
-Kolejność galerii na karcie produktu: **1. zestaw na łańcuszku** (od razu widać, że łańcuszek jest w komplecie), 2. przód, 3. pod kątem, 4. opakowanie, dalej zdjęcia na szyi i w dłoni.
+| `products/manchester-united/zawieszka-manchester-united-przod.webp` | zdjęcie Manchester United z przodu | `gid://shopify/MediaImage/66816971112790` |
+| `products/manchester-united/zawieszka-manchester-united-pod-katem.webp` | ujęcie pod kątem | `gid://shopify/MediaImage/66816971145558` |
+| `products/manchester-united/zawieszka-manchester-united-na-lancuszku.webp` | zestaw na łańcuszku (zdjęcie główne) | `gid://shopify/MediaImage/66816971178326` |
+
+Kolejność galerii na karcie produktu: **1. zestaw na łańcuszku** (od razu widać, że łańcuszek jest w komplecie), 2. przód, 3. pod kątem, 4. opakowanie Vellano Jubiler (to samo zdjęcie przy każdym produkcie), dalej zdjęcia na szyi i w dłoni.
