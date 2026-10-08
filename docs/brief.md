@@ -18,6 +18,15 @@ Cel: sklep na Shopify w stylu polskich salonów premium (Apart, W.KRUK), który 
 | Stopka | Strona **„Zwroty”**. Tekst dostarczy właściciel |
 | Licencje | Załatwione, nie wracamy do tematu |
 | Priorytet | Design premium i lejek nastawiony na konwersję |
+| Specyfikacja | Metal: mosiądz. Powłoka: rodowana. Kamienie: cyrkonie w barwach herbu (cały herb wysadzany). Łańcuszek: splot linkowy (rope), 51 cm. Ucho mieści łańcuszek do 5 mm. Waga: ok. 32 g (szacunek, do poprawy) |
+| Opakowanie | Jasnoszare pudełko z wysuwaną szufladką + etui, oba z logo VELLANO JUBILER |
+| Dostawa | Darmowa. Wysyłka w 2–3 dni robocze. Gwarancja dostawy przed Świętami (bez podawania dat granicznych) |
+| Zestaw | 2 zawieszki za 259 zł |
+| Newsletter | Bez rabatu za zapis |
+| Historia marki | Markę założyli synowie jubilera Vellano: rodzinne wyczucie detalu + pasja do piłki, biżuteria dla młodego pokolenia kibiców |
+| Logo | `assets/brand/` (czarne, białe, sam napis, monogram V) |
+| Nie piszemy o | hipoalergiczności, wodzie i perfumach, trwałości powłoki, pielęgnacji, gwarancji, bileciku i paczce bez ceny, datach granicznych, liczbie dni na zwrot, certyfikacie |
+| Później | kontakt, social media, domena |
 
 ---
 
@@ -67,7 +76,7 @@ Biżuteria nie jest jeszcze oczywistym prezentem dla kibica (wygrywają koszulka
 | **27.11 / 30.11** | **Black Friday / Cyber Monday** | wszystkie |
 | **6.12** | **Mikołajki** | wszystkie |
 | 8–9.12 | Liga Mistrzów | wszystkie |
-| **do ok. 16.12** | **Gwarancja dostawy przed Wigilią** (do potwierdzenia) | wszystkie |
+| **grudzień** | **Gwarancja dostawy przed Świętami** (bez podawania dat na stronie) | wszystkie |
 | 2–7.02 | Superpuchar Hiszpanii (możliwy Klasyk) | RM, FCB |
 | 14.02 | Walentynki | wszystkie |
 | **6.03.2027** | **125-lecie Realu Madryt** | RM |
