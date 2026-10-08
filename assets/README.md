@@ -14,7 +14,6 @@
 | `products/real-madryt/zawieszka-real-madryt-przod.webp` | zdjęcie Real Madryt z przodu | `gid://shopify/MediaImage/66816885227862` |
 | `products/real-madryt/zawieszka-real-madryt-pod-katem.webp` | ujęcie pod kątem | `gid://shopify/MediaImage/66816885260630` |
 | `products/real-madryt/zawieszka-real-madryt-na-lancuszku.webp` | zestaw na łańcuszku (zdjęcie główne) | `gid://shopify/MediaImage/66816885293398` |
-
 | `products/manchester-united/zawieszka-manchester-united-przod.webp` | zdjęcie Manchester United z przodu | `gid://shopify/MediaImage/66816971112790` |
 | `products/manchester-united/zawieszka-manchester-united-pod-katem.webp` | ujęcie pod kątem | `gid://shopify/MediaImage/66816971145558` |
 | `products/manchester-united/zawieszka-manchester-united-na-lancuszku.webp` | zestaw na łańcuszku (zdjęcie główne) | `gid://shopify/MediaImage/66816971178326` |
