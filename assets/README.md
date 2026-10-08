@@ -11,3 +11,8 @@
 | `products/fc-barcelona/zawieszka-fc-barcelona-przod.webp` | zdjęcie główne FC Barcelona | `gid://shopify/MediaImage/66816748912982` |
 | `products/fc-barcelona/zawieszka-fc-barcelona-pod-katem.webp` | ujęcie pod kątem | `gid://shopify/MediaImage/66816748945750` |
 | `products/fc-barcelona/zawieszka-fc-barcelona-na-lancuszku.webp` | zawieszka na łańcuszku | `gid://shopify/MediaImage/66816748978518` |
+| `products/real-madryt/zawieszka-real-madryt-przod.webp` | zdjęcie Real Madryt z przodu | `gid://shopify/MediaImage/66816885227862` |
+| `products/real-madryt/zawieszka-real-madryt-pod-katem.webp` | ujęcie pod kątem | `gid://shopify/MediaImage/66816885260630` |
+| `products/real-madryt/zawieszka-real-madryt-na-lancuszku.webp` | zestaw na łańcuszku (zdjęcie główne) | `gid://shopify/MediaImage/66816885293398` |
+
+Kolejność galerii na karcie produktu: **1. zestaw na łańcuszku** (od razu widać, że łańcuszek jest w komplecie), 2. przód, 3. pod kątem, 4. opakowanie, dalej zdjęcia na szyi i w dłoni.
