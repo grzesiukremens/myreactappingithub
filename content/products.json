@@ -1,0 +1,278 @@
+[
+ {
+  "title": "Oficjalna zawieszka Real Madryt z łańcuszkiem",
+  "handle": "zawieszka-real-madryt-z-lancuszkiem",
+  "descriptionHtml": "<p><strong>W zestawie: zawieszka z herbem i łańcuszek o splocie linkowym 51 cm.</strong></p>\n<h3>O produkcie</h3>\n<p>Oficjalna zawieszka z herbem Realu Madryt, wykonana na licencji klubu. Duży, wyrazisty herb Królewskich – w stylu biżuterii, którą piłkarze i artyści noszą poza boiskiem i sceną.</p>\n<p>Herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii w jego barwach: korona z czerwonych, białych i żółtych kamieni, monogram z żółtych, granatowy pas na białym polu i żółty pierścień dookoła. Rama lśni jasnym, chłodnym połyskiem powłoki rodowanej, a skręcony łańcuszek o splocie linkowym odbija światło przy każdym ruchu.</p>\n<p>Koszulkę zakłada się na mecz – na Santiago Bernabéu albo przed telewizorem. Herb możesz nosić zawsze: do bluzy, koszuli czy marynarki. To biżuteria dla nowego pokolenia kibiców, dla których biel znaczy więcej niż kolor.</p>\n<p>Przychodzi w pudełku Vellano Jubiler z wysuwaną szufladką i w miękkim etui – gotowa do wręczenia albo do zatrzymania dla siebie.</p>\n<p>Od 1902 roku w bieli. <strong>¡Hala Madrid!</strong></p>\n<h3>Specyfikacja</h3>\n<ul>\n<li><strong>Metal:</strong> mosiądz</li>\n<li><strong>Powłoka:</strong> rodowana, o jasnym, chłodnym połysku</li>\n<li><strong>Kamienie:</strong> cyrkonie osadzane ręcznie</li>\n<li><strong>Łańcuszek:</strong> splot linkowy (rope), 51 cm (20 cali), w zestawie</li>\n<li><strong>Rozmiar:</strong> jeden</li>\n<li><strong>Waga:</strong> ok. 32 g (zawieszka z łańcuszkiem)</li>\n</ul>\n<p><strong>Uwaga:</strong> ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc możesz nosić ją także na własnym łańcuszku.</p>",
+  "vendor": "Vellano Jubiler",
+  "productType": "Zawieszka z łańcuszkiem",
+  "status": "ACTIVE",
+  "tags": [
+   "Real Madryt",
+   "Królewscy",
+   "Los Blancos",
+   "klub-real-madryt",
+   "zawieszka",
+   "zawieszka z łańcuszkiem",
+   "naszyjnik",
+   "łańcuszek",
+   "biżuteria męska",
+   "biżuteria kibica",
+   "oficjalna licencja",
+   "cyrkonie",
+   "splot linkowy",
+   "prezent dla kibica",
+   "prezent dla niego",
+   "prezent na Święta",
+   "prezent na osiemnastkę"
+  ],
+  "seo": {
+   "title": "Zawieszka Real Madryt z łańcuszkiem | Vellano Jubiler",
+   "description": "Oficjalna zawieszka Real Madryt z łańcuszkiem: herb Królewskich z setek ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa. Prezent dla kibica."
+  },
+  "files": [
+   {
+    "id": "gid://shopify/MediaImage/66816885293398"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816885227862"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816885260630"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816749011286"
+   }
+  ],
+  "productOptions": [
+   {
+    "name": "Title",
+    "values": [
+     {
+      "name": "Default Title"
+     }
+    ]
+   }
+  ],
+  "variants": [
+   {
+    "optionValues": [
+     {
+      "optionName": "Title",
+      "name": "Default Title"
+     }
+    ],
+    "price": "149.00",
+    "sku": "VJ-RMA-51",
+    "inventoryPolicy": "CONTINUE",
+    "inventoryItem": {
+     "tracked": false,
+     "requiresShipping": true,
+     "measurement": {
+      "weight": {
+       "value": 32,
+       "unit": "GRAMS"
+      }
+     }
+    }
+   }
+  ],
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "przydomek",
+    "type": "single_line_text_field",
+    "value": "Królewscy · Los Blancos"
+   },
+   {
+    "namespace": "custom",
+    "key": "zanim_zapytasz",
+    "type": "json",
+    "value": "[{\"question\": \"Z czego jest wykonana?\", \"answer\": \"Podstawą jest mosiądz z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych, ręcznie osadzanych cyrkonii w barwach herbu Realu Madryt. Łańcuszek o splocie linkowym jest w zestawie.\", \"photo\": \"Makro cyrkonii: ręcznie osadzane kamienie i krawędź ramy z powłoką rodowaną\"}, {\"question\": \"Jak wygląda z bliska?\", \"answer\": \"Pod światłem każda cyrkonia błyszczy osobno, a herb Królewskich zachowuje czytelny kształt i swoje barwy. Rama o jasnym, chłodnym połysku powłoki rodowanej wyraźnie zamyka jego kontur.\", \"photo\": \"Makro herbu Realu Madryt pod światło, ujęcie pod kątem\"}, {\"question\": \"Jak duża jest i jak leży na szyi?\", \"answer\": \"To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży ok. 32 g. Skalę pokazują zdjęcia obok: na szyi i w dłoni.\", \"photo\": \"Zawieszka na szyi modela (półpostać, na wprost) oraz w otwartej dłoni – dla oceny skali\"}, {\"question\": \"Czy łańcuszek jest w zestawie?\", \"answer\": \"Tak. W zestawie jest skręcony łańcuszek o splocie linkowym (rope), 51 cm (20 cali), w jednym rozmiarze. Mocno połyskuje i pasuje do wyrazistego herbu.\", \"photo\": \"Łańcuszek o splocie linkowym i zapięcie z bliska\"}, {\"question\": \"Czy mogę nosić ją na własnym łańcuszku?\", \"answer\": \"Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm. Sprawdź tylko, czy zapięcie Twojego łańcuszka swobodnie przejdzie przez ucho.\", \"photo\": \"Ucho zawieszki Real Madryt z bliska, z przeciągniętym łańcuszkiem\"}, {\"question\": \"Czy to oficjalny produkt?\", \"answer\": \"Tak. To oficjalnie licencjonowana zawieszka z herbem Realu Madryt.\", \"photo\": \"Opakowanie Vellano Jubiler z zawieszką\"}, {\"question\": \"Jak będzie zapakowana?\", \"answer\": \"W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – na obu biały napis VELLANO JUBILER. Prezent jest od razu gotowy do wręczenia.\", \"photo\": \"Opakowanie Vellano Jubiler: pudełko z wysuniętą szufladką i miękkie etui obok\"}, {\"question\": \"Kiedy dotrze i czy zdąży przed Świętami?\", \"answer\": \"Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.\", \"photo\": \"Zamknięte pudełko Vellano Jubiler w spokojnej, świątecznej aranżacji – bez dat i napisów z terminami\"}, {\"question\": \"A jeśli nie przypadnie do gustu?\", \"answer\": \"Zasady zwrotów opisaliśmy na stronie <a href=\\\"/pages/zwroty\\\">Zwroty</a>. Jeśli kupujesz na prezent i masz pytania, <a href=\\\"/pages/contact\\\">napisz do nas</a> – pomożemy.\", \"photo\": \"Zawieszka w otwartym pudełku Vellano Jubiler, ujęcie z góry\"}]"
+   }
+  ]
+ },
+ {
+  "title": "Oficjalna zawieszka FC Barcelona z łańcuszkiem",
+  "handle": "zawieszka-fc-barcelona-z-lancuszkiem",
+  "descriptionHtml": "<p><strong>W zestawie: zawieszka z herbem i łańcuszek o splocie linkowym 51 cm.</strong></p>\n<h3>O produkcie</h3>\n<p>Oficjalna zawieszka z herbem FC Barcelony, wykonana na licencji klubu. Herb Dumy Katalonii w dużej, wyrazistej formie – w stylu, który znasz z szyi piłkarzy i artystów.</p>\n<p>Cały herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii w barwach herbu: czerwieni, granatu, żółci i bieli, z czarnymi literami FCB i żółtą piłką. Obrys i ucho wysadzono białymi cyrkoniami, a rama lśni jasnym, chłodnym połyskiem powłoki rodowanej.</p>\n<p>Koszulkę zakłada się na mecz. Herb zostaje z Tobą na dłużej: na trybunie, przed ekranem i na co dzień – do bluzy, do koszuli, na miasto. To biżuteria dla nowego pokolenia kibiców, którzy barwy blaugrana noszą po swojemu.</p>\n<p>Przychodzi w pudełku Vellano Jubiler z wysuwaną szufladką i w miękkim etui, gotowa do wręczenia.</p>\n<p>Na Spotify Camp Nou i daleko od niego. <strong>Més que un club.</strong></p>\n<h3>Specyfikacja</h3>\n<ul>\n<li><strong>Metal:</strong> mosiądz</li>\n<li><strong>Powłoka:</strong> rodowana, o jasnym, chłodnym połysku</li>\n<li><strong>Kamienie:</strong> cyrkonie osadzane ręcznie</li>\n<li><strong>Łańcuszek:</strong> splot linkowy (rope), 51 cm (20 cali), w zestawie</li>\n<li><strong>Rozmiar:</strong> jeden</li>\n<li><strong>Waga:</strong> ok. 32 g (zawieszka z łańcuszkiem)</li>\n</ul>\n<p><strong>Uwaga:</strong> ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc możesz nosić ją także na własnym łańcuszku.</p>",
+  "vendor": "Vellano Jubiler",
+  "productType": "Zawieszka z łańcuszkiem",
+  "status": "ACTIVE",
+  "tags": [
+   "FC Barcelona",
+   "Barça",
+   "Duma Katalonii",
+   "blaugrana",
+   "klub-fc-barcelona",
+   "zawieszka",
+   "zawieszka z łańcuszkiem",
+   "naszyjnik",
+   "łańcuszek",
+   "biżuteria męska",
+   "biżuteria kibica",
+   "oficjalna licencja",
+   "cyrkonie",
+   "splot linkowy",
+   "prezent dla kibica",
+   "prezent dla niego",
+   "prezent na Święta",
+   "prezent na osiemnastkę"
+  ],
+  "seo": {
+   "title": "Zawieszka FC Barcelona z łańcuszkiem | Vellano Jubiler",
+   "description": "Oficjalna zawieszka FC Barcelona z łańcuszkiem: herb Dumy Katalonii z setek ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa. Prezent dla kibica."
+  },
+  "files": [
+   {
+    "id": "gid://shopify/MediaImage/66816748978518"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816748912982"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816748945750"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816749011286"
+   }
+  ],
+  "productOptions": [
+   {
+    "name": "Title",
+    "values": [
+     {
+      "name": "Default Title"
+     }
+    ]
+   }
+  ],
+  "variants": [
+   {
+    "optionValues": [
+     {
+      "optionName": "Title",
+      "name": "Default Title"
+     }
+    ],
+    "price": "149.00",
+    "sku": "VJ-FCB-51",
+    "inventoryPolicy": "CONTINUE",
+    "inventoryItem": {
+     "tracked": false,
+     "requiresShipping": true,
+     "measurement": {
+      "weight": {
+       "value": 32,
+       "unit": "GRAMS"
+      }
+     }
+    }
+   }
+  ],
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "przydomek",
+    "type": "single_line_text_field",
+    "value": "Duma Katalonii · blaugrana"
+   },
+   {
+    "namespace": "custom",
+    "key": "zanim_zapytasz",
+    "type": "json",
+    "value": "[{\"question\": \"Z czego jest wykonana?\", \"answer\": \"Podstawą jest mosiądz z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych, ręcznie osadzanych cyrkonii w barwach herbu FC Barcelony: czerwieni, granatu, żółci i bieli. Łańcuszek o splocie linkowym jest w zestawie.\", \"photo\": \"Makro cyrkonii: ręcznie osadzane kamienie w barwach herbu i krawędź ramy z powłoką rodowaną\"}, {\"question\": \"Jak wygląda z bliska?\", \"answer\": \"Pod światłem każda cyrkonia błyszczy osobno, a herb pozostaje czytelny: czerwień, granat, żółć i biel, czarne litery FCB i żółta piłka. Obrys i ucho z białych cyrkonii wyraźnie zamykają kształt herbu.\", \"photo\": \"Makro herbu FC Barcelony pod światło, ujęcie pod kątem – litery FCB i żółta piłka\"}, {\"question\": \"Jak duża jest i jak leży na szyi?\", \"answer\": \"To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży ok. 32 g. Skalę pokazują zdjęcia obok: na szyi i w dłoni.\", \"photo\": \"Zawieszka na szyi modela (półpostać, na wprost) oraz w otwartej dłoni – dla oceny skali\"}, {\"question\": \"Czy łańcuszek jest w zestawie?\", \"answer\": \"Tak. W zestawie jest skręcony łańcuszek o splocie linkowym (rope), 51 cm (20 cali), w jednym rozmiarze. Mocno połyskuje i pasuje do wyrazistego herbu.\", \"photo\": \"Łańcuszek o splocie linkowym i zapięcie z bliska\"}, {\"question\": \"Czy mogę nosić ją na własnym łańcuszku?\", \"answer\": \"Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm. Sprawdź tylko, czy zapięcie Twojego łańcuszka swobodnie przejdzie przez ucho.\", \"photo\": \"Ucho zawieszki FC Barcelona wysadzane białymi cyrkoniami, z bliska, z przeciągniętym łańcuszkiem\"}, {\"question\": \"Czy to oficjalny produkt?\", \"answer\": \"Tak. To oficjalnie licencjonowana zawieszka z herbem FC Barcelony.\", \"photo\": \"Opakowanie Vellano Jubiler z zawieszką\"}, {\"question\": \"Jak będzie zapakowana?\", \"answer\": \"W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – na obu biały napis VELLANO JUBILER. Prezent jest od razu gotowy do wręczenia.\", \"photo\": \"Opakowanie Vellano Jubiler: pudełko z wysuniętą szufladką i miękkie etui obok\"}, {\"question\": \"Kiedy dotrze i czy zdąży przed Świętami?\", \"answer\": \"Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.\", \"photo\": \"Zamknięte pudełko Vellano Jubiler w spokojnej, świątecznej aranżacji – bez dat i napisów z terminami\"}, {\"question\": \"A jeśli nie przypadnie do gustu?\", \"answer\": \"Zasady zwrotów opisaliśmy na stronie <a href=\\\"/pages/zwroty\\\">Zwroty</a>. Jeśli kupujesz na prezent i masz pytania, <a href=\\\"/pages/contact\\\">napisz do nas</a> – pomożemy.\", \"photo\": \"Zawieszka w otwartym pudełku Vellano Jubiler, ujęcie z góry\"}]"
+   }
+  ]
+ },
+ {
+  "title": "Oficjalna zawieszka Manchester United z łańcuszkiem",
+  "handle": "zawieszka-manchester-united-z-lancuszkiem",
+  "descriptionHtml": "<p><strong>W zestawie: zawieszka z herbem i łańcuszek o splocie linkowym 51 cm.</strong></p>\n<h3>O produkcie</h3>\n<p>Oficjalna zawieszka z herbem Manchesteru United, wykonana na licencji klubu. Herb Czerwonych Diabłów w dużej, wyrazistej formie – w duchu biżuterii, którą noszą piłkarze i artyści.</p>\n<p>Herb wypełniają setki drobnych, ręcznie osadzanych cyrkonii w jego barwach: Czerwony Diabeł z trójzębem na żółtej tarczy, czerwone wstęgi z żółtym napisem MANCHESTER UNITED i dwie piłki po bokach, a całość obiega obrys z białych i czarnych kamieni. Rama lśni jasnym, chłodnym połyskiem powłoki rodowanej, a skręcony łańcuszek o splocie linkowym odbija światło przy każdym ruchu.</p>\n<p>Koszulka jest na mecz. Herb jest na każdy dzień: pod koszulę albo na wierzch, do bluzy i na wyjście. To biżuteria dla nowego pokolenia kibiców, którzy czerwień United noszą ze sobą także daleko od Manchesteru.</p>\n<p>Przychodzi w pudełku Vellano Jubiler z wysuwaną szufladką i w miękkim etui w tym samym kolorze.</p>\n<p>Old Trafford nazywają Teatrem Marzeń. Ten herb zabiera kawałek tej sceny tam, gdzie jesteś. <strong>Glory Glory Man United.</strong></p>\n<h3>Specyfikacja</h3>\n<ul>\n<li><strong>Metal:</strong> mosiądz</li>\n<li><strong>Powłoka:</strong> rodowana, o jasnym, chłodnym połysku</li>\n<li><strong>Kamienie:</strong> cyrkonie osadzane ręcznie</li>\n<li><strong>Łańcuszek:</strong> splot linkowy (rope), 51 cm (20 cali), w zestawie</li>\n<li><strong>Rozmiar:</strong> jeden</li>\n<li><strong>Waga:</strong> ok. 32 g (zawieszka z łańcuszkiem)</li>\n</ul>\n<p><strong>Uwaga:</strong> ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc możesz nosić ją także na własnym łańcuszku.</p>",
+  "vendor": "Vellano Jubiler",
+  "productType": "Zawieszka z łańcuszkiem",
+  "status": "ACTIVE",
+  "tags": [
+   "Manchester United",
+   "Czerwone Diabły",
+   "klub-manchester-united",
+   "zawieszka",
+   "zawieszka z łańcuszkiem",
+   "naszyjnik",
+   "łańcuszek",
+   "biżuteria męska",
+   "biżuteria kibica",
+   "oficjalna licencja",
+   "cyrkonie",
+   "splot linkowy",
+   "prezent dla kibica",
+   "prezent dla niego",
+   "prezent na Święta",
+   "prezent na osiemnastkę"
+  ],
+  "seo": {
+   "title": "Zawieszka Manchester United z łańcuszkiem | Vellano Jubiler",
+   "description": "Oficjalna zawieszka Manchester United z łańcuszkiem: herb Czerwonych Diabłów z ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa."
+  },
+  "files": [
+   {
+    "id": "gid://shopify/MediaImage/66816971178326"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816971112790"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816971145558"
+   },
+   {
+    "id": "gid://shopify/MediaImage/66816749011286"
+   }
+  ],
+  "productOptions": [
+   {
+    "name": "Title",
+    "values": [
+     {
+      "name": "Default Title"
+     }
+    ]
+   }
+  ],
+  "variants": [
+   {
+    "optionValues": [
+     {
+      "optionName": "Title",
+      "name": "Default Title"
+     }
+    ],
+    "price": "149.00",
+    "sku": "VJ-MUN-51",
+    "inventoryPolicy": "CONTINUE",
+    "inventoryItem": {
+     "tracked": false,
+     "requiresShipping": true,
+     "measurement": {
+      "weight": {
+       "value": 32,
+       "unit": "GRAMS"
+      }
+     }
+    }
+   }
+  ],
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "przydomek",
+    "type": "single_line_text_field",
+    "value": "Czerwone Diabły · Teatr Marzeń"
+   },
+   {
+    "namespace": "custom",
+    "key": "zanim_zapytasz",
+    "type": "json",
+    "value": "[{\"question\": \"Z czego jest wykonana?\", \"answer\": \"Podstawą jest mosiądz z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych, ręcznie osadzanych cyrkonii w barwach herbu Manchesteru United. Łańcuszek o splocie linkowym jest w zestawie.\", \"photo\": \"Makro cyrkonii: ręcznie osadzane kamienie i krawędź ramy z powłoką rodowaną\"}, {\"question\": \"Jak wygląda z bliska?\", \"answer\": \"Pod światłem każda cyrkonia błyszczy osobno, a herb Czerwonych Diabłów pozostaje czytelny w swoich barwach. Rama o jasnym, chłodnym połysku powłoki rodowanej wyraźnie zamyka jego kontur.\", \"photo\": \"Makro herbu Manchesteru United pod światło, ujęcie pod kątem\"}, {\"question\": \"Jak duża jest i jak leży na szyi?\", \"answer\": \"To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży ok. 32 g. Skalę pokazują zdjęcia obok: na szyi i w dłoni.\", \"photo\": \"Zawieszka na szyi modela (półpostać, na wprost) oraz w otwartej dłoni – dla oceny skali\"}, {\"question\": \"Czy łańcuszek jest w zestawie?\", \"answer\": \"Tak. W zestawie jest skręcony łańcuszek o splocie linkowym (rope), 51 cm (20 cali), w jednym rozmiarze. Mocno połyskuje i pasuje do wyrazistego herbu.\", \"photo\": \"Łańcuszek o splocie linkowym i zapięcie z bliska\"}, {\"question\": \"Czy mogę nosić ją na własnym łańcuszku?\", \"answer\": \"Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm. Sprawdź tylko, czy zapięcie Twojego łańcuszka swobodnie przejdzie przez ucho.\", \"photo\": \"Ucho zawieszki Manchester United z bliska, z przeciągniętym łańcuszkiem\"}, {\"question\": \"Czy to oficjalny produkt?\", \"answer\": \"Tak. To oficjalnie licencjonowana zawieszka z herbem Manchesteru United.\", \"photo\": \"Opakowanie Vellano Jubiler z zawieszką\"}, {\"question\": \"Jak będzie zapakowana?\", \"answer\": \"W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – na obu biały napis VELLANO JUBILER. Prezent jest od razu gotowy do wręczenia.\", \"photo\": \"Opakowanie Vellano Jubiler: pudełko z wysuniętą szufladką i miękkie etui obok\"}, {\"question\": \"Kiedy dotrze i czy zdąży przed Świętami?\", \"answer\": \"Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.\", \"photo\": \"Zamknięte pudełko Vellano Jubiler w spokojnej, świątecznej aranżacji – bez dat i napisów z terminami\"}, {\"question\": \"A jeśli nie przypadnie do gustu?\", \"answer\": \"Zasady zwrotów opisaliśmy na stronie <a href=\\\"/pages/zwroty\\\">Zwroty</a>. Jeśli kupujesz na prezent i masz pytania, <a href=\\\"/pages/contact\\\">napisz do nas</a> – pomożemy.\", \"photo\": \"Zawieszka w otwartym pudełku Vellano Jubiler, ujęcie z góry\"}]"
+   }
+  ]
+ }
+]

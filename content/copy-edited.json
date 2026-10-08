@@ -1,0 +1,1210 @@
+{
+ "issues_found": [
+  "Z tekstów publicznych usunąłem formy dostawy „Paczkomat InPost” i „kurier”: strona Dostawa, FAQ, Zanim zapytasz, sekcja FAQ strony głównej, mail porzucony koszyk 3/3, potwierdzenie zamówienia i wysyłka. Nie są potwierdzone, a pkt 4 dopuszcza tylko trzy obietnice dostawy. Zastąpiłem je zdaniem „Formę dostawy wybierasz w kasie”.",
+  "Z FAQ, mikrotekstów pdp.payments i payments.icons oraz ze stopki usunąłem listę metod płatności (BLIK, Przelewy24, Apple Pay, Google Pay, karta), bo nie jest potwierdzona. Teraz jest „Dostępne metody płatności zobaczysz w kasie”, a ikony generuje motyw.",
+  "SEO title kolekcji klubowych miały 73–79 znaków przy limicie 60 i powtarzały frazę z kart produktu. Nowe: „Łańcuszek [klub] z herbem | Vellano Jubiler” (48–54 znaki). Pokrywają frazę „łańcuszek barcelona”, a kolekcja nie konkuruje z kartą. Przyciąłem też „Prezent dla kibica” (67→57) i „Prezent na Święta” (67→58).",
+  "Odpowiedź „A jeśli nie przypadnie do gustu?” na kartach obiecywała zwrot „także gdy chodziło o inny herb”, czyli deklarowała warunki zwrotu. Zostały tylko link do /pages/zwroty i formularz kontaktowy. Usunąłem też potoczne „Spokojnie –”.",
+  "Opisy produktów skróciłem do układu a–e (licencja, wykonanie, idea, opakowanie, motto, specyfikacja i Uwaga), do ok. 110 słów. Usunąłem powtórzenia: łańcuszek był opisany dwa–trzy razy, opakowanie dwa razy.",
+  "W tekście ciągłym nazwy klubów są teraz odmienione: „herb FC Barcelony”, „Realu Madryt”, „Manchesteru United”, „kibic Barçy”. W tytułach produktów i altach zdjęć została forma z pkt 10.",
+  "Ujednoliciłem okrzyk do „Glory Glory Man United” (bez przecinka). Karta produktu miała go z przecinkiem, a kolekcja i maile bez.",
+  "W tekście ciągłym (kolekcje, strony, maile) zamieniłem „VELLANO JUBILER” na „Vellano Jubiler”. Wersaliki zostały tylko w opisie napisu na pudełku i etui.",
+  "Real i United: usunąłem zdania, które sugerowały szczegóły herbu bez zdjęć, np. „rama podkreśla biel Los Blancos” przy zbliżeniu herbu albo „w barwach klubu”. Teraz jest „cyrkonie, które oddają jego barwy” lub „dobrane do jego barw”.",
+  "Usunąłem „cena zawiera VAT” z pdp.price_note: status VAT sklepu nie jest potwierdzony, a informację o podatku i tak wyświetla motyw.",
+  "Nowy sklep pisał o „pytaniach, które słyszymy najczęściej” (strona główna, karta produktu, mail 2/3), choć jeszcze ich nie słyszał. Teraz jest „pytania, które warto zadać przed zakupem”.",
+  "Na stronie ograniczyłem anglicyzmy. „W stylu statement” zastąpiłem „dużą, wyrazistą zawieszką”, bo to słowo zraża Ewę i Marka (zasada 13); zostaje w reklamach i social media. „Rope” zostało tylko w specyfikacji i w odpowiedzi o łańcuszku.",
+  "Strona O marce: nagłówek „Trzy zasady” zastąpiłem „Na czym nam zależy.” (historia marki bez liczb). Kalkę „otworzyć własny rozdział / własną myśl” zmieniłem na „pójść własną, jubilerską drogą”, a „tyle, co” na „tyle, ile”. Zdanie „patrzymy okiem jubilera” sugerowało, że założyciele są jubilerami, więc je zmieniłem.",
+  "W ogólnej serii „Zanim zapytasz” ścieżki w nawiasach, np. (/pages/zwroty), zamieniłem na linki <a href>, tak jak na kartach produktu. Odpowiedzi skróciłem do 2–3 zdań.",
+  "Strona Wykonanie: usunąłem sekcję „Ucho zawieszki”, bo powtarzała „Uwagę” pod specyfikacją. Emalia nigdzie nie występuje.",
+  "Mikroteksty: „Zamów teraz – wyślemy…” → „Wysyłka w 2–3 dni robocze” (stałe brzmienie obietnicy, bez ponaglania). „Napisz, gdzie nas spotkać” → „Napisz, skąd o nas wiesz”. Przyciski cookies są teraz w jednym trybie: „Zaakceptuj · Odrzuć · Ustawienia”. „Innej drużyny” → „innego klubu”.",
+  "Dodałem mikrotekst pdp.reviews_note o tym, jak weryfikujemy opinie. Wymaga tego dyrektywa Omnibus, gdy sklep publikuje opinie.",
+  "Hero: eyebrow „Oficjalnie licencjonowane” powtarzał nagłówek sekcji 10, więc zastąpiłem go nazwami trzech klubów. Lead wymieniał łańcuszek dwa razy; teraz zawiera hasło „Dla tych, którzy mają już koszulkę”.",
+  "Hub Prezent dla kibica: dodałem wyjście dla niezdecydowanych („Wciąż nie wiesz? Napisz do nas”) i wzmiankę o zestawie dla dwóch kibiców. Myślniki zastąpiły potrójne „czyli”.",
+  "Specyfikacja: „Powłoka: rodowana, jasny, chłodny połysk” → „rodowana, o jasnym, chłodnym połysku”, „Rozmiar: jeden rozmiar” → „jeden”. W specyfikacji licencji jest teraz „oficjalna licencja Realu Madryt” (z odmianą).",
+  "Tagi: „prezent na 18 urodziny” → „prezent na osiemnastkę”. Dodałem „Los Blancos” i „blaugrana”.",
+  "Maile: przeglądanie produktu kończy się teraz „bez kolejnych przypomnień” zamiast niejasnego „bez ponowień”. W potwierdzeniu zamówienia „wybrany Paczkomat” → „wybrany punkt odbioru”. Mail o wysyłce nie ma już wariantu InPost."
+ ],
+ "products": [
+  {
+   "club": "Real Madryt",
+   "handle": "zawieszka-real-madryt-z-lancuszkiem",
+   "title": "Oficjalna zawieszka Real Madryt z łańcuszkiem",
+   "subtitle": "Królewscy · Los Blancos",
+   "seo_title": "Zawieszka Real Madryt z łańcuszkiem | Vellano Jubiler",
+   "seo_description": "Oficjalna zawieszka Real Madryt z łańcuszkiem: herb Królewskich z setek ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa. Prezent dla kibica.",
+   "description_html": "<h3>O produkcie</h3>\n<p>Oficjalna zawieszka z herbem Realu Madryt, wykonana na licencji klubu. Duży, wyrazisty herb Królewskich – w stylu biżuterii, którą piłkarze i artyści noszą poza boiskiem i sceną.</p>\n<p>Herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii, które oddają jego barwy. Rama lśni jasnym, chłodnym połyskiem powłoki rodowanej, a skręcony łańcuszek o splocie linkowym odbija światło przy każdym ruchu.</p>\n<p>Koszulkę zakłada się na mecz – na Santiago Bernabéu albo przed telewizorem. Herb możesz nosić zawsze: do bluzy, koszuli czy marynarki. To biżuteria dla nowego pokolenia kibiców, dla których biel znaczy więcej niż kolor.</p>\n<p>Przychodzi w pudełku Vellano Jubiler z wysuwaną szufladką i w miękkim etui – gotowa do wręczenia albo do zatrzymania dla siebie.</p>\n<p>Od 1902 roku w bieli. <strong>¡Hala Madrid!</strong></p>\n<h3>Specyfikacja</h3>\n<ul>\n<li><strong>Metal:</strong> mosiądz</li>\n<li><strong>Powłoka:</strong> rodowana, o jasnym, chłodnym połysku</li>\n<li><strong>Kamienie:</strong> cyrkonie osadzane ręcznie</li>\n<li><strong>Łańcuszek:</strong> splot linkowy (rope), 51 cm (20 cali), w zestawie</li>\n<li><strong>Rozmiar:</strong> jeden</li>\n<li><strong>Waga:</strong> ok. 32 g (zawieszka z łańcuszkiem)</li>\n</ul>\n<p><strong>Uwaga:</strong> ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc możesz nosić ją także na własnym łańcuszku.</p>",
+   "specs": [
+    {
+     "label": "Metal",
+     "value": "mosiądz"
+    },
+    {
+     "label": "Powłoka",
+     "value": "rodowana, o jasnym, chłodnym połysku"
+    },
+    {
+     "label": "Kamienie",
+     "value": "cyrkonie osadzane ręcznie"
+    },
+    {
+     "label": "Łańcuszek",
+     "value": "splot linkowy (rope), w zestawie"
+    },
+    {
+     "label": "Długość łańcuszka",
+     "value": "51 cm (20 cali)"
+    },
+    {
+     "label": "Waga",
+     "value": "ok. 32 g (zawieszka z łańcuszkiem)"
+    },
+    {
+     "label": "Rozmiar",
+     "value": "jeden"
+    },
+    {
+     "label": "Ucho zawieszki",
+     "value": "mieści łańcuszek o grubości do 5 mm"
+    },
+    {
+     "label": "Licencja",
+     "value": "oficjalna licencja Realu Madryt"
+    },
+    {
+     "label": "Opakowanie",
+     "value": "jasnoszare pudełko Vellano Jubiler z wysuwaną szufladką i miękkie etui"
+    }
+   ],
+   "whats_in_box": [
+    "Oficjalna zawieszka z herbem Realu Madryt, wysadzana cyrkoniami",
+    "Łańcuszek o splocie linkowym (rope), 51 cm (20 cali)",
+    "Jasnoszare, matowe pudełko Vellano Jubiler z wysuwaną szufladką i miękkim, szarym wnętrzem",
+    "Miękkie etui Vellano Jubiler w tym samym kolorze"
+   ],
+   "before_you_ask": [
+    {
+     "question": "Z czego jest wykonana?",
+     "answer": "Podstawą jest mosiądz z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych, ręcznie osadzanych cyrkonii w barwach herbu Realu Madryt. Łańcuszek o splocie linkowym jest w zestawie.",
+     "photo": "Makro cyrkonii: ręcznie osadzane kamienie i krawędź ramy z powłoką rodowaną"
+    },
+    {
+     "question": "Jak wygląda z bliska?",
+     "answer": "Pod światłem każda cyrkonia błyszczy osobno, a herb Królewskich zachowuje czytelny kształt i swoje barwy. Rama o jasnym, chłodnym połysku powłoki rodowanej wyraźnie zamyka jego kontur.",
+     "photo": "Makro herbu Realu Madryt pod światło, ujęcie pod kątem"
+    },
+    {
+     "question": "Jak duża jest i jak leży na szyi?",
+     "answer": "To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży ok. 32 g. Skalę pokazują zdjęcia obok: na szyi i w dłoni.",
+     "photo": "Zawieszka na szyi modela (półpostać, na wprost) oraz w otwartej dłoni – dla oceny skali"
+    },
+    {
+     "question": "Czy łańcuszek jest w zestawie?",
+     "answer": "Tak. W zestawie jest skręcony łańcuszek o splocie linkowym (rope), 51 cm (20 cali), w jednym rozmiarze. Mocno połyskuje i pasuje do wyrazistego herbu.",
+     "photo": "Łańcuszek o splocie linkowym i zapięcie z bliska"
+    },
+    {
+     "question": "Czy mogę nosić ją na własnym łańcuszku?",
+     "answer": "Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm. Sprawdź tylko, czy zapięcie Twojego łańcuszka swobodnie przejdzie przez ucho.",
+     "photo": "Ucho zawieszki Real Madryt z bliska, z przeciągniętym łańcuszkiem"
+    },
+    {
+     "question": "Czy to oficjalny produkt?",
+     "answer": "Tak. To oficjalnie licencjonowana zawieszka z herbem Realu Madryt. Oznaczenie licencji znajdziesz na opakowaniu – pokazujemy je na zdjęciu obok.",
+     "photo": "Opakowanie z oznaczeniem oficjalnej licencji Realu Madryt, z bliska"
+    },
+    {
+     "question": "Jak będzie zapakowana?",
+     "answer": "W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – na obu biały napis VELLANO JUBILER. Prezent jest od razu gotowy do wręczenia.",
+     "photo": "Opakowanie Vellano Jubiler: pudełko z wysuniętą szufladką i miękkie etui obok"
+    },
+    {
+     "question": "Kiedy dotrze i czy zdąży przed Świętami?",
+     "answer": "Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.",
+     "photo": "Zamknięte pudełko Vellano Jubiler w spokojnej, świątecznej aranżacji – bez dat i napisów z terminami"
+    },
+    {
+     "question": "A jeśli nie przypadnie do gustu?",
+     "answer": "Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli kupujesz na prezent i masz pytania, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.",
+     "photo": "Zawieszka w otwartym pudełku Vellano Jubiler, ujęcie z góry"
+    }
+   ],
+   "image_alts": [
+    "Oficjalna zawieszka Real Madryt z łańcuszkiem na szyi mężczyzny – duży herb z cyrkonii tuż pod obojczykami",
+    "Zawieszka Real Madryt w otwartej dłoni – skala herbu wysadzanego cyrkoniami",
+    "Makro ręcznie osadzanych cyrkonii w barwach herbu Realu Madryt",
+    "Herb Realu Madryt z bliska pod światło – cyrkonie i rama o jasnym, chłodnym połysku powłoki rodowanej",
+    "Oficjalna zawieszka Real Madryt na łańcuszku o splocie linkowym, na jasnym tle",
+    "Ucho zawieszki Real Madryt i skręcony łańcuszek o splocie linkowym z zapięciem, z bliska",
+    "Jasnoszare pudełko Vellano Jubiler z wysuniętą szufladką i miękkie etui, w środku zawieszka Real Madryt",
+    "Kibic Realu Madryt w dniu meczu z zawieszką z herbem Królewskich"
+   ],
+   "tags": [
+    "Real Madryt",
+    "Królewscy",
+    "Los Blancos",
+    "klub-real-madryt",
+    "zawieszka",
+    "zawieszka z łańcuszkiem",
+    "naszyjnik",
+    "łańcuszek",
+    "biżuteria męska",
+    "biżuteria kibica",
+    "oficjalna licencja",
+    "cyrkonie",
+    "splot linkowy",
+    "prezent dla kibica",
+    "prezent dla niego",
+    "prezent na Święta",
+    "prezent na osiemnastkę"
+   ],
+   "notes": [
+    "Waga „ok. 32 g (zawieszka z łańcuszkiem)” to szacunek. Po zważeniu popraw ją w opisie, w specyfikacji i w odpowiedzi „Jak duża jest i jak leży na szyi?”.",
+    "Odpowiedź „Czy to oficjalny produkt?” zakłada, że oznaczenie licencji jest na opakowaniu (pkt 9 odpowiedzi). Opis opakowania z pkt 5 go nie wymienia. Potwierdź, gdzie jest oznaczenie, i zrób jego zdjęcie z bliska. Słowo „certyfikat” pominąłem celowo.",
+    "Zdanie „łańcuszek 51 cm zwykle układa się w okolicy obojczyków” sprawdź na zdjęciu modela. Jeśli wygląda inaczej, zostaw tylko zdanie o zdjęciach na szyi i w dłoni.",
+    "Odpowiedź o zwrotach zawiera linki HTML do /pages/zwroty i /pages/contact. Obie strony muszą istnieć przed publikacją, a pole metaobiektu „Zanim zapytasz” musi być typu rich text.",
+    "Odpowiedź o zwrotach nie obiecuje żadnych warunków. Usunąłem zdanie, że zwrot jest możliwy także przy nietrafionym herbie. Wszystkie zasady są wyłącznie na /pages/zwroty.",
+    "Real Madryt: zdjęć tej zawieszki nie widzieliśmy, więc barw i elementów herbu nie opisałem („cyrkonie, które oddają jego barwy”). „Setki cyrkonii” przyjąłem przez analogię do Barçy – potwierdź na zdjęciach. Obrysu i ucha z białych cyrkonii nie wpisałem.",
+    "„Od 1902 roku w bieli” to fakt klubowy (rok założenia). 125-lecie (6 marca 2027) zostawiam na osobną kampanię, bez terminów zamówień.",
+    "W tekście ciągłym nazwa klubu jest odmieniona („herb Realu Madryt”). Tytuł produktu i alty zostały w formie z pkt 10.",
+    "SEO title zawiera „Vellano Jubiler”. Sprawdź w podglądzie, czy motyw nie dopisuje nazwy sklepu drugi raz.",
+    "Zestaw „2 zawieszki za 259 zł zamiast 298 zł” pokaż w module zestawu na karcie i w koszyku (rabat automatyczny 39 zł przy 2 sztukach), nie w opisie.",
+    "Alty opisują planowane ujęcia. Po sesji zdjęciowej dopasuj je do tego, co faktycznie jest na zdjęciach.",
+    "Celowo pominięte: wymiary, emalia, metody płatności i formy dostawy (niepotwierdzone), daty i okazje z terminem zamówienia, pielęgnacja, gwarancja produktu, bilecik, zawodnicy, liczba dni na zwrot. Słowo „statement” zostaje w reklamach i social media."
+   ]
+  },
+  {
+   "club": "FC Barcelona",
+   "handle": "zawieszka-fc-barcelona-z-lancuszkiem",
+   "title": "Oficjalna zawieszka FC Barcelona z łańcuszkiem",
+   "subtitle": "Duma Katalonii · blaugrana",
+   "seo_title": "Zawieszka FC Barcelona z łańcuszkiem | Vellano Jubiler",
+   "seo_description": "Oficjalna zawieszka FC Barcelona z łańcuszkiem: herb Dumy Katalonii z setek ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa. Prezent dla kibica.",
+   "description_html": "<h3>O produkcie</h3>\n<p>Oficjalna zawieszka z herbem FC Barcelony, wykonana na licencji klubu. Herb Dumy Katalonii w dużej, wyrazistej formie – w stylu, który znasz z szyi piłkarzy i artystów.</p>\n<p>Cały herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii w barwach herbu: czerwieni, granatu, żółci i bieli, z czarnymi literami FCB i żółtą piłką. Obrys i ucho wysadzono białymi cyrkoniami, a rama lśni jasnym, chłodnym połyskiem powłoki rodowanej.</p>\n<p>Koszulkę zakłada się na mecz. Herb zostaje z Tobą na dłużej: na trybunie, przed ekranem i na co dzień – do bluzy, do koszuli, na miasto. To biżuteria dla nowego pokolenia kibiców, którzy barwy blaugrana noszą po swojemu.</p>\n<p>Przychodzi w pudełku Vellano Jubiler z wysuwaną szufladką i w miękkim etui, gotowa do wręczenia.</p>\n<p>Na Spotify Camp Nou i daleko od niego. <strong>Més que un club.</strong></p>\n<h3>Specyfikacja</h3>\n<ul>\n<li><strong>Metal:</strong> mosiądz</li>\n<li><strong>Powłoka:</strong> rodowana, o jasnym, chłodnym połysku</li>\n<li><strong>Kamienie:</strong> cyrkonie osadzane ręcznie</li>\n<li><strong>Łańcuszek:</strong> splot linkowy (rope), 51 cm (20 cali), w zestawie</li>\n<li><strong>Rozmiar:</strong> jeden</li>\n<li><strong>Waga:</strong> ok. 32 g (zawieszka z łańcuszkiem)</li>\n</ul>\n<p><strong>Uwaga:</strong> ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc możesz nosić ją także na własnym łańcuszku.</p>",
+   "specs": [
+    {
+     "label": "Metal",
+     "value": "mosiądz"
+    },
+    {
+     "label": "Powłoka",
+     "value": "rodowana, o jasnym, chłodnym połysku"
+    },
+    {
+     "label": "Kamienie",
+     "value": "cyrkonie osadzane ręcznie"
+    },
+    {
+     "label": "Łańcuszek",
+     "value": "splot linkowy (rope), w zestawie"
+    },
+    {
+     "label": "Długość łańcuszka",
+     "value": "51 cm (20 cali)"
+    },
+    {
+     "label": "Waga",
+     "value": "ok. 32 g (zawieszka z łańcuszkiem)"
+    },
+    {
+     "label": "Rozmiar",
+     "value": "jeden"
+    },
+    {
+     "label": "Ucho zawieszki",
+     "value": "mieści łańcuszek o grubości do 5 mm"
+    },
+    {
+     "label": "Licencja",
+     "value": "oficjalna licencja FC Barcelony"
+    },
+    {
+     "label": "Opakowanie",
+     "value": "jasnoszare pudełko Vellano Jubiler z wysuwaną szufladką i miękkie etui"
+    }
+   ],
+   "whats_in_box": [
+    "Oficjalna zawieszka z herbem FC Barcelony, wysadzana cyrkoniami",
+    "Łańcuszek o splocie linkowym (rope), 51 cm (20 cali)",
+    "Jasnoszare, matowe pudełko Vellano Jubiler z wysuwaną szufladką i miękkim, szarym wnętrzem",
+    "Miękkie etui Vellano Jubiler w tym samym kolorze"
+   ],
+   "before_you_ask": [
+    {
+     "question": "Z czego jest wykonana?",
+     "answer": "Podstawą jest mosiądz z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych, ręcznie osadzanych cyrkonii w barwach herbu FC Barcelony: czerwieni, granatu, żółci i bieli. Łańcuszek o splocie linkowym jest w zestawie.",
+     "photo": "Makro cyrkonii: ręcznie osadzane kamienie w barwach herbu i krawędź ramy z powłoką rodowaną"
+    },
+    {
+     "question": "Jak wygląda z bliska?",
+     "answer": "Pod światłem każda cyrkonia błyszczy osobno, a herb pozostaje czytelny: czerwień, granat, żółć i biel, czarne litery FCB i żółta piłka. Obrys i ucho z białych cyrkonii wyraźnie zamykają kształt herbu.",
+     "photo": "Makro herbu FC Barcelony pod światło, ujęcie pod kątem – litery FCB i żółta piłka"
+    },
+    {
+     "question": "Jak duża jest i jak leży na szyi?",
+     "answer": "To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży ok. 32 g. Skalę pokazują zdjęcia obok: na szyi i w dłoni.",
+     "photo": "Zawieszka na szyi modela (półpostać, na wprost) oraz w otwartej dłoni – dla oceny skali"
+    },
+    {
+     "question": "Czy łańcuszek jest w zestawie?",
+     "answer": "Tak. W zestawie jest skręcony łańcuszek o splocie linkowym (rope), 51 cm (20 cali), w jednym rozmiarze. Mocno połyskuje i pasuje do wyrazistego herbu.",
+     "photo": "Łańcuszek o splocie linkowym i zapięcie z bliska"
+    },
+    {
+     "question": "Czy mogę nosić ją na własnym łańcuszku?",
+     "answer": "Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm. Sprawdź tylko, czy zapięcie Twojego łańcuszka swobodnie przejdzie przez ucho.",
+     "photo": "Ucho zawieszki FC Barcelona wysadzane białymi cyrkoniami, z bliska, z przeciągniętym łańcuszkiem"
+    },
+    {
+     "question": "Czy to oficjalny produkt?",
+     "answer": "Tak. To oficjalnie licencjonowana zawieszka z herbem FC Barcelony. Oznaczenie licencji znajdziesz na opakowaniu – pokazujemy je na zdjęciu obok.",
+     "photo": "Opakowanie z oznaczeniem oficjalnej licencji FC Barcelony, z bliska"
+    },
+    {
+     "question": "Jak będzie zapakowana?",
+     "answer": "W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – na obu biały napis VELLANO JUBILER. Prezent jest od razu gotowy do wręczenia.",
+     "photo": "Opakowanie Vellano Jubiler: pudełko z wysuniętą szufladką i miękkie etui obok"
+    },
+    {
+     "question": "Kiedy dotrze i czy zdąży przed Świętami?",
+     "answer": "Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.",
+     "photo": "Zamknięte pudełko Vellano Jubiler w spokojnej, świątecznej aranżacji – bez dat i napisów z terminami"
+    },
+    {
+     "question": "A jeśli nie przypadnie do gustu?",
+     "answer": "Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli kupujesz na prezent i masz pytania, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.",
+     "photo": "Zawieszka w otwartym pudełku Vellano Jubiler, ujęcie z góry"
+    }
+   ],
+   "image_alts": [
+    "Oficjalna zawieszka FC Barcelona z łańcuszkiem na szyi mężczyzny – duży herb z cyrkonii tuż pod obojczykami",
+    "Zawieszka FC Barcelona w otwartej dłoni – skala herbu wysadzanego cyrkoniami",
+    "Makro ręcznie osadzanych cyrkonii herbu FC Barcelony w czerwieni, granacie, żółci i bieli",
+    "Herb FC Barcelony z bliska pod światło – czarne litery FCB, żółta piłka i obrys z białych cyrkonii",
+    "Oficjalna zawieszka FC Barcelona na łańcuszku o splocie linkowym, na jasnym tle",
+    "Ucho zawieszki FC Barcelona wysadzane białymi cyrkoniami i skręcony łańcuszek o splocie linkowym z zapięciem",
+    "Jasnoszare pudełko Vellano Jubiler z wysuniętą szufladką i miękkie etui, w środku zawieszka FC Barcelona",
+    "Kibic FC Barcelony w dniu meczu z zawieszką z herbem Dumy Katalonii"
+   ],
+   "tags": [
+    "FC Barcelona",
+    "Barça",
+    "Duma Katalonii",
+    "blaugrana",
+    "klub-fc-barcelona",
+    "zawieszka",
+    "zawieszka z łańcuszkiem",
+    "naszyjnik",
+    "łańcuszek",
+    "biżuteria męska",
+    "biżuteria kibica",
+    "oficjalna licencja",
+    "cyrkonie",
+    "splot linkowy",
+    "prezent dla kibica",
+    "prezent dla niego",
+    "prezent na Święta",
+    "prezent na osiemnastkę"
+   ],
+   "notes": [
+    "Waga „ok. 32 g (zawieszka z łańcuszkiem)” to szacunek. Po zważeniu popraw ją w opisie, w specyfikacji i w odpowiedzi „Jak duża jest i jak leży na szyi?”.",
+    "Odpowiedź „Czy to oficjalny produkt?” zakłada, że oznaczenie licencji jest na opakowaniu (pkt 9 odpowiedzi). Opis opakowania z pkt 5 go nie wymienia. Potwierdź, gdzie jest oznaczenie, i zrób jego zdjęcie z bliska. Słowo „certyfikat” pominąłem celowo.",
+    "Zdanie „łańcuszek 51 cm zwykle układa się w okolicy obojczyków” sprawdź na zdjęciu modela. Jeśli wygląda inaczej, zostaw tylko zdanie o zdjęciach na szyi i w dłoni.",
+    "Odpowiedź o zwrotach zawiera linki HTML do /pages/zwroty i /pages/contact. Obie strony muszą istnieć przed publikacją, a pole metaobiektu „Zanim zapytasz” musi być typu rich text.",
+    "Odpowiedź o zwrotach nie obiecuje żadnych warunków. Usunąłem zdanie, że zwrot jest możliwy także wtedy, gdy herb nie trafi. Wszystkie zasady są wyłącznie na /pages/zwroty.",
+    "FC Barcelona: barwy i elementy herbu (czerwień, granat, żółć, biel, czarne litery FCB, żółta piłka) oraz białe cyrkonie obrysu i ucha opisałem wyłącznie na podstawie zdjęć od właściciela (przód, ujęcie pod kątem, na łańcuszku).",
+    "Frazę „łańcuszek barcelona” pokrywa SEO title kolekcji („Łańcuszek FC Barcelona z herbem”), a karta produktu celuje w „zawieszka FC Barcelona z łańcuszkiem”. Dzięki temu obie strony nie konkurują w wynikach wyszukiwania.",
+    "W tekście ciągłym nazwa klubu jest odmieniona („herb FC Barcelony”, „kibic Barçy”). Tytuł produktu i alty zostały w formie z pkt 10.",
+    "SEO title zawiera „Vellano Jubiler”. Sprawdź w podglądzie, czy motyw nie dopisuje nazwy sklepu drugi raz.",
+    "Zestaw „2 zawieszki za 259 zł zamiast 298 zł” pokaż w module zestawu na karcie i w koszyku (rabat automatyczny 39 zł przy 2 sztukach), nie w opisie.",
+    "Alty opisują planowane ujęcia. Po sesji zdjęciowej dopasuj je do tego, co faktycznie jest na zdjęciach.",
+    "Celowo pominięte: wymiary, emalia, metody płatności i formy dostawy (niepotwierdzone), daty i okazje z terminem zamówienia, pielęgnacja, gwarancja produktu, bilecik, zawodnicy, liczba dni na zwrot. Słowo „statement” zostaje w reklamach i social media."
+   ]
+  },
+  {
+   "club": "Manchester United",
+   "handle": "zawieszka-manchester-united-z-lancuszkiem",
+   "title": "Oficjalna zawieszka Manchester United z łańcuszkiem",
+   "subtitle": "Czerwone Diabły · Teatr Marzeń",
+   "seo_title": "Zawieszka Manchester United z łańcuszkiem | Vellano Jubiler",
+   "seo_description": "Oficjalna zawieszka Manchester United z łańcuszkiem: herb Czerwonych Diabłów z ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa.",
+   "description_html": "<h3>O produkcie</h3>\n<p>Oficjalna zawieszka z herbem Manchesteru United, wykonana na licencji klubu. Herb Czerwonych Diabłów w dużej, wyrazistej formie – w duchu biżuterii, którą noszą piłkarze i artyści.</p>\n<p>Herb wypełniają setki drobnych cyrkonii, osadzanych ręcznie i dobranych do jego barw. Rama lśni jasnym, chłodnym połyskiem powłoki rodowanej, a skręcony łańcuszek o splocie linkowym odbija światło przy każdym ruchu.</p>\n<p>Koszulka jest na mecz. Herb jest na każdy dzień: pod koszulę albo na wierzch, do bluzy i na wyjście. To biżuteria dla nowego pokolenia kibiców, którzy czerwień United noszą ze sobą także daleko od Manchesteru.</p>\n<p>Przychodzi w pudełku Vellano Jubiler z wysuwaną szufladką i w miękkim etui w tym samym kolorze.</p>\n<p>Old Trafford nazywają Teatrem Marzeń. Ten herb zabiera kawałek tej sceny tam, gdzie jesteś. <strong>Glory Glory Man United.</strong></p>\n<h3>Specyfikacja</h3>\n<ul>\n<li><strong>Metal:</strong> mosiądz</li>\n<li><strong>Powłoka:</strong> rodowana, o jasnym, chłodnym połysku</li>\n<li><strong>Kamienie:</strong> cyrkonie osadzane ręcznie</li>\n<li><strong>Łańcuszek:</strong> splot linkowy (rope), 51 cm (20 cali), w zestawie</li>\n<li><strong>Rozmiar:</strong> jeden</li>\n<li><strong>Waga:</strong> ok. 32 g (zawieszka z łańcuszkiem)</li>\n</ul>\n<p><strong>Uwaga:</strong> ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc możesz nosić ją także na własnym łańcuszku.</p>",
+   "specs": [
+    {
+     "label": "Metal",
+     "value": "mosiądz"
+    },
+    {
+     "label": "Powłoka",
+     "value": "rodowana, o jasnym, chłodnym połysku"
+    },
+    {
+     "label": "Kamienie",
+     "value": "cyrkonie osadzane ręcznie"
+    },
+    {
+     "label": "Łańcuszek",
+     "value": "splot linkowy (rope), w zestawie"
+    },
+    {
+     "label": "Długość łańcuszka",
+     "value": "51 cm (20 cali)"
+    },
+    {
+     "label": "Waga",
+     "value": "ok. 32 g (zawieszka z łańcuszkiem)"
+    },
+    {
+     "label": "Rozmiar",
+     "value": "jeden"
+    },
+    {
+     "label": "Ucho zawieszki",
+     "value": "mieści łańcuszek o grubości do 5 mm"
+    },
+    {
+     "label": "Licencja",
+     "value": "oficjalna licencja Manchesteru United"
+    },
+    {
+     "label": "Opakowanie",
+     "value": "jasnoszare pudełko Vellano Jubiler z wysuwaną szufladką i miękkie etui"
+    }
+   ],
+   "whats_in_box": [
+    "Oficjalna zawieszka z herbem Manchesteru United, wysadzana cyrkoniami",
+    "Łańcuszek o splocie linkowym (rope), 51 cm (20 cali)",
+    "Jasnoszare, matowe pudełko Vellano Jubiler z wysuwaną szufladką i miękkim, szarym wnętrzem",
+    "Miękkie etui Vellano Jubiler w tym samym kolorze"
+   ],
+   "before_you_ask": [
+    {
+     "question": "Z czego jest wykonana?",
+     "answer": "Podstawą jest mosiądz z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych, ręcznie osadzanych cyrkonii w barwach herbu Manchesteru United. Łańcuszek o splocie linkowym jest w zestawie.",
+     "photo": "Makro cyrkonii: ręcznie osadzane kamienie i krawędź ramy z powłoką rodowaną"
+    },
+    {
+     "question": "Jak wygląda z bliska?",
+     "answer": "Pod światłem każda cyrkonia błyszczy osobno, a herb Czerwonych Diabłów pozostaje czytelny w swoich barwach. Rama o jasnym, chłodnym połysku powłoki rodowanej wyraźnie zamyka jego kontur.",
+     "photo": "Makro herbu Manchesteru United pod światło, ujęcie pod kątem"
+    },
+    {
+     "question": "Jak duża jest i jak leży na szyi?",
+     "answer": "To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży ok. 32 g. Skalę pokazują zdjęcia obok: na szyi i w dłoni.",
+     "photo": "Zawieszka na szyi modela (półpostać, na wprost) oraz w otwartej dłoni – dla oceny skali"
+    },
+    {
+     "question": "Czy łańcuszek jest w zestawie?",
+     "answer": "Tak. W zestawie jest skręcony łańcuszek o splocie linkowym (rope), 51 cm (20 cali), w jednym rozmiarze. Mocno połyskuje i pasuje do wyrazistego herbu.",
+     "photo": "Łańcuszek o splocie linkowym i zapięcie z bliska"
+    },
+    {
+     "question": "Czy mogę nosić ją na własnym łańcuszku?",
+     "answer": "Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm. Sprawdź tylko, czy zapięcie Twojego łańcuszka swobodnie przejdzie przez ucho.",
+     "photo": "Ucho zawieszki Manchester United z bliska, z przeciągniętym łańcuszkiem"
+    },
+    {
+     "question": "Czy to oficjalny produkt?",
+     "answer": "Tak. To oficjalnie licencjonowana zawieszka z herbem Manchesteru United. Oznaczenie licencji znajdziesz na opakowaniu – pokazujemy je na zdjęciu obok.",
+     "photo": "Opakowanie z oznaczeniem oficjalnej licencji Manchesteru United, z bliska"
+    },
+    {
+     "question": "Jak będzie zapakowana?",
+     "answer": "W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – na obu biały napis VELLANO JUBILER. Prezent jest od razu gotowy do wręczenia.",
+     "photo": "Opakowanie Vellano Jubiler: pudełko z wysuniętą szufladką i miękkie etui obok"
+    },
+    {
+     "question": "Kiedy dotrze i czy zdąży przed Świętami?",
+     "answer": "Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.",
+     "photo": "Zamknięte pudełko Vellano Jubiler w spokojnej, świątecznej aranżacji – bez dat i napisów z terminami"
+    },
+    {
+     "question": "A jeśli nie przypadnie do gustu?",
+     "answer": "Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli kupujesz na prezent i masz pytania, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.",
+     "photo": "Zawieszka w otwartym pudełku Vellano Jubiler, ujęcie z góry"
+    }
+   ],
+   "image_alts": [
+    "Oficjalna zawieszka Manchester United z łańcuszkiem na szyi mężczyzny – duży herb z cyrkonii tuż pod obojczykami",
+    "Zawieszka Manchester United w otwartej dłoni – skala herbu wysadzanego cyrkoniami",
+    "Makro ręcznie osadzanych cyrkonii w barwach herbu Manchesteru United",
+    "Herb Manchesteru United z bliska pod światło – cyrkonie i rama o jasnym, chłodnym połysku powłoki rodowanej",
+    "Oficjalna zawieszka Manchester United na łańcuszku o splocie linkowym, na jasnym tle",
+    "Ucho zawieszki Manchester United i skręcony łańcuszek o splocie linkowym z zapięciem, z bliska",
+    "Jasnoszare pudełko Vellano Jubiler z wysuniętą szufladką i miękkie etui, w środku zawieszka Manchester United",
+    "Kibic Manchesteru United w dniu meczu z zawieszką z herbem Czerwonych Diabłów"
+   ],
+   "tags": [
+    "Manchester United",
+    "Czerwone Diabły",
+    "klub-manchester-united",
+    "zawieszka",
+    "zawieszka z łańcuszkiem",
+    "naszyjnik",
+    "łańcuszek",
+    "biżuteria męska",
+    "biżuteria kibica",
+    "oficjalna licencja",
+    "cyrkonie",
+    "splot linkowy",
+    "prezent dla kibica",
+    "prezent dla niego",
+    "prezent na Święta",
+    "prezent na osiemnastkę"
+   ],
+   "notes": [
+    "Waga „ok. 32 g (zawieszka z łańcuszkiem)” to szacunek. Po zważeniu popraw ją w opisie, w specyfikacji i w odpowiedzi „Jak duża jest i jak leży na szyi?”.",
+    "Odpowiedź „Czy to oficjalny produkt?” zakłada, że oznaczenie licencji jest na opakowaniu (pkt 9 odpowiedzi). Opis opakowania z pkt 5 go nie wymienia. Potwierdź, gdzie jest oznaczenie, i zrób jego zdjęcie z bliska. Słowo „certyfikat” pominąłem celowo.",
+    "Zdanie „łańcuszek 51 cm zwykle układa się w okolicy obojczyków” sprawdź na zdjęciu modela. Jeśli wygląda inaczej, zostaw tylko zdanie o zdjęciach na szyi i w dłoni.",
+    "Odpowiedź o zwrotach zawiera linki HTML do /pages/zwroty i /pages/contact. Obie strony muszą istnieć przed publikacją, a pole metaobiektu „Zanim zapytasz” musi być typu rich text.",
+    "Odpowiedź o zwrotach nie obiecuje żadnych warunków. Usunąłem zdanie, że zwrot jest możliwy także przy nietrafionym herbie. Wszystkie zasady są wyłącznie na /pages/zwroty.",
+    "Manchester United: zdjęć tej zawieszki nie widzieliśmy, więc barw i elementów herbu nie opisałem („cyrkonie dobrane do jego barw”). „Setki cyrkonii” przyjąłem przez analogię do Barçy – potwierdź na zdjęciach. Obrysu i ucha z białych cyrkonii nie wpisałem.",
+    "Okrzyk ujednoliciłem do „Glory Glory Man United” (bez przecinka), tak jak w faktach i w pozostałych tekstach sklepu.",
+    "W tekście ciągłym nazwa klubu jest odmieniona („herb Manchesteru United”). Tytuł produktu i alty zostały w formie z pkt 10.",
+    "SEO title ma 59 znaków i zawiera „Vellano Jubiler”. Sprawdź w podglądzie, czy motyw nie dopisuje nazwy sklepu drugi raz.",
+    "Zestaw „2 zawieszki za 259 zł zamiast 298 zł” pokaż w module zestawu na karcie i w koszyku (rabat automatyczny 39 zł przy 2 sztukach), nie w opisie.",
+    "Alty opisują planowane ujęcia. Po sesji zdjęciowej dopasuj je do tego, co faktycznie jest na zdjęciach.",
+    "Celowo pominięte: wymiary, emalia, metody płatności i formy dostawy (niepotwierdzone), daty i okazje z terminem zamówienia, pielęgnacja, gwarancja produktu, bilecik, zawodnicy, liczba dni na zwrot. Słowo „statement” zostaje w reklamach i social media."
+   ]
+  }
+ ],
+ "site": {
+  "announcement_bar": [
+   "Oficjalnie licencjonowana biżuteria kibica",
+   "Darmowa dostawa · Wysyłka w 2–3 dni robocze",
+   "Gwarancja dostawy przed Świętami"
+  ],
+  "trust_bar": [
+   "Oficjalna licencja klubu",
+   "Darmowa dostawa",
+   "Wysyłka w 2–3 dni robocze",
+   "Gwarancja dostawy przed Świętami"
+  ],
+  "homepage": [
+   {
+    "section": "1. Pasek ogłoszeń – rotacja 3 komunikatów co ok. 5 s, bez dat [wszystkie persony]",
+    "eyebrow": "",
+    "heading": "Oficjalnie licencjonowana biżuteria kibica",
+    "body": "Komunikat 2: Darmowa dostawa · Wysyłka w 2–3 dni robocze. Komunikat 3: Gwarancja dostawy przed Świętami (po Świętach zamień na: Łańcuszek w zestawie).",
+    "cta": "Komunikat 1 → /pages/oficjalna-licencja · Komunikat 2 → /pages/dostawa · Komunikat 3 → /collections/prezent-na-swieta"
+   },
+   {
+    "section": "2. Header – logo na środku, menu [wszystkie persony]",
+    "eyebrow": "",
+    "heading": "VELLANO JUBILER (logo)",
+    "body": "Menu: Wybierz swój klub (Real Madryt · FC Barcelona · Manchester United · Wszystkie zawieszki) · Prezent dla kibica · O marce · Pomoc (Dostawa · Zwroty · Najczęstsze pytania · Kontakt). W sezonie świątecznym dodatkowa pozycja: Prezent na Święta.",
+    "cta": "Wybierz swój klub"
+   },
+   {
+    "section": "3. Hero – jedno zdjęcie: zawieszka na szyi, kadr mobile 4:5 [Kuba, Michał; drugi link dla Oli]",
+    "eyebrow": "Real Madryt · FC Barcelona · Manchester United",
+    "heading": "Oficjalna biżuteria kibica.",
+    "body": "Herb Twojego klubu ułożony z setek ręcznie osadzanych cyrkonii. Dla tych, którzy mają już koszulkę. 149 zł, łańcuszek w zestawie.",
+    "cta": "Wybierz swój klub (przycisk) → /collections/wszystkie-zawieszki · Prezent dla kibica (link tekstowy) → /collections/prezent-dla-kibica"
+   },
+   {
+    "section": "4. Pasek zaufania – 4 punkty, na mobile 2×2 [Ewa i Marek, Ola]",
+    "eyebrow": "",
+    "heading": "",
+    "body": "Oficjalna licencja klubu · Darmowa dostawa · Wysyłka w 2–3 dni robocze · Gwarancja dostawy przed Świętami",
+    "cta": ""
+   },
+   {
+    "section": "5. Wybierz swój klub – 3 karty produktów na tle w barwach klubu [Kuba, Michał]",
+    "eyebrow": "Trzy herby",
+    "heading": "Wybierz swój klub.",
+    "body": "Każdy herb w barwach swojego klubu. Karty: Królewscy – Real Madryt – 149 zł · łańcuszek w zestawie | Duma Katalonii – FC Barcelona – 149 zł · łańcuszek w zestawie | Czerwone Diabły – Manchester United – 149 zł · łańcuszek w zestawie. Pod kartami: Twojego klubu jeszcze nie ma? Zapisz się, a napiszemy, gdy pojawią się nowe herby.",
+    "cta": "Zobacz z bliska"
+   },
+   {
+    "section": "6. Wykonanie – Media with content, zdjęcie makro cyrkonii pod światło [Michał; Ewa i Marek]",
+    "eyebrow": "Wykonanie",
+    "heading": "Setki cyrkonii. Jeden herb.",
+    "body": "Herb ułożono z setek drobnych cyrkonii, osadzanych ręcznie, kamień przy kamieniu. Mosiężna rama lśni jasnym, chłodnym połyskiem powłoki rodowanej. W zestawie skręcony łańcuszek o splocie linkowym, 51 cm.",
+    "cta": "Poznaj wykonanie → /pages/wykonanie"
+   },
+   {
+    "section": "7. Zanim zapytasz – lejek pytań; każda odpowiedź obok zdjęcia z bliska (treść: before_you_ask_generic) [wszystkie persony]",
+    "eyebrow": "Z bliska",
+    "heading": "Zanim zapytasz.",
+    "body": "Pytania, które warto zadać przed zakupem. Przy każdej odpowiedzi stoi zdjęcie z bliska, które pokazuje dokładnie to, o co pytasz.",
+    "cta": "Wszystkie pytania → /pages/faq"
+   },
+   {
+    "section": "8. Prezent – Media with content (układ odwrócony), zdjęcie pudełka z wysuniętą szufladką i etui [Ola; Ewa i Marek]",
+    "eyebrow": "Na prezent",
+    "heading": "Prezent dla kibica, który ma już koszulkę.",
+    "body": "Nie musisz znać się na piłce – wystarczy, że wiesz, komu kibicuje bliska Ci osoba. Każda zawieszka przychodzi w jasnoszarym, matowym pudełku z wysuwaną szufladką i w miękkim etui Vellano Jubiler. Gotowa do wręczenia.",
+    "cta": "Wybierz prezent → /collections/prezent-dla-kibica · Zobacz opakowanie → /pages/opakowanie-prezentowe"
+   },
+   {
+    "section": "9. Zestaw dla dwóch kibiców – 2 zawieszki za 259 zł, spokojnie, bez czerwonych plakietek [Ewa i Marek; Michał; Kuba]",
+    "eyebrow": "Zestaw dla dwóch kibiców",
+    "heading": "Dwa herby. Dwóch kibiców.",
+    "body": "2 zawieszki za 259 zł zamiast 298 zł – oszczędzasz 39 zł. Dla taty i syna, dla braci, dla przyjaciół z trybun. Herby wybierasz dowolnie, także dwa różne.",
+    "cta": "Wybierz dwa herby → /collections/wszystkie-zawieszki"
+   },
+   {
+    "section": "10. Oficjalna licencja – Media with content, zdjęcie opakowania z oznaczeniem licencji [Ewa i Marek; Michał]",
+    "eyebrow": "Oryginał",
+    "heading": "Oficjalnie licencjonowane.",
+    "body": "Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym. Herb, nazwa i barwy klubu są na niej użyte za zgodą klubu. Oznaczenie licencji znajdziesz na opakowaniu.",
+    "cta": "Czym jest oficjalna licencja → /pages/oficjalna-licencja"
+   },
+   {
+    "section": "11. O marce – krótki blok tekstowy [Michał; Ewa i Marek]",
+    "eyebrow": "Vellano Jubiler",
+    "heading": "Rzemiosło w rodzinie. Piłka w sercu.",
+    "body": "Vellano Jubiler założyli synowie jubilera. Wyrośli wśród rzemiosła, w którym liczy się każdy detal. Kochają piłkę. Z tych dwóch światów powstała biżuteria dla młodego pokolenia kibiców.",
+    "cta": "Poznaj markę → /pages/o-marce"
+   },
+   {
+    "section": "12. Opinie (Judge.me) – sekcja ukryta do zebrania 5 prawdziwych opinii [Kuba; Ewa i Marek]",
+    "eyebrow": "Opinie",
+    "heading": "Słowo kibiców.",
+    "body": "Prawdziwe opinie i zdjęcia od osób, które noszą swój herb.",
+    "cta": "Wszystkie opinie"
+   },
+   {
+    "section": "13. FAQ – akordeon z pytaniami spoza serii Zanim zapytasz [Ola; Ewa i Marek]",
+    "eyebrow": "Pomoc",
+    "heading": "Najczęstsze pytania.",
+    "body": "Ile kosztuje dostawa? – Nic. Dostawa jest darmowa przy każdym zamówieniu, bez minimalnej kwoty. | Jak mogę zapłacić? – Dostępne metody płatności zobaczysz w kasie, przed potwierdzeniem zamówienia. | Czym jest zestaw dla dwóch kibiców? – To 2 zawieszki za 259 zł zamiast 298 zł. Herby wybierasz dowolnie, a rabat nalicza się w koszyku. | Czy zawieszka pasuje także dla kobiety? – Tak. Kibicowanie nie ma płci, a herb wygląda równie dobrze na koszulce, bluzie i sukience. | Jak się z Wami skontaktować? – Przez formularz kontaktowy. Odpowiadamy po polsku.",
+    "cta": "Wszystkie pytania → /pages/faq"
+   },
+   {
+    "section": "14. Newsletter w stopce – bez rabatu (treść: pole newsletter) [Michał; Ola]",
+    "eyebrow": "",
+    "heading": "Pierwsze informacje o nowych herbach.",
+    "body": "Napiszemy, gdy pojawi się nowy herb. Rzadko i tylko wtedy, gdy mamy coś do pokazania.",
+    "cta": "Zapisz się"
+   },
+   {
+    "section": "15. Footer – grafitowe tło, logo w bieli [Ewa i Marek: wiarygodność sklepu]",
+    "eyebrow": "",
+    "heading": "VELLANO JUBILER",
+    "body": "Kolumny: Sklep (Real Madryt · FC Barcelona · Manchester United · Wszystkie zawieszki · Prezent dla kibica) | Pomoc (Dostawa · Zwroty · Najczęstsze pytania · Kontakt) | Vellano Jubiler (O marce · Oficjalna licencja · Wykonanie · Opakowanie) | Informacje prawne (Regulamin · Polityka prywatności · Polityka wysyłki · Dane sprzedawcy). Ikony płatności: wyświetla je motyw, tylko dla metod włączonych w sklepie. Linia dolna: Obsługa po polsku · © Vellano Jubiler.",
+    "cta": "Napisz do nas → /pages/contact"
+   }
+  ],
+  "before_you_ask_generic": [
+   {
+    "question": "Z czego jest wykonana?",
+    "answer": "Podstawą jest mosiądz z powłoką rodowaną, która nadaje ramie jasny, chłodny połysk. Herb ułożono w całości z setek drobnych, ręcznie osadzanych cyrkonii w barwach herbu.",
+    "photo": "Makro cyrkonii: kamienie w barwach herbu i krawędź ramy z bliska, ostre światło boczne"
+   },
+   {
+    "question": "Jak wygląda z bliska?",
+    "answer": "Tak jak na zdjęciu obok: kamień przy kamieniu, a każdy łapie światło przy ruchu. Barwy herbu są wyraźne, a rama lśni jasnym, chłodnym połyskiem powłoki rodowanej.",
+    "photo": "Makro całego herbu pod światło, bez filtrów i bez retuszu koloru (najlepiej klatka z krótkiego wideo w ruchu)"
+   },
+   {
+    "question": "Jak duża jest i jak leży na szyi?",
+    "answer": "To duża, wyrazista zawieszka, dobrze widoczna na koszulce i pod rozpiętą koszulą. Skalę pokazują zdjęcia obok: na szyi i w dłoni. Zawieszka z łańcuszkiem waży ok. 32 g.",
+    "photo": "Zawieszka na szyi modela (koszulka, kadr od brody do pasa) oraz zawieszka w otwartej dłoni"
+   },
+   {
+    "question": "Czy łańcuszek jest w zestawie?",
+    "answer": "Tak. W zestawie jest skręcony, mocno połyskujący łańcuszek o splocie linkowym (rope), 51 cm (20 cali). Jeden rozmiar – nie musisz niczego dokupować.",
+    "photo": "Łańcuszek z bliska: splot linkowy i zapięcie"
+   },
+   {
+    "question": "Czy mogę nosić ją na własnym łańcuszku?",
+    "answer": "Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc założysz ją także na swój łańcuszek. Sprawdź tylko, czy zapięcie swobodnie przejdzie przez ucho.",
+    "photo": "Ucho zawieszki z bliska, z przeciągniętym łańcuszkiem"
+   },
+   {
+    "question": "Czy to oficjalny produkt?",
+    "answer": "Tak. To oficjalny produkt licencjonowany – herb, nazwa i barwy klubu są użyte za jego zgodą. Oznaczenie licencji znajdziesz na opakowaniu, a więcej na stronie <a href=\"/pages/oficjalna-licencja\">Oficjalna licencja</a>.",
+    "photo": "Opakowanie z wyraźnie widocznym oznaczeniem licencji"
+   },
+   {
+    "question": "Jak będzie zapakowana?",
+    "answer": "W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – oba z białym napisem VELLANO JUBILER. Tak przychodzi każda zawieszka, gotowa do wręczenia.",
+    "photo": "Pudełko Vellano Jubiler z wysuniętą szufladką, zawieszka w środku, etui obok"
+   },
+   {
+    "question": "Kiedy dotrze i czy zdąży przed Świętami?",
+    "answer": "Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.",
+    "photo": "Zamknięte pudełko Vellano Jubiler w świątecznym kadrze, światło dzienne, bez dat i napisów"
+   },
+   {
+    "question": "A jeśli nie przypadnie do gustu?",
+    "answer": "Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli coś będzie niejasne, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.",
+    "photo": "Zawieszka w otwartym pudełku Vellano Jubiler, spokojny kadr ogólny"
+   }
+  ],
+  "collections": [
+   {
+    "club": "real-madryt",
+    "handle": "real-madryt",
+    "title": "Real Madryt",
+    "hero_eyebrow": "Królewscy · od 1902 roku",
+    "hero_heading": "Biel Królewskich. Blisko serca.",
+    "hero_body": "Oficjalna zawieszka z herbem Realu Madryt. Setki ręcznie osadzanych cyrkonii, rama w jasnym, chłodnym połysku. 149 zł, łańcuszek w zestawie.",
+    "description_html": "<p>Oficjalna zawieszka Realu Madryt to herb Królewskich w formie, którą nosisz na co dzień, nie tylko w dniu meczu. Herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii, które oddają jego barwy, a rama ma jasny, chłodny połysk powłoki rodowanej.</p><p>To duża, wyrazista zawieszka na skręconym łańcuszku o splocie linkowym, 51 cm, który jest w zestawie. Przychodzi w jasnoszarym pudełku Vellano Jubiler, gotowa do noszenia albo do wręczenia kibicowi Realu. Oficjalny produkt licencjonowany, 149 zł.</p><p>Biel Santiago Bernabéu – na co dzień. ¡Hala Madrid!</p>",
+    "seo_title": "Łańcuszek Real Madryt z herbem | Vellano Jubiler",
+    "seo_description": "Łańcuszek z zawieszką Real Madryt na oficjalnej licencji. Herb Królewskich z setek cyrkonii, 149 zł. Darmowa dostawa, wysyłka w 2–3 dni robocze."
+   },
+   {
+    "club": "fc-barcelona",
+    "handle": "fc-barcelona",
+    "title": "FC Barcelona",
+    "hero_eyebrow": "Duma Katalonii · od 1899 roku",
+    "hero_heading": "Blaugrana z bliska.",
+    "hero_body": "Oficjalna zawieszka z herbem FC Barcelony. Czerwień, granat i żółć herbu w setkach ręcznie osadzanych cyrkonii, rama w jasnym, chłodnym połysku. 149 zł, łańcuszek w zestawie.",
+    "description_html": "<p>Oficjalna zawieszka FC Barcelony to herb Dumy Katalonii, który zabierasz ze sobą także daleko od Spotify Camp Nou. Czerwień, granat i żółć, czarne litery FCB i żółta piłka – cały herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii. Obrys i ucho lśnią bielą kamieni, a rama ma jasny, chłodny połysk powłoki rodowanej.</p><p>W zestawie jest skręcony łańcuszek o splocie linkowym, 51 cm. Zawieszka przychodzi w jasnoszarym pudełku Vellano Jubiler – dla siebie albo na prezent dla kibica Barçy. Oficjalny produkt licencjonowany, 149 zł.</p><p>Blaugrana blisko serca. Més que un club.</p>",
+    "seo_title": "Łańcuszek FC Barcelona z herbem | Vellano Jubiler",
+    "seo_description": "Łańcuszek z zawieszką FC Barcelona na oficjalnej licencji. Herb w barwach blaugrana z setek cyrkonii, 149 zł. Darmowa dostawa, wysyłka w 2–3 dni robocze."
+   },
+   {
+    "club": "manchester-united",
+    "handle": "manchester-united",
+    "title": "Manchester United",
+    "hero_eyebrow": "Czerwone Diabły · od 1878 roku",
+    "hero_heading": "Czerwień Teatru Marzeń.",
+    "hero_body": "Oficjalna zawieszka z herbem Manchesteru United. Setki ręcznie osadzanych cyrkonii w barwach herbu, rama w jasnym, chłodnym połysku. 149 zł, łańcuszek w zestawie.",
+    "description_html": "<p>Oficjalna zawieszka Manchesteru United to herb Czerwonych Diabłów w formie, którą nosisz nie tylko w dniu meczu. Herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii w jego barwach, a rama ma jasny, chłodny połysk powłoki rodowanej.</p><p>To duża, wyrazista zawieszka. W zestawie jest skręcony łańcuszek o splocie linkowym, 51 cm, a całość przychodzi w jasnoszarym pudełku Vellano Jubiler – dla siebie albo na prezent dla kibica United. Oficjalny produkt licencjonowany, 149 zł.</p><p>Teatr Marzeń zawsze przy Tobie. Glory Glory Man United.</p>",
+    "seo_title": "Łańcuszek Manchester United z herbem | Vellano Jubiler",
+    "seo_description": "Łańcuszek z zawieszką Manchester United na oficjalnej licencji. Herb Czerwonych Diabłów z setek cyrkonii, 149 zł. Darmowa dostawa."
+   },
+   {
+    "club": "wszystkie",
+    "handle": "wszystkie-zawieszki",
+    "title": "Wszystkie zawieszki",
+    "hero_eyebrow": "Kolekcja",
+    "hero_heading": "Wybierz swój klub.",
+    "hero_body": "Trzy oficjalne zawieszki z łańcuszkiem. Każda w barwach swojego herbu, każda za 149 zł.",
+    "description_html": "<p>Trzy kluby, trzy herby, jedno wykonanie. Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym, a jej herb ułożono z setek ręcznie osadzanych cyrkonii.</p><p>Real Madryt – biel Królewskich. FC Barcelona – blaugrana Dumy Katalonii. Manchester United – czerwień Czerwonych Diabłów.</p><p>Każda kosztuje 149 zł, ma w zestawie łańcuszek o splocie linkowym, 51 cm, i przychodzi w pudełku Vellano Jubiler. Dwie zawieszki kupisz za 259 zł zamiast 298 zł.</p>",
+    "seo_title": "Oficjalne zawieszki klubowe z łańcuszkiem | Vellano Jubiler",
+    "seo_description": "Oficjalne zawieszki z łańcuszkiem: Real Madryt, FC Barcelona, Manchester United. Herby z ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa."
+   },
+   {
+    "club": "wszystkie (hub prezentowy)",
+    "handle": "prezent-dla-kibica",
+    "title": "Prezent dla kibica",
+    "hero_eyebrow": "Prezent dla kibica",
+    "hero_heading": "Nie musisz znać się na piłce. Wybierz herb.",
+    "hero_body": "Oficjalna zawieszka z łańcuszkiem w pudełku Vellano Jubiler – prezent dla kibica, który ma już koszulkę. Darmowa dostawa i gwarancja dostawy przed Świętami.",
+    "description_html": "<p>Nie musisz znać się na piłce. Wystarczy, że wiesz, komu kibicuje bliska Ci osoba.</p><p>Nie masz pewności? Spójrz na koszulkę, szalik albo kubek. Biel to Real Madryt – Królewscy. Granatowo-bordowe pasy to FC Barcelona – Duma Katalonii. Czerwień to Manchester United – Czerwone Diabły. Wciąż nie wiesz? <a href=\"/pages/contact\">Napisz do nas</a> – pomożemy wybrać.</p><p>Każda zawieszka jest oficjalnym produktem licencjonowanym, ma łańcuszek w zestawie i przychodzi w jasnoszarym, matowym pudełku z wysuwaną szufladką oraz w miękkim etui Vellano Jubiler – gotowa do wręczenia. Darmowa dostawa, wysyłka w 2–3 dni robocze i gwarancja dostawy przed Świętami.</p><p>Dwóch kibiców w rodzinie? 2 zawieszki za 259 zł zamiast 298 zł.</p><p>Prezent dla kibica, który ma już koszulkę.</p>",
+    "seo_title": "Prezent dla kibica – zawieszka z herbem | Vellano Jubiler",
+    "seo_description": "Prezent dla kibica, który ma już koszulkę: oficjalna zawieszka z herbem w eleganckim pudełku. Darmowa dostawa, gwarancja dostawy przed Świętami."
+   },
+   {
+    "club": "wszystkie (sezon świąteczny)",
+    "handle": "prezent-na-swieta",
+    "title": "Prezent na Święta",
+    "hero_eyebrow": "Prezent na Święta",
+    "hero_heading": "Herb pod choinkę.",
+    "hero_body": "Oficjalna zawieszka z łańcuszkiem w jasnoszarym pudełku Vellano Jubiler. Gwarancja dostawy przed Świętami, darmowa dostawa i wysyłka w 2–3 dni robocze.",
+    "description_html": "<p>Dobry prezent mówi: wiem, co kochasz. Dla kibica to herb ukochanego klubu – tym razem nie na koszulce, lecz blisko serca.</p><p>Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym. Herb ułożono z setek ręcznie osadzanych cyrkonii, a w zestawie jest łańcuszek o splocie linkowym, 51 cm. Pod choinkę trafia w jasnoszarym pudełku z wysuwaną szufladką i w miękkim etui Vellano Jubiler.</p><p>Gwarancja dostawy przed Świętami. Darmowa dostawa. Wysyłka w 2–3 dni robocze.</p><p>Dwóch kibiców pod jedną choinką? 2 zawieszki za 259 zł zamiast 298 zł.</p>",
+    "seo_title": "Prezent na Święta dla kibica – zawieszka | Vellano Jubiler",
+    "seo_description": "Prezent na Święta dla kibica: oficjalna zawieszka z łańcuszkiem w pudełku Vellano Jubiler. Gwarancja dostawy przed Świętami, darmowa dostawa."
+   }
+  ],
+  "pages": [
+   {
+    "handle": "o-marce",
+    "title": "O marce",
+    "body_html": "<h2>Jubilerskie wyczucie. Kibicowskie serce.</h2><p>Vellano Jubiler założyli synowie jubilera.</p><p>Wyrośli wśród jubilerskiego rzemiosła: kamieni, opraw i połysku. Tam, gdzie o wszystkim decyduje detal.</p><p>Kochają piłkę nożną. Herb klubu znaczy dla nich tyle, ile dla każdego kibica na trybunie.</p><p>Postanowili pójść własną, jubilerską drogą: połączyć rodzinne wyczucie detalu z pasją do futbolu. Tak powstała biżuteria dla młodego pokolenia kibiców.</p><h2>Na czym nam zależy.</h2><h3>Detal</h3><p>Herb ułożony z setek ręcznie osadzanych cyrkonii, rama o jasnym, chłodnym połysku powłoki rodowanej, łańcuszek o splocie linkowym w zestawie. Na detal patrzymy tak, jak nauczyło nas jubilerskie rzemiosło.</p><h3>Oryginał</h3><p>Każda zawieszka jest oficjalnym produktem licencjonowanym. Herb Twojego klubu, w jego barwach, bez imitacji.</p><h3>Słowo</h3><p>Darmowa dostawa, wysyłka w 2–3 dni robocze i gwarancja dostawy przed Świętami. Obsługa po polsku. Obiecujemy tylko to, czego dotrzymujemy.</p><p><a href=\"/collections/wszystkie-zawieszki\">Wybierz swój klub</a></p>",
+    "seo_description": "Vellano Jubiler założyli synowie jubilera. Łączymy rodzinne wyczucie detalu z pasją do piłki i tworzymy oficjalną biżuterię dla kibiców."
+   },
+   {
+    "handle": "oficjalna-licencja",
+    "title": "Oficjalna licencja",
+    "body_html": "<h2>Oficjalnie licencjonowane.</h2><p>Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym. Herb, nazwa i barwy klubu są na niej użyte za zgodą klubu, na zasadach licencji.</p><h3>Co oznacza oficjalny produkt licencjonowany?</h3><p>Herb to znak klubu i podlega ochronie. To klub decyduje, kto i na jakich zasadach może umieścić go na produkcie. Oficjalny produkt licencjonowany powstaje za zgodą klubu i na jego warunkach.</p><h3>Dlaczego to ważne?</h3><ul><li>Nosisz oryginał, a nie imitację herbu.</li><li>Herb jest oddany w barwach klubu, takich, jakie znasz z trybun.</li><li>Kupując prezent, masz pewność, że bliska osoba dostanie oficjalny produkt.</li><li>Wybierasz uczciwie wobec klubu, któremu kibicujesz.</li></ul><h3>Jak rozpoznać oryginał?</h3><p>Oficjalną licencję zaznaczamy w nazwie i na karcie każdej zawieszki. Oznaczenie licencji znajdziesz także na opakowaniu.</p><p>Masz pytanie o licencję? <a href=\"/pages/contact\">Napisz do nas</a>.</p>",
+    "seo_description": "Co oznacza oficjalny produkt licencjonowany i dlaczego to ważne. Zawieszki Vellano Jubiler powstają na oficjalnej licencji klubów."
+   },
+   {
+    "handle": "wykonanie",
+    "title": "Wykonanie",
+    "body_html": "<h2>Setki cyrkonii. Jeden herb.</h2><p>Zawieszka Vellano Jubiler to duży, wyrazisty herb – w stylu biżuterii, którą znasz z szyi piłkarzy i artystów. Liczy się w nim każdy detal.</p><h3>Herb z kamieni</h3><p>Herb ułożono w całości z setek drobnych cyrkonii w barwach herbu. Kamienie są osadzane ręcznie, jeden przy drugim – dlatego herb łapie światło przy każdym ruchu.</p><h3>Z bliska: FC Barcelona</h3><p>Czerwień, granat i żółć herbu, czarne litery FCB i żółta piłka – wszystko z cyrkonii. Obrys herbu i ucho wypełniają białe kamienie, a rama ma jasny, chłodny połysk powłoki rodowanej.</p><h3>Rama i połysk</h3><p>Podstawą zawieszki jest mosiądz. Powłoka rodowana nadaje mu jasny, chłodny połysk, który podkreśla barwy kamieni.</p><h3>Łańcuszek</h3><p>W zestawie jest skręcony, mocno połyskujący łańcuszek o splocie linkowym (rope), 51 cm (20 cali). Jeden rozmiar.</p><h2>Specyfikacja.</h2><ul><li><strong>Metal:</strong> mosiądz</li><li><strong>Powłoka:</strong> rodowana</li><li><strong>Kamienie:</strong> cyrkonie osadzane ręcznie</li><li><strong>Łańcuszek:</strong> splot linkowy (rope), 51 cm (20 cali), w zestawie</li><li><strong>Rozmiar:</strong> jeden</li><li><strong>Waga:</strong> ok. 32 g (zawieszka z łańcuszkiem)</li></ul><p><strong>Uwaga:</strong> ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc zawieszkę założysz także na własny łańcuszek.</p><p><a href=\"/collections/wszystkie-zawieszki\">Zobacz zawieszki z bliska</a></p>",
+    "seo_description": "Mosiądz z powłoką rodowaną, setki ręcznie osadzanych cyrkonii i łańcuszek o splocie linkowym 51 cm. Zobacz, jak wykonana jest zawieszka."
+   },
+   {
+    "handle": "opakowanie-prezentowe",
+    "title": "Opakowanie",
+    "body_html": "<h2>Gotowa do wręczenia.</h2><p>Każda zawieszka Vellano Jubiler przychodzi w tym samym opakowaniu. Nie trzeba niczego dokupować ani pakować.</p><h3>Pudełko</h3><p>Jasnoszare, matowe, z wysuwaną szufladką. W środku miękkie, szare wnętrze, na którym herb w barwach klubu wyraźnie się odcina. Na pudełku biały napis VELLANO JUBILER.</p><h3>Etui</h3><p>Miękkie etui w tym samym kolorze, również z białym napisem VELLANO JUBILER. Przyda się na co dzień – w podróży i na wyjeździe na mecz.</p><h3>Chwila otwarcia</h3><p>Wysuwasz szufladkę i widzisz herb. Spokojna szarość opakowania zostawia całą uwagę barwom klubu.</p><p>Nie musisz znać się na piłce – <a href=\"/collections/prezent-dla-kibica\">wybierz herb</a>, resztą zajmiemy się my.</p><ul><li>Darmowa dostawa</li><li>Wysyłka w 2–3 dni robocze</li><li>Gwarancja dostawy przed Świętami</li></ul>",
+    "seo_description": "Każda zawieszka przychodzi w jasnoszarym pudełku z wysuwaną szufladką i w miękkim etui Vellano Jubiler – gotowa do wręczenia."
+   },
+   {
+    "handle": "dostawa",
+    "title": "Dostawa",
+    "body_html": "<h2>Dostawa.</h2><ul><li>Darmowa dostawa – na wszystkie zamówienia</li><li>Wysyłka w 2–3 dni robocze</li><li>Gwarancja dostawy przed Świętami</li></ul><h3>Jak dostarczamy</h3><p>Dostępne formy dostawy zobaczysz w kasie i tam wybierzesz tę, która Ci odpowiada. Każda jest darmowa.</p><h3>Kiedy wysyłamy</h3><p>Zamówienie przygotujemy i wyślemy w ciągu 2–3 dni roboczych. Gdy paczka wyruszy, prześlemy Ci e-mail z numerem przesyłki.</p><h3>Ile to kosztuje</h3><p>Nic. Dostawa jest darmowa przy każdym zamówieniu, bez minimalnej kwoty.</p><h3>Gwarancja dostawy przed Świętami</h3><p>Kupujesz prezent pod choinkę? Gwarantujemy dostawę przed Świętami. Zawieszka przyjedzie w pudełku Vellano Jubiler, gotowa do wręczenia. Warunki gwarancji opisuje <a href=\"/policies/shipping-policy\">Polityka wysyłki</a>.</p><h3>Zwroty</h3><p>Zasady zwrotów znajdziesz na stronie <a href=\"/pages/zwroty\">Zwroty</a>.</p><h3>Pytania o przesyłkę</h3><p><a href=\"/pages/contact\">Napisz do nas</a> i podaj numer zamówienia – sprawdzimy, gdzie jest paczka.</p>",
+    "seo_description": "Darmowa dostawa na wszystkie zamówienia, wysyłka w 2–3 dni robocze i gwarancja dostawy przed Świętami."
+   },
+   {
+    "handle": "faq",
+    "title": "Najczęstsze pytania",
+    "body_html": "<h2>Produkt</h2><h3>Z czego jest wykonana zawieszka?</h3><p>Metal: mosiądz. Powłoka: rodowana, o jasnym, chłodnym połysku. Kamienie: cyrkonie w barwach herbu, osadzane ręcznie.</p><h3>Jak wygląda z bliska?</h3><p>Herb jest ułożony w całości z setek drobnych cyrkonii, kamień przy kamieniu, więc łapie światło przy każdym ruchu. Zdjęcia z bliska znajdziesz na karcie każdej zawieszki.</p><h3>Jak duża jest i jak leży na szyi?</h3><p>To duża, wyrazista zawieszka – dobrze widoczna na koszulce i pod rozpiętą koszulą. Skalę najlepiej pokazują zdjęcia na szyi i w dłoni na karcie produktu. Zawieszka z łańcuszkiem waży ok. 32 g.</p><h3>Czy łańcuszek jest w zestawie? Jaką ma długość?</h3><p>Tak. Każda zawieszka ma w zestawie skręcony łańcuszek o splocie linkowym (rope), 51 cm (20 cali). To jeden rozmiar.</p><h3>Czy mogę nosić zawieszkę na własnym łańcuszku?</h3><p>Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm. Łańcuszek z zestawu możesz wtedy nosić osobno.</p><h3>Czy zawieszka pasuje także dla kobiety?</h3><p>Tak. Kibicowanie nie ma płci, a herb wygląda równie dobrze na gładkiej koszulce, bluzie czy sukience. Łańcuszek 51 cm układa się swobodnie, a zawieszka przyciąga wzrok.</p><h2>Licencja i marka</h2><h3>Czy to oficjalny produkt?</h3><p>Tak. Każda zawieszka jest oficjalnym produktem licencjonowanym – herb, nazwa i barwy klubu są użyte za jego zgodą. Oznaczenie licencji znajdziesz na opakowaniu. <a href=\"/pages/oficjalna-licencja\">Więcej o licencji</a></p><h3>Kto stoi za marką Vellano Jubiler?</h3><p>Vellano Jubiler założyli synowie jubilera. Łączą rodzinne wyczucie detalu z pasją do piłki i tworzą biżuterię dla młodego pokolenia kibiców. <a href=\"/pages/o-marce\">O marce</a></p><h2>Prezent</h2><h3>Jak będzie zapakowana?</h3><p>W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – oba z białym napisem VELLANO JUBILER. Tak przychodzi każda zawieszka.</p><h3>Nie znam się na piłce. Jak wybrać herb?</h3><p>Spójrz na koszulkę, szalik albo kubek osoby, dla której szukasz prezentu. Biel to Real Madryt, granatowo-bordowe pasy to FC Barcelona, czerwień to Manchester United. Więcej podpowiedzi znajdziesz w zakładce <a href=\"/collections/prezent-dla-kibica\">Prezent dla kibica</a>.</p><h3>Czym jest zestaw dla dwóch kibiców?</h3><p>To 2 zawieszki za 259 zł zamiast 298 zł – oszczędzasz 39 zł. Herby wybierasz dowolnie: dla taty i syna, dla braci albo dla dwóch kibiców różnych klubów. Rabat nalicza się automatycznie w koszyku, gdy dodasz dwie zawieszki.</p><h2>Zamówienie i dostawa</h2><h3>Kiedy dotrze zamówienie i czy zdąży przed Świętami?</h3><p>Wysyłamy w 2–3 dni robocze. Obowiązuje też gwarancja dostawy przed Świętami.</p><h3>Ile kosztuje dostawa?</h3><p>Nic. Dostawa jest darmowa przy każdym zamówieniu, bez minimalnej kwoty. Formę dostawy wybierasz w kasie. <a href=\"/pages/dostawa\">Dostawa</a></p><h3>Jak mogę zapłacić?</h3><p>Dostępne metody płatności zobaczysz w kasie, przed potwierdzeniem zamówienia. Płatność odbywa się w bezpiecznej, szyfrowanej kasie.</p><h3>Czy mogę śledzić przesyłkę?</h3><p>Tak. Gdy paczka wyruszy, wyślemy Ci e-mail z numerem przesyłki i linkiem do śledzenia.</p><h2>Zwroty i kontakt</h2><h3>A jeśli zawieszka nie przypadnie do gustu?</h3><p>Wszystkie zasady opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli coś będzie niejasne, napisz do nas – pomożemy.</p><h3>Jak się z Wami skontaktować?</h3><p>Przez <a href=\"/pages/contact\">formularz kontaktowy</a>. Odpowiadamy po polsku. W sprawie zamówienia podaj jego numer.</p>",
+    "seo_description": "Odpowiedzi na najczęstsze pytania: wykonanie, łańcuszek, licencja, opakowanie, zestaw 2 za 259 zł, dostawa, płatność i zwroty."
+   },
+   {
+    "handle": "contact",
+    "title": "Kontakt",
+    "body_html": "<h2>Napisz do nas.</h2><p>Pomożemy wybrać herb i odpowiemy na pytania o zamówienie, dostawę i opakowanie. Obsługa po polsku.</p><p>Jeśli piszesz w sprawie zamówienia, podaj jego numer – dzięki temu odpowiemy szybciej. Formularz znajdziesz poniżej.</p><p>Wiele odpowiedzi czeka już w <a href=\"/pages/faq\">najczęstszych pytaniach</a>.</p>",
+    "seo_description": "Napisz do Vellano Jubiler przez formularz. Pomożemy wybrać herb i odpowiemy na pytania o zamówienie – po polsku."
+   }
+  ],
+  "microcopy": [
+   {
+    "key": "nav.clubs",
+    "text": "Wybierz swój klub"
+   },
+   {
+    "key": "nav.all",
+    "text": "Wszystkie zawieszki"
+   },
+   {
+    "key": "nav.gift",
+    "text": "Prezent dla kibica"
+   },
+   {
+    "key": "nav.christmas (sezonowo)",
+    "text": "Prezent na Święta"
+   },
+   {
+    "key": "nav.about",
+    "text": "O marce"
+   },
+   {
+    "key": "nav.help",
+    "text": "Pomoc"
+   },
+   {
+    "key": "card.eyebrow",
+    "text": "Królewscy | Duma Katalonii | Czerwone Diabły"
+   },
+   {
+    "key": "card.price_line",
+    "text": "149 zł · łańcuszek w zestawie"
+   },
+   {
+    "key": "pdp.badge_official",
+    "text": "Oficjalny produkt licencjonowany"
+   },
+   {
+    "key": "pdp.price_note",
+    "text": "Łańcuszek w zestawie"
+   },
+   {
+    "key": "pdp.promises",
+    "text": "Darmowa dostawa · Wysyłka w 2–3 dni robocze · Gwarancja dostawy przed Świętami"
+   },
+   {
+    "key": "pdp.dispatch",
+    "text": "Wysyłka w 2–3 dni robocze"
+   },
+   {
+    "key": "pdp.packaging",
+    "text": "W pudełku Vellano Jubiler – gotowa do wręczenia"
+   },
+   {
+    "key": "pdp.in_the_box",
+    "text": "W zestawie: zawieszka z herbem, łańcuszek o splocie linkowym 51 cm, pudełko i etui Vellano Jubiler."
+   },
+   {
+    "key": "pdp.size",
+    "text": "Jeden rozmiar · łańcuszek 51 cm (20 cali)"
+   },
+   {
+    "key": "pdp.weight",
+    "text": "Waga: ok. 32 g (zawieszka z łańcuszkiem)"
+   },
+   {
+    "key": "pdp.bail_note",
+    "text": "Uwaga: ucho zawieszki mieści łańcuszek o grubości do 5 mm."
+   },
+   {
+    "key": "pdp.gift_hint",
+    "text": "Nie musisz znać się na piłce – wystarczy wybrać herb."
+   },
+   {
+    "key": "pdp.club_switch_label",
+    "text": "Wybierz herb"
+   },
+   {
+    "key": "pdp.see_closeup",
+    "text": "Zobacz z bliska"
+   },
+   {
+    "key": "pdp.add_to_cart",
+    "text": "Dodaj do koszyka"
+   },
+   {
+    "key": "pdp.adding",
+    "text": "Dodajemy…"
+   },
+   {
+    "key": "pdp.sticky_bar",
+    "text": "149 zł · Dodaj do koszyka"
+   },
+   {
+    "key": "pdp.payments",
+    "text": "Bezpieczna płatność – dostępne metody zobaczysz w kasie"
+   },
+   {
+    "key": "pdp.returns_link",
+    "text": "Zasady zwrotów"
+   },
+   {
+    "key": "pdp.share",
+    "text": "Wyślij link"
+   },
+   {
+    "key": "pdp.share_message",
+    "text": "Zobacz tę zawieszkę: {tytuł_produktu} {link}"
+   },
+   {
+    "key": "pdp.set_title",
+    "text": "Zestaw dla dwóch kibiców"
+   },
+   {
+    "key": "pdp.set_body",
+    "text": "2 zawieszki za 259 zł zamiast 298 zł – oszczędzasz 39 zł. Herby wybierasz dowolnie."
+   },
+   {
+    "key": "pdp.set_cta",
+    "text": "Dodaj drugi herb"
+   },
+   {
+    "key": "pdp.before_you_ask_title",
+    "text": "Zanim zapytasz"
+   },
+   {
+    "key": "pdp.before_you_ask_intro",
+    "text": "Pytania, które warto zadać przed zakupem – każda odpowiedź ze zdjęciem z bliska."
+   },
+   {
+    "key": "pdp.accordion_titles",
+    "text": "O produkcie · Specyfikacja · Dostawa · Zwroty · Oficjalna licencja"
+   },
+   {
+    "key": "pdp.other_clubs",
+    "text": "Kupujesz dla kibica innego klubu?"
+   },
+   {
+    "key": "pdp.reviews_title",
+    "text": "Opinie kibiców"
+   },
+   {
+    "key": "pdp.reviews_note",
+    "text": "Opinie mogą wystawiać tylko osoby, które kupiły zawieszkę w naszym sklepie. Prośbę o opinię wysyłamy e-mailem po doręczeniu zamówienia."
+   },
+   {
+    "key": "pdp.review_cta",
+    "text": "Napisz opinię"
+   },
+   {
+    "key": "toast.added",
+    "text": "Zawieszka jest w koszyku."
+   },
+   {
+    "key": "toast.added_cta",
+    "text": "Zobacz koszyk"
+   },
+   {
+    "key": "cart.title",
+    "text": "Twój koszyk ({liczba})"
+   },
+   {
+    "key": "cart.promises",
+    "text": "Darmowa dostawa · Wysyłka w 2–3 dni robocze"
+   },
+   {
+    "key": "cart.christmas (sezonowo)",
+    "text": "Gwarancja dostawy przed Świętami"
+   },
+   {
+    "key": "cart.item_note",
+    "text": "Łańcuszek w zestawie"
+   },
+   {
+    "key": "cart.qty",
+    "text": "Ilość"
+   },
+   {
+    "key": "cart.remove",
+    "text": "Usuń"
+   },
+   {
+    "key": "cart.set_hint (przy 1 zawieszce)",
+    "text": "Dodaj drugą zawieszkę – dwie kupisz za 259 zł zamiast 298 zł."
+   },
+   {
+    "key": "cart.set_hint_cta",
+    "text": "Wybierz drugi herb"
+   },
+   {
+    "key": "cart.set_applied (przy 2 zawieszkach)",
+    "text": "Zestaw dla dwóch kibiców – oszczędzasz 39 zł"
+   },
+   {
+    "key": "cart.subtotal",
+    "text": "Razem"
+   },
+   {
+    "key": "cart.shipping",
+    "text": "Dostawa: 0 zł"
+   },
+   {
+    "key": "cart.checkout",
+    "text": "Przejdź do kasy"
+   },
+   {
+    "key": "cart.continue",
+    "text": "Wróć do kolekcji"
+   },
+   {
+    "key": "cart.reassurance",
+    "text": "Zasady zwrotów · Pytania? Napisz do nas"
+   },
+   {
+    "key": "cart.empty_title",
+    "text": "Twój koszyk jest pusty"
+   },
+   {
+    "key": "cart.empty_body",
+    "text": "Zacznij od herbu, który znasz najlepiej."
+   },
+   {
+    "key": "cart.empty_cta",
+    "text": "Wybierz swój klub"
+   },
+   {
+    "key": "cart.empty_link",
+    "text": "Prezent dla kibica"
+   },
+   {
+    "key": "payments.label",
+    "text": "Bezpieczna płatność"
+   },
+   {
+    "key": "payments.icons",
+    "text": "Ikony wyświetla motyw – tylko dla metod płatności włączonych w sklepie"
+   },
+   {
+    "key": "order.thankyou_title",
+    "text": "Dziękujemy. Zamówienie zostało przyjęte."
+   },
+   {
+    "key": "order.thankyou_body",
+    "text": "Przygotujemy je i wyślemy w 2–3 dni robocze. Numer przesyłki prześlemy na Twój adres e-mail."
+   },
+   {
+    "key": "survey.question",
+    "text": "Skąd o nas wiesz?"
+   },
+   {
+    "key": "survey.options",
+    "text": "Instagram · TikTok · Facebook · YouTube · Od znajomych lub rodziny · Wyszukiwarka Google · Inne"
+   },
+   {
+    "key": "survey.other_placeholder",
+    "text": "Napisz, skąd o nas wiesz"
+   },
+   {
+    "key": "survey.thanks",
+    "text": "Dziękujemy za odpowiedź."
+   },
+   {
+    "key": "error.add_to_cart",
+    "text": "Nie udało się dodać zawieszki do koszyka. Odśwież stronę i spróbuj ponownie."
+   },
+   {
+    "key": "error.sold_out",
+    "text": "Ten herb jest chwilowo niedostępny."
+   },
+   {
+    "key": "error.sold_out_cta",
+    "text": "Powiadom mnie o dostępności"
+   },
+   {
+    "key": "error.payment",
+    "text": "Płatność nie została zrealizowana. Spróbuj ponownie lub wybierz inną metodę – zamówienie czeka w koszyku."
+   },
+   {
+    "key": "error.discount_code",
+    "text": "Ten kod nie jest aktywny. Sprawdź pisownię i termin ważności."
+   },
+   {
+    "key": "error.email",
+    "text": "Sprawdź adres e-mail – wygląda na niepełny."
+   },
+   {
+    "key": "error.required",
+    "text": "Uzupełnij to pole, abyśmy mogli wysłać zamówienie."
+   },
+   {
+    "key": "error.postcode",
+    "text": "Kod pocztowy powinien mieć format 00-000."
+   },
+   {
+    "key": "error.phone",
+    "text": "Podaj numer telefonu – jest potrzebny do dostawy."
+   },
+   {
+    "key": "error.connection",
+    "text": "Brak połączenia z internetem. Sprawdź sieć i spróbuj ponownie."
+   },
+   {
+    "key": "error.contact_form",
+    "text": "Wiadomość nie została wysłana. Sprawdź zaznaczone pola i spróbuj ponownie."
+   },
+   {
+    "key": "error.404_title",
+    "text": "Tej strony nie ma"
+   },
+   {
+    "key": "error.404_body",
+    "text": "Mogła zmienić adres. Herby są na swoim miejscu."
+   },
+   {
+    "key": "error.404_cta",
+    "text": "Wybierz swój klub"
+   },
+   {
+    "key": "search.placeholder",
+    "text": "Szukaj klubu lub herbu"
+   },
+   {
+    "key": "search.empty",
+    "text": "Brak wyników dla „{zapytanie}”. Sprawdź pisownię lub wybierz klub: Real Madryt, FC Barcelona, Manchester United."
+   },
+   {
+    "key": "contact.form_fields",
+    "text": "Imię · E-mail · Numer zamówienia (opcjonalnie) · Wiadomość"
+   },
+   {
+    "key": "contact.submit",
+    "text": "Wyślij wiadomość"
+   },
+   {
+    "key": "contact.success",
+    "text": "Dziękujemy. Wiadomość dotarła – odpowiemy na podany adres e-mail."
+   },
+   {
+    "key": "newsletter.success",
+    "text": "Dziękujemy. Zapis został potwierdzony."
+   },
+   {
+    "key": "newsletter.confirm (przy podwójnej zgodzie)",
+    "text": "Sprawdź skrzynkę i potwierdź zapis jednym kliknięciem."
+   },
+   {
+    "key": "newsletter.already",
+    "text": "Ten adres jest już zapisany."
+   },
+   {
+    "key": "account.orders_empty",
+    "text": "Nie masz jeszcze zamówień. Gdy wybierzesz swój herb, znajdziesz je tutaj."
+   },
+   {
+    "key": "cookies.body",
+    "text": "Używamy plików cookie, aby sklep działał poprawnie, a treści były lepiej dopasowane. Swój wybór możesz zmienić w każdej chwili."
+   },
+   {
+    "key": "cookies.buttons",
+    "text": "Zaakceptuj · Odrzuć · Ustawienia"
+   },
+   {
+    "key": "footer.service",
+    "text": "Obsługa po polsku · Napisz do nas"
+   },
+   {
+    "key": "footer.copyright",
+    "text": "© Vellano Jubiler"
+   }
+  ],
+  "newsletter": {
+   "heading": "Pierwsze informacje o nowych herbach.",
+   "body": "Napiszemy, gdy pojawi się nowy herb. Rzadko i tylko wtedy, gdy mamy coś do pokazania.",
+   "cta": "Zapisz się",
+   "fine_print": "Zapisując się, zgadzasz się na otrzymywanie wiadomości e-mail od Vellano Jubiler. Wypiszesz się w każdej chwili jednym kliknięciem. Szczegóły znajdziesz w Polityce prywatności."
+  },
+  "emails": [
+   {
+    "flow": "Powitalny – od razu po zapisie do newslettera · wszystkie persony",
+    "subject": "Witamy w Vellano Jubiler",
+    "preview": "Pierwsze informacje o nowych herbach trafią właśnie tutaj.",
+    "body_outline": "1) Nagłówek: logo VELLANO JUBILER na jasnoszarym tle (kolor pudełka). 2) H1: „Dziękujemy za zapis.” Lead: „Gdy pojawi się nowy herb, napiszemy właśnie tutaj. Rzadko i tylko wtedy, gdy mamy coś do pokazania.” 3) Kim jesteśmy (3 zdania): „Vellano Jubiler założyli synowie jubilera. Wyrośli wśród rzemiosła, w którym liczy się każdy detal, i połączyli je z miłością do piłki. Tak powstała biżuteria dla młodego pokolenia kibiców.” 4) Trzy kafle herbów ze zdjęciem makro: Real Madryt – biel Królewskich · FC Barcelona – blaugrana z bliska · Manchester United – czerwień Teatru Marzeń; przy każdym przycisk „Zobacz z bliska”. 5) Pasek obietnic: Oficjalna licencja klubu · Darmowa dostawa · Wysyłka w 2–3 dni robocze · Gwarancja dostawy przed Świętami. 6) Zestaw, jedno zdanie: „Dla dwóch kibiców: 2 zawieszki za 259 zł zamiast 298 zł.” 7) Stopka: formularz kontaktowy (/pages/contact) · Zwroty (/pages/zwroty) · Wypisz się. Bez kodu rabatowego i bez dat."
+   },
+   {
+    "flow": "Porzucony koszyk 1/3 – ok. 1 h po porzuceniu kasy · wszystkie persony (akcent: Kuba, zakup z telefonu)",
+    "subject": "Twój herb czeka w koszyku",
+    "preview": "Oficjalna zawieszka z łańcuszkiem, 149 zł. Darmowa dostawa.",
+    "body_outline": "1) Zdjęcie produktu z koszyka (dynamiczne: herb wybranego klubu z bliska). 2) H1: „Twój herb czeka.” Tekst: „Koszyk jest zapisany. Wrócisz do niego jednym kliknięciem.” 3) Pozycja: nazwa produktu, „Łańcuszek w zestawie”, 149 zł; przy dwóch zawieszkach: „Zestaw dla dwóch kibiców: 259 zł zamiast 298 zł”. 4) Pasek obietnic: Darmowa dostawa · Wysyłka w 2–3 dni robocze · Gwarancja dostawy przed Świętami. 5) Przycisk: „Wróć do koszyka”. 6) Pod przyciskiem: „Pytania? Napisz do nas” (formularz /pages/contact) · „Zasady zwrotów” (/pages/zwroty). Krótko, bez rabatu i bez licznika."
+   },
+   {
+    "flow": "Porzucony koszyk 2/3 – ok. 24 h · akcent: Kuba i Michał (z bliska, rozmiar, łańcuszek, licencja)",
+    "subject": "Z bliska, na szyi, z łańcuszkiem",
+    "preview": "Trzy odpowiedzi, zanim podejmiesz decyzję.",
+    "body_outline": "1) H1: „Zanim zapytasz.” Lead: „Trzy pytania, które warto zadać przed zakupem – każde ze zdjęciem z bliska.” 2) Blok 1, zdjęcie makro herbu pod światło: „Jak wygląda z bliska? Kamień przy kamieniu – setki ręcznie osadzanych cyrkonii w barwach herbu, które łapią światło przy każdym ruchu. Rama ma jasny, chłodny połysk powłoki rodowanej.” 3) Blok 2, zdjęcie na szyi modela i w dłoni: „Jak duża jest i jak leży na szyi? To duża, wyrazista zawieszka, dobrze widoczna na koszulce i pod rozpiętą koszulą. Razem z łańcuszkiem waży ok. 32 g.” 4) Blok 3, zdjęcie łańcuszka z zapięciem i ucha: „Czy łańcuszek jest w zestawie? Tak – skręcony łańcuszek o splocie linkowym, 51 cm. Jeśli wolisz własny, ucho mieści łańcuszek o grubości do 5 mm.” 5) Linia zaufania: „Oficjalny produkt licencjonowany – oznaczenie licencji znajdziesz na opakowaniu.” 6) Przycisk: „Wróć do koszyka”. 7) Stopka: formularz kontaktowy (/pages/contact) · Zwroty (/pages/zwroty)."
+   },
+   {
+    "flow": "Porzucony koszyk 3/3 – ok. 72 h, ostatni · akcent: Ola oraz Ewa i Marek (opakowanie, termin, zwroty, marka)",
+    "subject": "Jak przyjedzie Twoja zawieszka",
+    "preview": "Pudełko Vellano Jubiler, darmowa dostawa i gwarancja dostawy przed Świętami.",
+    "body_outline": "1) Zdjęcie lub GIF: wysuwana szufladka pudełka i etui obok. 2) H1: „Gotowa do wręczenia.” 3) „Jak będzie zapakowana? W jasnoszarym, matowym pudełku z wysuwaną szufladką i w miękkim etui – oba z białym napisem VELLANO JUBILER.” 4) „Kiedy dotrze? Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa. Obowiązuje też gwarancja dostawy przed Świętami.” 5) „A jeśli nie przypadnie do gustu? Zasady znajdziesz na stronie Zwroty.” (link /pages/zwroty). 6) „Kupujesz dla dwóch kibiców? 2 zawieszki za 259 zł zamiast 298 zł.” 7) Jedno zdanie o marce: „Vellano Jubiler założyli synowie jubilera – z rodzinnym wyczuciem detalu i miłością do piłki.” 8) Przycisk: „Wróć do koszyka”. 9) Zamknięcie: „To nasza ostatnia wiadomość o tym koszyku. Jeśli masz pytania, napisz do nas.”"
+   },
+   {
+    "flow": "Porzucone przeglądanie – 2–4 h po obejrzeniu karty produktu bez dodania do koszyka; tylko osoby ze zgodą marketingową; 1 mail na produkt · akcent: Kuba i Michał",
+    "subject": "{Klub} z bliska (np. „FC Barcelona z bliska”)",
+    "preview": "Cyrkonie pod światłem, zawieszka na szyi i odpowiedzi, zanim zapytasz.",
+    "body_outline": "1) Duże zdjęcie makro oglądanego herbu (dynamiczne). 2) H1 według klubu: „Biel Królewskich. Blisko serca.” / „Blaugrana z bliska.” / „Czerwień Teatru Marzeń.” 3) Dwa zdania: „Oficjalna zawieszka z łańcuszkiem w zestawie. Herb ułożony z setek ręcznie osadzanych cyrkonii w barwach herbu.” 4) Trzy linki-pytania z serii Zanim zapytasz: Jak wygląda z bliska? · Jak duża jest i jak leży na szyi? · Czy to oficjalny produkt? – każdy prowadzi do sekcji na karcie produktu. 5) Linia: 149 zł · Darmowa dostawa · Wysyłka w 2–3 dni robocze. 6) Przycisk: „Zobacz z bliska”. 7) Zakończenie okrzykiem klubu: ¡Hala Madrid! / Més que un club. / Glory Glory Man United. Bez kolejnych przypomnień i bez rabatu."
+   },
+   {
+    "flow": "Po zakupie – potwierdzenie zamówienia (szablon powiadomienia Shopify) · wszystkie persony; prosty język dla Ewy i Marka",
+    "subject": "Dziękujemy. Zamówienie {numer_zamówienia} zostało przyjęte",
+    "preview": "Wyślemy je w 2–3 dni robocze, w pudełku Vellano Jubiler.",
+    "body_outline": "1) H1: „Dziękujemy. Zamówienie zostało przyjęte.” 2) Podsumowanie: produkty, „Łańcuszek w zestawie”, kwota, „Dostawa: 0 zł”, adres dostawy lub wybrany punkt odbioru. 3) Co dalej, w 3 krokach: „Przygotujemy zamówienie” → „Wyślemy je w 2–3 dni robocze” → „Prześlemy Ci e-mail z numerem przesyłki”. 4) Opakowanie: „Każda zawieszka przyjedzie w jasnoszarym pudełku z wysuwaną szufladką i w miękkim etui Vellano Jubiler – gotowa do wręczenia.” 5) W sezonie świątecznym jedna linia: „Gwarancja dostawy przed Świętami.” 6) Pomoc: „Pytania? Napisz do nas przez formularz” (/pages/contact) · „Zasady zwrotów” (/pages/zwroty). 7) Podpis: „Zespół Vellano Jubiler”. Bez upsellu i bez rabatów."
+   },
+   {
+    "flow": "Wysyłka – powiadomienie o nadaniu (szablon Shopify) · wszystkie persony",
+    "subject": "Twoja zawieszka jest w drodze",
+    "preview": "Numer przesyłki i link do śledzenia znajdziesz w środku.",
+    "body_outline": "1) H1: „Paczka wyruszyła.” 2) „Możesz śledzić ją pod numerem {numer_przesyłki}.” Przycisk: „Śledź przesyłkę”. 3) „Pod linkiem sprawdzisz, gdzie jest paczka.” 4) Jedno zdanie emocji: „Herb jest już w drodze – w pudełku Vellano Jubiler.” 5) Pomoc: formularz kontaktowy (/pages/contact) · Zwroty (/pages/zwroty). Warianty dla konkretnych przewoźników dopisz dopiero po potwierdzeniu form dostawy."
+   },
+   {
+    "flow": "Po dostawie – prośba o opinię ze zdjęciem (Judge.me), 7–10 dni po doręczeniu; przy zamówieniach z grudnia wysyłka po Świętach · wszystkie persony",
+    "subject": "Jak leży Twój herb?",
+    "preview": "Podziel się opinią i zdjęciem – pomożesz kolejnym kibicom wybrać.",
+    "body_outline": "1) H1: „Jak leży Twój herb?” 2) Tekst: „Mamy nadzieję, że herb towarzyszy Ci na meczu i poza nim. Napisz kilka słów i dodaj zdjęcie – na szyi, na trybunie albo w pudełku.” 3) Gwiazdki do kliknięcia bezpośrednio w mailu oraz przycisk „Dodaj zdjęcie i opinię”. 4) Dla kupujących na prezent: „Zawieszka była prezentem? Napisz, jak została przyjęta.” 5) „Każda opinia pomaga kolejnym kibicom wybrać swój herb. Publikujemy wyłącznie opinie osób, które kupiły zawieszkę.” 6) Pomoc: „Jeśli coś wymaga naszej pomocy, napisz przez formularz – odpowiemy po polsku.” 7) Dla osób ze zgodą marketingową: link „Pierwsze informacje o nowych herbach”. Bez nagród i rabatów za opinię."
+   }
+  ],
+  "notes": [
+   "Metody płatności: z tekstów publicznych usunąłem listę (BLIK, Przelewy24, Apple Pay, Google Pay, karta), bo nie jest potwierdzona. Teksty mówią „Dostępne metody płatności zobaczysz w kasie”. Ikony pod przyciskiem zakupu i w stopce motyw generuje sam z metod włączonych w sklepie. Po potwierdzeniu można dopisać listę do FAQ.",
+   "Formy dostawy: z tekstów publicznych usunąłem „Paczkomat InPost” i „kurier” (strona Dostawa, FAQ, Zanim zapytasz, maile). Teksty mówią „Formę dostawy wybierasz w kasie”. Po potwierdzeniu można je dopisać na stronie Dostawa, w FAQ i w wariantach maila o wysyłce. Wybór Paczkomatu w kasie wymaga aplikacji InPost.",
+   "Waga „ok. 32 g (zawieszka z łańcuszkiem)” to szacunek. Przed publikacją popraw ją na kartach produktów, na stronie Wykonanie, w FAQ, w Zanim zapytasz, w mikrotekście pdp.weight i w mailu porzucony koszyk 2/3.",
+   "Oznaczenie licencji na opakowaniu zakładają: odpowiedź „Czy to oficjalny produkt?”, strona Oficjalna licencja, sekcja 10 strony głównej, FAQ i mail porzucony koszyk 2/3 (pkt 9 odpowiedzi). Opis pudełka z pkt 5 go nie wymienia. Jeśli oznaczenia nie ma, usuń zdanie „Oznaczenie licencji znajdziesz na opakowaniu” we wszystkich tych miejscach.",
+   "Gwarancja dostawy przed Świętami: w tekstach publicznych nie ma dat, zgodnie z decyzją. Bez zapisanych warunków gwarancja obejmuje jednak także zamówienia z ostatnich dni przed Wigilią. Warunki wpisz w Polityce wysyłki (/policies/shipping-policy) – strona Dostawa już do niej linkuje.",
+   "Zestaw 2 za 259 zł: ustaw rabat automatyczny 39 zł przy 2 zawieszkach z dowolnymi herbami (teksty mówią „herby wybierasz dowolnie, także dwa różne”). Zdecyduj, jak rabat działa przy 3–4 sztukach, np. 39 zł za każdą parę. Pokazuj go spokojnie, bez czerwonych plakietek. Kwestię Omnibusa (rabat ilościowy a informacja o najniższej cenie z 30 dni) potwierdź z prawnikiem.",
+   "Usunąłem „cena zawiera VAT”. Informację o podatku pokazuje motyw zgodnie z ustawieniami podatkowymi sklepu. Jeśli sklep korzysta ze zwolnienia z VAT, nie dopisuj jej ręcznie.",
+   "SEO: tytuły kolekcji klubowych celują w „łańcuszek [klub]”, a karty produktów w „zawieszka [klub] z łańcuszkiem”, więc strony nie konkurują o tę samą frazę. Wszystkie tytuły mają do 60 znaków, a opisy do 155.",
+   "Strona kontaktu: linki prowadzą do /pages/contact. Utwórz stronę z handle contact i szablonem page.contact, a /pages/kontakt ustaw jako przekierowanie URL.",
+   "Zmiany w strukturze po decyzjach właściciela: strona Wykonanie ma handle „wykonanie”, bez pielęgnacji (przekieruj /pages/wykonanie-i-pielegnacja). Do usunięcia: artykuł o pielęgnacji, akordeon Pielęgnacja, landingi Mikołajek i Walentynek, sekcja terminów z datami, opcje „To prezent” i bilecik w koszyku. Blok przewidywanej daty dostawy zastępuje stały tekst „Wysyłka w 2–3 dni robocze”.",
+   "Emalię pominąłem, bo według pkt 2 głównym tworzywem herbu są kamienie. Sprawdź metapola specyfikacji i usuń wzmianki o emalii, jeśli zostały.",
+   "Szczegóły herbu (czerwień, granat, żółć, czarne litery FCB, żółta piłka, białe cyrkonie obrysu i ucha) są tylko w tekstach FC Barcelony: karta, kolekcja, strona Wykonanie. Real i United opisałem ogólnie: cyrkonie w barwach herbu. Detale można dopisać, gdy będą zdjęcia.",
+   "„Zanim zapytasz” na landingach klubów (pkt 9): na szablonie kolekcji klubowej użyj serii z karty produktu danego klubu, a na pozostałych kolekcjach i na stronie głównej – before_you_ask_generic. Dla ruchu 35+ z Facebooka i na landingu Prezent dla kibica zacznij od pytań „Czy to oficjalny produkt?” i „Jak będzie zapakowana?”.",
+   "W polach answer serii Zanim zapytasz (ogólnej i produktowej) linki są teraz zapisane jako HTML <a href>. Pole metaobiektu musi być typu rich text, inaczej znaczniki wyświetlą się jako tekst. Do odpowiedzi „A jeśli nie przypadnie do gustu?” właściciel nie wskazał zdjęcia, więc zaproponowałem kadr ogólny pudełka.",
+   "Zdjęcia: odpowiedź „Tak jak na zdjęciu obok” wymaga makro bez filtrów i bez retuszu koloru. Jeśli zdjęcia będą retuszowane, zmień to zdanie.",
+   "Sezonowość: po Świętach komunikat 3 paska ogłoszeń i punkt 4 paska zaufania („Gwarancja dostawy przed Świętami”) zastąp tekstem „Łańcuszek w zestawie”. Kolekcję Prezent na Święta ukryj wtedy w menu, ale zostaw stronę dla SEO.",
+   "Rejestry: „statement”, „matchday” i „fit na mecz” zostają wyłącznie w reklamach i social media. Na stronie piszemy „duża, wyrazista zawieszka”.",
+   "Elementy wymagające kodu lub aplikacji: przyklejony pasek zakupu, „Powiadom mnie o dostępności”, przełącznik herbów, przycisk „Wyślij link”, ankieta „Skąd o nas wiesz?” (aplikacja ankiety po zakupie lub blok na stronie podziękowania), komunikaty zestawu w koszyku (cart.set_hint, cart.set_applied).",
+   "Format ceny: w ustawieniach waluty wpisz {{amount_no_decimals}} zł, żeby sklep wyświetlał „149 zł”. Copyright w stopce celowo bez roku.",
+   "Bezpieczeństwo produktu (GPSR): na karcie produktu muszą być dane producenta i podmiotu odpowiedzialnego w UE. Uzupełnij je przed publikacją; w tekstach publicznych nie ma placeholderów.",
+   "Kontakt, social media i domena będą później. Do tego czasu wszystkie teksty odsyłają tylko do formularza. W stopce wyłącz „Powered by Shopify”.",
+   "Maile: porzucony koszyk 1/2/3 i porzucone przeglądanie ustaw w automatyzacjach Shopify Email. Przeglądanie wysyłaj tylko osobom ze zgodą marketingową. Przy porzuconym koszyku podstawę wysyłki (zgoda marketingowa) też potwierdź z prawnikiem. Potwierdzenie zamówienia i wysyłka to szablony powiadomień Shopify. Prośbę o opinię wysyła Judge.me 7–10 dni po doręczeniu.",
+   "Opinie: ustaw w Judge.me przyjmowanie opinii tylko od kupujących, bo deklaruje to mikrotekst pdp.reviews_note (wymóg Omnibusa: informacja o weryfikacji opinii). Sekcja opinii i gwiazdki zostają ukryte do zebrania 5 prawdziwych opinii. Bez nagród za opinie i bez rabatu za newsletter.",
+   "Formy rodzajowe: żaden tekst nie używa form „kupiłeś/kupiłaś”. Przejrzyj domyślne polskie szablony powiadomień i kasy Shopify, bo bywają rodzajowe, i popraw je na formy bezosobowe.",
+   "Pisownia klubowa w całym sklepie: Barça (z cedillą), Barçy, Santiago Bernabéu, Spotify Camp Nou, „Més que un club”, „¡Hala Madrid!”, „Glory Glory Man United” (bez przecinka). Wykrzyknik występuje tylko w okrzyku Realu. W tekście ciągłym nazwy klubów są odmieniane: Realu Madryt, FC Barcelony, Manchesteru United.",
+   "Na przyszłość, bez terminów zamówień: 125-lecie Realu Madryt (6 marca 2027) jako temat treści i newslettera dla kibiców Realu."
+  ]
+ },
+ "open_questions_for_owner": [
+  "Jakie formy dostawy będą dostępne w kasie: Paczkomaty InPost, kurier (który przewoźnik)? Dopóki ich nie potwierdzisz, teksty mówią tylko „Formę dostawy wybierasz w kasie”.",
+  "Jakie metody płatności uruchamiasz: BLIK, Przelewy24, Apple Pay, Google Pay, karta? Do potwierdzenia nie wymieniamy ich w tekstach.",
+  "Czy gwarancja dostawy przed Świętami ma warunek, np. ostatni dzień zamówienia, osobno dla każdej formy dostawy? W tekstach marketingowych go nie podamy, ale musi trafić do Polityki wysyłki. Bez niego gwarancja obejmuje także zamówienia złożone dzień przed Wigilią.",
+  "Gdzie dokładnie jest oznaczenie oficjalnej licencji: na pudełku, na etui, na metce czy na naklejce? Opierają się na nim odpowiedź „Czy to oficjalny produkt?”, strona Oficjalna licencja i zdjęcie w serii Zanim zapytasz.",
+  "Ile naprawdę waży zestaw (zawieszka z łańcuszkiem)? Czy „ok. 32 g” zostaje, czy mamy wpisać wynik z wagi?",
+  "Kto jest producentem i podmiotem odpowiedzialnym w UE (nazwa, adres pocztowy i elektroniczny)? Te dane muszą być na karcie produktu zgodnie z GPSR."
+ ]
+}

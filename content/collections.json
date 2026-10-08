@@ -1,0 +1,239 @@
+[
+ {
+  "title": "Real Madryt",
+  "handle": "real-madryt",
+  "descriptionHtml": "<p>Oficjalna zawieszka Realu Madryt to herb Królewskich w formie, którą nosisz na co dzień, nie tylko w dniu meczu. Herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii, które oddają jego barwy, a rama ma jasny, chłodny połysk powłoki rodowanej.</p><p>To duża, wyrazista zawieszka na skręconym łańcuszku o splocie linkowym, 51 cm, który jest w zestawie. Przychodzi w jasnoszarym pudełku Vellano Jubiler, gotowa do noszenia albo do wręczenia kibicowi Realu. Oficjalny produkt licencjonowany, 149 zł.</p><p>Biel Santiago Bernabéu – na co dzień. ¡Hala Madrid!</p>",
+  "seo": {
+   "title": "Łańcuszek Real Madryt z herbem | Vellano Jubiler",
+   "description": "Łańcuszek z zawieszką Real Madryt na oficjalnej licencji. Herb Królewskich z setek cyrkonii, 149 zł. Darmowa dostawa, wysyłka w 2–3 dni robocze."
+  },
+  "image": {
+   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/zawieszka-real-madryt-przod.webp?v=1791492845",
+   "altText": "Oficjalna zawieszka Real Madryt z łańcuszkiem"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "hero_eyebrow",
+    "type": "single_line_text_field",
+    "value": "Królewscy · od 1902 roku"
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_heading",
+    "type": "single_line_text_field",
+    "value": "Biel Królewskich. Blisko serca."
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_body",
+    "type": "multi_line_text_field",
+    "value": "Oficjalna zawieszka z herbem Realu Madryt. Setki ręcznie osadzanych cyrkonii, rama w jasnym, chłodnym połysku. 149 zł, łańcuszek w zestawie."
+   }
+  ],
+  "products": [
+   "gid://shopify/Product/11352297767254"
+  ]
+ },
+ {
+  "title": "FC Barcelona",
+  "handle": "fc-barcelona",
+  "descriptionHtml": "<p>Oficjalna zawieszka FC Barcelony to herb Dumy Katalonii, który zabierasz ze sobą także daleko od Spotify Camp Nou. Czerwień, granat i żółć, czarne litery FCB i żółta piłka – cały herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii. Obrys i ucho lśnią bielą kamieni, a rama ma jasny, chłodny połysk powłoki rodowanej.</p><p>W zestawie jest skręcony łańcuszek o splocie linkowym, 51 cm. Zawieszka przychodzi w jasnoszarym pudełku Vellano Jubiler – dla siebie albo na prezent dla kibica Barçy. Oficjalny produkt licencjonowany, 149 zł.</p><p>Blaugrana blisko serca. Més que un club.</p>",
+  "seo": {
+   "title": "Łańcuszek FC Barcelona z herbem | Vellano Jubiler",
+   "description": "Łańcuszek z zawieszką FC Barcelona na oficjalnej licencji. Herb w barwach blaugrana z setek cyrkonii, 149 zł. Darmowa dostawa, wysyłka w 2–3 dni robocze."
+  },
+  "image": {
+   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/zawieszka-fc-barcelona-przod.webp?v=1791491961",
+   "altText": "Oficjalna zawieszka FC Barcelona z łańcuszkiem"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "hero_eyebrow",
+    "type": "single_line_text_field",
+    "value": "Duma Katalonii · od 1899 roku"
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_heading",
+    "type": "single_line_text_field",
+    "value": "Blaugrana z bliska."
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_body",
+    "type": "multi_line_text_field",
+    "value": "Oficjalna zawieszka z herbem FC Barcelony. Czerwień, granat i żółć herbu w setkach ręcznie osadzanych cyrkonii, rama w jasnym, chłodnym połysku. 149 zł, łańcuszek w zestawie."
+   }
+  ],
+  "products": [
+   "gid://shopify/Product/11352297832790"
+  ]
+ },
+ {
+  "title": "Manchester United",
+  "handle": "manchester-united",
+  "descriptionHtml": "<p>Oficjalna zawieszka Manchesteru United to herb Czerwonych Diabłów w formie, którą nosisz nie tylko w dniu meczu. Herb ułożono z setek drobnych, ręcznie osadzanych cyrkonii w jego barwach, a rama ma jasny, chłodny połysk powłoki rodowanej.</p><p>To duża, wyrazista zawieszka. W zestawie jest skręcony łańcuszek o splocie linkowym, 51 cm, a całość przychodzi w jasnoszarym pudełku Vellano Jubiler – dla siebie albo na prezent dla kibica United. Oficjalny produkt licencjonowany, 149 zł.</p><p>Teatr Marzeń zawsze przy Tobie. Glory Glory Man United.</p>",
+  "seo": {
+   "title": "Łańcuszek Manchester United z herbem | Vellano Jubiler",
+   "description": "Łańcuszek z zawieszką Manchester United na oficjalnej licencji. Herb Czerwonych Diabłów z setek cyrkonii, 149 zł. Darmowa dostawa."
+  },
+  "image": {
+   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/zawieszka-manchester-united-przod.webp?v=1791493619",
+   "altText": "Oficjalna zawieszka Manchester United z łańcuszkiem"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "hero_eyebrow",
+    "type": "single_line_text_field",
+    "value": "Czerwone Diabły · od 1878 roku"
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_heading",
+    "type": "single_line_text_field",
+    "value": "Czerwień Teatru Marzeń."
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_body",
+    "type": "multi_line_text_field",
+    "value": "Oficjalna zawieszka z herbem Manchesteru United. Setki ręcznie osadzanych cyrkonii w barwach herbu, rama w jasnym, chłodnym połysku. 149 zł, łańcuszek w zestawie."
+   }
+  ],
+  "products": [
+   "gid://shopify/Product/11352297963862"
+  ]
+ },
+ {
+  "title": "Wszystkie zawieszki",
+  "handle": "wszystkie-zawieszki",
+  "descriptionHtml": "<p>Trzy kluby, trzy herby, jedno wykonanie. Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym, a jej herb ułożono z setek ręcznie osadzanych cyrkonii.</p><p>Real Madryt – biel Królewskich. FC Barcelona – blaugrana Dumy Katalonii. Manchester United – czerwień Czerwonych Diabłów.</p><p>Każda kosztuje 149 zł, ma w zestawie łańcuszek o splocie linkowym, 51 cm, i przychodzi w pudełku Vellano Jubiler. Dwie zawieszki kupisz za 259 zł zamiast 298 zł.</p>",
+  "seo": {
+   "title": "Oficjalne zawieszki klubowe z łańcuszkiem | Vellano Jubiler",
+   "description": "Oficjalne zawieszki z łańcuszkiem: Real Madryt, FC Barcelona, Manchester United. Herby z ręcznie osadzanych cyrkonii. 149 zł, darmowa dostawa."
+  },
+  "image": {
+   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/zawieszka-real-madryt-na-lancuszku.webp?v=1791492844",
+   "altText": "Zawieszki z łańcuszkiem Vellano Jubiler"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "hero_eyebrow",
+    "type": "single_line_text_field",
+    "value": "Kolekcja"
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_heading",
+    "type": "single_line_text_field",
+    "value": "Wybierz swój klub."
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_body",
+    "type": "multi_line_text_field",
+    "value": "Trzy oficjalne zawieszki z łańcuszkiem. Każda w barwach swojego herbu, każda za 149 zł."
+   }
+  ],
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TYPE",
+     "relation": "EQUALS",
+     "condition": "Zawieszka z łańcuszkiem"
+    }
+   ]
+  }
+ },
+ {
+  "title": "Prezent dla kibica",
+  "handle": "prezent-dla-kibica",
+  "descriptionHtml": "<p>Nie musisz znać się na piłce. Wystarczy, że wiesz, komu kibicuje bliska Ci osoba.</p><p>Nie masz pewności? Spójrz na koszulkę, szalik albo kubek. Biel to Real Madryt – Królewscy. Granatowo-bordowe pasy to FC Barcelona – Duma Katalonii. Czerwień to Manchester United – Czerwone Diabły. Wciąż nie wiesz? <a href=\"/pages/contact\">Napisz do nas</a> – pomożemy wybrać.</p><p>Każda zawieszka jest oficjalnym produktem licencjonowanym, ma łańcuszek w zestawie i przychodzi w jasnoszarym, matowym pudełku z wysuwaną szufladką oraz w miękkim etui Vellano Jubiler – gotowa do wręczenia. Darmowa dostawa, wysyłka w 2–3 dni robocze i gwarancja dostawy przed Świętami.</p><p>Dwóch kibiców w rodzinie? 2 zawieszki za 259 zł zamiast 298 zł.</p><p>Prezent dla kibica, który ma już koszulkę.</p>",
+  "seo": {
+   "title": "Prezent dla kibica – zawieszka z herbem | Vellano Jubiler",
+   "description": "Prezent dla kibica, który ma już koszulkę: oficjalna zawieszka z herbem w eleganckim pudełku. Darmowa dostawa, gwarancja dostawy przed Świętami."
+  },
+  "image": {
+   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/opakowanie-vellano-jubiler.webp?v=1791491960",
+   "altText": "Opakowanie prezentowe Vellano Jubiler"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "hero_eyebrow",
+    "type": "single_line_text_field",
+    "value": "Prezent dla kibica"
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_heading",
+    "type": "single_line_text_field",
+    "value": "Nie musisz znać się na piłce. Wybierz herb."
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_body",
+    "type": "multi_line_text_field",
+    "value": "Oficjalna zawieszka z łańcuszkiem w pudełku Vellano Jubiler – prezent dla kibica, który ma już koszulkę. Darmowa dostawa i gwarancja dostawy przed Świętami."
+   }
+  ],
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TYPE",
+     "relation": "EQUALS",
+     "condition": "Zawieszka z łańcuszkiem"
+    }
+   ]
+  }
+ },
+ {
+  "title": "Prezent na Święta",
+  "handle": "prezent-na-swieta",
+  "descriptionHtml": "<p>Dobry prezent mówi: wiem, co kochasz. Dla kibica to herb ukochanego klubu – tym razem nie na koszulce, lecz blisko serca.</p><p>Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym. Herb ułożono z setek ręcznie osadzanych cyrkonii, a w zestawie jest łańcuszek o splocie linkowym, 51 cm. Pod choinkę trafia w jasnoszarym pudełku z wysuwaną szufladką i w miękkim etui Vellano Jubiler.</p><p>Gwarancja dostawy przed Świętami. Darmowa dostawa. Wysyłka w 2–3 dni robocze.</p><p>Dwóch kibiców pod jedną choinką? 2 zawieszki za 259 zł zamiast 298 zł.</p>",
+  "seo": {
+   "title": "Prezent na Święta dla kibica – zawieszka | Vellano Jubiler",
+   "description": "Prezent na Święta dla kibica: oficjalna zawieszka z łańcuszkiem w pudełku Vellano Jubiler. Gwarancja dostawy przed Świętami, darmowa dostawa."
+  },
+  "image": {
+   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/opakowanie-vellano-jubiler.webp?v=1791491960",
+   "altText": "Opakowanie prezentowe Vellano Jubiler"
+  },
+  "metafields": [
+   {
+    "namespace": "custom",
+    "key": "hero_eyebrow",
+    "type": "single_line_text_field",
+    "value": "Prezent na Święta"
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_heading",
+    "type": "single_line_text_field",
+    "value": "Herb pod choinkę."
+   },
+   {
+    "namespace": "custom",
+    "key": "hero_body",
+    "type": "multi_line_text_field",
+    "value": "Oficjalna zawieszka z łańcuszkiem w jasnoszarym pudełku Vellano Jubiler. Gwarancja dostawy przed Świętami, darmowa dostawa i wysyłka w 2–3 dni robocze."
+   }
+  ],
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TYPE",
+     "relation": "EQUALS",
+     "condition": "Zawieszka z łańcuszkiem"
+    }
+   ]
+  }
+ }
+]
