@@ -1,0 +1,409 @@
+{% comment %}
+  Section contract.
+  Vellano – „Zanim zapytasz”: lejek pytań przed zakupem na karcie produktu.
+  Dane: closest.product.metafields.custom.zanim_zapytasz.value – lista obiektów {question, answer, photo}.
+  `answer` może zawierać HTML (linki <a>), więc wypisujemy je bez escapowania; `question` jest escapowane.
+  Miniatura: zdjęcie z galerii produktu dobrane po treści pytania według reguł z ustawienia `photo_rules`
+  (jedna reguła w linii: „fraza = numer zdjęcia w galerii”, liczone od 1, pierwsza pasująca wygrywa,
+  bez rozróżniania wielkości liter). Brak dopasowania lub brak zdjęcia = liniowa ikona.
+  Brak metapola lub pusta lista = sekcja nic nie renderuje.
+  Mobile: lista z miniaturą 96 px po lewej. Od 990 px: siatka w 2 kolumnach.
+  @example
+  <!-- templates/product.json → "vellano_zanim_zapytasz": { "type": "vellano-zanim-zapytasz", "settings": { "heading": "Zanim zapytasz" } } -->
+{% endcomment %}
+
+{%- liquid
+  assign product_resource = closest.product
+  if product_resource == blank
+    assign product_resource = product
+  endif
+
+  assign items = product_resource.metafields.custom.zanim_zapytasz.value
+  assign has_items = false
+  if items != blank and items.size > 0
+    assign has_items = true
+  endif
+-%}
+
+{%- capture vellano_newline %}
+{% endcapture -%}
+
+{%- if has_items -%}
+  {%- liquid
+    assign rules = section.settings.photo_rules | default: '' | split: vellano_newline
+    assign heading = section.settings.heading | strip
+    assign subheading = section.settings.subheading | strip
+  -%}
+
+  {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+  <div class="section-background color-custom-{{ section.id }}"></div>
+  <div
+    class="section section--{{ section.settings.section_width }} color-custom-{{ section.id }} spacing-style"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    <div class="vellano-faq{% if section.settings.show_top_border %} vellano-faq--bordered{% endif %}{% unless section.settings.show_thumbnails %} vellano-faq--no-thumbs{% endunless %}">
+      {%- if heading != blank or subheading != blank -%}
+        <header class="vellano-faq__header">
+          {%- if heading != blank -%}
+            <h2 class="vellano-faq__heading" id="VellanoFaqHeading-{{ section.id }}">{{ heading | escape }}</h2>
+          {%- endif -%}
+          {%- if subheading != blank -%}
+            <p class="vellano-faq__subheading">{{ subheading | escape }}</p>
+          {%- endif -%}
+        </header>
+      {%- endif -%}
+
+      <ul
+        class="vellano-faq__list"
+        role="list"
+        {% if heading != blank %}
+          aria-labelledby="VellanoFaqHeading-{{ section.id }}"
+        {% endif %}
+      >
+        {%- for item in items limit: section.settings.max_items -%}
+          {%- liquid
+            assign question = item.question | strip
+            assign answer = item.answer | strip
+            if question == blank
+              continue
+            endif
+
+            # Dobór miniatury po treści pytania (reguły z ustawienia photo_rules).
+            assign thumb = nil
+            if section.settings.show_thumbnails
+              assign question_lower = question | downcase
+              for rule in rules
+                assign rule_clean = rule | strip
+                unless rule_clean contains '='
+                  continue
+                endunless
+                assign rule_parts = rule_clean | split: '='
+                assign rule_phrase = rule_parts.first | strip | downcase
+                assign rule_position = rule_parts.last | strip | plus: 0
+                if rule_phrase != blank and rule_position > 0 and question_lower contains rule_phrase
+                  assign media_index = rule_position | minus: 1
+                  assign rule_media = product_resource.media[media_index]
+                  if rule_media != blank and rule_media.preview_image != blank
+                    assign thumb = rule_media.preview_image
+                  endif
+                  break
+                endif
+              endfor
+            endif
+          -%}
+          <li class="vellano-faq__item">
+            {%- if section.settings.show_thumbnails -%}
+              <div class="vellano-faq__thumb{% if thumb == blank %} vellano-faq__thumb--icon{% endif %}">
+                {%- if thumb != blank -%}
+                  {{
+                    thumb
+                    | image_url: width: 360
+                    | image_tag:
+                      widths: '120, 240, 360',
+                      sizes: '(min-width: 990px) 120px, 96px',
+                      loading: 'lazy',
+                      alt: '',
+                      class: 'vellano-faq__thumb-image'
+                  }}
+                {%- else -%}
+                  {%- render 'vellano-icon', icon: 'question', class: 'vellano-faq__thumb-icon', size: 28 -%}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+            <div class="vellano-faq__body">
+              <h3 class="vellano-faq__question">{{ question | escape }}</h3>
+              {%- if answer != blank -%}
+                <div class="vellano-faq__answer rte">
+                  {%- if answer contains '<p' -%}
+                    {{ answer }}
+                  {%- else -%}
+                    <p>{{ answer }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="section section--page-width">
+    <p class="vellano-faq__editor-note">
+      „Zanim zapytasz”: ten produkt nie ma wypełnionego metapola custom.zanim_zapytasz – na sklepie sekcja jest ukryta.
+    </p>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-faq {
+    --vellano-faq-line: rgb(var(--color-foreground-rgb) / var(--opacity-15));
+    --vellano-faq-thumb: 96px;
+
+    min-width: 0;
+  }
+
+  .vellano-faq--bordered {
+    padding-block-start: 32px;
+    border-block-start: 1px solid var(--vellano-faq-line);
+  }
+
+  .vellano-faq__header {
+    max-width: 40rem;
+    margin-block-end: 24px;
+  }
+
+  .vellano-faq__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: 1.75rem;
+    line-height: 1.15;
+    color: var(--color-foreground);
+  }
+
+  .vellano-faq__subheading {
+    margin: 8px 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .vellano-faq__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vellano-faq__item {
+    display: grid;
+    grid-template-columns: var(--vellano-faq-thumb) minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: start;
+    min-width: 0;
+    padding-block: 20px;
+    border-block-start: 1px solid var(--vellano-faq-line);
+  }
+
+  .vellano-faq--no-thumbs .vellano-faq__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vellano-faq__thumb {
+    width: var(--vellano-faq-thumb);
+    aspect-ratio: 1;
+    overflow: hidden;
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .vellano-faq__thumb-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vellano-faq__thumb--icon {
+    display: grid;
+    place-items: center;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-60));
+  }
+
+  .vellano-faq__body {
+    min-width: 0;
+  }
+
+  .vellano-faq__question {
+    margin: 0 0 6px;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: var(--color-foreground);
+    text-wrap: pretty;
+  }
+
+  .vellano-faq__answer {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    overflow-wrap: anywhere;
+  }
+
+  .vellano-faq__answer p {
+    margin: 0;
+  }
+
+  .vellano-faq__answer p + p {
+    margin-block-start: 0.6em;
+  }
+
+  .vellano-faq__answer a {
+    color: var(--color-foreground);
+    text-decoration-line: underline;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .vellano-faq__editor-note {
+    margin: 0;
+    padding: 16px;
+    border: 1px dashed rgb(var(--color-foreground-rgb) / var(--opacity-30));
+    font-size: 0.875rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    .vellano-faq {
+      --vellano-faq-thumb: 120px;
+    }
+
+    .vellano-faq--bordered {
+      padding-block-start: 48px;
+    }
+
+    .vellano-faq__header {
+      margin-block-end: 32px;
+    }
+
+    .vellano-faq__heading {
+      font-size: 2.25rem;
+    }
+
+    .vellano-faq__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 48px;
+    }
+
+    .vellano-faq__item {
+      column-gap: 20px;
+      padding-block: 24px;
+    }
+
+    .vellano-faq__question {
+      font-size: 1.375rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – Zanim zapytasz",
+  "tag": "section",
+  "class": "section-wrapper vellano-faq-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Pytania i odpowiedzi pochodzą z metapola produktu custom.zanim_zapytasz (JSON: lista {question, answer, photo}). Bez metapola sekcja jest ukryta."
+    },
+    {
+      "type": "header",
+      "content": "Treść"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek",
+      "default": "Zanim zapytasz"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Podtytuł",
+      "default": "Odpowiedzi na pytania, które warto zadać przed zakupem."
+    },
+    {
+      "type": "range",
+      "id": "max_items",
+      "label": "Maksymalna liczba pytań",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Miniatury"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_thumbnails",
+      "label": "Pokaż miniatury",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "photo_rules",
+      "label": "Dobór zdjęć do pytań",
+      "info": "Jedna reguła w linii: fraza z pytania = numer zdjęcia w galerii produktu (od 1). Pierwsza pasująca reguła wygrywa. Bez dopasowania wyświetla się ikona.",
+      "default": "Z czego = 2\nz bliska = 3\nduża = 1\nszyi = 1\nłańcuszek jest w zestawie = 1\nwłasnym łańcuszku = 3\noficjalny = 4\nzapakowana = 4\nKiedy dotrze = 4\nnie przypadnie = 4",
+      "visible_if": "{{ section.settings.show_thumbnails }}"
+    },
+    {
+      "type": "header",
+      "content": "Układ"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Szerokość",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Szerokość strony"
+        },
+        {
+          "value": "full-width",
+          "label": "Pełna szerokość"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Cienka linia nad sekcją",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "{{ settings.color_palette.background }}"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – Zanim zapytasz"
+    }
+  ]
+}
+{% endschema %}

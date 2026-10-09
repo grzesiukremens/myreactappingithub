@@ -1,0 +1,70 @@
+{%- doc -%}
+  Vellano – wspólne style drobnych elementów interfejsu dla sekcji i bloków vellano-* (strona główna i kolekcje).
+  Snippet nie wypisuje HTML, dołącza tylko arkusz stylów. Dzięki temu style trafiają na stronę razem
+  z sekcją lub blokiem, który go renderuje (stylesheet subsetting działa per plik).
+
+  Klasy:
+  - .vellano-eyebrow – napis nad nagłówkiem: krój akcentowy, wersaliki, rozstrzelenie 0,18em, kolor drugorzędny.
+  - .vellano-text-link – link tekstowy: podkreślenie 1 px z odsunięciem 3 px, cel dotyku min. 44 px.
+  - .vellano-ui – kontener; przyciski .button i .button-secondary w środku dostają rozstrzelenie 0,08em i wysokość 52 px.
+
+  @example
+  {% render 'vellano-ui-styles' %}
+  <div class="vellano-ui">
+    <p class="vellano-eyebrow">Wykonanie</p>
+    <a class="button" href="/collections/wszystkie-zawieszki">Wybierz swój klub</a>
+    <a class="vellano-text-link" href="/pages/wykonanie">Poznaj wykonanie</a>
+  </div>
+{%- enddoc -%}
+
+{% stylesheet %}
+  .vellano-eyebrow {
+    margin: 0;
+    font-family: var(--font-accent--family);
+    font-style: var(--font-accent--style);
+    font-weight: var(--font-accent--weight);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  .vellano-text-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--minimum-touch-target, 44px);
+    color: var(--color-foreground);
+    font-family: var(--font-body--family);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    text-decoration-line: underline;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .vellano-text-link:hover {
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+  }
+
+  .vellano-text-link:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .vellano-ui :is(.button, .button-secondary) {
+    min-height: 52px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .vellano-text-link {
+      transition: color var(--animation-speed) var(--animation-easing);
+    }
+  }
+{% endstylesheet %}

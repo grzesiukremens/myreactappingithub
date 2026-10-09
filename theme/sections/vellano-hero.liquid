@@ -1,0 +1,448 @@
+{% comment %}
+  Section contract.
+  Vellano – hero strony głównej, projektowany najpierw na 375–390 px.
+  Jedno zdjęcie (bez slidera, bez autoplay) i treść z ustawień sekcji: eyebrow, nagłówek (domyślnie H1),
+  krótki tekst, przycisk główny i link tekstowy.
+  Mobile (do 749 px): zdjęcie na całą szerokość ekranu w kadrze 1:1 albo 4:5, pod nim treść na jasnym tle,
+  więc tekst nigdy nie leży na zdjęciu. Desktop (od 750 px): dwie kolumny w szerokości strony,
+  zdjęcie po lewej albo po prawej, treść wyśrodkowana w pionie.
+  Zdjęcie hero to kandydat LCP: gdy sekcja jest pierwsza w szablonie, dostaje loading eager i fetchpriority high,
+  w przeciwnym razie loading lazy. Opcjonalne osobne zdjęcie na telefon (element <picture>).
+  Bez zdjęcia sekcja pokazuje zastępczą grafikę Shopify.
+  @example
+  <!-- templates/index.json → "vellano_hero": { "type": "vellano-hero", "settings": { "image": "shopify://shop_images/zawieszka-real-madryt-na-lancuszku.webp", "heading": "Oficjalna biżuteria kibica.", "button_label": "Wybierz swój klub", "button_link": "shopify://collections/wszystkie-zawieszki" } } -->
+{% endcomment %}
+
+{%- liquid
+  assign image = section.settings.image
+  assign image_mobile = section.settings.image_mobile
+
+  if section.index == 1
+    assign image_loading = 'eager'
+    assign image_priority = 'high'
+  else
+    assign image_loading = 'lazy'
+    assign image_priority = 'auto'
+  endif
+
+  assign eyebrow = section.settings.eyebrow | strip
+  assign heading = section.settings.heading | strip
+  assign button_label = section.settings.button_label | strip
+  assign link_label = section.settings.link_label | strip
+  assign heading_tag = section.settings.heading_tag
+
+  assign image_alt = ''
+  assign desktop_ratio = 0.8
+  if image != blank
+    assign image_alt = image.alt | default: heading | escape
+    assign desktop_ratio = image.aspect_ratio | default: 0.8
+  endif
+
+  capture modifier_classes
+    echo ' vellano-hero--media-' | append: section.settings.media_position
+    echo ' vellano-hero--mobile-' | append: section.settings.mobile_alignment
+    echo ' vellano-hero--desktop-' | append: section.settings.desktop_alignment
+  endcapture
+-%}
+
+{% render 'vellano-ui-styles' %}
+
+{%- if section.settings.background_color != blank -%}
+  {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+{%- endif -%}
+
+<div class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"></div>
+<div
+  class="section section--page-width vellano-hero{{ modifier_classes }} spacing-style{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    --vellano-hero-ratio-mobile: {{ section.settings.mobile_ratio }};
+    --vellano-hero-ratio-desktop: {{ desktop_ratio }};
+  "
+>
+  <div class="vellano-hero__media">
+    {%- if image != blank -%}
+      <picture>
+        {%- if image_mobile != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ image_mobile | image_url: width: 375 }} 375w,
+              {{ image_mobile | image_url: width: 550 }} 550w,
+              {{ image_mobile | image_url: width: 750 }} 750w,
+              {{ image_mobile | image_url: width: 1100 }} 1100w
+            "
+            sizes="100vw"
+            width="{{ image_mobile.width }}"
+            height="{{ image_mobile.height }}"
+          >
+        {%- endif -%}
+        {{
+          image
+          | image_url: width: 1600
+          | image_tag:
+            widths: '375, 550, 750, 1000, 1200, 1600',
+            sizes: '(min-width: 1440px) 720px, (min-width: 750px) 50vw, 100vw',
+            loading: image_loading,
+            fetchpriority: image_priority,
+            alt: image_alt,
+            class: 'vellano-hero__image'
+        }}
+      </picture>
+    {%- else -%}
+      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'vellano-hero__image vellano-hero__image--placeholder' }}
+    {%- endif -%}
+  </div>
+
+  <div class="vellano-hero__content vellano-ui">
+    {%- if eyebrow != blank -%}
+      <p class="vellano-eyebrow vellano-hero__eyebrow">{{ eyebrow | escape }}</p>
+    {%- endif -%}
+
+    {%- if heading != blank -%}
+      <{{ heading_tag }} class="vellano-hero__heading {{ section.settings.heading_preset }}">
+        {{- heading | escape -}}
+      </{{ heading_tag }}>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <div class="vellano-hero__text rte">{{ section.settings.text }}</div>
+    {%- endif -%}
+
+    {%- if button_label != blank or link_label != blank -%}
+      <div class="vellano-hero__actions">
+        {%- if button_label != blank -%}
+          <a
+            class="button vellano-hero__button"
+            {% if section.settings.button_link != blank %}
+              href="{{ section.settings.button_link }}"
+            {% else %}
+              role="link" aria-disabled="true"
+            {% endif %}
+          >
+            {{- button_label | escape -}}
+          </a>
+        {%- endif -%}
+
+        {%- if link_label != blank and section.settings.link_url != blank -%}
+          <a class="vellano-text-link vellano-hero__link" href="{{ section.settings.link_url }}">
+            {{- link_label | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  /* Mobile first: zdjęcie na całą szerokość ekranu, treść pod zdjęciem. */
+  .vellano-hero {
+    align-items: start;
+  }
+
+  .vellano-hero > .vellano-hero__media {
+    grid-column: 1 / -1;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: var(--vellano-hero-ratio-mobile, 1);
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .vellano-hero__media picture {
+    display: contents;
+  }
+
+  .vellano-hero__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .vellano-hero__image--placeholder {
+    fill: rgb(var(--color-foreground-rgb) / var(--opacity-30));
+  }
+
+  .vellano-hero > .vellano-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding-block: 28px 8px;
+    text-align: center;
+  }
+
+  .vellano-hero--mobile-left > .vellano-hero__content {
+    align-items: flex-start;
+    text-align: start;
+  }
+
+  .vellano-hero__heading {
+    margin: 0;
+    max-width: 16em;
+    text-wrap: balance;
+  }
+
+  .vellano-hero__text {
+    max-width: 34em;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    text-wrap: pretty;
+  }
+
+  .vellano-hero__text p {
+    margin: 0;
+  }
+
+  .vellano-hero__text p + p {
+    margin-block-start: 0.6em;
+  }
+
+  .vellano-hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    margin-block-start: 12px;
+  }
+
+  .vellano-hero--mobile-left .vellano-hero__actions {
+    align-items: flex-start;
+  }
+
+  .vellano-hero__button {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .vellano-hero {
+      grid-template-columns:
+        var(--full-page-grid-margin)
+        repeat(2, calc(var(--full-page-grid-central-column-width) / 2))
+        var(--full-page-grid-margin);
+      grid-template-areas: 'margin-start media content margin-end';
+      align-items: center;
+    }
+
+    .vellano-hero--media-right {
+      grid-template-areas: 'margin-start content media margin-end';
+    }
+
+    .vellano-hero > .vellano-hero__media {
+      grid-area: media;
+      aspect-ratio: var(--vellano-hero-ratio-desktop, 0.8);
+    }
+
+    .vellano-hero > .vellano-hero__content {
+      grid-area: content;
+      gap: 16px;
+      padding-block: 48px;
+      padding-inline: clamp(32px, 6vw, 96px);
+    }
+
+    .vellano-hero--desktop-left > .vellano-hero__content {
+      align-items: flex-start;
+      text-align: start;
+    }
+
+    .vellano-hero--desktop-center > .vellano-hero__content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .vellano-hero__actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      width: auto;
+      margin-block-start: 16px;
+    }
+
+    .vellano-hero--desktop-left .vellano-hero__actions {
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .vellano-hero--desktop-center .vellano-hero__actions {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vellano-hero__button {
+      width: auto;
+      min-width: 240px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – hero",
+  "tag": "section",
+  "class": "section-wrapper vellano-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Zdjęcie"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Zdjęcie",
+      "info": "Jedno zdjęcie zestawu: zawieszka na łańcuszku, jasne tło. Najlepiej pion 4:5."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Osobne zdjęcie na telefon (opcjonalnie)",
+      "info": "Puste pole = to samo zdjęcie, kadrowane według ustawienia poniżej."
+    },
+    {
+      "type": "select",
+      "id": "mobile_ratio",
+      "label": "Kadr zdjęcia na telefonie",
+      "options": [
+        { "value": "1", "label": "Kwadrat 1:1 (przycisk zostaje na pierwszym ekranie)" },
+        { "value": "0.8", "label": "Pion 4:5" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Zdjęcie na komputerze",
+      "options": [
+        { "value": "left", "label": "Po lewej" },
+        { "value": "right", "label": "Po prawej" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "header",
+      "content": "Treść"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Real Madryt · FC Barcelona · Manchester United"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek",
+      "default": "Oficjalna biżuteria kibica."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Znacznik nagłówka",
+      "info": "Na stronie głównej zostaw H1 – to jedyny H1 na stronie.",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select",
+      "id": "heading_preset",
+      "label": "Wielkość nagłówka",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Tekst",
+      "default": "<p>Herb Twojego klubu ułożony z setek ręcznie osadzanych cyrkonii. Dla tych, którzy mają już koszulkę. 149 zł, łańcuszek w zestawie.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Przycisk – tekst",
+      "default": "Wybierz swój klub"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Przycisk – link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link tekstowy – tekst",
+      "default": "Prezent dla kibica"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link tekstowy – adres"
+    },
+    {
+      "type": "header",
+      "content": "Układ"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Wyrównanie treści na telefonie",
+      "options": [
+        { "value": "center", "label": "Do środka" },
+        { "value": "left", "label": "Do lewej" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_alignment",
+      "label": "Wyrównanie treści na komputerze",
+      "options": [
+        { "value": "left", "label": "Do lewej" },
+        { "value": "center", "label": "Do środka" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – hero",
+      "category": "Vellano"
+    }
+  ]
+}
+{% endschema %}

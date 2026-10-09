@@ -1,0 +1,480 @@
+{% comment %}
+  Section contract.
+  Vellano – nagłówek kolekcji (landing klubu, Wszystkie zawieszki, landingi prezentowe).
+  Jeden szablon obsługuje wszystkie kolekcje, bo treść pochodzi z metapól bieżącej kolekcji:
+  - collection.metafields.custom.hero_eyebrow (tekst jednowierszowy) → eyebrow,
+  - collection.metafields.custom.hero_heading (tekst jednowierszowy) → nagłówek H1,
+  - collection.metafields.custom.hero_body (tekst wielowierszowy) → akapit pod nagłówkiem,
+  - collection.image → zdjęcie (albo zdjęcie z ustawień sekcji, albo zdjęcie pierwszego produktu).
+  Puste metapole = wartość zastępcza z ustawień sekcji; pusty nagłówek = tytuł kolekcji.
+  Poza szablonem kolekcji sekcja czyta kolekcję wybraną w ustawieniu „Kolekcja”.
+  Mobile (do 749 px): treść na jasnym tle; zdjęcie jako miniatura nad tekstem, na pełną szerokość albo ukryte,
+  żeby karta produktu pojawiła się szybko. Desktop (od 750 px): dwie kolumny, zdjęcie po prawej albo po lewej.
+  Gdy sekcja jest pierwsza w szablonie, zdjęcie ładuje się od razu (fetchpriority high).
+  @example
+  <!-- templates/collection.klub.json → "vellano_club_hero": { "type": "vellano-club-hero", "settings": { "mobile_media": "thumbnail", "badge_text": "Oficjalny produkt licencjonowany" } } -->
+{% endcomment %}
+
+{%- liquid
+  assign resource = collection
+  if resource == blank
+    assign resource = section.settings.collection
+  endif
+
+  assign eyebrow = ''
+  assign heading = ''
+  assign subheading = ''
+  assign body = ''
+  assign image = section.settings.image
+
+  if resource != blank
+    assign mf_eyebrow = resource.metafields.custom.hero_eyebrow.value | strip
+    assign mf_heading = resource.metafields.custom.hero_heading.value | strip
+    assign mf_body = resource.metafields.custom.hero_body.value | strip
+
+    assign eyebrow = mf_eyebrow | default: section.settings.eyebrow
+    if section.settings.heading_source == 'title'
+      assign heading = resource.title
+      assign subheading = mf_heading
+    else
+      assign heading = mf_heading | default: section.settings.heading | default: resource.title
+    endif
+    assign body = mf_body | default: section.settings.text
+
+    if image == blank
+      if section.settings.image_source == 'product' and resource.products.first.featured_media != blank
+        assign image = resource.products.first.featured_media.preview_image
+      elsif resource.image != blank
+        assign image = resource.image
+      elsif resource.products.first.featured_media != blank
+        assign image = resource.products.first.featured_media.preview_image
+      endif
+    endif
+  else
+    assign eyebrow = section.settings.eyebrow
+    assign heading = section.settings.heading
+    assign body = section.settings.text
+  endif
+
+  assign eyebrow = eyebrow | strip
+  assign heading = heading | strip
+  assign subheading = subheading | strip
+  assign body = body | strip
+  assign badge_text = section.settings.badge_text | strip
+
+  if section.index == 1
+    assign image_loading = 'eager'
+    assign image_priority = 'high'
+  else
+    assign image_loading = 'lazy'
+    assign image_priority = 'auto'
+  endif
+
+  assign image_alt = ''
+  assign image_ratio = 0.8
+  if image != blank
+    assign image_alt = image.alt | default: heading | escape
+    assign image_ratio = image.aspect_ratio | default: 0.8
+  endif
+
+  if section.settings.mobile_media == 'thumbnail'
+    assign image_sizes = '(min-width: 1440px) 720px, (min-width: 750px) 50vw, 128px'
+  else
+    assign image_sizes = '(min-width: 1440px) 720px, (min-width: 750px) 50vw, 100vw'
+  endif
+
+  capture modifier_classes
+    echo ' vellano-club-hero--media-' | append: section.settings.media_position
+    echo ' vellano-club-hero--mobile-' | append: section.settings.mobile_media
+    echo ' vellano-club-hero--align-' | append: section.settings.mobile_alignment
+    if image == blank
+      echo ' vellano-club-hero--no-media'
+    endif
+  endcapture
+-%}
+
+{% render 'vellano-ui-styles' %}
+
+{%- if section.settings.background_color != blank -%}
+  {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+{%- endif -%}
+
+<div class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"></div>
+<div
+  class="section section--page-width vellano-club-hero{{ modifier_classes }} spacing-style{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    --vellano-club-hero-ratio: {{ image_ratio }};
+  "
+>
+  {%- if image != blank -%}
+    <div class="vellano-club-hero__media">
+      {{
+        image
+        | image_url: width: 1600
+        | image_tag:
+          widths: '128, 256, 375, 550, 750, 1000, 1200, 1600',
+          sizes: image_sizes,
+          loading: image_loading,
+          fetchpriority: image_priority,
+          alt: image_alt,
+          class: 'vellano-club-hero__image'
+      }}
+    </div>
+  {%- endif -%}
+
+  <div class="vellano-club-hero__content vellano-ui">
+    {%- if eyebrow != blank -%}
+      <p class="vellano-eyebrow vellano-club-hero__eyebrow">{{ eyebrow | escape }}</p>
+    {%- endif -%}
+
+    {%- if heading != blank -%}
+      <h1 class="vellano-club-hero__heading {{ section.settings.heading_preset }}">{{ heading | escape }}</h1>
+    {%- endif -%}
+
+    {%- if subheading != blank -%}
+      <p class="vellano-club-hero__subheading h4">{{ subheading | escape }}</p>
+    {%- endif -%}
+
+    {%- if body != blank -%}
+      <div class="vellano-club-hero__text">
+        <p>{{ body | escape | newline_to_br }}</p>
+      </div>
+    {%- endif -%}
+
+    {%- if badge_text != blank -%}
+      {%- if section.settings.badge_link != blank -%}
+        <a class="vellano-club-hero__badge vellano-club-hero__badge--link" href="{{ section.settings.badge_link }}">
+          {%- render 'vellano-icon', icon: 'shield', class: 'vellano-club-hero__badge-icon', size: 16 -%}
+          <span>{{ badge_text | escape }}</span>
+        </a>
+      {%- else -%}
+        <p class="vellano-club-hero__badge">
+          {%- render 'vellano-icon', icon: 'shield', class: 'vellano-club-hero__badge-icon', size: 16 -%}
+          <span>{{ badge_text | escape }}</span>
+        </p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  /* Mobile first. */
+  .vellano-club-hero {
+    align-items: start;
+  }
+
+  .vellano-club-hero > .vellano-club-hero__media {
+    overflow: hidden;
+    aspect-ratio: var(--vellano-club-hero-ratio, 0.8);
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .vellano-club-hero__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vellano-club-hero--mobile-thumbnail > .vellano-club-hero__media {
+    justify-self: center;
+    width: 128px;
+    margin-block-end: 20px;
+  }
+
+  .vellano-club-hero--mobile-full > .vellano-club-hero__media {
+    grid-column: 1 / -1;
+    margin-block-end: 28px;
+  }
+
+  .vellano-club-hero--mobile-hidden > .vellano-club-hero__media {
+    display: none;
+  }
+
+  .vellano-club-hero > .vellano-club-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .vellano-club-hero--align-left > .vellano-club-hero__content {
+    align-items: flex-start;
+    text-align: start;
+  }
+
+  .vellano-club-hero--mobile-thumbnail.vellano-club-hero--align-left > .vellano-club-hero__media {
+    justify-self: start;
+  }
+
+  .vellano-club-hero__heading {
+    margin: 0;
+    max-width: 18em;
+    text-wrap: balance;
+  }
+
+  .vellano-club-hero__subheading {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .vellano-club-hero__text {
+    max-width: 34em;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    font-size: 1rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .vellano-club-hero__text p {
+    margin: 0;
+  }
+
+  .vellano-club-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: var(--minimum-touch-target, 44px);
+    margin: 4px 0 0;
+    padding-inline: 14px;
+    border: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-25));
+    border-radius: 2px;
+    color: var(--color-foreground);
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .vellano-club-hero__badge-icon {
+    flex: 0 0 auto;
+  }
+
+  .vellano-club-hero__badge--link:hover {
+    border-color: var(--color-foreground);
+  }
+
+  .vellano-club-hero__badge--link:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .vellano-club-hero__badge--link {
+      transition: border-color var(--animation-speed) var(--animation-easing);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .vellano-club-hero:not(.vellano-club-hero--no-media) {
+      grid-template-columns:
+        var(--full-page-grid-margin)
+        repeat(2, calc(var(--full-page-grid-central-column-width) / 2))
+        var(--full-page-grid-margin);
+      grid-template-areas: 'margin-start content media margin-end';
+      align-items: center;
+    }
+
+    .vellano-club-hero--media-left:not(.vellano-club-hero--no-media) {
+      grid-template-areas: 'margin-start media content margin-end';
+    }
+
+    .vellano-club-hero > .vellano-club-hero__media,
+    .vellano-club-hero--mobile-thumbnail > .vellano-club-hero__media,
+    .vellano-club-hero--mobile-full > .vellano-club-hero__media,
+    .vellano-club-hero--mobile-hidden > .vellano-club-hero__media {
+      display: block;
+      grid-area: media;
+      justify-self: stretch;
+      width: auto;
+      max-height: 70svh;
+      margin: 0;
+    }
+
+    .vellano-club-hero:not(.vellano-club-hero--no-media) > .vellano-club-hero__content {
+      grid-area: content;
+      align-items: flex-start;
+      gap: 16px;
+      padding-block: 32px;
+      padding-inline-end: clamp(24px, 5vw, 80px);
+      text-align: start;
+    }
+
+    .vellano-club-hero--media-left:not(.vellano-club-hero--no-media) > .vellano-club-hero__content {
+      padding-inline: clamp(24px, 5vw, 80px) 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – nagłówek kolekcji",
+  "tag": "section",
+  "class": "section-wrapper vellano-club-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Eyebrow, nagłówek i tekst pochodzą z metapól kolekcji: custom.hero_eyebrow, custom.hero_heading i custom.hero_body. Pola poniżej to wartości zastępcze, gdy metapole jest puste."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Kolekcja (poza szablonem kolekcji)",
+      "info": "Na stronie kolekcji sekcja zawsze czyta bieżącą kolekcję."
+    },
+    {
+      "type": "header",
+      "content": "Treść zastępcza"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Kolekcja"
+    },
+    {
+      "type": "select",
+      "id": "heading_source",
+      "label": "Nagłówek H1",
+      "options": [
+        { "value": "metafield", "label": "Z metapola custom.hero_heading" },
+        { "value": "title", "label": "Tytuł kolekcji (metapole jako podtytuł)" }
+      ],
+      "default": "metafield"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek",
+      "info": "Puste pole = tytuł kolekcji."
+    },
+    {
+      "type": "select",
+      "id": "heading_preset",
+      "label": "Wielkość nagłówka",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Tekst"
+    },
+    {
+      "type": "header",
+      "content": "Oznaczenie licencji"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Tekst oznaczenia",
+      "info": "Puste pole = bez oznaczenia.",
+      "default": "Oficjalny produkt licencjonowany"
+    },
+    {
+      "type": "url",
+      "id": "badge_link",
+      "label": "Link oznaczenia"
+    },
+    {
+      "type": "header",
+      "content": "Zdjęcie"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Zdjęcie (opcjonalnie)",
+      "info": "Puste pole = zdjęcie kolekcji."
+    },
+    {
+      "type": "select",
+      "id": "image_source",
+      "label": "Gdy brak zdjęcia w ustawieniach",
+      "options": [
+        { "value": "collection", "label": "Zdjęcie kolekcji" },
+        { "value": "product", "label": "Pierwsze zdjęcie pierwszego produktu" }
+      ],
+      "default": "collection"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Zdjęcie na komputerze",
+      "options": [
+        { "value": "right", "label": "Po prawej" },
+        { "value": "left", "label": "Po lewej" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "mobile_media",
+      "label": "Zdjęcie na telefonie",
+      "options": [
+        { "value": "thumbnail", "label": "Miniatura nad tekstem" },
+        { "value": "full", "label": "Na pełną szerokość" },
+        { "value": "hidden", "label": "Ukryte" }
+      ],
+      "default": "thumbnail"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Wyrównanie na telefonie",
+      "options": [
+        { "value": "center", "label": "Do środka" },
+        { "value": "left", "label": "Do lewej" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Wygląd"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – nagłówek kolekcji",
+      "category": "Vellano"
+    }
+  ]
+}
+{% endschema %}

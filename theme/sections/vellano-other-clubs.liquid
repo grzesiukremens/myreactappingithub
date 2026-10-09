@@ -1,0 +1,323 @@
+{% comment %}
+  Section contract.
+  Vellano – „Kibicujesz komuś innemu?”: mała lista pozostałych klubów na dole landingu klubu,
+  dla osób kupujących prezent. Kolekcje z ustawienia „Kluby” (lista kolekcji); bieżąca kolekcja
+  jest pomijana, więc na landingu Realu widać tylko FC Barcelonę i Manchester United.
+  Karta: miniatura zdjęcia kolekcji, eyebrow z metapola custom.hero_eyebrow, nazwa klubu i link tekstowy.
+  Pod listą opcjonalny link do wszystkich zawieszek.
+  Mobile: lista wierszy (miniatura po lewej, cały wiersz klikalny, min. 44 px). Od 750 px: karty w kolumnach.
+  Bez kolekcji do pokazania sekcja nic nie renderuje (poza edytorem).
+  @example
+  <!-- templates/collection.klub.json → "vellano_other_clubs": { "type": "vellano-other-clubs", "settings": { "collections": ["real-madryt", "fc-barcelona", "manchester-united"] } } -->
+{% endcomment %}
+
+{%- liquid
+  assign current_id = collection.id
+  assign items_count = 0
+  for club in section.settings.collections
+    unless club.id == current_id
+      assign items_count = items_count | plus: 1
+    endunless
+  endfor
+
+  assign heading = section.settings.heading | strip
+  assign eyebrow = section.settings.eyebrow | strip
+  assign card_label = section.settings.card_label | strip
+  assign all_label = section.settings.all_label | strip
+  assign columns = items_count | at_least: 1 | at_most: 3
+-%}
+
+{%- if items_count > 0 or request.design_mode -%}
+  {% render 'vellano-ui-styles' %}
+
+  {%- if section.settings.background_color != blank -%}
+    {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+  {%- endif -%}
+
+  <div class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"></div>
+  <div
+    class="section section--page-width spacing-style{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    <div class="vellano-other-clubs vellano-ui" style="--vellano-other-clubs-columns: {{ columns }};">
+      {%- if eyebrow != blank or heading != blank -%}
+        <header class="vellano-other-clubs__header">
+          {%- if eyebrow != blank -%}
+            <p class="vellano-eyebrow">{{ eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if heading != blank -%}
+            <h2 class="vellano-other-clubs__heading h3">{{ heading | escape }}</h2>
+          {%- endif -%}
+        </header>
+      {%- endif -%}
+
+      {%- if items_count > 0 -%}
+        <ul class="vellano-other-clubs__list" role="list">
+          {%- for club in section.settings.collections -%}
+            {%- unless club.id == current_id -%}
+              {%- liquid
+                assign club_eyebrow = club.metafields.custom.hero_eyebrow.value | strip
+                assign club_image = club.image
+                if club_image == blank and club.products.first.featured_media != blank
+                  assign club_image = club.products.first.featured_media.preview_image
+                endif
+              -%}
+              <li class="vellano-other-clubs__item">
+                <a class="vellano-other-clubs__card" href="{{ club.url }}">
+                  <span class="vellano-other-clubs__media">
+                    {%- if club_image != blank -%}
+                      {{
+                        club_image
+                        | image_url: width: 400
+                        | image_tag:
+                          widths: '96, 192, 288, 400',
+                          sizes: '(min-width: 750px) 160px, 88px',
+                          loading: 'lazy',
+                          alt: '',
+                          class: 'vellano-other-clubs__image'
+                      }}
+                    {%- endif -%}
+                  </span>
+                  <span class="vellano-other-clubs__body">
+                    {%- if club_eyebrow != blank -%}
+                      <span class="vellano-eyebrow vellano-other-clubs__eyebrow">{{ club_eyebrow | escape }}</span>
+                    {%- endif -%}
+                    <span class="vellano-other-clubs__title">{{ club.title | escape }}</span>
+                    {%- if card_label != blank -%}
+                      <span class="vellano-other-clubs__cta">{{ card_label | escape }}</span>
+                    {%- endif -%}
+                  </span>
+                </a>
+              </li>
+            {%- endunless -%}
+          {%- endfor -%}
+        </ul>
+      {%- elsif request.design_mode -%}
+        <p class="vellano-other-clubs__empty">Wybierz kolekcje klubów w ustawieniu „Kluby”.</p>
+      {%- endif -%}
+
+      {%- if all_label != blank and section.settings.all_link != blank -%}
+        <a class="vellano-text-link vellano-other-clubs__all" href="{{ section.settings.all_link }}">
+          {{- all_label | escape -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-other-clubs {
+    --vellano-other-clubs-line: rgb(var(--color-foreground-rgb) / var(--opacity-10));
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .vellano-other-clubs__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .vellano-other-clubs__heading {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .vellano-other-clubs__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-block-start: 1px solid var(--vellano-other-clubs-line);
+  }
+
+  .vellano-other-clubs__item {
+    min-width: 0;
+    border-block-end: 1px solid var(--vellano-other-clubs-line);
+  }
+
+  .vellano-other-clubs__card {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+    min-height: var(--minimum-touch-target, 44px);
+    padding-block: 12px;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .vellano-other-clubs__card:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .vellano-other-clubs__media {
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .vellano-other-clubs__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vellano-other-clubs__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .vellano-other-clubs__eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .vellano-other-clubs__title {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  .vellano-other-clubs__cta {
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .vellano-other-clubs__card:hover .vellano-other-clubs__cta {
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+  }
+
+  .vellano-other-clubs__all {
+    align-self: center;
+  }
+
+  .vellano-other-clubs__empty {
+    margin: 0;
+    text-align: center;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  @media screen and (min-width: 750px) {
+    .vellano-other-clubs__list {
+      grid-template-columns: repeat(var(--vellano-other-clubs-columns, 2), minmax(0, 1fr));
+      column-gap: 32px;
+      max-width: calc(var(--vellano-other-clubs-columns, 2) * 22rem);
+      width: 100%;
+      margin-inline: auto;
+      border-block-start: 0;
+    }
+
+    .vellano-other-clubs__item {
+      border-block: 1px solid var(--vellano-other-clubs-line);
+    }
+
+    .vellano-other-clubs__card {
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 20px;
+      padding-block: 16px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – inne kluby",
+  "tag": "section",
+  "class": "section-wrapper vellano-other-clubs-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Na prezent"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek",
+      "default": "Kibicujesz komuś innemu?"
+    },
+    {
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Kluby",
+      "info": "Bieżąca kolekcja jest pomijana automatycznie.",
+      "limit": 6
+    },
+    {
+      "type": "text",
+      "id": "card_label",
+      "label": "Tekst linku na karcie",
+      "default": "Zobacz zawieszkę"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "Link pod listą – tekst",
+      "default": "Wszystkie zawieszki"
+    },
+    {
+      "type": "url",
+      "id": "all_link",
+      "label": "Link pod listą – adres"
+    },
+    {
+      "type": "header",
+      "content": "Wygląd"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – inne kluby",
+      "category": "Vellano"
+    }
+  ]
+}
+{% endschema %}

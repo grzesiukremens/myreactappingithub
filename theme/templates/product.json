@@ -15,7 +15,7 @@
           "type": "disclosures",
           "name": "t:names.disclosures",
           "settings": {
-            "heading": "Disclosures",
+            "heading": "Bezpieczeństwo produktu",
             "heading_preset": "h5",
             "open_by_default": false,
             "icon": "caret",
@@ -38,10 +38,10 @@
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
-            "slideshow_controls_style": "counter",
-            "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "right",
-            "thumbnail_width": 44,
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 64,
             "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
@@ -68,7 +68,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "details_position": "flex-start",
-            "gap": 28,
+            "gap": 20,
             "sticky_details_desktop": true,
             "background_media": "none",
             "background_color": "",
@@ -96,7 +96,7 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
+                "gap": 10,
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -138,12 +138,12 @@
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
-                    "wrap": "pretty",
+                    "wrap": "balance",
                     "text_color": "",
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "padding-block-start": 0,
+                    "padding-block-start": 2,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
@@ -156,62 +156,76 @@
                     "show_sale_price_first": true,
                     "show_installments": false,
                     "show_tax_info": false,
-                    "type_preset": "paragraph",
+                    "type_preset": "custom",
                     "width": "100%",
                     "alignment": "left",
                     "font": "var(--font-body--family)",
-                    "font_size": "1rem",
+                    "font_size": "1.25rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
                     "text_color": "",
-                    "padding-block-start": 4,
+                    "padding-block-start": 2,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "vellano_badge_licencja": {
+                  "type": "vellano-badge",
+                  "name": "Odznaka licencji",
+                  "settings": {
+                    "source": "custom",
+                    "text": "Oficjalny produkt licencjonowany",
+                    "link": "shopify://pages/oficjalna-licencja",
+                    "style": "outline",
+                    "show_icon": false
+                  },
+                  "blocks": {}
+                },
+                "vellano_przydomek": {
+                  "type": "vellano-badge",
+                  "name": "Przydomek klubu",
+                  "settings": {
+                    "source": "nickname",
+                    "text": "Oficjalny produkt licencjonowany",
+                    "link": "",
+                    "style": "eyebrow",
+                    "show_icon": false
+                  },
+                  "blocks": {}
+                },
+                "vellano_zestaw": {
+                  "type": "vellano-trust",
+                  "name": "W zestawie",
+                  "settings": {
+                    "point_1": "Darmowa dostawa",
+                    "point_1_icon": "truck",
+                    "point_2": "Wysyłka w 2–3 dni robocze",
+                    "point_2_icon": "clock",
+                    "point_3": "Gwarancja dostawy przed Świętami",
+                    "point_3_icon": "gift",
+                    "returns_label": "Zwroty",
+                    "returns_link": "shopify://pages/zwroty",
+                    "layout": "stack",
+                    "show_set_line": true,
+                    "set_line": "W zestawie: zawieszka + łańcuszek 51 cm",
+                    "show_points": false,
+                    "show_returns": false,
+                    "padding-block-start": 2,
+                    "padding-block-end": 0
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
+                "vellano_badge_licencja",
+                "vellano_przydomek",
                 "text_xrnftG",
-                "price_tVjtKg"
+                "price_tVjtKg",
+                "vellano_zestaw"
               ]
-            },
-            "divider_VJhene": {
-              "type": "_divider",
-              "name": "t:names.divider",
-              "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "divider_color": "{{ settings.color_palette.color2 }}",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "variant_picker_R3rGDr": {
-              "type": "variant-picker",
-              "settings": {
-                "variant_style": "buttons",
-                "show_swatches": false,
-                "option_label_text_color": "",
-                "variant_style_class": "default",
-                "custom_variant_background": "{{ settings.color_palette.background }}",
-                "custom_variant_text": "{{ settings.color_palette.foreground }}",
-                "custom_variant_border": "{{ settings.color_palette.foreground }}",
-                "selected_variant_style_class": "default",
-                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
-                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
-                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
-                "alignment": "left",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
@@ -273,39 +287,161 @@
               },
               "block_order": []
             },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "t:names.product_description",
+            "vellano_zaufanie": {
+              "type": "vellano-trust",
+              "name": "Zaufanie pod przyciskiem",
               "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
+                "point_1": "Darmowa dostawa",
+                "point_1_icon": "truck",
+                "point_2": "Wysyłka w 2–3 dni robocze",
+                "point_2_icon": "clock",
+                "point_3": "Gwarancja dostawy przed Świętami",
+                "point_3_icon": "gift",
+                "returns_label": "Zwroty",
+                "returns_link": "shopify://pages/zwroty",
+                "layout": "stack",
+                "show_set_line": false,
+                "set_line": "W zestawie: zawieszka + łańcuszek 51 cm",
+                "show_points": true,
+                "show_returns": true,
                 "padding-block-start": 0,
+                "padding-block-end": 4
+              },
+              "blocks": {}
+            },
+            "accordion_vellano": {
+              "type": "accordion",
+              "name": "Akordeon: O produkcie, Dostawa, Zwroty",
+              "settings": {
+                "icon": "caret",
+                "dividers": true,
+                "divider_color": "{{ settings.color_palette.color2 }}",
+                "type_preset": "h5",
+                "background_color": "",
+                "text_color": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 4,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "row_o_produkcie": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "O produkcie",
+                    "open_by_default": true,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "opis_vellano": {
+                      "type": "vellano-description",
+                      "settings": {
+                        "remove_heading": "O produkcie"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "opis_vellano"
+                  ]
+                },
+                "row_dostawa": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Dostawa",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_dostawa": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Darmowa dostawa przy każdym zamówieniu, bez minimalnej kwoty.</p><p>Wysyłka w 2–3 dni robocze.</p><p>Obowiązuje gwarancja dostawy przed Świętami.</p><p><a href=\"/pages/dostawa\">Szczegóły dostawy</a></p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_dostawa"
+                  ]
+                },
+                "row_zwroty": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Zwroty",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_zwroty": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli coś będzie niejasne, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_zwroty"
+                  ]
+                }
+              },
+              "block_order": [
+                "row_o_produkcie",
+                "row_dostawa",
+                "row_zwroty"
+              ]
             }
           },
           "block_order": [
             "group_icgrde",
-            "divider_VJhene",
-            "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "vellano_zaufanie",
+            "accordion_vellano"
           ]
         }
       },
@@ -321,7 +457,88 @@
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 16
+      }
+    },
+    "vellano_highlights": {
+      "type": "vellano-highlights",
+      "blocks": {
+        "pill_1": {
+          "type": "pill",
+          "settings": {
+            "text": "Ręcznie osadzane cyrkonie"
+          }
+        },
+        "pill_2": {
+          "type": "pill",
+          "settings": {
+            "text": "Oficjalna licencja klubu"
+          }
+        },
+        "pill_3": {
+          "type": "pill",
+          "settings": {
+            "text": "Łańcuszek w zestawie"
+          }
+        },
+        "pill_4": {
+          "type": "pill",
+          "settings": {
+            "text": "Błysk z każdej strony"
+          }
+        }
+      },
+      "block_order": [
+        "pill_1",
+        "pill_2",
+        "pill_3",
+        "pill_4"
+      ],
+      "settings": {
+        "heading": "Herb wysadzany cyrkoniami",
+        "text": "<p>Herb ułożono z setek drobnych cyrkonii. Każdy kamień osadzany jest ręcznie, jeden przy drugim, tak by wypełnić cały kształt i oddać barwy klubu.</p><p>Gęsto osadzone kamienie pracują razem: przy każdym ruchu łapią światło, więc zawieszka błyszczy z każdego kąta – na wprost, z boku i pod światło.</p><p>Dostajesz komplet: zawieszkę z herbem i łańcuszek o splocie linkowym 51 cm. Nie musisz niczego dobierać – zakładasz ją od razu po wyjęciu z pudełka.</p><p>To efekt biżuterii wysadzanej kamieniami w cenie, która nie wymaga wyjątkowej okazji.</p><p><strong>Herb Twojego klubu – na mecz i na co dzień.</strong></p>",
+        "quote": "„Herb klubu zasługuje na jubilerskie wykonanie.”",
+        "quote_author": "Synowie jubilera, założyciele Vellano Jubiler",
+        "show_stars": false,
+        "stars_count": 5,
+        "quote_background": "#E9EAEC",
+        "media_position": "right",
+        "section_width": "page-width",
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "vellano_zanim_zapytasz": {
+      "type": "vellano-zanim-zapytasz",
+      "settings": {
+        "heading": "Zanim zapytasz",
+        "subheading": "Odpowiedzi na pytania, które warto zadać przed zakupem.",
+        "max_items": 12,
+        "show_thumbnails": true,
+        "photo_rules": "Z czego = 2\nz bliska = 3\nduża = 1\nszyi = 1\nłańcuszek jest w zestawie = 1\nwłasnym łańcuszku = 3\noficjalny = 4\nzapakowana = 4\nKiedy dotrze = 4\nnie przypadnie = 4",
+        "section_width": "page-width",
+        "show_top_border": true,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 16,
+        "padding-block-end": 48
+      }
+    },
+    "vellano_bundle": {
+      "type": "vellano-bundle",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Zestaw dla dwóch kibiców",
+        "text": "<p>2 zawieszki za 259 zł zamiast 298 zł – oszczędzasz 39 zł. Rabat nalicza się automatycznie w koszyku.</p><p>Herby wybierasz dowolnie: dwa takie same albo dwa różne.</p>",
+        "show_add_button": true,
+        "add_label": "Dodaj 2 sztuki tego herbu",
+        "show_link": true,
+        "link_label": "Wybierz drugi herb",
+        "link": "shopify://collections/wszystkie-zawieszki",
+        "section_width": "page-width",
+        "background_color": "#F7F5F1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_recommendations_qggXJq": {
@@ -331,11 +548,11 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>You may also like </h3>",
+            "text": "<h3>Kibicujesz komuś innemu?</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h4",
+            "type_preset": "h3",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -452,8 +669,8 @@
         "recommendation_type": "related",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
+        "max_products": 3,
+        "columns": 3,
         "mobile_columns": "2",
         "columns_gap": 12,
         "rows_gap": 24,
@@ -469,6 +686,9 @@
   },
   "order": [
     "main",
+    "vellano_highlights",
+    "vellano_zanim_zapytasz",
+    "vellano_bundle",
     "product_recommendations_qggXJq"
   ]
 }

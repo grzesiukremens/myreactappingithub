@@ -1,0 +1,101 @@
+{%- doc -%}
+  Vellano – opis produktu do wnętrza akordeonu „O produkcie” (theme block).
+  Renderuje closest.product.description jako tekst RTE. Gdy ustawiono `remove_heading`, usuwa pierwszy
+  śródtytuł <h3> o tej treści (opisy zaczynają się od <h3>O produkcie</h3>, co dublowałoby nagłówek akordeonu).
+  Śródtytuły w opisie (np. „Specyfikacja”) dostają spokojny styl wersalików zamiast dużego nagłówka.
+  Ustawienia czytane bezpośrednio z block.settings.
+
+  @example
+  {% content_for 'block', type: 'vellano-description', id: 'vellano-description', closest.product: product %}
+{%- enddoc -%}
+
+{%- liquid
+  assign product_resource = closest.product
+  if product_resource == blank
+    assign product_resource = product
+  endif
+
+  assign description = product_resource.description
+  assign heading_to_remove = block.settings.remove_heading | strip
+  if heading_to_remove != blank
+    assign heading_html = '<h3>' | append: heading_to_remove | append: '</h3>'
+    assign description = description | remove_first: heading_html
+  endif
+-%}
+
+{%- if description != blank -%}
+  <div class="vellano-description rte" {{ block.shopify_attributes }}>
+    {{ description }}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-description {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    overflow-wrap: anywhere;
+  }
+
+  .vellano-description p {
+    margin: 0 0 0.85em;
+  }
+
+  .vellano-description strong {
+    color: var(--color-foreground);
+    font-weight: 500;
+  }
+
+  .vellano-description.rte :is(h2, h3, h4) {
+    margin: 1.6em 0 0.6em;
+    font-family: var(--font-body--family);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+  }
+
+  .vellano-description > :first-child {
+    margin-block-start: 0;
+  }
+
+  .vellano-description.rte ul {
+    margin: 0 0 1em;
+    padding-inline-start: 1.1em;
+  }
+
+  .vellano-description li + li {
+    margin-block-start: 0.3em;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – opis produktu",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Wyświetla opis produktu z panelu Shopify."
+    },
+    {
+      "type": "text",
+      "id": "remove_heading",
+      "label": "Ukryj śródtytuł z opisu",
+      "info": "Usuwa pierwszy śródtytuł H3 o tej treści, żeby nie dublował nagłówka akordeonu. Puste pole = opis bez zmian.",
+      "default": "O produkcie"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – opis produktu",
+      "category": "Produkt"
+    }
+  ]
+}
+{% endschema %}

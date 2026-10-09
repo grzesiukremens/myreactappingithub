@@ -1,0 +1,83 @@
+{%- doc -%}
+  Vellano – eyebrow: krótki napis nad nagłówkiem (np. „Wykonanie”, „Na prezent”).
+  Krój akcentowy (EB Garamond) w wersalikach z rozstrzeleniem 0,18em, jak „J U B I L E R” w logo.
+  Działa w każdej sekcji lub grupie Horizon, która przyjmuje @theme (Section, Media with content, Product list, Group).
+  Tekst przyjmuje źródła dynamiczne, np. {{ closest.product.metafields.custom.przydomek.value }}.
+  Pusty tekst = blok nic nie wyświetla (w edytorze zostaje pusty uchwyt do zaznaczenia).
+
+  @example
+  "eyebrow": { "type": "vellano-eyebrow", "settings": { "text": "Wykonanie", "alignment": "center" } }
+{%- enddoc -%}
+
+{% render 'vellano-ui-styles' %}
+
+{%- assign eyebrow_text = block.settings.text | strip -%}
+
+{%- if eyebrow_text != blank or request.design_mode -%}
+  <p
+    class="vellano-eyebrow vellano-eyebrow-block{% if block.settings.tone == 'strong' %} vellano-eyebrow-block--strong{% endif %}"
+    style="--vellano-eyebrow-align: {{ block.settings.alignment }};"
+    {{ block.shopify_attributes }}
+  >
+    {{- eyebrow_text | escape -}}
+  </p>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-eyebrow-block {
+    max-width: 100%;
+    text-align: var(--vellano-eyebrow-align, left);
+  }
+
+  .vellano-eyebrow-block:empty {
+    min-height: 1.4em;
+    min-width: 4em;
+  }
+
+  .vellano-eyebrow-block--strong {
+    color: var(--color-foreground);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – eyebrow",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Tekst",
+      "info": "Krótko, 1–4 słowa. Wersaliki i rozstrzelenie dodaje motyw.",
+      "default": "Vellano Jubiler"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Wyrównanie tekstu",
+      "options": [
+        { "value": "left", "label": "Do lewej" },
+        { "value": "center", "label": "Do środka" },
+        { "value": "right", "label": "Do prawej" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "tone",
+      "label": "Kolor",
+      "options": [
+        { "value": "muted", "label": "Drugorzędny (szary)" },
+        { "value": "strong", "label": "Jak tekst główny" }
+      ],
+      "default": "muted"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – eyebrow",
+      "category": "Vellano"
+    }
+  ]
+}
+{% endschema %}

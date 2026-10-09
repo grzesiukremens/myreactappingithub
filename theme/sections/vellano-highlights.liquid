@@ -1,0 +1,522 @@
+{% comment %}
+  Section contract.
+  Vellano – wyróżniki produktu pod kartą produktu (styl salonu jubilerskiego):
+  rząd pigułek z ptaszkiem (bloki "pill"), nagłówek w wersalikach z cienką linią, krótkie akapity,
+  szare pole z cytatem marki (opcjonalne gwiazdki pod prawdziwą opinię) i zdjęcie produktu.
+  Zdjęcie: ustawienie `image`; gdy puste – closest.product.media[2] (ujęcie pod kątem),
+  a gdy go brak – closest.product.featured_media. Bez zdjęcia układ jest jednokolumnowy.
+  Mobile (do 989 px): pigułki (przewijane poziomo, scroll-snap) → zdjęcie → nagłówek i tekst → cytat.
+  Desktop (od 990 px): tekst i cytat w lewej kolumnie, zdjęcie w prawej (ustawienie `media_position`).
+  @example
+  <!-- templates/product.json → "vellano_highlights": { "type": "vellano-highlights", "blocks": { "pill_1": { "type": "pill", "settings": { "text": "Łańcuszek w zestawie" } } }, "block_order": ["pill_1"] } -->
+{% endcomment %}
+
+{%- liquid
+  assign product_resource = closest.product
+  if product_resource == blank
+    assign product_resource = product
+  endif
+
+  assign media_image = section.settings.image
+  if media_image == blank and product_resource != blank
+    if product_resource.media[2] != blank
+      assign media_image = product_resource.media[2].preview_image
+    elsif product_resource.featured_media != blank
+      assign media_image = product_resource.featured_media.preview_image
+    endif
+  endif
+
+  assign media_alt = ''
+  if media_image != blank
+    assign media_alt = media_image.alt | default: product_resource.title | escape
+  endif
+
+  assign heading = section.settings.heading | strip
+  assign quote = section.settings.quote | strip
+
+  capture modifier_classes
+    if media_image == blank
+      echo ' vellano-highlights--no-media'
+    elsif section.settings.media_position == 'left'
+      echo ' vellano-highlights--media-left'
+    endif
+  endcapture
+-%}
+
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="section section--{{ section.settings.section_width }} color-custom-{{ section.id }} spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="vellano-highlights{{ modifier_classes }}">
+    {%- if section.blocks.size > 0 -%}
+      <ul class="vellano-highlights__pills" role="list">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.text != blank -%}
+            <li class="vellano-highlights__pill" {{ block.shopify_attributes }}>
+              {%- render 'vellano-icon', icon: 'check', class: 'vellano-highlights__pill-icon', size: 14 -%}
+              <span>{{ block.settings.text | escape }}</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if media_image != blank -%}
+      <div class="vellano-highlights__media">
+        {{
+          media_image
+          | image_url: width: 1500
+          | image_tag:
+            widths: '375, 550, 750, 1000, 1250, 1500',
+            sizes: '(min-width: 990px) min(45vw, 640px), calc(100vw - 32px)',
+            loading: 'lazy',
+            alt: media_alt,
+            class: 'vellano-highlights__image'
+        }}
+      </div>
+    {%- endif -%}
+
+    {%- if heading != blank or section.settings.text != blank -%}
+      <div class="vellano-highlights__content">
+        {%- if heading != blank -%}
+          <h2 class="vellano-highlights__heading">{{ heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="vellano-highlights__text rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if quote != blank -%}
+      <figure
+        class="vellano-highlights__quote"
+        style="--vellano-quote-background: {{ section.settings.quote_background | default: '#E9EAEC' }};"
+      >
+        {%- if section.settings.show_stars -%}
+          <div
+            class="vellano-highlights__stars"
+            role="img"
+            aria-label="Ocena: {{ section.settings.stars_count }} na 5"
+          >
+            {%- for i in (1..section.settings.stars_count) -%}
+              {%- render 'vellano-icon', icon: 'star', class: 'vellano-highlights__star', size: 14 -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        <blockquote class="vellano-highlights__quote-text">
+          <p>{{ quote | escape | newline_to_br }}</p>
+        </blockquote>
+        {%- if section.settings.quote_author != blank -%}
+          <figcaption class="vellano-highlights__quote-author">{{ section.settings.quote_author | escape }}</figcaption>
+        {%- endif -%}
+      </figure>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vellano-highlights {
+    --vellano-line: rgb(var(--color-foreground-rgb) / var(--opacity-15));
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'pills'
+      'media'
+      'content'
+      'quote';
+    row-gap: 24px;
+    min-width: 0;
+  }
+
+  .vellano-highlights--no-media {
+    grid-template-areas:
+      'pills'
+      'content'
+      'quote';
+  }
+
+  /* Pigułki */
+  .vellano-highlights__pills {
+    grid-area: pills;
+    display: flex;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vellano-highlights__pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vellano-highlights__pill {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding-inline: 14px;
+    border: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-25));
+    border-radius: 999px;
+    color: var(--color-foreground);
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  .vellano-highlights__pill-icon {
+    flex: 0 0 auto;
+  }
+
+  @media screen and (max-width: 989px) {
+    /* Na telefonie rząd pigułek dobiega do krawędzi ekranu, ale pierwsza pigułka trzyma margines strony. */
+    .section--page-width .vellano-highlights__pills {
+      margin-inline: calc(var(--page-margin) * -1);
+      padding-inline: var(--page-margin);
+      scroll-padding-inline: var(--page-margin);
+    }
+  }
+
+  /* Zdjęcie */
+  .vellano-highlights__media {
+    grid-area: media;
+    min-width: 0;
+    overflow: hidden;
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .vellano-highlights__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Nagłówek i tekst */
+  .vellano-highlights__content {
+    grid-area: content;
+    min-width: 0;
+  }
+
+  .vellano-highlights__heading {
+    margin: 0 0 20px;
+    padding-block-end: 16px;
+    border-block-end: 1px solid var(--vellano-line);
+    font-family: var(--font-accent--family);
+    font-style: var(--font-accent--style);
+    font-weight: var(--font-accent--weight);
+    font-size: 1.125rem;
+    line-height: 1.3;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+  }
+
+  .vellano-highlights__text {
+    max-width: 34em;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .vellano-highlights__text p {
+    margin: 0 0 0.85em;
+  }
+
+  .vellano-highlights__text p:last-child {
+    margin-block-end: 0;
+  }
+
+  .vellano-highlights__text strong {
+    color: var(--color-foreground);
+    font-weight: 500;
+  }
+
+  /* Cytat marki */
+  .vellano-highlights__quote {
+    grid-area: quote;
+    min-width: 0;
+    margin: 0;
+    padding: 24px;
+    background-color: var(--vellano-quote-background, #e9eaec);
+    color: #141414;
+  }
+
+  .vellano-highlights__stars {
+    display: flex;
+    gap: 2px;
+    margin-block-end: 12px;
+  }
+
+  .vellano-highlights__quote-text {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .vellano-highlights__quote-text p {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: 1.375rem;
+    line-height: 1.3;
+    text-wrap: pretty;
+  }
+
+  .vellano-highlights__quote-author {
+    margin-block-start: 12px;
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5e5e5e;
+  }
+
+  @media screen and (min-width: 990px) {
+    .vellano-highlights {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        'pills media'
+        'content media'
+        'quote media';
+      column-gap: 64px;
+      row-gap: 32px;
+      align-items: start;
+    }
+
+    .vellano-highlights--media-left {
+      grid-template-areas:
+        'media pills'
+        'media content'
+        'media quote';
+    }
+
+    .vellano-highlights--no-media {
+      grid-template-columns: minmax(0, 48rem);
+      grid-template-rows: auto;
+      grid-template-areas:
+        'pills'
+        'content'
+        'quote';
+    }
+
+    .vellano-highlights__pills {
+      flex-wrap: wrap;
+      overflow: visible;
+    }
+
+    .vellano-highlights__heading {
+      font-size: 1.25rem;
+    }
+
+    .vellano-highlights__quote {
+      padding: 32px;
+    }
+
+    .vellano-highlights__quote-text p {
+      font-size: 1.625rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – wyróżniki",
+  "tag": "section",
+  "class": "section-wrapper vellano-highlights-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "pill",
+      "name": "Pigułka",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Tekst",
+          "default": "Łańcuszek w zestawie"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Treść"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek",
+      "info": "Wyświetlany wersalikami z rozstrzeleniem i cienką linią pod spodem.",
+      "default": "Herb wysadzany cyrkoniami"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Tekst",
+      "default": "<p>Herb ułożono z setek drobnych cyrkonii. Każdy kamień osadzany jest ręcznie, jeden przy drugim, tak by wypełnić cały kształt i oddać barwy klubu.</p><p>Gęsto osadzone kamienie pracują razem: przy każdym ruchu łapią światło, więc zawieszka błyszczy z każdego kąta – na wprost, z boku i pod światło.</p><p>Dostajesz komplet: zawieszkę z herbem i łańcuszek o splocie linkowym 51 cm. Nie musisz niczego dobierać – zakładasz ją od razu po wyjęciu z pudełka.</p><p>To efekt biżuterii wysadzanej kamieniami w cenie, która nie wymaga wyjątkowej okazji.</p><p><strong>Herb Twojego klubu – na mecz i na co dzień.</strong></p>"
+    },
+    {
+      "type": "header",
+      "content": "Cytat"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Cytat",
+      "info": "Na start cytat marki. Prawdziwą opinię klienta wstaw dopiero, gdy ją otrzymasz.",
+      "default": "„Herb klubu zasługuje na jubilerskie wykonanie.”"
+    },
+    {
+      "type": "text",
+      "id": "quote_author",
+      "label": "Podpis",
+      "default": "Synowie jubilera, założyciele Vellano Jubiler"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Pokaż gwiazdki",
+      "info": "Włącz tylko przy prawdziwej opinii klienta.",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "stars_count",
+      "label": "Liczba gwiazdek",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5,
+      "visible_if": "{{ section.settings.show_stars }}"
+    },
+    {
+      "type": "color",
+      "id": "quote_background",
+      "label": "Tło cytatu",
+      "default": "#E9EAEC"
+    },
+    {
+      "type": "header",
+      "content": "Zdjęcie"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Zdjęcie",
+      "info": "Puste pole = 3. zdjęcie z galerii produktu (ujęcie pod kątem), a gdy go brak – zdjęcie główne."
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Zdjęcie na komputerze",
+      "options": [
+        {
+          "value": "right",
+          "label": "Po prawej"
+        },
+        {
+          "value": "left",
+          "label": "Po lewej"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "header",
+      "content": "Układ"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Szerokość",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Szerokość strony"
+        },
+        {
+          "value": "full-width",
+          "label": "Pełna szerokość"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "{{ settings.color_palette.background }}"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – wyróżniki produktu",
+      "blocks": [
+        {
+          "type": "pill",
+          "settings": {
+            "text": "Ręcznie osadzane cyrkonie"
+          }
+        },
+        {
+          "type": "pill",
+          "settings": {
+            "text": "Oficjalna licencja klubu"
+          }
+        },
+        {
+          "type": "pill",
+          "settings": {
+            "text": "Łańcuszek w zestawie"
+          }
+        },
+        {
+          "type": "pill",
+          "settings": {
+            "text": "Błysk z każdej strony"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

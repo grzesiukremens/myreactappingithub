@@ -1,0 +1,341 @@
+{%- doc -%}
+  Vellano – linijka zaufania na karcie produktu (theme block, np. w _product-details).
+  Pokazuje (każdą część można wyłączyć):
+  - wyraźną linię „W zestawie: zawieszka + łańcuszek 51 cm”,
+  - do 3 obietnic z liniowymi ikonami (domyślnie: Darmowa dostawa · Wysyłka w 2–3 dni robocze · Gwarancja dostawy przed Świętami),
+  - link „Zwroty” (ustawienie `returns_link`, gdy puste – strona o handle „zwroty”).
+  Na karcie produktu używamy dwóch instancji: sama linia zestawu pod ceną oraz obietnice + Zwroty pod przyciskami zakupu.
+  Ustawienia czytane bezpośrednio z block.settings.
+
+  @example
+  {% content_for 'block', type: 'vellano-trust', id: 'vellano-trust' %}
+{%- enddoc -%}
+
+{%- liquid
+  assign block_settings = block.settings
+  assign set_line = block_settings.set_line | strip
+
+  assign returns_url = block_settings.returns_link
+  if returns_url == blank
+    assign returns_url = pages['zwroty'].url
+  endif
+  assign returns_label = block_settings.returns_label | strip
+
+  assign has_points = false
+  if block_settings.show_points
+    for i in (1..3)
+      assign point_key = 'point_' | append: i
+      if block_settings[point_key] != blank
+        assign has_points = true
+      endif
+    endfor
+  endif
+
+  assign has_returns = false
+  if block_settings.show_returns and returns_url != blank and returns_label != blank
+    assign has_returns = true
+  endif
+
+  assign has_set_line = false
+  if block_settings.show_set_line and set_line != blank
+    assign has_set_line = true
+  endif
+-%}
+
+{%- if has_set_line or has_points or has_returns -%}
+  <div
+    class="vellano-trust vellano-trust--{{ block_settings.layout }} spacing-style"
+    style="{% render 'spacing-style', settings: block_settings %}"
+    {{ block.shopify_attributes }}
+  >
+    {%- if has_set_line -%}
+      <p class="vellano-trust__set">
+        {%- render 'vellano-icon', icon: 'link', class: 'vellano-trust__icon', size: 20 -%}
+        <span>{{ set_line | escape }}</span>
+      </p>
+    {%- endif -%}
+
+    {%- if has_points or has_returns -%}
+      <ul class="vellano-trust__list" role="list">
+        {%- if has_points -%}
+          {%- for i in (1..3) -%}
+            {%- liquid
+              assign point_key = 'point_' | append: i
+              assign icon_key = 'point_' | append: i | append: '_icon'
+              assign point_text = block_settings[point_key] | strip
+            -%}
+            {%- if point_text != blank -%}
+              <li class="vellano-trust__item">
+                {%- render 'vellano-icon', icon: block_settings[icon_key], class: 'vellano-trust__icon', size: 18 -%}
+                <span>{{ point_text | escape }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+        {%- if has_returns -%}
+          <li class="vellano-trust__item">
+            {%- render 'vellano-icon', icon: 'return', class: 'vellano-trust__icon', size: 18 -%}
+            <a class="vellano-trust__link" href="{{ returns_url }}">{{ returns_label | escape }}</a>
+          </li>
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-trust {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    color: var(--color-foreground);
+  }
+
+  .vellano-trust__set {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-foreground);
+  }
+
+  .vellano-trust__icon {
+    flex: 0 0 auto;
+  }
+
+  .vellano-trust__list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vellano-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .vellano-trust__item .vellano-trust__icon {
+    color: var(--color-foreground);
+  }
+
+  .vellano-trust__link {
+    position: relative;
+    color: var(--color-foreground);
+    text-decoration-line: underline;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  /* Powiększony obszar dotyku linku (min. 44 px) bez zmiany układu. */
+  .vellano-trust__link::after {
+    content: '';
+    position: absolute;
+    inset: -12px -8px;
+  }
+
+  .vellano-trust__link:hover {
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+  }
+
+  .vellano-trust__link:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .vellano-trust--inline .vellano-trust__list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 8px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – zaufanie",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Zestaw"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_set_line",
+      "label": "Pokaż linię zestawu",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "set_line",
+      "label": "Linia zestawu",
+      "default": "W zestawie: zawieszka + łańcuszek 51 cm",
+      "visible_if": "{{ block.settings.show_set_line }}"
+    },
+    {
+      "type": "header",
+      "content": "Obietnice"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_points",
+      "label": "Pokaż obietnice",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "point_1",
+      "label": "Obietnica 1",
+      "default": "Darmowa dostawa",
+      "visible_if": "{{ block.settings.show_points }}"
+    },
+    {
+      "type": "select",
+      "id": "point_1_icon",
+      "label": "Ikona 1",
+      "options": [
+        { "value": "truck", "label": "Dostawa" },
+        { "value": "clock", "label": "Zegar" },
+        { "value": "gift", "label": "Prezent" },
+        { "value": "box", "label": "Pudełko" },
+        { "value": "shield", "label": "Tarcza" },
+        { "value": "check", "label": "Ptaszek" }
+      ],
+      "default": "truck",
+      "visible_if": "{{ block.settings.show_points }}"
+    },
+    {
+      "type": "text",
+      "id": "point_2",
+      "label": "Obietnica 2",
+      "default": "Wysyłka w 2–3 dni robocze",
+      "visible_if": "{{ block.settings.show_points }}"
+    },
+    {
+      "type": "select",
+      "id": "point_2_icon",
+      "label": "Ikona 2",
+      "options": [
+        { "value": "truck", "label": "Dostawa" },
+        { "value": "clock", "label": "Zegar" },
+        { "value": "gift", "label": "Prezent" },
+        { "value": "box", "label": "Pudełko" },
+        { "value": "shield", "label": "Tarcza" },
+        { "value": "check", "label": "Ptaszek" }
+      ],
+      "default": "clock",
+      "visible_if": "{{ block.settings.show_points }}"
+    },
+    {
+      "type": "text",
+      "id": "point_3",
+      "label": "Obietnica 3",
+      "info": "Po sezonie świątecznym zmień na „Łańcuszek w zestawie” albo wyczyść pole.",
+      "default": "Gwarancja dostawy przed Świętami",
+      "visible_if": "{{ block.settings.show_points }}"
+    },
+    {
+      "type": "select",
+      "id": "point_3_icon",
+      "label": "Ikona 3",
+      "options": [
+        { "value": "truck", "label": "Dostawa" },
+        { "value": "clock", "label": "Zegar" },
+        { "value": "gift", "label": "Prezent" },
+        { "value": "box", "label": "Pudełko" },
+        { "value": "shield", "label": "Tarcza" },
+        { "value": "check", "label": "Ptaszek" }
+      ],
+      "default": "gift",
+      "visible_if": "{{ block.settings.show_points }}"
+    },
+    {
+      "type": "header",
+      "content": "Zwroty"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_returns",
+      "label": "Pokaż link do zwrotów",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "returns_label",
+      "label": "Tekst linku",
+      "default": "Zwroty",
+      "visible_if": "{{ block.settings.show_returns }}"
+    },
+    {
+      "type": "url",
+      "id": "returns_link",
+      "label": "Link",
+      "info": "Puste pole = strona /pages/zwroty. Nie podawaj liczby dni na zwrot – zasady są tylko na stronie Zwroty.",
+      "visible_if": "{{ block.settings.show_returns }}"
+    },
+    {
+      "type": "header",
+      "content": "Układ"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Układ obietnic",
+      "options": [
+        { "value": "stack", "label": "Lista" },
+        { "value": "inline", "label": "W rzędzie" }
+      ],
+      "default": "stack"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – zaufanie i zestaw",
+      "category": "Produkt"
+    },
+    {
+      "name": "Vellano – linia zestawu",
+      "category": "Produkt",
+      "settings": {
+        "show_points": false,
+        "show_returns": false
+      }
+    }
+  ]
+}
+{% endschema %}

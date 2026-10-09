@@ -1,0 +1,212 @@
+{%- doc -%}
+  Vellano – odznaka lub nadtytuł na karcie produktu (theme block, np. w grupie nad tytułem).
+  Źródło tekstu (`source`):
+  - "custom": własny tekst z ustawienia `text` (domyślnie „Oficjalny produkt licencjonowany”),
+  - "nickname": przydomek klubu z metapola closest.product.metafields.custom.przydomek.
+  Styl (`style`): "outline" – odznaka z cienkim obrysem, "eyebrow" – wersaliki z rozstrzeleniem bez ramki.
+  Gdy ustawiony jest `link`, odznaka jest linkiem (np. do /pages/oficjalna-licencja).
+  Pusty tekst = nic nie renderuje (w edytorze motywu pokazuje podpowiedź).
+  Ustawienia czytane bezpośrednio z block.settings.
+
+  @example
+  {% content_for 'block', type: 'vellano-badge', id: 'vellano-badge', closest.product: product %}
+{%- enddoc -%}
+
+{%- liquid
+  assign block_settings = block.settings
+  assign product_resource = closest.product
+  if product_resource == blank
+    assign product_resource = product
+  endif
+
+  if block_settings.source == 'nickname'
+    assign badge_text = product_resource.metafields.custom.przydomek.value | strip
+  else
+    assign badge_text = block_settings.text | strip
+  endif
+
+  assign badge_link = block_settings.link
+-%}
+
+{%- if badge_text != blank -%}
+  <div
+    class="vellano-badge vellano-badge--{{ block_settings.style }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- if badge_link != blank -%}
+      <a class="vellano-badge__label vellano-badge__label--link" href="{{ badge_link }}">
+        {%- if block_settings.show_icon -%}
+          {%- render 'vellano-icon', icon: 'shield', class: 'vellano-badge__icon', size: 14 -%}
+        {%- endif -%}
+        <span>{{ badge_text | escape }}</span>
+      </a>
+    {%- else -%}
+      <p class="vellano-badge__label">
+        {%- if block_settings.show_icon -%}
+          {%- render 'vellano-icon', icon: 'shield', class: 'vellano-badge__icon', size: 14 -%}
+        {%- endif -%}
+        <span>{{ badge_text | escape }}</span>
+      </p>
+    {%- endif -%}
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="vellano-badge vellano-badge--empty" {{ block.shopify_attributes }}>
+    <p class="vellano-badge__label">
+      {%- if block_settings.source == 'nickname' -%}
+        Przydomek: uzupełnij metapole custom.przydomek
+      {%- else -%}
+        Odznaka: wpisz tekst
+      {%- endif -%}
+    </p>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-badge {
+    display: flex;
+    min-width: 0;
+  }
+
+  .vellano-badge__label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    font-family: var(--font-accent--family);
+    font-style: var(--font-accent--style);
+    font-weight: var(--font-accent--weight);
+    font-size: 0.75rem;
+    line-height: 1.3;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-foreground);
+  }
+
+  .vellano-badge--outline .vellano-badge__label {
+    min-height: 28px;
+    padding: 4px 10px;
+    border: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-40));
+    border-radius: 2px;
+  }
+
+  .vellano-badge--eyebrow .vellano-badge__label {
+    letter-spacing: 0.18em;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+  }
+
+  .vellano-badge__icon {
+    flex: 0 0 auto;
+  }
+
+  /* Powiększony obszar dotyku linku (min. 44 px) bez zmiany wyglądu. */
+  .vellano-badge__label--link::after {
+    content: '';
+    position: absolute;
+    inset: -8px -4px;
+  }
+
+  .vellano-badge--outline .vellano-badge__label--link:hover {
+    border-color: var(--color-foreground);
+  }
+
+  .vellano-badge--eyebrow .vellano-badge__label--link:hover {
+    color: var(--color-foreground);
+  }
+
+  .vellano-badge__label--link:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .vellano-badge--empty .vellano-badge__label {
+    padding: 4px 8px;
+    border: 1px dashed rgb(var(--color-foreground-rgb) / var(--opacity-30));
+    letter-spacing: normal;
+    text-transform: none;
+    font-family: var(--font-body--family);
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-60));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .vellano-badge__label--link {
+      transition: border-color var(--animation-speed) var(--animation-easing),
+        color var(--animation-speed) var(--animation-easing);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – odznaka",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Źródło tekstu",
+      "options": [
+        {
+          "value": "custom",
+          "label": "Własny tekst"
+        },
+        {
+          "value": "nickname",
+          "label": "Przydomek klubu (metapole custom.przydomek)"
+        }
+      ],
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Tekst",
+      "default": "Oficjalny produkt licencjonowany",
+      "visible_if": "{{ block.settings.source == 'custom' }}"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Np. strona Oficjalna licencja. Puste pole = bez linku."
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Styl",
+      "options": [
+        {
+          "value": "outline",
+          "label": "Odznaka z obrysem"
+        },
+        {
+          "value": "eyebrow",
+          "label": "Nadtytuł (wersaliki)"
+        }
+      ],
+      "default": "outline"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Ikona tarczy",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – odznaka licencji",
+      "category": "Produkt"
+    },
+    {
+      "name": "Vellano – przydomek klubu",
+      "category": "Produkt",
+      "settings": {
+        "source": "nickname",
+        "style": "eyebrow"
+      }
+    }
+  ]
+}
+{% endschema %}

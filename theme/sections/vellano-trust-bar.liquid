@@ -1,0 +1,275 @@
+{% comment %}
+  Section contract.
+  Vellano – pasek zaufania: 2–4 krótkie obietnice z liniowymi ikonami (snippet vellano-icon).
+  Bloki „Punkt” (ikona, tekst, opcjonalny link do strony z wyjaśnieniem, np. /pages/dostawa).
+  Mobile (do 749 px): siatka 2×2, ikona nad tekstem, cienkie linie między polami.
+  Od 750 px: jeden rząd, ikona obok tekstu. Cała pozycja z linkiem jest celem dotyku min. 44 px.
+  Teksty obietnic tylko zatwierdzone: „Oficjalna licencja klubu”, „Darmowa dostawa”,
+  „Wysyłka w 2–3 dni robocze”, „Gwarancja dostawy przed Świętami” (po Świętach: „Łańcuszek w zestawie”).
+  @example
+  <!-- "vellano_trust_bar": { "type": "vellano-trust-bar", "blocks": { "item_1": { "type": "item", "settings": { "icon": "shield", "text": "Oficjalna licencja klubu" } } }, "block_order": ["item_1"] } -->
+{% endcomment %}
+
+{%- liquid
+  assign items_count = 0
+  for block in section.blocks
+    if block.settings.text != blank
+      assign items_count = items_count | plus: 1
+    endif
+  endfor
+  assign desktop_columns = items_count | at_least: 1 | at_most: 4
+-%}
+
+{%- if items_count > 0 or request.design_mode -%}
+  {%- if section.settings.background_color != blank -%}
+    {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+  {%- endif -%}
+
+  <div class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"></div>
+  <div
+    class="section section--{{ section.settings.section_width }} spacing-style{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    <ul
+      class="vellano-trust-bar{% if section.settings.show_lines %} vellano-trust-bar--lines{% endif %}"
+      role="list"
+      style="
+        --vellano-trust-bar-columns: {{ desktop_columns }};
+        {% if section.settings.line_color != blank %}--vellano-trust-bar-line: {{ section.settings.line_color }};{% endif %}
+      "
+    >
+      {%- for block in section.blocks -%}
+        {%- assign item_text = block.settings.text | strip -%}
+        {%- if item_text != blank -%}
+          <li class="vellano-trust-bar__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a class="vellano-trust-bar__inner vellano-trust-bar__inner--link" href="{{ block.settings.link }}">
+            {%- else -%}
+              <span class="vellano-trust-bar__inner">
+            {%- endif -%}
+            {%- if block.settings.icon != 'none' -%}
+              {%- render 'vellano-icon', icon: block.settings.icon, class: 'vellano-trust-bar__icon', size: 20 -%}
+            {%- endif -%}
+            <span class="vellano-trust-bar__text">{{ item_text | escape }}</span>
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- else -%}
+              </span>
+            {%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-trust-bar {
+    --vellano-trust-bar-line: rgb(var(--color-foreground-rgb) / var(--opacity-10));
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vellano-trust-bar--lines {
+    border-block: 1px solid var(--vellano-trust-bar-line);
+  }
+
+  .vellano-trust-bar__item {
+    display: flex;
+    min-width: 0;
+  }
+
+  /* Linie wewnętrzne siatki 2×2 na telefonie. */
+  .vellano-trust-bar--lines .vellano-trust-bar__item:nth-child(odd):not(:last-child) {
+    border-inline-end: 1px solid var(--vellano-trust-bar-line);
+  }
+
+  .vellano-trust-bar--lines .vellano-trust-bar__item:nth-child(n + 3) {
+    border-block-start: 1px solid var(--vellano-trust-bar-line);
+  }
+
+  .vellano-trust-bar__inner {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    min-height: var(--minimum-touch-target, 44px);
+    padding: 16px 8px;
+    color: var(--color-foreground);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .vellano-trust-bar__inner--link:hover .vellano-trust-bar__text {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .vellano-trust-bar__inner--link:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: -2px;
+  }
+
+  .vellano-trust-bar__icon {
+    flex: 0 0 auto;
+  }
+
+  .vellano-trust-bar__text {
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
+  @media screen and (min-width: 750px) {
+    .vellano-trust-bar {
+      grid-template-columns: repeat(var(--vellano-trust-bar-columns, 4), minmax(0, 1fr));
+    }
+
+    .vellano-trust-bar--lines .vellano-trust-bar__item:nth-child(odd):not(:last-child) {
+      border-inline-end: 0;
+    }
+
+    .vellano-trust-bar--lines .vellano-trust-bar__item:nth-child(n + 3) {
+      border-block-start: 0;
+    }
+
+    .vellano-trust-bar--lines .vellano-trust-bar__item + .vellano-trust-bar__item {
+      border-inline-start: 1px solid var(--vellano-trust-bar-line);
+    }
+
+    .vellano-trust-bar__inner {
+      flex-direction: row;
+      gap: 10px;
+      padding: 18px 16px;
+    }
+
+    .vellano-trust-bar__text {
+      font-size: 0.875rem;
+      text-align: start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – pasek zaufania",
+  "tag": "section",
+  "class": "section-wrapper vellano-trust-bar-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Punkt",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ikona",
+          "options": [
+            { "value": "none", "label": "Bez ikony" },
+            { "value": "shield", "label": "Licencja (tarcza)" },
+            { "value": "truck", "label": "Dostawa" },
+            { "value": "clock", "label": "Czas wysyłki" },
+            { "value": "gift", "label": "Prezent" },
+            { "value": "box", "label": "Pudełko" },
+            { "value": "link", "label": "Łańcuszek" },
+            { "value": "return", "label": "Zwroty" },
+            { "value": "check", "label": "Ptaszek" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Tekst",
+          "info": "Tylko zatwierdzone obietnice. Bez liczby dni na zwrot i bez dat granicznych.",
+          "default": "Darmowa dostawa"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (opcjonalnie)",
+          "info": "Strona, która wyjaśnia obietnicę, np. Dostawa albo Oficjalna licencja."
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Szerokość",
+      "options": [
+        { "value": "page-width", "label": "Szerokość strony" },
+        { "value": "full-width", "label": "Pełna szerokość" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_lines",
+      "label": "Cienkie linie",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Kolor linii",
+      "default": "#E6E2DA",
+      "visible_if": "{{ section.settings.show_lines }}"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – pasek zaufania",
+      "category": "Vellano",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "shield", "text": "Oficjalna licencja klubu", "link": "shopify://pages/oficjalna-licencja" } },
+        { "type": "item", "settings": { "icon": "truck", "text": "Darmowa dostawa", "link": "shopify://pages/dostawa" } },
+        { "type": "item", "settings": { "icon": "clock", "text": "Wysyłka w 2–3 dni robocze", "link": "shopify://pages/dostawa" } },
+        { "type": "item", "settings": { "icon": "gift", "text": "Gwarancja dostawy przed Świętami", "link": "shopify://pages/dostawa" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

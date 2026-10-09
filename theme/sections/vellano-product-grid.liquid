@@ -1,0 +1,329 @@
+{% comment %}
+  Section contract.
+  Vellano – siatka produktów kolekcji bez filtrów, sortowania i licznika produktów.
+  Źródło: kolekcja wybrana w ustawieniach, a gdy pole jest puste – bieżąca kolekcja (szablony collection.*).
+  Każdą kartę renderuje statyczny blok Horizon `_product-card` (id „product-card”), więc karta ma te same
+  bloki co w motywie (zdjęcie, tekst z metapola, tytuł, cena, bloki aplikacji, np. gwiazdki opinii).
+  Mobile (do 749 px): 1 kolumna z dużymi kartami. Od 750 px: liczba kolumn z ustawień (domyślnie 3),
+  ale nie więcej niż liczba produktów. Jeden produkt = jedna duża, wyśrodkowana karta.
+  Pod siatką renderują się bloki dynamiczne (np. tekst o zestawie 2 za 259 zł).
+  Na stronie bieżącej kolekcji siatka jest owinięta w <collection-component> (assets/view-event-elements.js),
+  więc tak jak main-collection wysyła standardowe zdarzenie wyświetlenia kolekcji (piksele reklamowe).
+  W edytorze, gdy kolekcja jest pusta, sekcja pokazuje 3 karty zastępcze.
+  @example
+  <!-- templates/collection.klub.json → "vellano_product_grid": { "type": "vellano-product-grid", "settings": { "columns_desktop": 3, "single_large": true }, "blocks": { "product-card": { "type": "_product-card", "static": true, … } } } -->
+{% endcomment %}
+
+{%- liquid
+  assign source = section.settings.collection
+  if source == blank
+    assign source = collection
+  endif
+
+  assign max_items = section.settings.max_products
+  assign products_count = 0
+  if source != blank
+    assign products_count = source.products.size | at_most: max_items
+  endif
+
+  assign columns = section.settings.columns_desktop
+  if products_count > 0
+    assign columns = columns | at_most: products_count
+  endif
+
+  assign is_single = false
+  if products_count == 1 and section.settings.single_large
+    assign is_single = true
+  endif
+
+  assign heading = section.settings.heading | strip
+
+  # Na stronie kolekcji siatka zastępuje main-collection, więc przejmuje też zdarzenie „collection viewed”.
+  assign emit_view_event = false
+  if collection != blank and source.id == collection.id and products_count > 0
+    assign emit_view_event = true
+  endif
+-%}
+
+{%- if products_count > 0 or request.design_mode -%}
+  {%- if section.settings.background_color != blank -%}
+    {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+  {%- endif -%}
+
+  <div class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"></div>
+  <div
+    class="section section--page-width spacing-style{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    {%- if emit_view_event -%}
+      <collection-component
+        class="vellano-product-grid-events"
+        view-event-payload="{{ source | standard_event_data: 'view' | escape }}"
+      >
+    {%- endif -%}
+    <div class="vellano-product-grid-wrap">
+      {%- if heading != blank -%}
+        <h2 class="vellano-product-grid__heading {{ section.settings.heading_preset }}">{{ heading | escape }}</h2>
+      {%- endif -%}
+
+      <ul
+        class="vellano-product-grid{% if is_single %} vellano-product-grid--single{% endif %}"
+        role="list"
+        style="
+          --vellano-grid-columns: {{ columns }};
+          --vellano-grid-gap-mobile: {{ section.settings.gap_mobile }}px;
+          --vellano-grid-gap-desktop: {{ section.settings.gap_desktop }}px;
+        "
+      >
+        {%- if products_count > 0 -%}
+          {%- for product in source.products limit: max_items -%}
+            <li class="vellano-product-grid__item">
+              {% content_for 'block',
+                type: '_product-card',
+                id: 'product-card',
+                closest.product: product,
+                product_view_context: 'collection'
+              %}
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..3) -%}
+            <li class="vellano-product-grid__item">
+              {% content_for 'block', type: '_product-card', id: 'product-card', closest.product: null %}
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+
+      {%- capture after_blocks -%}
+        {% content_for 'blocks' %}
+      {%- endcapture -%}
+      {%- if after_blocks != blank -%}
+        <div class="vellano-product-grid__after">{{ after_blocks }}</div>
+      {%- endif -%}
+    </div>
+    {%- if emit_view_event -%}
+      </collection-component>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-product-grid-events {
+    display: block;
+    min-width: 0;
+  }
+
+  .vellano-product-grid-wrap {
+    display: grid;
+    gap: 24px;
+    min-width: 0;
+  }
+
+  .vellano-product-grid__heading {
+    margin: 0;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .vellano-product-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--vellano-grid-gap-mobile, 40px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vellano-product-grid__item {
+    min-width: 0;
+  }
+
+  .vellano-product-grid--single {
+    width: 100%;
+    max-width: 36rem;
+    justify-self: center;
+  }
+
+  .vellano-product-grid__after {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .vellano-product-grid {
+      grid-template-columns: repeat(var(--vellano-grid-columns, 3), minmax(0, 1fr));
+      gap: var(--vellano-grid-gap-desktop, 24px);
+    }
+
+    .vellano-product-grid--single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – siatka produktów",
+  "tag": "section",
+  "class": "section-wrapper vellano-product-grid-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Kolekcja",
+      "info": "Puste pole = bieżąca kolekcja (na stronie kolekcji)."
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Maksymalna liczba produktów",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek nad siatką (opcjonalnie)"
+    },
+    {
+      "type": "select",
+      "id": "heading_preset",
+      "label": "Wielkość nagłówka",
+      "options": [
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "Układ"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Kolumny na komputerze",
+      "info": "Na telefonie zawsze 1 kolumna. Przy mniejszej liczbie produktów kolumn jest tyle, ile produktów.",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "single_large",
+      "label": "Jeden produkt jako duża, wyśrodkowana karta",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Odstęp między kartami na telefonie",
+      "min": 12,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Odstęp między kartami na komputerze",
+      "min": 12,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Wygląd"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – siatka produktów",
+      "category": "Vellano",
+      "blocks": {
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 6
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "portrait"
+              }
+            },
+            "card-title": {
+              "type": "product-title",
+              "settings": {
+                "width": "100%",
+                "alignment": "center",
+                "type_preset": "h5"
+              }
+            },
+            "card-price": {
+              "type": "price",
+              "settings": {
+                "type_preset": "h5",
+                "width": "100%",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": ["card-gallery", "card-title", "card-price"]
+        }
+      },
+      "block_order": []
+    }
+  ]
+}
+{% endschema %}
