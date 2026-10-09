@@ -6,7 +6,8 @@
     przycisk „Kup teraz”); wersaliki i zaokrąglenie 2 px ustawia się w Ustawieniach motywu → Przyciski,
   - mniejsze rozmiary nagłówków H1–H3 poniżej 750 px (Horizon skaluje płynnie tylko rozmiary od 48 px),
   - spokojniejszy pasek ogłoszeń: interlinia przy zawijaniu tekstu i brak przenikania przy prefers-reduced-motion,
-  - stopka na grafitowym tle: subtelne linie akordeonu, cele dotyku linków min. 44 px, widoczny focus pola e-mail.
+  - stopka na grafitowym tle: subtelne linie akordeonu, cele dotyku linków min. 44 px (także w dolnym pasku),
+    widoczny focus pola e-mail.
   Kolory pochodzą z tokenów motywu (--color-foreground, --color-input-text). Sekcji nie dodaje się do szablonów.
 
   @example
@@ -84,6 +85,14 @@
     .footer-content .email-signup__input-group:not(.email-signup__input-group--integrated) .email-signup__button {
       flex: 1 0 auto;
     }
+  }
+
+  /* Dolny pasek stopki: przycisk z regulaminami i link nazwy sklepu jako pełne cele dotyku (min. 44 px). */
+  .utilities .policy-list-trigger,
+  .utilities .footer-utilities__text a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--minimum-touch-target, 44px);
   }
 
   .email-signup-block .email-signup__input:focus-visible {

@@ -164,17 +164,17 @@ Cel terminowy (do potwierdzenia): **sklep gotowy ok. 10–13.11.2026**, żeby re
 
 ---
 
-## 8. Stan sklepu Shopify (8.10.2026)
+## 8. Stan sklepu Shopify (9.10.2026)
 
-- Sklep: Vellano Jubiler (`0ui2yq-ix.myshopify.com`), plan Basic, waluta PLN, kraj Polska.
+- Sklep: Vellano Jubiler (`0ui2yq-ix.myshopify.com`), plan Basic, waluta PLN, kraj Polska, język sklepu: polski.
 - Sklep jest chroniony hasłem (niewidoczny dla klientów).
-- Motyw: Horizon (aktywny). Zmiany w plikach motywu przez API są możliwe tylko na nieopublikowanej kopii; publikację robi właściciel w panelu.
-- Język domyślny: angielski. Do zmiany na polski w panelu: Ustawienia → Języki.
-- Produkty: brak. Kolekcje: tylko „Home page”.
-- Strony: Contact, **Zwroty** (`/pages/zwroty`, tekst do uzupełnienia przez właściciela).
-- Stopka: Zwroty, Kontakt, Szukaj.
-- Płatności: nieskonfigurowane (brak portfeli cyfrowych).
-- Domena: brak własnej (tylko myshopify.com).
+- **Motyw premium:** kopia Horizon „Vellano Jubiler – premium (w budowie)” (ID 208574808406, nieopublikowana) ma wgrane wszystkie pliki z `theme/`: sekcje i bloki `vellano-*`, szablony (produkt, strona główna, kolekcja, kolekcja klubowa `collection.klub`, strona, kontakt, koszyk, 404, lista kolekcji, hasło), nagłówek, stopkę, `locales/pl.json` i `config/settings_data.json`. Publikację robi właściciel: Sklep online → Motywy → Podgląd, potem Opublikuj.
+- **Produkty:** 3 zestawy (zawieszka + łańcuszek 51 cm), 149 zł, waga 46 g, aktywne; opis, specyfikacja i metapola `custom.przydomek` i `custom.zanim_zapytasz`.
+- **Kolekcje:** Real Madryt, FC Barcelona, Manchester United (szablon `klub`), Wszystkie zawieszki, Prezent dla kibica, Prezent na Święta. Zostaje domyślna „Home page” – do ukrycia przez właściciela (Kanały sprzedaży → odznacz Sklep online), bo API blokuje cofanie publikacji.
+- **Strony:** O marce, Oficjalna licencja, Wykonanie, Opakowanie, Dostawa, Najczęstsze pytania, Kontakt, Zwroty (tekst właściciela).
+- **Rabat automatyczny:** 2 zawieszki za 259 zł.
+- **Dostawa i płatności:** na stronie tylko obietnice (darmowa dostawa, wysyłka w 2–3 dni robocze, gwarancja dostawy przed Świętami). Bez form dostawy, metod płatności i ikon płatności – klient zobaczy je w kasie. Noty w koszyku mówią „Darmowa dostawa”.
+- Domena, kontakt, social media, zdjęcia na modelu: do dostarczenia przez właściciela.
 - Logo: kierunki i prompty do ChatGPT: https://claude.ai/artifact/8YnhnMrGaXmzxQ9pdm1LnK
 
 ## 9. Otwarte pytania

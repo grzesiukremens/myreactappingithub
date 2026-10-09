@@ -2,11 +2,12 @@
   Section contract.
   Vellano – „Zestaw dla dwóch kibiców” na karcie produktu.
   Informuje o rabacie automatycznym (2 zawieszki za 259 zł zamiast 298 zł) i daje dwie drogi:
-  1) formularz {% form 'product' %} dodający bieżący produkt w ilości 2 – opakowany w Horizonowy
+  1) formularz produktu (tag Liquid form 'product') dodający bieżący produkt w ilości 2 – opakowany w Horizonowy
      <product-form-component>, więc z JS dodaje do koszyka bez przeładowania i otwiera szufladę koszyka,
      a bez JS zwykły POST na /cart/add;
   2) link „Wybierz drugi herb” (ustawienie `link`, domyślnie kolekcja wszystkie-zawieszki).
   Spokojne tło #F7F5F1, bez czerwieni i bez przekreślonych cen. Kwoty są w edytowalnym tekście.
+  Sekcja jest dostępna tylko w szablonach produktu (enabled_on), bo przycisk dodaje oglądany produkt.
   @example
   <!-- templates/product.json → "vellano_bundle": { "type": "vellano-bundle", "settings": { "link": "shopify://collections/wszystkie-zawieszki" } } -->
 {% endcomment %}
@@ -43,7 +44,7 @@
         <p class="vellano-bundle__eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
       {%- if heading != blank -%}
-        <h2 class="vellano-bundle__heading">{{ heading | escape }}</h2>
+        <h2 class="vellano-bundle__heading h2">{{ heading | escape }}</h2>
       {%- endif -%}
       {%- if section.settings.text != blank -%}
         <div class="vellano-bundle__text rte">{{ section.settings.text }}</div>
@@ -142,14 +143,11 @@
     color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
   }
 
+  /* Krój, rozmiar i interlinia z ustawień H2 motywu (klasa .h2), jak w pozostałych sekcjach Vellano. */
   .vellano-bundle__heading {
     margin: 0;
-    font-family: var(--font-heading--family);
-    font-style: var(--font-heading--style);
-    font-weight: var(--font-heading--weight);
-    font-size: 1.75rem;
-    line-height: 1.15;
     color: var(--color-foreground);
+    text-wrap: balance;
   }
 
   .vellano-bundle__text {
@@ -208,10 +206,6 @@
       column-gap: 64px;
       align-items: center;
     }
-
-    .vellano-bundle__heading {
-      font-size: 2.25rem;
-    }
   }
 {% endstylesheet %}
 
@@ -220,8 +214,8 @@
   "name": "Vellano – zestaw dla 2",
   "tag": "section",
   "class": "section-wrapper vellano-bundle-section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
+  "enabled_on": {
+    "templates": ["product"]
   },
   "settings": [
     {
@@ -337,7 +331,7 @@
   ],
   "presets": [
     {
-      "name": "Vellano – zestaw dla dwóch kibiców"
+      "name": "Vellano – zestaw dla 2"
     }
   ]
 }

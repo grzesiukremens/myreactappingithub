@@ -6,7 +6,7 @@
   Miniatura: zdjęcie z galerii produktu dobrane po treści pytania według reguł z ustawienia `photo_rules`
   (jedna reguła w linii: „fraza = numer zdjęcia w galerii”, liczone od 1, pierwsza pasująca wygrywa,
   bez rozróżniania wielkości liter). Brak dopasowania lub brak zdjęcia = liniowa ikona.
-  Brak metapola lub pusta lista = sekcja nic nie renderuje.
+  Brak metapola lub pusta lista = sekcja nic nie renderuje. Dostępna tylko w szablonach produktu (enabled_on).
   Mobile: lista z miniaturą 96 px po lewej. Od 990 px: siatka w 2 kolumnach.
   @example
   <!-- templates/product.json → "vellano_zanim_zapytasz": { "type": "vellano-zanim-zapytasz", "settings": { "heading": "Zanim zapytasz" } } -->
@@ -46,7 +46,7 @@
       {%- if heading != blank or subheading != blank -%}
         <header class="vellano-faq__header">
           {%- if heading != blank -%}
-            <h2 class="vellano-faq__heading" id="VellanoFaqHeading-{{ section.id }}">{{ heading | escape }}</h2>
+            <h2 class="vellano-faq__heading h2" id="VellanoFaqHeading-{{ section.id }}">{{ heading | escape }}</h2>
           {%- endif -%}
           {%- if subheading != blank -%}
             <p class="vellano-faq__subheading">{{ subheading | escape }}</p>
@@ -154,14 +154,11 @@
     margin-block-end: 24px;
   }
 
+  /* Krój, rozmiar i interlinia z ustawień H2 motywu (klasa .h2), jak w pozostałych sekcjach Vellano. */
   .vellano-faq__heading {
     margin: 0;
-    font-family: var(--font-heading--family);
-    font-style: var(--font-heading--style);
-    font-weight: var(--font-heading--weight);
-    font-size: 1.75rem;
-    line-height: 1.15;
     color: var(--color-foreground);
+    text-wrap: balance;
   }
 
   .vellano-faq__subheading {
@@ -271,10 +268,6 @@
       margin-block-end: 32px;
     }
 
-    .vellano-faq__heading {
-      font-size: 2.25rem;
-    }
-
     .vellano-faq__list {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: 48px;
@@ -296,8 +289,8 @@
   "name": "Vellano – Zanim zapytasz",
   "tag": "section",
   "class": "section-wrapper vellano-faq-section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
+  "enabled_on": {
+    "templates": ["product"]
   },
   "settings": [
     {
