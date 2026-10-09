@@ -18,7 +18,7 @@ Cel: sklep na Shopify w stylu polskich salonów premium (Apart, W.KRUK), który 
 | Stopka | Strona **„Zwroty”**. Tekst dostarczy właściciel |
 | Licencje | Załatwione, nie wracamy do tematu |
 | Priorytet | Design premium i lejek nastawiony na konwersję |
-| Specyfikacja | Metal: mosiądz. Powłoka: rodowana. Kamienie: cyrkonie w barwach herbu (cały herb wysadzany). Łańcuszek: splot linkowy (rope), 51 cm. Ucho mieści łańcuszek do 5 mm. Waga: ok. 32 g (szacunek, do poprawy) |
+| Specyfikacja | Metal: mosiądz. Powłoka: rodowana. Kamienie: cyrkonie w barwach herbu (cały herb wysadzany). Łańcuszek: splot linkowy (rope), 51 cm. Ucho mieści łańcuszek do 5 mm. Waga: 46 g |
 | Opakowanie | Jasnoszare pudełko z wysuwaną szufladką + etui, oba z logo VELLANO JUBILER |
 | Dostawa | Darmowa. Wysyłka w 2–3 dni robocze. Gwarancja dostawy przed Świętami (bez podawania dat granicznych) |
 | Zestaw | 2 zawieszki za 259 zł |

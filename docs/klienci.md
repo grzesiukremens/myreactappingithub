@@ -205,7 +205,7 @@ Pracuje i dysponuje własnym budżetem. Kibicuje od lat, ogląda mecze w płatne
 - nazwy metali szlachetnych (zakazane i niezgodne z produktem)
 
 **Co przekonuje:**
-- Pełna i uczciwa specyfikacja, jak u jubilera: metal, powłoka, kamienie, łańcuszek, waga ok. 32 g
+- Pełna i uczciwa specyfikacja, jak u jubilera: metal, powłoka, kamienie, łańcuszek, waga 46 g
 - Zdjęcie makro herbu pod światło i ucha zawieszki z bliska
 - Informacja, że ucho mieści łańcuszek o grubości do 5 mm
 - Krótka historia marki: założyli ją synowie jubilera
@@ -375,7 +375,7 @@ Rodzic, ciocia lub wujek-chrzestny albo dziadek nastolatka w wieku 14–19 lat (
 - Na karcie produktu pytanie 'Czy to oficjalny produkt?' ze zdjęciem opakowania z oznaczeniem licencji
 - Sekcja O marce: założona przez synów jubilera
 - Formularz kontaktowy i strona Zwroty widoczne w stopce
-- Prosta specyfikacja i waga ok. 32 g
+- Prosta specyfikacja i waga 46 g
 - Zdjęcia opakowania
 - Zestaw 2 za 259 zł zamiast 298 zł
 
@@ -413,7 +413,7 @@ Rodzic, ciocia lub wujek-chrzestny albo dziadek nastolatka w wieku 14–19 lat (
 | Nie znam tej marki. Czy to bezpieczny sklep? | Sekcja O marce (strona główna i karta produktu), stopka (O marce, Kontakt z formularzem, Zwroty, Dostawa), checkout Shopify, opinie po pierwszych zamówieniach | Krótka, prawdziwa historia: markę założyli synowie jubilera. Do tego polska obsługa przez formularz, czytelne strony informacyjne i wyłącznie prawdziwe opinie. Ikony płatności dodajemy dopiero po potwierdzeniu listy metod. |
 | 149 zł? Podobne są dużo taniej | Specyfikacja na karcie produktu, Zanim zapytasz: 'Z czego jest wykonana?' (makro cyrkonii), landing klubu, reklamy dla grupy 25–35 | Pokazujemy, co jest w cenie: oficjalna licencja, setki ręcznie osadzanych cyrkonii w barwach herbu, mosiądz z powłoką rodowaną, łańcuszek rope 51 cm w zestawie, eleganckie opakowanie, darmowa dostawa. Nie wymieniamy konkurencji ani cen innych sklepów. |
 | Na żywo pewnie nie błyszczy jak na filmie | Zanim zapytasz: 'Jak wygląda z bliska?' (makro herbu pod światło), galeria, wideo bez filtrów w reklamach, zdjęcia od klientów | Pokazujemy zamiast obiecywać: zdjęcia makro, wideo w naturalnym świetle i prawdziwe zdjęcia na szyi. |
-| Jak duża jest? Nie przytłoczy albo nie zginie na szyi? | Zanim zapytasz: 'Jak duża jest i jak leży na szyi?' (zdjęcie na szyi modela i w dłoni) | Skalę pokazujemy zdjęciem, nie liczbami. W opisie: wyrazista zawieszka w stylu statement, łańcuszek 51 cm, waga ok. 32 g (zawieszka z łańcuszkiem). Bez wymiarów. |
+| Jak duża jest? Nie przytłoczy albo nie zginie na szyi? | Zanim zapytasz: 'Jak duża jest i jak leży na szyi?' (zdjęcie na szyi modela i w dłoni) | Skalę pokazujemy zdjęciem, nie liczbami. W opisie: wyrazista zawieszka w stylu statement, łańcuszek 51 cm, waga 46 g (zawieszka z łańcuszkiem). Bez wymiarów. |
 | Czy łańcuszek jest w zestawie? Czy mogę nosić zawieszkę na swoim? | Specyfikacja, Zanim zapytasz: 'Czy łańcuszek jest w zestawie?' (zdjęcie łańcuszka i zapięcia) oraz 'Czy mogę nosić ją na własnym łańcuszku?' (ucho z bliska) | Tak: łańcuszek o splocie linkowym (rope), 51 cm (20 cali), w zestawie, jeden rozmiar. UWAGA: ucho zawieszki mieści łańcuszek o grubości do 5 mm. |
 | Z czego to jest? Czy to prawdziwa biżuteria? | Specyfikacja w punktach, Zanim zapytasz: 'Z czego jest wykonana?' (makro cyrkonii) | Pełna przejrzystość: Metal: mosiądz. Powłoka: rodowana. Kamienie: cyrkonie. Kolor opisujemy wyłącznie jako 'jasny, chłodny połysk powłoki rodowanej'. |
 | Czy zdąży przed Świętami? Ile idzie paczka? | Pasek ogłoszeń, linia pod ceną, koszyk, Zanim zapytasz: 'Kiedy dotrze i czy zdąży przed Świętami?', mail o porzuconym koszyku, reklamy w IV kwartale | Zawsze tym samym brzmieniem: 'Wysyłka w 2–3 dni robocze' i 'Gwarancja dostawy przed Świętami'. Bez dat granicznych. |
@@ -440,7 +440,7 @@ Rodzic, ciocia lub wujek-chrzestny albo dziadek nastolatka w wieku 14–19 lat (
 - **Wejście:** Reklamy Meta (Instagram feed i Reels oraz Facebook, 25–35, zainteresowania klubami) z kreacją w stylu jubilerskim: karuzela zdjęć makro plus specyfikacja. Google Search na frazy ze słowem 'oficjalny' oraz 'zawieszka' lub 'naszyjnik' z nazwą klubu. YouTube przy treściach meczowych.
 - **Landing:** Landing klubu (np. /pages/real-madryt): górna sekcja w barwach herbu, przydomek i krótki tekst o klubie (Królewscy, Santiago Bernabéu), produkt, specyfikacja, Zanim zapytasz, O marce, na końcu '¡Hala Madrid!'.
 - **Hak:** 'Oficjalna biżuteria kibica. Dla tych, którzy mają już koszulkę.' albo 'Herb Królewskich ułożony z setek ręcznie osadzanych cyrkonii.'
-- **Dowód:** Specyfikacja jak u jubilera: mosiądz, powłoka rodowana, cyrkonie, łańcuszek rope 51 cm w zestawie, ok. 32 g, ucho do 5 mm. Zanim zapytasz: 'Czy to oficjalny produkt?' (opakowanie z oznaczeniem licencji) i 'Czy mogę nosić ją na własnym łańcuszku?' (ucho z bliska). O marce: założona przez synów jubilera. Zdjęcia opakowania.
+- **Dowód:** Specyfikacja jak u jubilera: mosiądz, powłoka rodowana, cyrkonie, łańcuszek rope 51 cm w zestawie, 46 g, ucho do 5 mm. Zanim zapytasz: 'Czy to oficjalny produkt?' (opakowanie z oznaczeniem licencji) i 'Czy mogę nosić ją na własnym łańcuszku?' (ucho z bliska). O marce: założona przez synów jubilera. Zdjęcia opakowania.
 - **Oferta:** 149 zł, Darmowa dostawa, Wysyłka w 2–3 dni robocze. Zestaw 2 za 259 zł zamiast 298 zł: 'dla Ciebie i taty albo brata', także dwa różne herby w jednej rodzinie kibiców.
 - **Follow-up:** Porzucony checkout: po 1 h przypomnienie ze specyfikacją i zdjęciem makro; po 24 h odpowiedź 'Czy to oficjalny produkt?' i fragment O marce. Po zakupie podziękowanie od zespołu Vellano Jubiler i informacja o wysyłce. Po doręczeniu prośba o opinię. Potem już tylko newsletter o nowych herbach i treściach klubowych (np. 125-lecie Realu jako temat, bez terminów zamówień).
 
@@ -456,7 +456,7 @@ Rodzic, ciocia lub wujek-chrzestny albo dziadek nastolatka w wieku 14–19 lat (
 - **Wejście:** Link od nastolatka (Messenger, WhatsApp) z przycisku Udostępnij. Facebook (35–65) z kreacją prezentową. Google Search ('prezent na 18 dla chłopaka kibica') i bezpłatne wyniki w Google Shopping.
 - **Landing:** Karta produktu (z przesłanego linku) albo landing 'Prezent dla kibica'. Większa czcionka w kluczowych blokach, a seria Zanim zapytasz zaczyna się od pytania 'Czy to oficjalny produkt?'.
 - **Hak:** 'Herb jego klubu w eleganckim pudełku.' / 'Prezent na osiemnastkę, który ma znaczenie.' / 'Dla taty i syna: dwa herby.'
-- **Dowód:** Oficjalna licencja (opakowanie z oznaczeniem licencji), O marce (synowie jubilera), prosta specyfikacja i waga ok. 32 g, strony Zwroty i Kontakt w stopce, zdjęcia opakowania, obietnice dostawy przy przycisku zakupu.
+- **Dowód:** Oficjalna licencja (opakowanie z oznaczeniem licencji), O marce (synowie jubilera), prosta specyfikacja i waga 46 g, strony Zwroty i Kontakt w stopce, zdjęcia opakowania, obietnice dostawy przy przycisku zakupu.
 - **Oferta:** 149 zł, Darmowa dostawa, Wysyłka w 2–3 dni robocze, Gwarancja dostawy przed Świętami. Zestaw 2 za 259 zł zamiast 298 zł (dwóch wnuków, bracia, tata i syn).
 - **Follow-up:** Potwierdzenie zamówienia prostym językiem: co zamówiono, kiedy wysyłka, link do Zwrotów, formularz kontaktowy. Mail o wysyłce. Po doręczeniu prośba o opinię. Newsletter o nowych herbach jako podpowiedź na kolejne okazje rodzinne. Bez sekwencji sprzedażowych.
 

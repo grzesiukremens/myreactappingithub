@@ -131,7 +131,7 @@ Mówimy do klienta „Ty”, tak jak Apart w FAQ i zwrotach oraz Ania Kruk. Zaim
 | `pdp.packaging` | W pudełku Vellano Jubiler – gotowa do wręczenia |
 | `pdp.in_the_box` | W zestawie: zawieszka z herbem, łańcuszek o splocie linkowym 51 cm, pudełko i etui Vellano Jubiler. |
 | `pdp.size` | Jeden rozmiar · łańcuszek 51 cm (20 cali) |
-| `pdp.weight` | Waga: ok. 32 g (zawieszka z łańcuszkiem) |
+| `pdp.weight` | Waga: 46 g (zawieszka z łańcuszkiem) |
 | `pdp.bail_note` | Uwaga: ucho zawieszki mieści łańcuszek o grubości do 5 mm. |
 | `pdp.gift_hint` | Nie musisz znać się na piłce – wystarczy wybrać herb. |
 | `pdp.club_switch_label` | Wybierz herb |
