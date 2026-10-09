@@ -70,6 +70,22 @@
     text-underline-offset: 3px;
   }
 
+  /* Wąska kolumna stopki (np. 990–1200 px): przycisk zapisu przechodzi pod pole zamiast je ściskać.
+     Na telefonie Horizon i tak układa pole i przycisk jedno pod drugim. */
+  @media screen and (min-width: 750px) {
+    .footer-content .email-signup__input-group:not(.email-signup__input-group--integrated) {
+      flex-wrap: wrap;
+    }
+
+    .footer-content .email-signup__input-group:not(.email-signup__input-group--integrated) .email-signup__input {
+      flex: 1 1 12rem;
+    }
+
+    .footer-content .email-signup__input-group:not(.email-signup__input-group--integrated) .email-signup__button {
+      flex: 1 0 auto;
+    }
+  }
+
   .email-signup-block .email-signup__input:focus-visible {
     outline: 2px solid var(--color-input-text);
     outline-offset: 2px;
