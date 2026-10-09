@@ -6,7 +6,8 @@
   Klasy:
   - .vellano-eyebrow – napis nad nagłówkiem: krój akcentowy, wersaliki, rozstrzelenie 0,18em, kolor drugorzędny.
   - .vellano-text-link – link tekstowy: podkreślenie 1 px z odsunięciem 3 px, cel dotyku min. 44 px.
-  - .vellano-ui – kontener; przyciski .button i .button-secondary w środku dostają rozstrzelenie 0,08em i wysokość 52 px.
+  - .button / .button-secondary – rozstrzelenie liter 0,08em na stronie, na której renderuje się snippet.
+  - .vellano-ui – kontener; przyciski .button i .button-secondary w środku dostają wysokość 52 px i krój 14 px / 500.
 
   @example
   {% render 'vellano-ui-styles' %}
@@ -55,11 +56,16 @@
     outline-offset: 2px;
   }
 
+  /* Rozstrzelenie liter w przyciskach (Horizon nie ma takiego ustawienia). Działa na stronach,
+     na których renderuje się ten snippet – także dla przycisków w sekcjach Horizon obok sekcji vellano-*. */
+  :is(.button, .button-secondary) {
+    letter-spacing: 0.08em;
+  }
+
   .vellano-ui :is(.button, .button-secondary) {
     min-height: 52px;
     font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.08em;
   }
 
   @media (prefers-reduced-motion: no-preference) {

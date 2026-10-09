@@ -1,0 +1,175 @@
+{% comment %}
+  Section contract.
+  Vellano – style globalne. Sekcja nie wyświetla treści. Leży w grupie nagłówka, więc ładuje się na każdej stronie
+  i uzupełnia to, czego Horizon nie ma w ustawieniach motywu:
+  - rozstrzelenie liter, grubość i rozmiar tekstu w przyciskach (.button, .button-secondary, .button-custom,
+    przycisk „Kup teraz”); wersaliki i zaokrąglenie 2 px ustawia się w Ustawieniach motywu → Przyciski,
+  - mniejsze rozmiary nagłówków H1–H3 poniżej 750 px (Horizon skaluje płynnie tylko rozmiary od 48 px),
+  - spokojniejszy pasek ogłoszeń: interlinia przy zawijaniu tekstu i brak przenikania przy prefers-reduced-motion,
+  - stopka na grafitowym tle: subtelne linie akordeonu, cele dotyku linków min. 44 px, widoczny focus pola e-mail.
+  Kolory pochodzą z tokenów motywu (--color-foreground, --color-input-text). Sekcji nie dodaje się do szablonów.
+
+  @example
+  <!-- sections/header-group.json -->
+  "vellano_global_styles": { "type": "vellano-global-styles", "settings": { "button_letter_spacing": 8 } }
+{% endcomment %}
+
+{%- liquid
+  assign button_letter_spacing = section.settings.button_letter_spacing | divided_by: 100.0
+-%}
+
+{% style %}
+  body {
+    --vellano-button-letter-spacing: {{ button_letter_spacing }}em;
+    {%- if section.settings.button_font_size != blank %}
+      --vellano-button-font-size: {{ section.settings.button_font_size }};
+    {%- endif %}
+  }
+
+  {%- if section.settings.mobile_heading_sizes %}
+    @media screen and (max-width: 749px) {
+      body {
+        --font-h1--size: {{ section.settings.mobile_h1_size | divided_by: 16.0 }}rem;
+        --font-h2--size: {{ section.settings.mobile_h2_size | divided_by: 16.0 }}rem;
+        --font-h3--size: {{ section.settings.mobile_h3_size | divided_by: 16.0 }}rem;
+      }
+    }
+  {%- endif %}
+{% endstyle %}
+
+{% stylesheet %}
+  /* Przyciski: wersaliki z rozstrzeleniem jak w salonie jubilerskim. */
+  body :is(.button:not(.button-unstyled), .button-secondary, .button-custom),
+  body button.shopify-payment-button__button--unbranded {
+    font-size: var(--vellano-button-font-size, var(--font-paragraph--size));
+    font-weight: 500;
+    letter-spacing: var(--vellano-button-letter-spacing, 0.08em);
+  }
+
+  /* Pasek ogłoszeń: dłuższy komunikat może zawinąć się na telefonie, więc dajemy mu oddech. */
+  .announcement-bar .announcement-bar__text {
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  /* Stopka: linie akordeonu tonowane względem tekstu zamiast pełnej bieli. */
+  .footer-content .menu--dividers .menu__details {
+    border-color: rgb(var(--color-foreground-rgb) / var(--opacity-20));
+  }
+
+  .footer-content .menu__item a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--minimum-touch-target, 44px);
+    text-decoration: none;
+  }
+
+  .footer-content .menu__item a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .email-signup-block .email-signup__input:focus-visible {
+    outline: 2px solid var(--color-input-text);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .announcement-bar .announcement-bar__slide {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – style globalne",
+  "tag": "div",
+  "class": "vellano-global-styles",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Ta sekcja nie wyświetla treści. Uzupełnia wygląd przycisków, nagłówków na telefonie, paska ogłoszeń i stopki na całej stronie."
+    },
+    {
+      "type": "header",
+      "content": "Przyciski"
+    },
+    {
+      "type": "range",
+      "id": "button_letter_spacing",
+      "label": "Rozstrzelenie liter (setne części em)",
+      "info": "8 oznacza 0,08 em. Wersaliki i zaokrąglenie ustawisz w Ustawieniach motywu → Przyciski.",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "button_font_size",
+      "label": "Rozmiar tekstu w przyciskach",
+      "options": [
+        { "value": "", "label": "Jak tekst akapitu" },
+        { "value": "0.8125rem", "label": "13 px" },
+        { "value": "0.875rem", "label": "14 px" },
+        { "value": "0.9375rem", "label": "15 px" }
+      ],
+      "default": "0.875rem"
+    },
+    {
+      "type": "header",
+      "content": "Nagłówki na telefonie"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_heading_sizes",
+      "label": "Mniejsze nagłówki poniżej 750 px",
+      "info": "Na większych ekranach obowiązują rozmiary z Ustawień motywu → Typografia.",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "mobile_h1_size",
+      "label": "Nagłówek 1",
+      "min": 24,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ section.settings.mobile_heading_sizes }}"
+    },
+    {
+      "type": "range",
+      "id": "mobile_h2_size",
+      "label": "Nagłówek 2",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 26,
+      "visible_if": "{{ section.settings.mobile_heading_sizes }}"
+    },
+    {
+      "type": "range",
+      "id": "mobile_h3_size",
+      "label": "Nagłówek 3",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ section.settings.mobile_heading_sizes }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – style globalne"
+    }
+  ]
+}
+{% endschema %}

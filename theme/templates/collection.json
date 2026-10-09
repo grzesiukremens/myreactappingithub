@@ -8,119 +8,35 @@
  * ------------------------------------------------------------
  */{
   "sections": {
-    "section": {
-      "type": "section",
-      "blocks": {
-        "text_tqQTNE": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ closest.collection.title }}</h1>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_twGGkJ": {
-          "type": "text",
-          "name": "t:names.description",
-          "settings": {
-            "text": "{{ closest.collection.description }}",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_tqQTNE",
-        "text_twGGkJ"
-      ],
-      "name": "t:names.heading",
+    "vellano_club_hero": {
+      "type": "vellano-club-hero",
+      "name": "Nagłówek kolekcji (metapola)",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "{{ settings.color_palette.background }}",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "eyebrow": "",
+        "heading_source": "metafield",
+        "heading": "",
+        "heading_preset": "h1",
+        "text": "",
+        "badge_text": "Oficjalny produkt licencjonowany",
+        "badge_link": "shopify://pages/oficjalna-licencja",
+        "image_source": "collection",
+        "media_position": "right",
+        "mobile_media": "thumbnail",
+        "mobile_alignment": "center",
+        "background_color": "#F7F5F1",
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     },
-    "main": {
-      "type": "main-collection",
+    "vellano_product_grid": {
+      "type": "vellano-product-grid",
+      "name": "Siatka produktów",
       "blocks": {
-        "filters": {
-          "type": "filters",
-          "static": true,
-          "settings": {
-            "enable_filtering": true,
-            "filter_style": "horizontal",
-            "filter_width": "centered",
-            "text_label_case": "default",
-            "show_swatch_label": false,
-            "show_filter_label": false,
-            "enable_sorting": true,
-            "enable_grid_density": true,
-            "padding-block-start": 8,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "facets_margin_bottom": 8,
-            "facets_margin_right": 20
-          },
-          "blocks": {}
-        },
         "product-card": {
           "type": "_product-card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
+            "product_card_gap": 6,
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -134,7 +50,7 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -146,14 +62,39 @@
               },
               "blocks": {}
             },
-            "product_title_4nY4eT": {
+            "card-eyebrow": {
+              "type": "text",
+              "settings": {
+                "text": "<p>{{ closest.product.metafields.custom.przydomek.value }}</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "0.75rem",
+                "line_height": "normal",
+                "letter_spacing": "loose",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "text_color": "{{ settings.color_palette.color1 }}",
+                "padding-block-start": 12,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {},
+              "name": "Przydomek (metapole)"
+            },
+            "card-title": {
               "type": "product-title",
-              "name": "t:names.product_title",
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
+                "alignment": "center",
+                "type_preset": "h5",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -170,53 +111,329 @@
               },
               "blocks": {}
             },
-            "price_EzJzMm": {
+            "card-price": {
               "type": "price",
               "settings": {
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
-                "type_preset": "h6",
+                "type_preset": "h5",
                 "width": "100%",
-                "alignment": "left",
+                "alignment": "center",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "padding-block-start": 0,
+                "padding-block-start": 4,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "card-note": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Zawieszka z łańcuszkiem 51 cm</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "text_color": "{{ settings.color_palette.color1 }}",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {},
+              "name": "Dopisek pod ceną"
             }
           },
           "block_order": [
             "card-gallery",
-            "product_title_4nY4eT",
-            "price_EzJzMm"
+            "card-eyebrow",
+            "card-title",
+            "card-price",
+            "card-note"
           ]
+        },
+        "set_note": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Dwa herby dla dwóch kibiców: 2 zawieszki za 259 zł zamiast 298 zł. Rabat nalicza się w koszyku.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "text_color": "{{ settings.color_palette.color1 }}",
+            "padding-block-start": 8,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
+      "block_order": [
+        "set_note"
+      ],
       "settings": {
-        "layout_type": "grid",
-        "product_card_size": "medium",
-        "mobile_product_card_size": "small",
-        "product_grid_width": "centered",
-        "full_width_on_mobile": true,
-        "columns_gap_horizontal": 16,
-        "columns_gap_vertical": 24,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0,
-        "background_color": "{{ settings.color_palette.background }}",
+        "max_products": 12,
+        "heading": "",
+        "heading_preset": "h2",
+        "columns_desktop": 3,
+        "single_large": true,
+        "gap_mobile": 48,
+        "gap_desktop": 24,
+        "background_color": "#FFFFFF",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "vellano_trust_bar": {
+      "type": "vellano-trust-bar",
+      "name": "Pasek zaufania",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "text": "Oficjalna licencja klubu",
+            "link": "shopify://pages/oficjalna-licencja"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "text": "Darmowa dostawa",
+            "link": "shopify://pages/dostawa"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "clock",
+            "text": "Wysyłka w 2–3 dni robocze",
+            "link": "shopify://pages/dostawa"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "gift",
+            "text": "Gwarancja dostawy przed Świętami",
+            "link": "shopify://pages/dostawa"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "show_lines": true,
+        "line_color": "#E6E2DA",
+        "background_color": "#FFFFFF",
         "padding-block-start": 0,
-        "padding-block-end": 32
+        "padding-block-end": 0
+      }
+    },
+    "section": {
+      "type": "section",
+      "name": "Opis kolekcji",
+      "blocks": {
+        "text_tqQTNE": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>{{ closest.collection.title }}</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {},
+          "name": "t:names.title"
+        },
+        "text_twGGkJ": {
+          "type": "text",
+          "settings": {
+            "text": "{{ closest.collection.description }}",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {},
+          "name": "t:names.description"
+        }
+      },
+      "block_order": [
+        "text_tqQTNE",
+        "text_twGGkJ"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "#F7F5F1",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
+    "vellano_zanim_zapytasz": {
+      "type": "vellano-faq-visual",
+      "name": "Zanim zapytasz",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Czy to oficjalny produkt?",
+            "answer": "<p>Tak. To oficjalny produkt licencjonowany – herb, nazwa i barwy klubu są użyte za jego zgodą. Oznaczenie licencji znajdziesz na opakowaniu, a więcej na stronie <a href=\"/pages/oficjalna-licencja\">Oficjalna licencja</a>.</p>",
+            "image": "shopify://shop_images/opakowanie-vellano-jubiler.webp",
+            "image_alt": ""
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "Jak będzie zapakowana?",
+            "answer": "<p>W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – oba z białym napisem VELLANO JUBILER. Tak przychodzi każda zawieszka, gotowa do wręczenia.</p>",
+            "image": "shopify://shop_images/opakowanie-vellano-jubiler.webp",
+            "image_alt": ""
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Czy łańcuszek jest w zestawie?",
+            "answer": "<p>Tak. W zestawie jest skręcony, mocno połyskujący łańcuszek o splocie linkowym (rope), 51 cm (20 cali). Jeden rozmiar – nie musisz niczego dokupować.</p>",
+            "image": "shopify://shop_images/zawieszka-real-madryt-na-lancuszku.webp",
+            "image_alt": ""
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Jak duża jest i jak leży na szyi?",
+            "answer": "<p>To duża, wyrazista zawieszka, dobrze widoczna na koszulce i pod rozpiętą koszulą. Na zdjęciu obok widzisz ją na łańcuszku 51 cm z zestawu. Zawieszka z łańcuszkiem waży 46 g.</p>",
+            "image": "shopify://shop_images/zawieszka-manchester-united-na-lancuszku.webp",
+            "image_alt": ""
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Kiedy dotrze i czy zdąży przed Świętami?",
+            "answer": "<p>Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.</p>",
+            "image": "shopify://shop_images/zawieszka-fc-barcelona-na-lancuszku.webp",
+            "image_alt": ""
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "A jeśli nie przypadnie do gustu?",
+            "answer": "<p>Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli coś będzie niejasne, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.</p>",
+            "image": "shopify://shop_images/zawieszka-manchester-united-przod.webp",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6"
+      ],
+      "settings": {
+        "eyebrow": "Z bliska",
+        "heading": "Zanim zapytasz.",
+        "intro": "<p>Pytania, które warto zadać przed zakupem. Przy każdej odpowiedzi stoi zdjęcie z bliska, które pokazuje dokładnie to, o co pytasz.</p>",
+        "link_label": "Wszystkie pytania",
+        "link_url": "shopify://pages/faq",
+        "open_first": true,
+        "line_color": "#E6E2DA",
+        "background_color": "#FFFFFF",
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     }
   },
   "order": [
+    "vellano_club_hero",
+    "vellano_product_grid",
+    "vellano_trust_bar",
     "section",
-    "main"
+    "vellano_zanim_zapytasz"
   ]
 }
