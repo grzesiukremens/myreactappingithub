@@ -163,6 +163,45 @@
     }
   }
 
+  /* Małe kafelki Horizonu (menu „Wybierz swój klub” na komputerze i telefonie, podpowiedzi
+     wyszukiwarki): te same zdjęcia z wyciętym tłem co na stronie głównej.
+     snippets/resource-card.liquid dodaje klasę resource-card__image--vellano i format 1:1. */
+  .resource-card__media:has(.resource-card__image--vellano) {
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #e6e2da;
+    border-radius: var(--resource-card-corner-radius, 0);
+  }
+
+  .resource-card__image.resource-card__image--vellano {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .resource-card__image--secondary.resource-card__image--vellano {
+    inset: 0 auto auto 0;
+  }
+
+  /* Miniatura w koszyku (szuflada i strona koszyka): to samo zdjęcie z wyciętym tłem. */
+  .cart-items__media-image.cart-items__media-image--vellano {
+    object-fit: contain;
+    background-color: #ffffff;
+    outline: 1px solid #e6e2da;
+    outline-offset: -1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .resource-card__image.resource-card__image--vellano {
+      transition: none;
+    }
+  }
+
   .vellano-card-title {
     margin: 0;
     padding: 2px 12px 0;

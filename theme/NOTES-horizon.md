@@ -338,3 +338,13 @@ Bez edycji plików rdzenia Horizon. Wszystko jest w `sections/vellano-global-sty
 - tekst przycisku pochodzi z `locales/pl.json` → `products.product.add_to_cart` = „Kup teraz”.
 - Static bloki (`quantity`, `accelerated-checkout`) w `buy-buttons` można wyłączyć przez `"disabled": true` w szablonie JSON – Shopify to akceptuje.
 - Wgrywanie dużych plików: `stagedUploadsCreate` (resource FILE, text/plain) → POST na GCS → `themeFilesUpsert` z `body.type: URL`. Zapis jest asynchroniczny (job); weryfikacja przez `checksumMd5`/`updatedAt` (szablony JSON i settings_data Shopify normalizuje, więc ich suma może się różnić).
+
+## Zmienione pliki rdzenia Horizon (12.10.2026, runda 4)
+
+Przy aktualizacji motywu Horizon te dwa pliki trzeba przenieść ręcznie (oryginał jest w historii gita, commit z kopią 1:1 przed zmianą):
+- `snippets/resource-card.liquid` – małe kafelki produktów w menu „Wybierz swój klub” (mega menu na komputerze i menu na telefonie, styl `featured_products`) i w podpowiedziach wyszukiwarki. Produkt z metapolem `custom.zdjecie_karty` dostaje to zdjęcie (i `custom.zdjecie_karty_hover` po najechaniu), format 1:1 i klasę `resource-card__image--vellano`; nazwa produktu bez „ z łańcuszkiem”.
+- `snippets/cart-products.liquid` – miniatura pozycji w koszyku (szuflada i strona koszyka) z `item.product.metafields.custom.zdjecie_karty`, format 1:1, klasa `cart-items__media-image--vellano`. Nazwa w koszyku zostaje pełna.
+- Style obu klas są w `sections/vellano-global-styles.liquid` (białe tło, `object-fit: contain`, ramka #E6E2DA).
+- `templates/search.json` – wyniki wyszukiwania w tej samej karcie co reszta sklepu (`build_round4.py` w notatkach roboczych korzysta z definicji karty z rundy 3).
+- `sections/vellano-other-clubs.liquid` – miniatura klubu: najpierw zdjęcie z wyciętym tłem pierwszego produktu, potem zdjęcie kolekcji.
+

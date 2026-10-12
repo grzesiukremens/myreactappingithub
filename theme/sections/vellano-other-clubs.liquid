@@ -3,7 +3,8 @@
   Vellano – „Kibicujesz komuś innemu?”: mała lista pozostałych klubów na dole landingu klubu,
   dla osób kupujących prezent. Kolekcje z ustawienia „Kluby” (lista kolekcji); bieżąca kolekcja
   jest pomijana, więc na landingu Realu widać tylko FC Barcelonę i Manchester United.
-  Karta: miniatura zdjęcia kolekcji, eyebrow z metapola custom.hero_eyebrow, nazwa klubu i link tekstowy.
+  Karta: miniatura (zdjęcie z wyciętym tłem z metapola custom.zdjecie_karty pierwszego produktu, jak na kafelkach;
+  gdy brak – zdjęcie kolekcji, potem pierwsze zdjęcie produktu), eyebrow z metapola custom.hero_eyebrow, nazwa klubu i link tekstowy.
   Pod listą opcjonalny link do wszystkich zawieszek.
   Mobile: lista wierszy (miniatura po lewej, cały wiersz klikalny, min. 44 px). Od 750 px: karty w kolumnach.
   Bez kolekcji do pokazania sekcja nic nie renderuje (poza edytorem).
@@ -57,14 +58,19 @@
             {%- unless club.id == current_id -%}
               {%- liquid
                 assign club_eyebrow = club.metafields.custom.hero_eyebrow.value | strip
-                assign club_image = club.image
+                assign club_image = club.products.first.metafields.custom.zdjecie_karty.value
+                assign club_cutout = true
+                if club_image == blank
+                  assign club_cutout = false
+                  assign club_image = club.image
+                endif
                 if club_image == blank and club.products.first.featured_media != blank
                   assign club_image = club.products.first.featured_media.preview_image
                 endif
               -%}
               <li class="vellano-other-clubs__item">
                 <a class="vellano-other-clubs__card" href="{{ club.url }}">
-                  <span class="vellano-other-clubs__media">
+                  <span class="vellano-other-clubs__media{% if club_cutout %} vellano-other-clubs__media--cutout{% endif %}">
                     {%- if club_image != blank -%}
                       {{
                         club_image
@@ -171,6 +177,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .vellano-other-clubs__media--cutout {
+    aspect-ratio: 1 / 1;
+    background-color: #fff;
+    border: 1px solid var(--vellano-other-clubs-line);
+  }
+
+  .vellano-other-clubs__media--cutout .vellano-other-clubs__image {
+    object-fit: contain;
   }
 
   .vellano-other-clubs__body {

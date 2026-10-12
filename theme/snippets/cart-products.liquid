@@ -158,7 +158,12 @@
                   role="cell"
                   headers="productImage"
                 >
-                  {% if item.image -%}
+                  {%- comment -%}
+                    Vellano: miniatura w koszyku = zdjęcie z wyciętym tłem z metapola custom.zdjecie_karty
+                    (jak kafelki na stronie głównej). Bez metapola zostaje zdjęcie pozycji koszyka.
+                  {%- endcomment -%}
+                  {%- assign vellano_cart_image = item.product.metafields.custom.zdjecie_karty.value -%}
+                  {% if item.image or vellano_cart_image != blank -%}
                     {% liquid
                       assign ratio = 1
                       assign border_opacity = settings.cart_thumbnail_border_opacity | divided_by: 100.0
@@ -172,6 +177,9 @@
                       elsif block_settings.image_ratio == 'adapt'
                         assign ratio = item.image.aspect_ratio
                       endif
+                      if vellano_cart_image != blank
+                        assign ratio = 1
+                      endif
                     %}
                     <a
                       href="{{ item.url }}"
@@ -179,7 +187,11 @@
                       style="--ratio:{{ ratio }};"
                     >
                       {%- liquid
-                        echo item.image | image_url: width: 250 | image_tag: class: 'cart-items__media-image border-style', style: border_override
+                        if vellano_cart_image != blank
+                          echo vellano_cart_image | image_url: width: 250 | image_tag: class: 'cart-items__media-image cart-items__media-image--vellano border-style', style: border_override, alt: item.product.title
+                        else
+                          echo item.image | image_url: width: 250 | image_tag: class: 'cart-items__media-image border-style', style: border_override
+                        endif
                       -%}
                     </a>
                   {%- endif %}
