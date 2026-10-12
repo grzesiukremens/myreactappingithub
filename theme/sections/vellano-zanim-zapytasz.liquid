@@ -3,6 +3,8 @@
   Vellano – „Zanim zapytasz”: lejek pytań przed zakupem na karcie produktu.
   Dane: closest.product.metafields.custom.zanim_zapytasz.value – lista obiektów {question, answer, photo, image?}.
   `image` (opcjonalnie) to nazwa pliku z Treści → Pliki (np. „vellano-mu-pytanie-1.webp”); ma pierwszeństwo przed regułami.
+  `image_position` (opcjonalnie) to kadr kwadratowej miniatury jako wartość CSS object-position (np. „50% 0%” = od góry);
+  zdjęcie nie jest edytowane, przycina je tylko kod.
   `answer` może zawierać HTML (linki <a>), więc wypisujemy je bez escapowania; `question` jest escapowane.
   Miniatura: zdjęcie z galerii produktu dobrane po treści pytania według reguł z ustawienia `photo_rules`
   (jedna reguła w linii: „fraza = numer zdjęcia w galerii”, liczone od 1, pierwsza pasująca wygrywa,
@@ -73,6 +75,11 @@
             # Miniatura: najpierw własne zdjęcie pytania (pole „image” = nazwa pliku z Treści → Pliki),
             # a gdy go brak – dobór po treści pytania (reguły z ustawienia photo_rules).
             assign thumb = nil
+            assign thumb_style = ''
+            assign item_position = item.image_position | strip
+            if item_position != blank
+              assign thumb_style = 'object-position: ' | append: item_position | append: ';'
+            endif
             if section.settings.show_thumbnails
               assign item_image = item.image | strip
               if item_image != blank
@@ -112,7 +119,8 @@
                       sizes: '(min-width: 990px) 120px, 96px',
                       loading: 'lazy',
                       alt: '',
-                      class: 'vellano-faq__thumb-image'
+                      class: 'vellano-faq__thumb-image',
+                      style: thumb_style
                   }}
                 {%- else -%}
                   {%- render 'vellano-icon', icon: 'question', class: 'vellano-faq__thumb-icon', size: 28 -%}
@@ -303,7 +311,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Pytania i odpowiedzi pochodzą z metapola produktu custom.zanim_zapytasz (JSON: lista {question, answer, photo}). Bez metapola sekcja jest ukryta."
+      "content": "Pytania i odpowiedzi pochodzą z metapola produktu custom.zanim_zapytasz (JSON: lista {question, answer, photo, image?, image_position?}). Bez metapola sekcja jest ukryta."
     },
     {
       "type": "header",
