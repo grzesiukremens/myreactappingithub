@@ -1,7 +1,8 @@
 {% comment %}
   Section contract.
   Vellano – „Zanim zapytasz”: lejek pytań przed zakupem na karcie produktu.
-  Dane: closest.product.metafields.custom.zanim_zapytasz.value – lista obiektów {question, answer, photo}.
+  Dane: closest.product.metafields.custom.zanim_zapytasz.value – lista obiektów {question, answer, photo, image?}.
+  `image` (opcjonalnie) to nazwa pliku z Treści → Pliki (np. „vellano-mu-pytanie-1.webp”); ma pierwszeństwo przed regułami.
   `answer` może zawierać HTML (linki <a>), więc wypisujemy je bez escapowania; `question` jest escapowane.
   Miniatura: zdjęcie z galerii produktu dobrane po treści pytania według reguł z ustawienia `photo_rules`
   (jedna reguła w linii: „fraza = numer zdjęcia w galerii”, liczone od 1, pierwsza pasująca wygrywa,
@@ -69,9 +70,16 @@
               continue
             endif
 
-            # Dobór miniatury po treści pytania (reguły z ustawienia photo_rules).
+            # Miniatura: najpierw własne zdjęcie pytania (pole „image” = nazwa pliku z Treści → Pliki),
+            # a gdy go brak – dobór po treści pytania (reguły z ustawienia photo_rules).
             assign thumb = nil
             if section.settings.show_thumbnails
+              assign item_image = item.image | strip
+              if item_image != blank
+                assign thumb = images[item_image]
+              endif
+            endif
+            if section.settings.show_thumbnails and thumb == blank
               assign question_lower = question | downcase
               for rule in rules
                 assign rule_clean = rule | strip
