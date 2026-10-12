@@ -8,8 +8,10 @@ Numeracja plików `vellano-mu-pytanie-N` jest odwrotna niż w plikach właścici
 | 1. Z czego jest wykonana? | 1.png | vellano-mu-pytanie-5.webp |
 | 2. Jak wygląda z bliska? | 2.png | vellano-mu-pytanie-4.webp |
 | 3. Jak duża jest i jak leży na szyi? | 3.png | vellano-mu-pytanie-3.webp |
-| 4. Czy łańcuszek jest w zestawie? | 4.png | vellano-mu-pytanie-2.webp |
+| 4. Czy łańcuszek jest w zestawie? | zdjęcie łańcuszka (wspólne dla wszystkich produktów) | vellano-lancuszek-splot-linkowy.webp |
 | 5. Czy mogę nosić ją na własnym łańcuszku? | 5.png | vellano-mu-pytanie-1.webp |
 | 6. Jak będzie zapakowana? | zdjęcie opakowania | opakowanie-vellano-jubiler.webp |
 
 Zgodność 2.png, 4.png i 5.png sprawdzona porównaniem pikseli z plikami właściciela w Shopify.
+
+Plik 4.png (vellano-mu-pytanie-2.webp) został zastąpiony wspólnym zdjęciem łańcuszka `assets/products/wspolne/vellano-lancuszek-splot-linkowy.webp`.
