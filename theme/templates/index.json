@@ -761,126 +761,6 @@
         "padding-block-end": 64
       }
     },
-    "vellano_licencja": {
-      "type": "section",
-      "name": "Oficjalna licencja",
-      "blocks": {
-        "eyebrow": {
-          "type": "vellano-eyebrow",
-          "settings": {
-            "text": "Oryginał",
-            "alignment": "center",
-            "tone": "muted"
-          },
-          "blocks": {}
-        },
-        "heading": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Oficjalnie licencjonowane.</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym. Herb, nazwa i barwy klubu są na niej użyte za zgodą klubu. Oznaczenie oficjalnej licencji znajdziesz w pudełku.</p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "link": {
-          "type": "text",
-          "settings": {
-            "text": "<p><a href=\"/pages/oficjalna-licencja\">Czym jest oficjalna licencja</a></p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 4,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "eyebrow",
-        "heading",
-        "text",
-        "link"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "#F7F5F1",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 64,
-        "padding-block-end": 64
-      }
-    },
     "vellano_o_marce": {
       "type": "section",
       "name": "O marce",
@@ -1462,7 +1342,6 @@
     "vellano_wykonanie",
     "vellano_prezent",
     "vellano_zestaw",
-    "vellano_licencja",
     "vellano_o_marce",
     "vellano_faq",
     "vellano_newsletter"
