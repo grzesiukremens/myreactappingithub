@@ -37,12 +37,14 @@
           "static": true,
           "settings": {
             "product_card_gap": 6,
-            "border": "none",
+            "background_color": "#FFFFFF",
+            "border": "solid",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "#E6E2DA",
             "border_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-end": 20,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -64,11 +66,11 @@
             },
             "card-eyebrow": {
               "type": "custom-liquid",
+              "name": "Przydomek (metapole)",
               "settings": {
-                "custom_liquid": "{%- assign vellano_nickname = closest.product.metafields.custom.przydomek.value | strip -%}{%- if vellano_nickname != blank -%}<p class=\"vellano-card-nickname\" style=\"margin: 0; padding-block-start: 12px; text-align: center; font-family: var(--font-accent--family); font-style: var(--font-accent--style); font-weight: var(--font-accent--weight); font-size: 0.75rem; line-height: 1.4; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));\">{{ vellano_nickname | escape }}</p>{%- endif -%}"
+                "custom_liquid": "{%- assign vellano_nickname = closest.product.metafields.custom.przydomek.value | strip -%}{%- if vellano_nickname != blank -%}<p class=\"vellano-card-nickname\">{{ vellano_nickname | escape }}</p>{%- endif -%}"
               },
-              "blocks": {},
-              "name": "Przydomek (metapole)"
+              "blocks": {}
             },
             "card-title": {
               "type": "product-title",
@@ -86,10 +88,10 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 4,
+                "padding-block-start": 2,
                 "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-start": 16,
+                "padding-inline-end": 16
               },
               "blocks": {}
             },
@@ -107,17 +109,18 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "padding-block-start": 4,
+                "padding-block-start": 2,
                 "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-start": 16,
+                "padding-inline-end": 16
               },
               "blocks": {}
             },
             "card-note": {
               "type": "text",
+              "name": "Dopisek pod ceną",
               "settings": {
-                "text": "<p>Zawieszka z łańcuszkiem 51 cm</p>",
+                "text": "<p>W zestawie łańcuszek 51 cm</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -134,28 +137,29 @@
                 "text_color": "{{ settings.color_palette.color1 }}",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-start": 16,
+                "padding-inline-end": 16
               },
-              "blocks": {},
-              "name": "Dopisek pod ceną"
+              "blocks": {}
             },
             "card-buy-buttons": {
               "type": "buy-buttons",
+              "name": "Kup teraz",
               "settings": {
                 "stacking": true,
                 "text_color": "",
                 "show_pickup_availability": false,
                 "gift_card_form": false,
-                "padding-block-start": 12,
+                "padding-block-start": 14,
                 "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-start": 16,
+                "padding-inline-end": 16
               },
               "blocks": {
                 "quantity": {
                   "type": "quantity",
                   "static": true,
+                  "disabled": true,
                   "settings": {
                     "input_style": "default",
                     "input_background_color": "{{ settings.color_palette.background }}",
@@ -180,6 +184,7 @@
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
                   "static": true,
+                  "disabled": true,
                   "settings": {},
                   "blocks": {}
                 }

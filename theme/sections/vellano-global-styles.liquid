@@ -7,7 +7,11 @@
   - mniejsze rozmiary nagłówków H1–H3 poniżej 750 px (Horizon skaluje płynnie tylko rozmiary od 48 px),
   - spokojniejszy pasek ogłoszeń: interlinia przy zawijaniu tekstu i brak przenikania przy prefers-reduced-motion,
   - stopka na grafitowym tle: subtelne linie akordeonu, cele dotyku linków min. 44 px (także w dolnym pasku),
-    widoczny focus pola e-mail.
+    widoczny focus pola e-mail,
+  - wspólna karta produktu (przydomek, cena, „Kup teraz” na dole karty),
+  - przycisk „Kup teraz” bez ikony i bez przycisków szybkiej płatności,
+  - strzałki przesuwania zdjęć w stylu Vellano, widoczne także na telefonie; skrypt dokłada strzałki
+    do galerii karty produktu na telefonie (Horizon w układzie siatki ich nie renderuje).
   Kolory pochodzą z tokenów motywu (--color-foreground, --color-input-text). Sekcji nie dodaje się do szablonów.
 
   @example
@@ -105,7 +109,274 @@
       transition: none;
     }
   }
+
+  /* ---------------------------------------------------------------------------
+     Karta produktu Vellano (strona główna, kolekcje, „Kibicujesz komuś innemu?”,
+     koszyk, 404). Ramkę, tło i odstępy ustawia blok karty w szablonie; tu są
+     przydomek, cena, przycisk na dole karty i spokojny hover.
+     --------------------------------------------------------------------------- */
+  .vellano-card-nickname {
+    margin: 0;
+    padding: 14px 16px 0;
+    text-align: center;
+    font-family: var(--font-accent--family);
+    font-style: var(--font-accent--style);
+    font-weight: var(--font-accent--weight);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .product-grid__card :is(product-price, .price) {
+    font-weight: 500;
+  }
+
+  /* Przycisk zawsze na dole karty, także gdy nazwy mają różną długość. */
+  .product-grid__card > .buy-buttons-block {
+    margin-block-start: auto;
+    width: 100%;
+  }
+
+  .product-grid__card .product-form-buttons {
+    width: 100%;
+  }
+
+  @media (hover: hover) {
+    .product-grid__card {
+      transition: border-color var(--animation-speed, 0.2s) ease;
+    }
+
+    product-card:hover .product-grid__card {
+      border-color: rgb(20 20 20 / 0.35);
+    }
+  }
+
+  /* ---------------------------------------------------------------------------
+     Przycisk „Kup teraz”: pełna szerokość, wersaliki, bez ikony koszyka.
+     Przyciski szybkiej płatności (Shop Pay itp.) są wyłączone w szablonie;
+     reguła poniżej to zabezpieczenie, gdyby blok został włączony w edytorze.
+     --------------------------------------------------------------------------- */
+  .add-to-cart-button {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .product-form-buttons .add-to-cart-button {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  .product-grid__card .product-form-buttons .add-to-cart-button {
+    min-height: 46px;
+  }
+
+  .add-to-cart-button .add-to-cart-icon {
+    display: none;
+  }
+
+  .accelerated-checkout-block {
+    display: none !important;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Strzałki przesuwania zdjęć: biały krąg z cienką linią, ciemna strzałka.
+     Na telefonie (brak hovera) strzałki są zawsze widoczne.
+     --------------------------------------------------------------------------- */
+  :is(.card-gallery, .resource-list__carousel, media-gallery) slideshow-arrows {
+    mix-blend-mode: normal;
+  }
+
+  :is(.card-gallery, .resource-list__carousel, media-gallery) slideshow-arrows .slideshow-control,
+  :is(.card-gallery, .resource-list__carousel, media-gallery) slideshow-arrows .slideshow-control.slideshow-control--shape-circle,
+  .vellano-gallery-nav__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--minimum-touch-target, 44px);
+    min-height: var(--minimum-touch-target, 44px);
+    aspect-ratio: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #141414;
+    cursor: pointer;
+  }
+
+  :is(.card-gallery, .resource-list__carousel, media-gallery) slideshow-arrows .slideshow-control .svg-wrapper,
+  .vellano-gallery-nav__btn > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgb(255 255 255 / 0.94);
+    border: 1px solid #e6e2da;
+    box-shadow: 0 1px 3px rgb(20 20 20 / 0.08);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  :is(.card-gallery, .resource-list__carousel, media-gallery) slideshow-arrows .slideshow-control svg,
+  .vellano-gallery-nav__btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  @media (hover: hover) {
+    :is(.card-gallery, .resource-list__carousel, media-gallery) slideshow-arrows .slideshow-control:hover .svg-wrapper,
+    .vellano-gallery-nav__btn:hover > span {
+      border-color: #141414;
+    }
+  }
+
+  :is(.card-gallery, .resource-list__carousel, media-gallery) slideshow-arrows .slideshow-control:focus-visible .svg-wrapper,
+  .vellano-gallery-nav__btn:focus-visible > span {
+    outline: 2px solid #141414;
+    outline-offset: 2px;
+  }
+
+  /* Zdjęcia na kartach: mniejsze kółka, bliżej krawędzi. */
+  .card-gallery slideshow-arrows .slideshow-control.slideshow-control {
+    padding-inline: 2px;
+  }
+
+  .card-gallery slideshow-arrows .slideshow-control .svg-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media (hover: none), screen and (max-width: 749px) {
+    product-card .card-gallery slideshow-component:not([disabled='true']) slideshow-arrows .slideshow-control.slideshow-control {
+      display: inline-flex;
+      opacity: 1;
+      animation: none;
+      transform: none;
+    }
+  }
+
+  /* Karuzele kart (np. „Wybierz swój klub” na telefonie): strzałki pod kartami, na środku. */
+  slideshow-component.resource-list__carousel > slideshow-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  slideshow-component.resource-list__carousel > slideshow-container > slideshow-arrows {
+    position: static;
+    order: 2;
+    inset: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding-block-start: 20px;
+  }
+
+  slideshow-component.resource-list__carousel > slideshow-container > slideshow-arrows .slideshow-control.slideshow-control {
+    opacity: 1;
+    animation: none;
+    transform: none;
+    margin-inline-start: 0;
+  }
+
+  slideshow-component.resource-list__carousel > slideshow-container > slideshow-arrows .slideshow-control[disabled] {
+    display: inline-flex;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* Na telefonie karta zajmuje większość ekranu, a kolejna lekko wystaje. */
+  @container resource-list-carousel (max-width: 749px) {
+    .resource-list__carousel .resource-list__slide:has(product-card) {
+      --slide-width: min(76cqw, 340px);
+    }
+  }
+
+  /* Galeria karty produktu na telefonie: strzałki dodaje skrypt poniżej. */
+  .vellano-gallery-nav {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 4px;
+    pointer-events: none;
+    z-index: var(--layer-heightened, 2);
+  }
+
+  .vellano-gallery-nav__btn {
+    pointer-events: auto;
+  }
+
+  .vellano-gallery-nav__btn--prev svg {
+    transform: scaleX(-1);
+  }
+
+  @media screen and (min-width: 750px) {
+    .vellano-gallery-nav {
+      display: none;
+    }
+  }
 {% endstylesheet %}
+
+<script>
+  (function () {
+    /* Strzałki w galerii karty produktu na telefonie. Horizon w układzie siatki pokazuje na telefonie
+       przewijaną galerię bez strzałek; dokładamy dwa przyciski, które przesuwają ją o jedno zdjęcie. */
+    var ARROW =
+      '<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M1 7h11M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    function step(scroller, direction) {
+      var width = scroller.clientWidth;
+      var max = scroller.scrollWidth - width;
+      var target = scroller.scrollLeft + direction * width;
+      if (target > max + 4) target = 0;
+      else if (target < -4) target = max;
+      scroller.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    function enhance(root) {
+      var galleries = (root || document).querySelectorAll('media-gallery.media-gallery--grid slideshow-component');
+      galleries.forEach(function (slideshow) {
+        var container = slideshow.querySelector(':scope > slideshow-container');
+        var scroller = container && container.querySelector(':scope > slideshow-slides');
+        if (!scroller || scroller.children.length < 2) return;
+        if (container.querySelector(':scope > .vellano-gallery-nav, :scope > slideshow-arrows')) return;
+
+        var nav = document.createElement('div');
+        nav.className = 'vellano-gallery-nav';
+        nav.innerHTML =
+          '<button type="button" class="vellano-gallery-nav__btn vellano-gallery-nav__btn--prev" aria-label="Poprzednie zdjęcie"><span>' +
+          ARROW +
+          '</span></button><button type="button" class="vellano-gallery-nav__btn vellano-gallery-nav__btn--next" aria-label="Następne zdjęcie"><span>' +
+          ARROW +
+          '</span></button>';
+        container.appendChild(nav);
+
+        nav.addEventListener('click', function (event) {
+          var button = event.target.closest('.vellano-gallery-nav__btn');
+          if (!button) return;
+          event.preventDefault();
+          event.stopPropagation();
+          step(scroller, button.classList.contains('vellano-gallery-nav__btn--prev') ? -1 : 1);
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        enhance();
+      });
+    } else {
+      enhance();
+    }
+
+    document.addEventListener('shopify:section:load', function (event) {
+      enhance(event.target);
+    });
+  })();
+</script>
 
 {% schema %}
 {

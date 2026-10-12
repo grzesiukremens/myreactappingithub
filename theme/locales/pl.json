@@ -351,7 +351,7 @@
   },
   "products": {
     "product": {
-      "add_to_cart": "Dodaj do koszyka",
+      "add_to_cart": "Kup teraz",
       "adding_to_cart": "Trwa dodawanie...",
       "added_to_cart": "Dodano do koszyka",
       "add_to_cart_error": "Błąd podczas dodawania do koszyka",

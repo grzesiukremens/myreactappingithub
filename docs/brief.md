@@ -177,6 +177,12 @@ Cel terminowy (do potwierdzenia): **sklep gotowy ok. 10–13.11.2026**, żeby re
 - Domena, kontakt, social media, zdjęcia na modelu: do dostarczenia przez właściciela.
 - Logo: kierunki i prompty do ChatGPT: https://claude.ai/artifact/8YnhnMrGaXmzxQ9pdm1LnK
 
+- **Runda zmian 12.10.2026 (wgrane do kopii motywu):** strona główna bez zdania „Dla tych, którzy mają już koszulkę…”; „Wybierz swój klub” jako trzy wyraźne karty produktów (ramka, przydomek, nazwa, cena, „W zestawie łańcuszek 51 cm”, przycisk „Kup teraz”) ze strzałkami pod karuzelą na telefonie; ta sama karta w kolekcjach, w „Kibicujesz komuś innemu?”, w koszyku i na 404; przycisk „Kup teraz” zamiast „Dodaj do koszyka” (dodaje do koszyka i otwiera szufladę z przejściem do kasy); bez przycisków szybkiej płatności (Shop Pay) na karcie produktu i w koszyku; strzałki przesuwania zdjęć widoczne na telefonie (galeria karty produktu, zdjęcia na kartach, karuzele).
+
+### 8.1 Przypomnienia dla właściciela (do kolejnych etapów)
+
+- **Białe tło zdjęć produktów – ODŁOŻONE (12.10.2026).** Właściciel chce jednolite, białe tło głównego zdjęcia i zdjęcia po najechaniu (karta produktu, karty w siatce, „Kibicujesz komuś innemu?”). Próba wycięcia tła w Higgsfield (6 zdjęć, 6 kredytów) mu się nie podobała, bo narzędzie generuje detale na nowo. Zdjęć w sklepie nie zmieniano. Przy kolejnych etapach przypomnieć i zaproponować inną metodę: zdjęcia od fotografa na białym tle albo ręczny retusz (maska bez regeneracji pikseli).
+
 ## 9. Otwarte pytania
 
 Aktualna lista pytań jest w rozmowie. Po odpowiedziach ta sekcja zostanie zastąpiona decyzjami.

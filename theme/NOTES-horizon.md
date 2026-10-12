@@ -326,3 +326,15 @@ Kolejność sekcji: `["main", "product_recommendations_qggXJq"]`.
 - `content_for 'blocks'` wolno użyć tylko raz w pliku.
 - Bloki prywatne (`_…`) trzeba wymieniać w `blocks` schematu z nazwy.
 - Edycja `settings_data.json` przez API nadpisuje całość. Przed uploadem zawsze pobierz aktualną wersję, bo edytor motywu mógł ją zmienić.
+
+
+## Zmiany zachowania Horizon (12.10.2026)
+
+Bez edycji plików rdzenia Horizon. Wszystko jest w `sections/vellano-global-styles.liquid` (grupa nagłówka):
+- strzałki `slideshow-arrows` w `.card-gallery`, `.resource-list__carousel` i `media-gallery` mają styl Vellano i są widoczne na telefonie (Horizon pokazuje je tylko po najechaniu, a na kartach ukrywa poniżej 750 px);
+- w karuzelach list produktów strzałki stoją pod kartami (`slideshow-container` jako flex column);
+- galeria karty produktu w układzie „grid” nie renderuje strzałek na telefonie, więc skrypt w tej sekcji dokłada `.vellano-gallery-nav` i przewija `slideshow-slides` o szerokość zdjęcia (z zapętleniem);
+- `.accelerated-checkout-block` jest ukryty (dodatkowo blok jest `disabled` w szablonach), a w ustawieniach `show_accelerated_checkout_buttons: false`;
+- tekst przycisku pochodzi z `locales/pl.json` → `products.product.add_to_cart` = „Kup teraz”.
+- Static bloki (`quantity`, `accelerated-checkout`) w `buy-buttons` można wyłączyć przez `"disabled": true` w szablonie JSON – Shopify to akceptuje.
+- Wgrywanie dużych plików: `stagedUploadsCreate` (resource FILE, text/plain) → POST na GCS → `themeFilesUpsert` z `body.type: URL`. Zapis jest asynchroniczny (job); weryfikacja przez `checksumMd5`/`updatedAt` (szablony JSON i settings_data Shopify normalizuje, więc ich suma może się różnić).
