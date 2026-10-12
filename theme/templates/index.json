@@ -154,7 +154,7 @@
             "intro": {
               "type": "text",
               "settings": {
-                "text": "<p>Trzy osobne zestawy, każdy w barwach swojego klubu. W każdym zawieszka z herbem i łańcuszek 51 cm.</p>",
+                "text": "<p>Trzy oficjalne zestawy, każdy w barwach swojego klubu.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -187,7 +187,7 @@
           "type": "_product-card",
           "static": true,
           "settings": {
-            "product_card_gap": 6,
+            "product_card_gap": 4,
             "background_color": "#FFFFFF",
             "border": "solid",
             "border_width": 1,
@@ -195,23 +195,16 @@
             "border_color": "#E6E2DA",
             "border_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 20,
+            "padding-block-end": 14,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
           "blocks": {
-            "card-gallery": {
-              "type": "_product-card-gallery",
+            "card-media": {
+              "type": "custom-liquid",
+              "name": "Zdjęcie (metapole, wycięte tło)",
               "settings": {
-                "image_ratio": "portrait",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "custom_liquid": "{%- liquid\n  assign vp = closest.product\n  assign vimg = vp.metafields.custom.zdjecie_karty.value\n  assign vhover = vp.metafields.custom.zdjecie_karty_hover.value\n  if vimg == blank\n    assign vimg = vp.featured_media.preview_image\n  endif\n  if vhover == blank and vp.media.size > 1\n    assign vhover = vp.media[1].preview_image\n  endif\n  assign vsizes = '(min-width: 990px) 30vw, (min-width: 750px) 45vw, 76vw'\n-%}\n{%- if vimg != blank -%}\n<a class=\"vellano-card-media{% if vhover != blank %} vellano-card-media--hover{% endif %}\" href=\"{{ vp.url }}\" tabindex=\"-1\" aria-hidden=\"true\">{{ vimg | image_url: width: 900 | image_tag: widths: '240, 360, 480, 640, 900', sizes: vsizes, loading: 'lazy', class: 'vellano-card-media__img', alt: vp.title }}{%- if vhover != blank -%}{{ vhover | image_url: width: 900 | image_tag: widths: '240, 360, 480, 640, 900', sizes: vsizes, loading: 'lazy', class: 'vellano-card-media__img vellano-card-media__img--hover', alt: vp.title }}{%- endif -%}</a>\n{%- endif -%}"
               },
               "blocks": {}
             },
@@ -219,30 +212,15 @@
               "type": "custom-liquid",
               "name": "Przydomek (metapole)",
               "settings": {
-                "custom_liquid": "{%- assign vellano_nickname = closest.product.metafields.custom.przydomek.value | strip -%}{%- if vellano_nickname != blank -%}<p class=\"vellano-card-nickname\">{{ vellano_nickname | escape }}</p>{%- endif -%}"
+                "custom_liquid": "{%- assign vellano_nickname = closest.product.metafields.custom.przydomek.value | split: '·' | first | strip -%}{%- if vellano_nickname != blank -%}<p class=\"vellano-card-nickname\">{{ vellano_nickname | escape }}</p>{%- endif -%}"
               },
               "blocks": {}
             },
             "card-title": {
-              "type": "product-title",
+              "type": "custom-liquid",
+              "name": "Nazwa (bez „z łańcuszkiem”)",
               "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 2,
-                "padding-block-end": 0,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
+                "custom_liquid": "{%- assign vellano_title = closest.product.title | remove: ' z łańcuszkiem' | strip -%}<h3 class=\"vellano-card-title\">{{ vellano_title | escape }}</h3>"
               },
               "blocks": {}
             },
@@ -260,36 +238,10 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "padding-block-start": 2,
-                "padding-block-end": 0,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
-              },
-              "blocks": {}
-            },
-            "card-note": {
-              "type": "text",
-              "name": "Dopisek pod ceną",
-              "settings": {
-                "text": "<p>W zestawie łańcuszek 51 cm</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "custom",
-                "font": "var(--font-body--family)",
-                "font_size": "0.875rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "text_color": "{{ settings.color_palette.color1 }}",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
+                "padding-inline-start": 12,
+                "padding-inline-end": 12
               },
               "blocks": {}
             },
@@ -301,10 +253,10 @@
                 "text_color": "",
                 "show_pickup_availability": false,
                 "gift_card_form": false,
-                "padding-block-start": 14,
+                "padding-block-start": 8,
                 "padding-block-end": 0,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
+                "padding-inline-start": 12,
+                "padding-inline-end": 12
               },
               "blocks": {
                 "quantity": {
@@ -344,11 +296,10 @@
             }
           },
           "block_order": [
-            "card-gallery",
+            "card-media",
             "card-eyebrow",
             "card-title",
             "card-price",
-            "card-note",
             "card-buy-buttons"
           ],
           "name": "t:names.product_card"

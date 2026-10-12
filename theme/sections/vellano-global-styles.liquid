@@ -115,9 +115,79 @@
      koszyk, 404). Ramkę, tło i odstępy ustawia blok karty w szablonie; tu są
      przydomek, cena, przycisk na dole karty i spokojny hover.
      --------------------------------------------------------------------------- */
+  /* Zdjęcie kafelka: kwadrat na białym tle, zdjęcia z wyciętym tłem z metapól
+     custom.zdjecie_karty (główne) i custom.zdjecie_karty_hover (po najechaniu). */
+  .vellano-card-media {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+
+  .vellano-card-media__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.35s ease, transform 0.6s ease;
+  }
+
+  .vellano-card-media__img--hover {
+    opacity: 0;
+  }
+
+  @media (hover: hover) {
+    product-card:hover .vellano-card-media--hover .vellano-card-media__img:not(.vellano-card-media__img--hover) {
+      opacity: 0;
+    }
+
+    product-card:hover .vellano-card-media__img--hover {
+      opacity: 1;
+    }
+
+    product-card:hover .vellano-card-media__img {
+      transform: scale(1.03);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vellano-card-media__img {
+      transition: none;
+    }
+
+    product-card:hover .vellano-card-media__img {
+      transform: none;
+    }
+  }
+
+  .vellano-card-title {
+    margin: 0;
+    padding: 2px 12px 0;
+    text-align: center;
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--color-foreground);
+    text-wrap: balance;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
   .vellano-card-nickname {
     margin: 0;
-    padding: 14px 16px 0;
+    padding: 12px 12px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-align: center;
     font-family: var(--font-accent--family);
     font-style: var(--font-accent--style);
@@ -169,7 +239,8 @@
   }
 
   .product-grid__card .product-form-buttons .add-to-cart-button {
-    min-height: 46px;
+    min-height: 44px;
+    font-size: 0.8125rem;
   }
 
   .add-to-cart-button .add-to-cart-icon {
