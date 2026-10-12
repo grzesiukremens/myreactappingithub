@@ -482,116 +482,6 @@
         "padding-block-end": 0
       }
     },
-    "vellano_zanim_zapytasz": {
-      "type": "vellano-faq-visual",
-      "name": "Zanim zapytasz",
-      "blocks": {
-        "question_1": {
-          "type": "question",
-          "settings": {
-            "question": "Z czego jest wykonana?",
-            "answer": "<p>Podstawą jest mosiądz z powłoką rodowaną, która nadaje ramie jasny, chłodny połysk. Herb ułożono w całości z setek drobnych, ręcznie osadzanych cyrkonii w barwach herbu.</p>",
-            "image": "shopify://shop_images/zawieszka-fc-barcelona-pod-katem.webp",
-            "image_alt": ""
-          }
-        },
-        "question_2": {
-          "type": "question",
-          "settings": {
-            "question": "Jak wygląda z bliska?",
-            "answer": "<p>Tak jak na zdjęciu obok: kamień przy kamieniu, a każdy łapie światło przy ruchu. Barwy herbu są wyraźne, a rama lśni jasnym, chłodnym połyskiem powłoki rodowanej.</p>",
-            "image": "shopify://shop_images/zawieszka-real-madryt-przod.webp",
-            "image_alt": ""
-          }
-        },
-        "question_3": {
-          "type": "question",
-          "settings": {
-            "question": "Jak duża jest i jak leży na szyi?",
-            "answer": "<p>To duża, wyrazista zawieszka, dobrze widoczna na koszulce i pod rozpiętą koszulą. Na zdjęciu obok widzisz ją na łańcuszku 51 cm z zestawu. Zawieszka z łańcuszkiem waży 46 g.</p>",
-            "image": "shopify://shop_images/zawieszka-manchester-united-na-lancuszku.webp",
-            "image_alt": ""
-          }
-        },
-        "question_4": {
-          "type": "question",
-          "settings": {
-            "question": "Czy łańcuszek jest w zestawie?",
-            "answer": "<p>Tak. W zestawie jest skręcony, mocno połyskujący łańcuszek o splocie linkowym (rope), 51 cm (20 cali). Jeden rozmiar – nie musisz niczego dokupować.</p>",
-            "image": "shopify://shop_images/zawieszka-real-madryt-na-lancuszku.webp",
-            "image_alt": ""
-          }
-        },
-        "question_5": {
-          "type": "question",
-          "settings": {
-            "question": "Czy mogę nosić ją na własnym łańcuszku?",
-            "answer": "<p>Tak. Ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc założysz ją także na swój łańcuszek. Sprawdź tylko, czy zapięcie swobodnie przejdzie przez ucho.</p>",
-            "image": "shopify://shop_images/zawieszka-real-madryt-pod-katem.webp",
-            "image_alt": ""
-          }
-        },
-        "question_6": {
-          "type": "question",
-          "settings": {
-            "question": "Czy to oficjalny produkt?",
-            "answer": "<p>Tak. To oficjalny produkt licencjonowany – herb, nazwa i barwy klubu są użyte za jego zgodą. Oznaczenie oficjalnej licencji znajdziesz w pudełku. Więcej znajdziesz na stronie <a href=\"/pages/oficjalna-licencja\">Oficjalna licencja</a>.</p>",
-            "image": "shopify://shop_images/opakowanie-vellano-jubiler.webp",
-            "image_alt": ""
-          }
-        },
-        "question_7": {
-          "type": "question",
-          "settings": {
-            "question": "Jak będzie zapakowana?",
-            "answer": "<p>W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – oba z białym napisem VELLANO JUBILER. Tak przychodzi każda zawieszka, gotowa do wręczenia.</p>",
-            "image": "shopify://shop_images/opakowanie-vellano-jubiler.webp",
-            "image_alt": ""
-          }
-        },
-        "question_8": {
-          "type": "question",
-          "settings": {
-            "question": "Kiedy dotrze i czy zdąży przed Świętami?",
-            "answer": "<p>Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.</p>",
-            "image": "shopify://shop_images/zawieszka-fc-barcelona-na-lancuszku.webp",
-            "image_alt": ""
-          }
-        },
-        "question_9": {
-          "type": "question",
-          "settings": {
-            "question": "A jeśli nie przypadnie do gustu?",
-            "answer": "<p>Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli coś będzie niejasne, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.</p>",
-            "image": "shopify://shop_images/zawieszka-manchester-united-przod.webp",
-            "image_alt": ""
-          }
-        }
-      },
-      "block_order": [
-        "question_1",
-        "question_2",
-        "question_3",
-        "question_4",
-        "question_5",
-        "question_6",
-        "question_7",
-        "question_8",
-        "question_9"
-      ],
-      "settings": {
-        "eyebrow": "Z bliska",
-        "heading": "Zanim zapytasz.",
-        "intro": "<p>Pytania, które warto zadać przed zakupem. Przy każdej odpowiedzi stoi zdjęcie z bliska, które pokazuje dokładnie to, o co pytasz.</p>",
-        "link_label": "Wszystkie pytania",
-        "link_url": "shopify://pages/faq",
-        "open_first": true,
-        "line_color": "#E6E2DA",
-        "background_color": "#FFFFFF",
-        "padding-block-start": 64,
-        "padding-block-end": 64
-      }
-    },
     "vellano_prezent": {
       "type": "media-with-content",
       "name": "Prezent",
@@ -1570,7 +1460,6 @@
     "vellano_trust_bar",
     "product_list_fa6P9H",
     "vellano_wykonanie",
-    "vellano_zanim_zapytasz",
     "vellano_prezent",
     "vellano_zestaw",
     "vellano_licencja",
