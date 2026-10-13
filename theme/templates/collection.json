@@ -337,73 +337,73 @@
       "type": "vellano-faq-visual",
       "name": "Zanim zapytasz",
       "blocks": {
-        "question_1": {
+        "q_swieta": {
           "type": "question",
           "settings": {
-            "question": "Czy to oficjalny produkt?",
-            "answer": "<p>Tak. To oficjalny produkt licencjonowany – herb, nazwa i barwy klubu są użyte za jego zgodą. Oznaczenie oficjalnej licencji znajdziesz w pudełku. Więcej znajdziesz na stronie <a href=\"/pages/oficjalna-licencja\">Oficjalna licencja</a>.</p>",
-            "image": "shopify://shop_images/opakowanie-vellano-jubiler.webp",
-            "image_alt": ""
+            "question": "Czy prezent zdąży przed Świętami?",
+            "answer": "<p>Tak. Wysyłamy w 2–3 dni robocze i obowiązuje gwarancja dostawy przed Świętami. Dostawa jest darmowa.</p>",
+            "image": "shopify://shop_images/vellano-prezent-swieta.png",
+            "image_alt": "Pudełko Vellano Jubiler z etui i gałązką jodły"
           }
         },
-        "question_2": {
+        "q_opakowanie": {
           "type": "question",
           "settings": {
             "question": "Jak będzie zapakowana?",
-            "answer": "<p>W jasnoszarym, matowym pudełku z wysuwaną szufladką i miękkim, szarym wnętrzem. Do tego miękkie etui w tym samym kolorze – oba z białym napisem VELLANO JUBILER. Tak przychodzi każda zawieszka, gotowa do wręczenia.</p>",
+            "answer": "<p>W jasnoszarym, matowym pudełku z wysuwaną szufladką i w miękkim etui w tym samym kolorze, oba z napisem VELLANO JUBILER. Prezent jest od razu gotowy do wręczenia – nie musisz go dodatkowo pakować.</p>",
             "image": "shopify://shop_images/opakowanie-vellano-jubiler.webp",
-            "image_alt": ""
+            "image_alt": "Opakowanie Vellano Jubiler: pudełko z wysuniętą szufladką i miękkie etui"
           }
         },
-        "question_3": {
+        "q_zestaw": {
           "type": "question",
           "settings": {
-            "question": "Czy łańcuszek jest w zestawie?",
-            "answer": "<p>Tak. W zestawie jest skręcony, mocno połyskujący łańcuszek o splocie linkowym (rope), 51 cm (20 cali). Jeden rozmiar – nie musisz niczego dokupować.</p>",
-            "image": "shopify://shop_images/zawieszka-real-madryt-na-lancuszku.webp",
-            "image_alt": ""
+            "question": "Kupuję dla dwóch kibiców. Czy jest zestaw?",
+            "answer": "<p>Tak. 2 zawieszki kosztują 259 zł zamiast 298 zł. Herby wybierasz dowolnie – dla taty i syna, dla rodzeństwa albo dla dwóch kibiców różnych klubów. Rabat nalicza się automatycznie w koszyku.</p>",
+            "image": "shopify://shop_images/vellano-prezent-zestaw-dwa.webp",
+            "image_alt": "Dwie zawieszki Vellano Jubiler obok siebie"
           }
         },
-        "question_4": {
+        "q_lancuszek": {
           "type": "question",
           "settings": {
-            "question": "Jak duża jest i jak leży na szyi?",
-            "answer": "<p>To duża, wyrazista zawieszka, dobrze widoczna na koszulce i pod rozpiętą koszulą. Na zdjęciu obok widzisz ją na łańcuszku 51 cm z zestawu. Zawieszka z łańcuszkiem waży 46 g.</p>",
-            "image": "shopify://shop_images/zawieszka-manchester-united-na-lancuszku.webp",
-            "image_alt": ""
+            "question": "Czy łańcuszek jest w zestawie?",
+            "answer": "<p>Tak. W zestawie jest skręcony, mocno połyskujący łańcuszek o splocie linkowym (rope), 51 cm (20 cali). Nie musisz niczego dokupować.</p>",
+            "image": "shopify://shop_images/vellano-lancuszek-splot-linkowy.webp",
+            "image_alt": "Łańcuszek o splocie linkowym z bliska"
           }
         },
-        "question_5": {
+        "q_szyja": {
           "type": "question",
           "settings": {
-            "question": "Kiedy dotrze i czy zdąży przed Świętami?",
-            "answer": "<p>Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.</p>",
-            "image": "shopify://shop_images/zawieszka-fc-barcelona-na-lancuszku.webp",
-            "image_alt": ""
+            "question": "Jak duża jest i jak leży na szyi?",
+            "answer": "<p>To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży 46 g.</p>",
+            "image": "shopify://shop_images/vellano-mu-pytanie-3.webp",
+            "image_alt": "Zawieszka na szyi, na ciemnym swetrze"
           }
         },
-        "question_6": {
+        "q_material": {
           "type": "question",
           "settings": {
-            "question": "A jeśli nie przypadnie do gustu?",
-            "answer": "<p>Zasady zwrotów opisaliśmy na stronie <a href=\"/pages/zwroty\">Zwroty</a>. Jeśli coś będzie niejasne, <a href=\"/pages/contact\">napisz do nas</a> – pomożemy.</p>",
-            "image": "shopify://shop_images/zawieszka-manchester-united-przod.webp",
-            "image_alt": ""
+            "question": "Z czego jest wykonana?",
+            "answer": "<p>Z mosiądzu z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych cyrkonii w barwach klubu, osadzanych ręcznie, jedna przy drugiej.</p>",
+            "image": "shopify://shop_images/rm2.png",
+            "image_alt": "Herb z cyrkonii z bliska"
           }
         }
       },
       "block_order": [
-        "question_1",
-        "question_2",
-        "question_3",
-        "question_4",
-        "question_5",
-        "question_6"
+        "q_swieta",
+        "q_opakowanie",
+        "q_zestaw",
+        "q_lancuszek",
+        "q_szyja",
+        "q_material"
       ],
       "settings": {
         "eyebrow": "Z bliska",
         "heading": "Zanim zapytasz.",
-        "intro": "<p>Pytania, które warto zadać przed zakupem. Przy każdej odpowiedzi stoi zdjęcie z bliska, które pokazuje dokładnie to, o co pytasz.</p>",
+        "intro": "<p>Odpowiedzi na pytania, które najczęściej padają przed zakupem – także wtedy, gdy wybierasz prezent dla bliskiej osoby. Przy każdej odpowiedzi stoi zdjęcie, które pokazuje dokładnie to, o co pytasz.</p>",
         "link_label": "Wszystkie pytania",
         "link_url": "shopify://pages/faq",
         "open_first": true,

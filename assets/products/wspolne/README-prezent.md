@@ -1,0 +1,11 @@
+# Zdjęcia do „Zanim zapytasz” na stronach kolekcji (13.10.2026)
+
+Wygenerowane w Higgsfield (GPT Image 2.5, jakość high, 2k) na podstawie zdjęć właściciela; herby sprawdzone (napisy, kolory, kształt).
+
+| Plik w Shopify | Opis | Źródło |
+|---|---|---|
+| vellano-prezent-swieta.png | pudełko i etui Vellano Jubiler z gałązką jodły | edycja zdjęcia opakowania, job d1558fbf-3905-478d-8475-4e009909d1a4 |
+| vellano-prezent-trzy-herby.png | trzy zawieszki obok siebie (Real, Barcelona, United) – na razie nieużywane, do animacji | job 9d709345-4ae5-4e47-9235-c1ff01873150 |
+| vellano-prezent-zestaw-dwa.webp | kadr z dwiema zawieszkami (Real, Barcelona), wycięty z obrazu z trzema | ten sam job, kadr 1:1 |
+
+Pytania w `templates/collection.json` (Wszystkie zawieszki, Prezent dla kibica): Święta → vellano-prezent-swieta.png, opakowanie → opakowanie-vellano-jubiler.webp, zestaw → vellano-prezent-zestaw-dwa.webp, łańcuszek → vellano-lancuszek-splot-linkowy.webp, na szyi → vellano-mu-pytanie-3.webp, materiał → rm2.png.
