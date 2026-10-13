@@ -1,0 +1,350 @@
+{%- doc -%}
+  Vellano – animowane zdjęcie hero z trzech warstw (zawieszki z tyłu i z przodu).
+  Warstwy to pliki PNG/WebP z przezroczystym tłem na wspólnym płótnie 1326 × 1254 px; widoczne okno
+  zaczyna się 78 px od góry płótna, żeby łańcuszki zawsze wychodziły poza kadr także w ruchu.
+  Ruch: głębia przy przewijaniu (tylna warstwa wolniej, przednie szybciej), delikatne kołysanie
+  na łańcuszkach, pas światła maskowany kształtem zawieszek i drobne błyski na kamieniach;
+  na komputerze także lekki ruch za kursorem. Przy „ogranicz ruch” zostaje nieruchomy obraz.
+  Geometria (punkty zawieszenia, błyski) jest dopasowana do plików vellano-hero-warstwa-*.webp.
+
+  @param {object} back - warstwa z tyłu (Manchester United)
+  @param {object} front_1 - warstwa z przodu, lewa (Real Madryt)
+  @param {object} front_2 - warstwa z przodu, prawa (FC Barcelona)
+  @param {string} [loading] - eager / lazy
+  @param {string} [priority] - high / auto
+  @param {string} [label] - opis całej sceny dla czytników ekranu
+{%- enddoc -%}
+
+{%- liquid
+  assign sizes = '(min-width: 1440px) 720px, (min-width: 750px) 50vw, 100vw'
+  assign loading = loading | default: 'lazy'
+  assign priority = priority | default: 'auto'
+-%}
+
+<div
+  class="vellano-hero-layers"
+  data-vellano-hero-layers
+  role="img"
+  aria-label="{{ label | escape }}"
+  style="--layers-top: -6.6327%; --layers-height: 106.6327%;"
+>
+  {%- if back != blank -%}
+    <div
+      class="vellano-hero-layers__layer vellano-hero-layers__layer--back"
+      style="--layer-depth: 0.012; --layer-dx: 0.6; --sway-amp: 0.35deg; --sway-duration: 8.6s; --sway-delay: -3.1s; --pivot-x: 50.151%;"
+    >
+      {{
+        back
+        | image_url: width: 1326
+        | image_tag:
+          widths: '663, 990, 1326',
+          sizes: sizes,
+          loading: loading,
+          fetchpriority: priority,
+          alt: '',
+          class: 'vellano-hero-layers__image'
+      }}
+      <span
+        class="vellano-hero-layers__shine"
+        style="--layer-mask: url('{{ back | image_url: width: 663 }}');"
+        aria-hidden="true"
+      ></span>
+      <i class="vellano-hero-layers__spark" style="left: 40.498%; top: 29.904%; animation-delay: 0.00s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 64.027%; top: 35.167%; animation-delay: 1.30s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 49.170%; top: 19.617%; animation-delay: 2.60s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 53.922%; top: 31.738%; animation-delay: 3.90s;"></i>
+    </div>
+  {%- endif -%}
+  {%- if front_1 != blank -%}
+    <div
+      class="vellano-hero-layers__layer vellano-hero-layers__layer--front-1"
+      style="--layer-depth: -0.075; --layer-dx: 1.6; --sway-amp: 0.5deg; --sway-duration: 7.2s; --sway-delay: -1.2s; --pivot-x: 23.643%;"
+    >
+      {{
+        front_1
+        | image_url: width: 1326
+        | image_tag:
+          widths: '663, 990, 1326',
+          sizes: sizes,
+          loading: loading,
+          fetchpriority: priority,
+          alt: '',
+          class: 'vellano-hero-layers__image'
+      }}
+      <span
+        class="vellano-hero-layers__shine"
+        style="--layer-mask: url('{{ front_1 | image_url: width: 663 }}');"
+        aria-hidden="true"
+      ></span>
+      <i class="vellano-hero-layers__spark" style="left: 27.828%; top: 70.654%; animation-delay: 0.45s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 26.621%; top: 42.823%; animation-delay: 1.75s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 19.005%; top: 59.410%; animation-delay: 3.05s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 20.739%; top: 30.303%; animation-delay: 4.35s;"></i>
+    </div>
+  {%- endif -%}
+  {%- if front_2 != blank -%}
+    <div
+      class="vellano-hero-layers__layer vellano-hero-layers__layer--front-2"
+      style="--layer-depth: -0.075; --layer-dx: 1.6; --sway-amp: 0.5deg; --sway-duration: 7.9s; --sway-delay: -5.4s; --pivot-x: 77.074%;"
+    >
+      {{
+        front_2
+        | image_url: width: 1326
+        | image_tag:
+          widths: '663, 990, 1326',
+          sizes: sizes,
+          loading: loading,
+          fetchpriority: priority,
+          alt: '',
+          class: 'vellano-hero-layers__image'
+      }}
+      <span
+        class="vellano-hero-layers__shine"
+        style="--layer-mask: url('{{ front_2 | image_url: width: 663 }}');"
+        aria-hidden="true"
+      ></span>
+      <i class="vellano-hero-layers__spark" style="left: 73.002%; top: 85.088%; animation-delay: 0.90s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 62.217%; top: 52.233%; animation-delay: 2.20s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 79.110%; top: 70.813%; animation-delay: 3.50s;"></i>
+      <i class="vellano-hero-layers__spark" style="left: 92.534%; top: 59.091%; animation-delay: 4.80s;"></i>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    if (window.vellanoHeroLayersInit) return;
+    window.vellanoHeroLayersInit = true;
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+    function setup(stage) {
+      if (reduce.matches) return;
+      stage.classList.add('is-animated');
+
+      var visible = true;
+      var start = performance.now();
+      var mx = 0, my = 0, tx = 0, ty = 0;
+      var raf = 0;
+
+      function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+      function frame(now) {
+        raf = 0;
+        if (!visible) return;
+        var rect = stage.getBoundingClientRect();
+        var top = rect.top + window.scrollY;
+        var p = clamp(window.scrollY / (top + rect.height || 1));
+
+        // Pas światła: przy przewijaniu idzie za stroną, a w spoczynku przechodzi co 7 s.
+        var t;
+        if (p > 0.002) {
+          t = clamp(p / 0.45);
+        } else {
+          var cycle = (now - start - 500) % 7000;
+          t = now - start < 500 ? 0 : clamp(cycle / 1700);
+        }
+
+        mx += (tx - mx) * 0.08;
+        my += (ty - my) * 0.08;
+
+        stage.style.setProperty('--p', p.toFixed(4));
+        stage.style.setProperty('--t', t.toFixed(4));
+        stage.style.setProperty('--mx', mx.toFixed(4));
+        stage.style.setProperty('--my', my.toFixed(4));
+        raf = requestAnimationFrame(frame);
+      }
+
+      function kick() {
+        if (!raf && visible) raf = requestAnimationFrame(frame);
+      }
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          kick();
+        }).observe(stage);
+      }
+
+      if (finePointer.matches) {
+        var area = stage.closest('.vellano-hero') || stage;
+        area.addEventListener('pointermove', function (event) {
+          var r = area.getBoundingClientRect();
+          tx = ((event.clientX - r.left) / r.width - 0.5) * 2;
+          ty = ((event.clientY - r.top) / r.height - 0.5) * 2;
+        }, { passive: true });
+        area.addEventListener('pointerleave', function () { tx = 0; ty = 0; }, { passive: true });
+      }
+
+      kick();
+    }
+
+    function init() {
+      document.querySelectorAll('[data-vellano-hero-layers]').forEach(setup);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+    document.addEventListener('shopify:section:load', function () {
+      document.querySelectorAll('[data-vellano-hero-layers]:not(.is-animated)').forEach(setup);
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  /* Kadr tnie tylko górę (łańcuszki wychodzą poza kadr); cień i kołysanie mogą wyjść w dół i na boki. */
+  .vellano-hero-layers {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 -20% -20% -20%);
+  }
+
+  .vellano-hero-layers__layer {
+    position: absolute;
+    left: 0;
+    top: var(--layers-top);
+    width: 100%;
+    height: var(--layers-height);
+    transform-origin: var(--pivot-x) 0;
+    pointer-events: none;
+  }
+
+  .vellano-hero-layers__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 14px 18px rgb(20 20 20 / 0.1));
+  }
+
+  .vellano-hero-layers__layer--back .vellano-hero-layers__image {
+    filter: drop-shadow(0 10px 14px rgb(20 20 20 / 0.08));
+  }
+
+  .vellano-hero-layers__shine,
+  .vellano-hero-layers__spark {
+    display: none;
+  }
+
+  .vellano-hero-layers.is-animated .vellano-hero-layers__layer {
+    translate:
+      calc(var(--mx, 0) * var(--layer-dx) * 1%)
+      calc(var(--p, 0) * var(--layer-depth) * 100% + var(--my, 0) * var(--layer-dx) * 0.6%);
+    animation: vellano-hero-sway var(--sway-duration) ease-in-out var(--sway-delay) infinite alternate;
+    will-change: translate, rotate;
+  }
+
+  .vellano-hero-layers.is-animated .vellano-hero-layers__shine {
+    display: block;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    mix-blend-mode: screen;
+    -webkit-mask-image: var(--layer-mask);
+    mask-image: var(--layer-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* Pas światła przesuwany przez translate (kompozytor, bez przerysowania obrazu):
+     t = 0 → pas za lewą krawędzią, t = 1 → za prawą. */
+  .vellano-hero-layers__shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300%;
+    background: linear-gradient(
+      105deg,
+      rgb(255 255 255 / 0) 0%,
+      rgb(255 255 255 / 0) 46%,
+      rgb(255 255 255 / 0.18) 48.4%,
+      rgb(255 255 255 / 0.62) 50%,
+      rgb(255 255 255 / 0.18) 51.6%,
+      rgb(255 255 255 / 0) 54%,
+      rgb(255 255 255 / 0) 100%
+    );
+    translate: calc(-60% + var(--t, 0) * 53.333%) 0;
+    will-change: translate;
+  }
+
+  .vellano-hero-layers.is-animated .vellano-hero-layers__spark {
+    display: block;
+    position: absolute;
+    width: 3.2%;
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    opacity: 0;
+    background: radial-gradient(circle, rgb(255 255 255 / 0.95) 0 9%, rgb(255 255 255 / 0) 32%);
+    mix-blend-mode: screen;
+    animation: vellano-hero-twinkle 5.2s ease-in-out infinite;
+  }
+
+  .vellano-hero-layers__spark::before,
+  .vellano-hero-layers__spark::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .vellano-hero-layers__spark::before {
+    inset: 46% 0;
+    background: linear-gradient(90deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.95) 50%, rgb(255 255 255 / 0));
+  }
+
+  .vellano-hero-layers__spark::after {
+    inset: 0 46%;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.95) 50%, rgb(255 255 255 / 0));
+  }
+
+  @keyframes vellano-hero-sway {
+    from {
+      rotate: calc(var(--sway-amp) * -1);
+    }
+
+    to {
+      rotate: var(--sway-amp);
+    }
+  }
+
+  @keyframes vellano-hero-twinkle {
+    0%,
+    62%,
+    100% {
+      opacity: 0;
+      scale: 0.3;
+      rotate: 0deg;
+    }
+
+    72% {
+      opacity: 1;
+      scale: 1;
+      rotate: 45deg;
+    }
+
+    84% {
+      opacity: 0;
+      scale: 0.4;
+      rotate: 90deg;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vellano-hero-layers.is-animated .vellano-hero-layers__layer {
+      translate: none;
+      animation: none;
+    }
+
+    .vellano-hero-layers.is-animated .vellano-hero-layers__shine,
+    .vellano-hero-layers.is-animated .vellano-hero-layers__spark {
+      display: none;
+    }
+  }
+{% endstylesheet %}

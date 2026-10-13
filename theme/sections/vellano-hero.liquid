@@ -9,6 +9,8 @@
   Zdjęcie hero to kandydat LCP: gdy sekcja jest pierwsza w szablonie, dostaje loading eager i fetchpriority high,
   w przeciwnym razie loading lazy. Opcjonalne osobne zdjęcie na telefon (element <picture>).
   Bez zdjęcia sekcja pokazuje zastępczą grafikę Shopify.
+  Animowane zdjęcie: gdy ustawione są trzy warstwy (z tyłu, z przodu lewa, z przodu prawa), zamiast zdjęcia
+  renderuje się snippet vellano-hero-layers (głębia przy przewijaniu, kołysanie, błysk) w kadrze 1326:1176.
   @example
   <!-- templates/index.json → "vellano_hero": { "type": "vellano-hero", "settings": { "image": "shopify://shop_images/zawieszka-real-madryt-na-lancuszku.webp", "heading": "Oficjalna biżuteria kibica.", "button_label": "Wybierz swój klub", "button_link": "shopify://collections/wszystkie-zawieszki" } } -->
 {% endcomment %}
@@ -16,6 +18,14 @@
 {%- liquid
   assign image = section.settings.image
   assign image_mobile = section.settings.image_mobile
+
+  assign layer_back = section.settings.layer_back
+  assign layer_front_1 = section.settings.layer_front_1
+  assign layer_front_2 = section.settings.layer_front_2
+  assign use_layers = false
+  if layer_back != blank and layer_front_1 != blank and layer_front_2 != blank
+    assign use_layers = true
+  endif
 
   if section.index == 1
     assign image_loading = 'eager'
@@ -46,6 +56,13 @@
     assign desktop_ratio = image.aspect_ratio | default: 0.8
   endif
 
+  assign mobile_ratio = section.settings.mobile_ratio
+  if use_layers
+    # Kadr sceny z warstwami: płótno 1326 × 1254 px, widoczne od 78 px w dół.
+    assign desktop_ratio = 1.1276
+    assign mobile_ratio = 1.1276
+  endif
+
   capture modifier_classes
     echo ' vellano-hero--media-' | append: section.settings.media_position
     echo ' vellano-hero--mobile-' | append: section.settings.mobile_alignment
@@ -64,12 +81,21 @@
   class="section section--page-width vellano-hero{{ modifier_classes }} spacing-style{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
   style="
     {% render 'spacing-style', settings: section.settings %}
-    --vellano-hero-ratio-mobile: {{ section.settings.mobile_ratio }};
+    --vellano-hero-ratio-mobile: {{ mobile_ratio }};
     --vellano-hero-ratio-desktop: {{ desktop_ratio }};
   "
 >
-  <div class="vellano-hero__media">
-    {%- if image != blank -%}
+  <div class="vellano-hero__media{% if use_layers %} vellano-hero__media--layers{% endif %}">
+    {%- if use_layers -%}
+      {%- render 'vellano-hero-layers',
+        back: layer_back,
+        front_1: layer_front_1,
+        front_2: layer_front_2,
+        loading: image_loading,
+        priority: image_priority,
+        label: heading
+      -%}
+    {%- elsif image != blank -%}
       <picture>
         {%- if image_mobile != blank -%}
           <source
@@ -154,6 +180,11 @@
     overflow: hidden;
     aspect-ratio: var(--vellano-hero-ratio-mobile, 1);
     background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .vellano-hero > .vellano-hero__media--layers {
+    overflow: visible;
+    background-color: transparent;
   }
 
   .vellano-hero__media picture {
@@ -330,6 +361,29 @@
         { "value": "right", "label": "Po prawej" }
       ],
       "default": "right"
+    },
+    {
+      "type": "header",
+      "content": "Animowane zdjęcie (3 warstwy)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Gdy ustawisz wszystkie trzy warstwy, zamiast zdjęcia pokaże się animacja: głębia przy przewijaniu, kołysanie na łańcuszkach i błysk. Warstwy muszą mieć przezroczyste tło i wspólne płótno 1326 × 1254 px (pliki vellano-hero-warstwa-*.webp)."
+    },
+    {
+      "type": "image_picker",
+      "id": "layer_back",
+      "label": "Warstwa z tyłu"
+    },
+    {
+      "type": "image_picker",
+      "id": "layer_front_1",
+      "label": "Warstwa z przodu – lewa"
+    },
+    {
+      "type": "image_picker",
+      "id": "layer_front_2",
+      "label": "Warstwa z przodu – prawa"
     },
     {
       "type": "header",
