@@ -1,0 +1,330 @@
+{% comment %}
+  Section contract.
+  Vellano – „Wykonanie” na stronie głównej: tekst i siatka detali z bliska.
+  Każdy detal to blok „Detal” (zdjęcie + krótki podpis); najlepiej po jednym z każdego klubu i łańcuszek,
+  żeby sekcja dotyczyła wszystkich herbów, a nie jednego. Maksymalnie 4 detale.
+  Telefon: nadtytuł, nagłówek, tekst, siatka 2 × 2, link. Od 990 px: tekst z jednej strony, siatka z drugiej
+  (ustawienie `media_position`). Kafelki są kwadratowe, zdjęcie przycięte do punktu ostrości z edytora.
+  @example
+  <!-- templates/index.json → "vellano_wykonanie": { "type": "vellano-details", "blocks": { "d1": { "type": "detail", "settings": { "image": "shopify://shop_images/rm2.png", "caption": "Barwy klubu odwzorowane kamieniami" } } }, "block_order": ["d1"] } -->
+{% endcomment %}
+
+{%- liquid
+  assign eyebrow = section.settings.eyebrow | strip
+  assign heading = section.settings.heading | strip
+  assign link_label = section.settings.link_label | strip
+-%}
+
+{% render 'vellano-ui-styles' %}
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="section section--page-width color-custom-{{ section.id }} spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="vellano-details vellano-ui vellano-details--media-{{ section.settings.media_position }}">
+    <div class="vellano-details__content">
+      {%- if eyebrow != blank -%}
+        <p class="vellano-eyebrow">{{ eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <h2 class="vellano-details__heading h2">{{ heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="vellano-details__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="vellano-details__grid" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign caption = block.settings.caption | strip
+            assign image_style = ''
+            if block.settings.image != blank
+              assign image_style = 'object-position: ' | append: block.settings.image.presentation.focal_point
+            endif
+          -%}
+          <li class="vellano-details__item" {{ block.shopify_attributes }}>
+            <figure class="vellano-details__figure">
+              <div class="vellano-details__media">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 960
+                    | image_tag:
+                      widths: '240, 360, 480, 720, 960',
+                      sizes: '(min-width: 1440px) 340px, (min-width: 990px) 25vw, calc(50vw - 30px)',
+                      loading: 'lazy',
+                      alt: block.settings.image.alt,
+                      class: 'vellano-details__image',
+                      style: image_style
+                  }}
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'vellano-details__image vellano-details__image--placeholder' }}
+                {%- endif -%}
+              </div>
+              {%- if caption != blank -%}
+                <figcaption class="vellano-details__caption">{{ caption | escape }}</figcaption>
+              {%- endif -%}
+            </figure>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if link_label != blank and section.settings.link != blank -%}
+      <div class="vellano-details__footer">
+        <a class="vellano-text-link" href="{{ section.settings.link }}">{{ link_label | escape }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vellano-details {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'content'
+      'grid'
+      'footer';
+    row-gap: 28px;
+    min-width: 0;
+  }
+
+  .vellano-details__content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  /* Krój, rozmiar i interlinia z ustawień H2 motywu (klasa .h2), jak w pozostałych sekcjach Vellano. */
+  .vellano-details__heading {
+    margin: 0;
+    color: var(--color-foreground);
+    text-wrap: balance;
+  }
+
+  .vellano-details__text {
+    max-width: 32em;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .vellano-details__text p {
+    margin: 0;
+  }
+
+  .vellano-details__text p + p {
+    margin-block-start: 0.5em;
+  }
+
+  .vellano-details__grid {
+    grid-area: grid;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vellano-details__item,
+  .vellano-details__figure {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .vellano-details__figure {
+    height: 100%;
+    background-color: #fff;
+  }
+
+  .vellano-details__media {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background-color: #f6f6f6;
+  }
+
+  .vellano-details__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vellano-details__image--placeholder {
+    fill: rgb(var(--color-foreground-rgb) / var(--opacity-20));
+  }
+
+  .vellano-details__caption {
+    padding: 10px 10px 12px;
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: rgb(20 20 20 / 0.78);
+    text-wrap: pretty;
+  }
+
+  .vellano-details__footer {
+    grid-area: footer;
+    margin-block-start: -12px;
+  }
+
+  @media screen and (min-width: 990px) {
+    .vellano-details {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:
+        'content grid'
+        'footer grid';
+      column-gap: clamp(48px, 6vw, 96px);
+      row-gap: 0;
+      align-items: center;
+    }
+
+    .vellano-details--media-left {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      grid-template-areas:
+        'grid content'
+        'grid footer';
+    }
+
+    .vellano-details__content {
+      align-self: end;
+    }
+
+    .vellano-details__footer {
+      align-self: start;
+      margin-block-start: 8px;
+    }
+
+    .vellano-details__grid {
+      gap: 16px;
+    }
+
+    .vellano-details__caption {
+      padding: 12px 14px 14px;
+      font-size: 0.875rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – detale",
+  "tag": "section",
+  "class": "section-wrapper vellano-details-section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "detail",
+      "name": "Detal",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Zdjęcie",
+          "info": "Zdjęcie z bliska, kwadratowe albo z punktem ostrości ustawionym na detalu."
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Podpis"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Treść"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Nadtytuł",
+      "default": "Wykonanie"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek",
+      "default": "Setki cyrkonii. Jeden herb."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Tekst"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Tekst linku",
+      "default": "Poznaj wykonanie"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Układ"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Detale na komputerze",
+      "options": [
+        { "value": "right", "label": "Z prawej" },
+        { "value": "left", "label": "Z lewej" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – detale",
+      "category": "Vellano",
+      "blocks": [
+        { "type": "detail" },
+        { "type": "detail" },
+        { "type": "detail" },
+        { "type": "detail" }
+      ]
+    }
+  ]
+}
+{% endschema %}

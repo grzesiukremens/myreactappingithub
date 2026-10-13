@@ -163,23 +163,41 @@
     }
   }
 
-  /* Banery ze zdjęciem na stronie głównej (Wykonanie, Na prezent – sekcje media-with-content):
-     zdjęcie 5:4 na telefonie i 1:1 na komputerze zamiast wysokości 70–80% ekranu. */
-  :is([id$='__vellano_wykonanie'], [id$='__vellano_prezent']) .media-with-content .media-block__media {
+  /* Baner „Na prezent” na stronie głównej (sekcja media-with-content): zdjęcie 5:4 na telefonie
+     i 1:1 na komputerze zamiast wysokości 70–80% ekranu. */
+  [id$='__vellano_prezent'] .media-with-content .media-block__media {
     height: auto;
     aspect-ratio: 5 / 4;
   }
 
   @media screen and (min-width: 750px) {
-    :is([id$='__vellano_wykonanie'], [id$='__vellano_prezent']) .media-with-content .media-block {
+    [id$='__vellano_prezent'] .media-with-content .media-block {
       min-height: 0;
       aspect-ratio: 1 / 1;
     }
 
-    :is([id$='__vellano_wykonanie'], [id$='__vellano_prezent']) .media-with-content .media-block__media {
+    [id$='__vellano_prezent'] .media-with-content .media-block__media {
       height: 100%;
       aspect-ratio: auto;
     }
+  }
+
+  /* Obietnice w banerze „Na prezent” (blok vellano-trust): wiersze rozdzielone cienką linią. */
+  [id$='__vellano_prezent'] .vellano-trust {
+    width: 100%;
+    max-width: 30rem;
+  }
+
+  [id$='__vellano_prezent'] .vellano-trust__list {
+    gap: 0;
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-10));
+  }
+
+  [id$='__vellano_prezent'] .vellano-trust__item {
+    gap: 12px;
+    padding-block: 13px;
+    border-block-end: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-10));
+    color: var(--color-foreground);
   }
 
   /* Płynne przewijanie do kotwic (np. „Wybierz swój klub” w hero → sekcja z klubami). */

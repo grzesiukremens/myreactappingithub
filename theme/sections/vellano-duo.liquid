@@ -1,0 +1,408 @@
+{% comment %}
+  Section contract.
+  Vellano – „Zestaw dla dwóch kibiców” na stronie głównej: ciemny pas z ofertą 2 zawieszki za 259 zł.
+  Rabat nalicza rabat automatyczny Shopify w koszyku; sekcja tylko go pokazuje (kwoty są w ustawieniach).
+  Grafika: pierwsze dwa bloki „Herb” stoją obok siebie (zdjęcia z wyciętym tłem, kadr pionowy od góry,
+  żeby łańcuszki wychodziły poza kadr). Kolejne bloki są przygotowane pod pokazywanie innych par.
+  Telefon: wszystko wyśrodkowane, grafika nad ceną. Od 990 px: grafika z lewej, treść z prawej.
+  @example
+  <!-- templates/index.json → "vellano_zestaw": { "type": "vellano-duo", "blocks": { "rm": { "type": "herb", "settings": { "image": "shopify://shop_images/karta-real-madryt-na-lancuszku.png", "label": "Real Madryt" } } }, "block_order": ["rm"] } -->
+{% endcomment %}
+
+{%- liquid
+  assign eyebrow = section.settings.eyebrow | strip
+  assign heading = section.settings.heading | strip
+  assign price = section.settings.price | strip
+  assign compare_price = section.settings.compare_price | strip
+  assign save_label = section.settings.save_label | strip
+  assign button_label = section.settings.button_label | strip
+-%}
+
+{% render 'vellano-ui-styles' %}
+{% render 'contrast-override',
+  background_color: section.settings.background_color,
+  text_color: section.settings.text_color,
+  section_id: section.id
+%}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="section section--page-width color-custom-{{ section.id }} spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="vellano-duo vellano-ui">
+    {%- if eyebrow != blank or heading != blank -%}
+      <header class="vellano-duo__header">
+        {%- if eyebrow != blank -%}
+          <p class="vellano-eyebrow">{{ eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if heading != blank -%}
+          <h2 class="vellano-duo__heading h2">{{ heading | escape }}</h2>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="vellano-duo__visual">
+        {%- for block in section.blocks limit: 2 -%}
+          <div class="vellano-duo__herb" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 900
+                | image_tag:
+                  widths: '300, 450, 600, 750, 900',
+                  sizes: '(min-width: 990px) 280px, 46vw',
+                  loading: 'lazy',
+                  alt: block.settings.label,
+                  class: 'vellano-duo__image'
+              }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'vellano-duo__image vellano-duo__image--placeholder' }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="vellano-duo__offer">
+      {%- if price != blank -%}
+        <p class="vellano-duo__price">
+          <span class="vellano-duo__price-now">{{ price | escape }}</span>
+          {%- if compare_price != blank -%}
+            <s class="vellano-duo__price-was">
+              <span class="visually-hidden">zamiast</span>
+              {{ compare_price | escape -}}
+            </s>
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+
+      {%- if save_label != blank -%}
+        <p class="vellano-duo__save">{{ save_label | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.note != blank -%}
+        <div class="vellano-duo__note rte">{{ section.settings.note }}</div>
+      {%- endif -%}
+
+      {%- if button_label != blank and section.settings.button_link != blank -%}
+        <a class="button vellano-duo__button" href="{{ section.settings.button_link }}">
+          {{- button_label | escape -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vellano-duo {
+    --vellano-duo-accent: #c9b27c;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 20px;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .vellano-duo__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: min(100%, 380px);
+    margin-inline: auto;
+  }
+
+  /* Miękka poświata za zawieszkami, żeby srebro odcinało się od ciemnego tła. */
+  .vellano-duo__visual::before {
+    content: '';
+    position: absolute;
+    inset: 18% 8% 6%;
+    background: radial-gradient(closest-side, rgb(255 255 255 / 0.14), rgb(255 255 255 / 0));
+    pointer-events: none;
+  }
+
+  /* Kadr pionowy z górnej części zdjęcia 1122 × 1402: mieści szeroki herb MU, a łańcuszek wychodzi górą. */
+  .vellano-duo__herb {
+    position: relative;
+    flex: 0 1 50%;
+    min-width: 0;
+    aspect-ratio: 0.63;
+    overflow: hidden;
+  }
+
+  .vellano-duo__herb + .vellano-duo__herb {
+    margin-inline-start: -4%;
+  }
+
+  .vellano-duo__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0;
+  }
+
+  .vellano-duo__image--placeholder {
+    fill: rgb(var(--color-foreground-rgb) / var(--opacity-20));
+  }
+
+  .vellano-duo__header,
+  .vellano-duo__offer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .vellano-duo__heading {
+    margin: 12px 0 0;
+    color: var(--color-foreground);
+    text-wrap: balance;
+  }
+
+  .vellano-duo__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 14px;
+    margin: 0;
+  }
+
+  .vellano-duo__price-now {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2.75rem, 2.2rem + 2.4vw, 3.75rem);
+    line-height: 1;
+    color: var(--color-foreground);
+  }
+
+  .vellano-duo__price-was {
+    font-family: var(--font-body--family);
+    font-size: 1.0625rem;
+    color: rgb(var(--color-foreground-rgb) / 0.55);
+    text-decoration-thickness: 1px;
+  }
+
+  .vellano-duo__save {
+    margin: 14px 0 0;
+    padding: 7px 14px;
+    border: 1px solid var(--vellano-duo-accent);
+    border-radius: 999px;
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--vellano-duo-accent);
+  }
+
+  .vellano-duo__note {
+    max-width: 30em;
+    margin-block-start: 16px;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: rgb(var(--color-foreground-rgb) / 0.72);
+  }
+
+  .vellano-duo__note p {
+    margin: 0;
+  }
+
+  .vellano-duo .vellano-duo__button.button {
+    --button-color: #141414;
+    --button-background-color: #ffffff;
+    --button-border-color: #ffffff;
+
+    width: 100%;
+    max-width: 420px;
+    margin-block-start: 24px;
+  }
+
+  .vellano-duo .vellano-duo__button.button:hover {
+    --button-color: #141414;
+    --button-background-color: rgb(255 255 255 / 0.86);
+    --button-border-color: rgb(255 255 255 / 0.86);
+  }
+
+  .vellano-duo .vellano-duo__button.button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+  }
+
+  @media screen and (min-width: 990px) {
+    .vellano-duo {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:
+        'visual header'
+        'visual offer';
+      column-gap: clamp(48px, 6vw, 96px);
+      row-gap: 0;
+      text-align: start;
+    }
+
+    .vellano-duo__header {
+      grid-area: header;
+      align-self: end;
+      align-items: flex-start;
+    }
+
+    .vellano-duo__visual {
+      grid-area: visual;
+      align-self: center;
+      width: min(100%, 520px);
+    }
+
+    .vellano-duo__offer {
+      grid-area: offer;
+      align-self: start;
+      align-items: flex-start;
+      padding-block-start: 24px;
+    }
+
+    .vellano-duo__price {
+      justify-content: flex-start;
+    }
+
+    .vellano-duo .vellano-duo__button.button {
+      width: auto;
+      min-width: 280px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Vellano – zestaw (oferta)",
+  "tag": "section",
+  "class": "section-wrapper vellano-duo-section",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "herb",
+      "name": "Herb",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Zdjęcie z wyciętym tłem",
+          "info": "Zawieszka na łańcuszku, przezroczyste tło (np. karta-…-na-lancuszku.png). Na stronie widać pierwsze dwa herby."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nazwa klubu"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Rabat nalicza w koszyku rabat automatyczny Shopify (2 zawieszki za 259 zł). Ta sekcja tylko o nim informuje – kwoty zmieniasz poniżej."
+    },
+    {
+      "type": "header",
+      "content": "Treść"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Nadtytuł",
+      "default": "Zestaw dla dwóch kibiców"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek",
+      "default": "Dwa herby. Jedna cena."
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Cena zestawu",
+      "default": "259 zł"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Cena przekreślona",
+      "default": "298 zł"
+    },
+    {
+      "type": "text",
+      "id": "save_label",
+      "label": "Oszczędność",
+      "default": "Oszczędzasz 39 zł"
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "Dopisek",
+      "default": "<p>Promocja nalicza się automatycznie w koszyku.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Tekst przycisku",
+      "default": "Wybierz dwa herby"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link przycisku"
+    },
+    {
+      "type": "header",
+      "content": "Wygląd"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Tło sekcji",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Kolor tekstu",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Odstęp u góry",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Odstęp u dołu",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vellano – zestaw (oferta)",
+      "category": "Vellano",
+      "blocks": [
+        { "type": "herb" },
+        { "type": "herb" }
+      ]
+    }
+  ]
+}
+{% endschema %}

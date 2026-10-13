@@ -359,131 +359,54 @@
       ]
     },
     "vellano_wykonanie": {
-      "type": "media-with-content",
+      "type": "vellano-details",
       "name": "Wykonanie",
       "blocks": {
-        "media": {
-          "type": "_media-without-appearance",
-          "static": true,
+        "d_fcb": {
+          "type": "detail",
           "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/zawieszka-fc-barcelona-pod-katem.webp",
-            "video_loop": true,
-            "video_autoplay": false,
-            "image_position": "cover",
-            "video_position": "cover"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/vellano-fcb-pytanie-2.webp",
+            "caption": "Cyrkonie osadzane ręcznie, kamień przy kamieniu"
+          }
         },
-        "content": {
-          "type": "_content-without-appearance",
-          "static": true,
+        "d_mu": {
+          "type": "detail",
           "settings": {
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16
-          },
-          "blocks": {
-            "eyebrow": {
-              "type": "vellano-eyebrow",
-              "settings": {
-                "text": "Wykonanie",
-                "alignment": "left",
-                "tone": "muted"
-              },
-              "blocks": {}
-            },
-            "heading": {
-              "type": "text",
-              "settings": {
-                "text": "<h2>Setki cyrkonii. Jeden herb.</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h2",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Herb ułożono z setek drobnych cyrkonii, osadzanych ręcznie, kamień przy kamieniu. Mosiężna rama lśni jasnym, chłodnym połyskiem powłoki rodowanej. W zestawie skręcony łańcuszek o splocie linkowym, 51 cm.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "link": {
-              "type": "text",
-              "settings": {
-                "text": "<p><a href=\"/pages/wykonanie\">Poznaj wykonanie</a></p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "eyebrow",
-            "heading",
-            "text",
-            "link"
-          ]
+            "image": "shopify://shop_images/vellano-mu-pytanie-1.webp",
+            "caption": "Ucho wysadzane białymi cyrkoniami"
+          }
+        },
+        "d_rm": {
+          "type": "detail",
+          "settings": {
+            "image": "shopify://shop_images/rm2.png",
+            "caption": "Barwy klubu odwzorowane kamieniami"
+          }
+        },
+        "d_chain": {
+          "type": "detail",
+          "settings": {
+            "image": "shopify://shop_images/vellano-lancuszek-splot-linkowy.webp",
+            "caption": "Łańcuszek o splocie linkowym, 51 cm w zestawie"
+          }
         }
       },
-      "block_order": [],
+      "block_order": [
+        "d_fcb",
+        "d_mu",
+        "d_rm",
+        "d_chain"
+      ],
       "settings": {
-        "media_position": "left",
-        "media_width": "medium",
-        "media_height": "80svh",
-        "section_width": "full-width",
-        "extend_media": true,
+        "eyebrow": "Wykonanie",
+        "heading": "Setki cyrkonii. Jeden herb.",
+        "text": "<p>Herb ułożony z setek drobnych cyrkonii, osadzanych ręcznie, kamień przy kamieniu. Mosiężna rama lśni chłodnym połyskiem powłoki rodowanej – tak samo w każdym klubie.</p>",
+        "link_label": "Poznaj wykonanie",
+        "link": "/pages/wykonanie",
+        "media_position": "right",
         "background_color": "#F7F5F1",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     },
     "vellano_prezent": {
@@ -495,7 +418,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/opakowanie-vellano-jubiler.webp",
+            "image": "shopify://shop_images/vellano-opakowanie-prezent.png",
             "video_loop": true,
             "video_autoplay": false,
             "image_position": "cover",
@@ -524,7 +447,7 @@
             "heading": {
               "type": "text",
               "settings": {
-                "text": "<h2>Prezent dla kibica, który ma już koszulkę.</h2>",
+                "text": "<h2>Gotowy do wręczenia.</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -548,7 +471,7 @@
             "text": {
               "type": "text",
               "settings": {
-                "text": "<p>Nie musisz znać się na piłce – wybierz herb. Wystarczy, że wiesz, komu kibicuje bliska Ci osoba.</p><p>Każda zawieszka przychodzi w jasnoszarym, matowym pudełku z wysuwaną szufladką i w miękkim etui Vellano Jubiler. Gotowa do wręczenia.</p>",
+                "text": "<p>Wystarczy, że wiesz, komu kibicuje bliska Ci osoba. Resztą zajmiemy się my.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -606,12 +529,33 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "trust": {
+              "type": "vellano-trust",
+              "settings": {
+                "show_set_line": false,
+                "set_line": "",
+                "show_points": true,
+                "point_1": "Pudełko z szufladką i etui w cenie",
+                "point_1_icon": "box",
+                "point_2": "Darmowa dostawa",
+                "point_2_icon": "truck",
+                "point_3": "Gwarancja dostawy przed Świętami",
+                "point_3_icon": "gift",
+                "show_returns": false,
+                "returns_label": "Zwroty",
+                "layout": "stack",
+                "padding-block-start": 4,
+                "padding-block-end": 8
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "eyebrow",
             "heading",
             "text",
+            "trust",
             "button",
             "link"
           ]
@@ -630,137 +574,47 @@
       }
     },
     "vellano_zestaw": {
-      "type": "section",
+      "type": "vellano-duo",
       "name": "Zestaw dla dwóch kibiców",
       "blocks": {
-        "eyebrow": {
-          "type": "vellano-eyebrow",
+        "herb_rm": {
+          "type": "herb",
           "settings": {
-            "text": "Zestaw dla dwóch kibiców",
-            "alignment": "center",
-            "tone": "muted"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/karta-real-madryt-na-lancuszku.png",
+            "label": "Real Madryt"
+          }
         },
-        "heading": {
-          "type": "text",
+        "herb_mu": {
+          "type": "herb",
           "settings": {
-            "text": "<h2>Dwa herby. Dwóch kibiców.</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/karta-manchester-united-na-lancuszku.png",
+            "label": "Manchester United"
+          }
         },
-        "text": {
-          "type": "text",
+        "herb_fcb": {
+          "type": "herb",
           "settings": {
-            "text": "<p>2 zawieszki za 259 zł zamiast 298 zł – oszczędzasz 39 zł. Herby wybierasz dowolnie, także dwa różne.</p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "note": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Rabat nalicza się automatycznie w koszyku.</p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "0.875rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "text_color": "{{ settings.color_palette.color1 }}",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "label": "Wybierz dwa herby",
-            "link": "/#wybierz-klub",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/karta-fc-barcelona-na-lancuszku.png",
+            "label": "FC Barcelona"
+          }
         }
       },
       "block_order": [
-        "eyebrow",
-        "heading",
-        "text",
-        "note",
-        "button"
+        "herb_rm",
+        "herb_mu",
+        "herb_fcb"
       ],
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "#FFFFFF",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
+        "eyebrow": "Zestaw dla dwóch kibiców",
+        "heading": "Dwa herby. Jedna cena.",
+        "price": "259 zł",
+        "compare_price": "298 zł",
+        "save_label": "Oszczędzasz 39 zł",
+        "note": "<p>Dowolne dwa herby. Promocja nalicza się automatycznie w koszyku.</p>",
+        "button_label": "Wybierz dwa herby",
+        "button_link": "/#wybierz-klub",
+        "background_color": "#141414",
+        "text_color": "#FFFFFF",
         "padding-block-start": 64,
         "padding-block-end": 64
       }
