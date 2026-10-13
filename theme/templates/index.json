@@ -21,7 +21,7 @@
         "heading_preset": "h1",
         "text": "<p>Herb Twojego klubu ułożony z setek ręcznie osadzanych cyrkonii.</p>",
         "button_label": "Wybierz swój klub",
-        "button_link": "shopify://collections/wszystkie-zawieszki",
+        "button_link": "/#wybierz-klub",
         "link_label": "Prezent dla kibica",
         "link_url": "shopify://collections/prezent-dla-kibica",
         "mobile_alignment": "center",
@@ -123,7 +123,8 @@
               "settings": {
                 "text": "Trzy herby",
                 "alignment": "center",
-                "tone": "muted"
+                "tone": "muted",
+                "anchor": "wybierz-klub"
               },
               "blocks": {}
             },

@@ -163,6 +163,13 @@
     }
   }
 
+  /* Płynne przewijanie do kotwic (np. „Wybierz swój klub” w hero → sekcja z klubami). */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   /* Małe kafelki Horizonu (menu „Wybierz swój klub” na komputerze i telefonie, podpowiedzi
      wyszukiwarki): te same zdjęcia z wyciętym tłem co na stronie głównej.
      snippets/resource-card.liquid dodaje klasę resource-card__image--vellano i format 1:1. */

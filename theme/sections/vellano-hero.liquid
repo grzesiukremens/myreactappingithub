@@ -28,6 +28,14 @@
   assign eyebrow = section.settings.eyebrow | strip
   assign heading = section.settings.heading | strip
   assign button_label = section.settings.button_label | strip
+
+  # Link „/#kotwica” prowadzi do sekcji na tej samej stronie: zostawiamy samo „#kotwica”,
+  # żeby przeglądarka tylko przewinęła stronę (bez przeładowania).
+  assign button_href = section.settings.button_link
+  assign button_href_start = button_href | slice: 0, 2
+  if button_href_start == '/#'
+    assign button_href = button_href | remove_first: '/'
+  endif
   assign link_label = section.settings.link_label | strip
   assign heading_tag = section.settings.heading_tag
 
@@ -115,7 +123,7 @@
           <a
             class="button vellano-hero__button"
             {% if section.settings.button_link != blank %}
-              href="{{ section.settings.button_link }}"
+              href="{{ button_href }}"
             {% else %}
               role="link" aria-disabled="true"
             {% endif %}

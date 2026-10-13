@@ -4,6 +4,8 @@
   Działa w każdej sekcji lub grupie Horizon, która przyjmuje @theme (Section, Media with content, Product list, Group).
   Tekst przyjmuje źródła dynamiczne, np. {{ closest.product.metafields.custom.przydomek.value }}.
   Pusty tekst = blok nic nie wyświetla (w edytorze zostaje pusty uchwyt do zaznaczenia).
+  Opcjonalna kotwica (`anchor`) nadaje napisowi id, do którego prowadzą linki „/#kotwica”
+  (np. przycisk „Wybierz swój klub” w hero strony głównej → „/#wybierz-klub”).
 
   @example
   "eyebrow": { "type": "vellano-eyebrow", "settings": { "text": "Wykonanie", "alignment": "center" } }
@@ -12,9 +14,11 @@
 {% render 'vellano-ui-styles' %}
 
 {%- assign eyebrow_text = block.settings.text | strip -%}
+{%- assign eyebrow_anchor = block.settings.anchor | strip | handleize -%}
 
 {%- if eyebrow_text != blank or request.design_mode -%}
   <p
+    {% if eyebrow_anchor != blank %}id="{{ eyebrow_anchor }}"{% endif %}
     class="vellano-eyebrow vellano-eyebrow-block{% if block.settings.tone == 'strong' %} vellano-eyebrow-block--strong{% endif %}"
     style="--vellano-eyebrow-align: {{ block.settings.alignment }};"
     {{ block.shopify_attributes }}
@@ -36,6 +40,10 @@
 
   .vellano-eyebrow-block--strong {
     color: var(--color-foreground);
+  }
+
+  .vellano-eyebrow-block[id] {
+    scroll-margin-top: calc(var(--header-height, 96px) + 24px);
   }
 {% endstylesheet %}
 
@@ -71,6 +79,12 @@
         { "value": "strong", "label": "Jak tekst główny" }
       ],
       "default": "muted"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Kotwica (opcjonalnie)",
+      "info": "Np. wybierz-klub. Link „/#wybierz-klub” przewinie stronę do tego miejsca."
     }
   ],
   "presets": [
