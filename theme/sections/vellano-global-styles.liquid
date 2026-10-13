@@ -163,6 +163,25 @@
     }
   }
 
+  /* Banery ze zdjęciem na stronie głównej (Wykonanie, Na prezent – sekcje media-with-content):
+     zdjęcie 5:4 na telefonie i 1:1 na komputerze zamiast wysokości 70–80% ekranu. */
+  :is([id$='__vellano_wykonanie'], [id$='__vellano_prezent']) .media-with-content .media-block__media {
+    height: auto;
+    aspect-ratio: 5 / 4;
+  }
+
+  @media screen and (min-width: 750px) {
+    :is([id$='__vellano_wykonanie'], [id$='__vellano_prezent']) .media-with-content .media-block {
+      min-height: 0;
+      aspect-ratio: 1 / 1;
+    }
+
+    :is([id$='__vellano_wykonanie'], [id$='__vellano_prezent']) .media-with-content .media-block__media {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+  }
+
   /* Płynne przewijanie do kotwic (np. „Wybierz swój klub” w hero → sekcja z klubami). */
   @media (prefers-reduced-motion: no-preference) {
     html {
