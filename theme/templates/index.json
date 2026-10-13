@@ -801,7 +801,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Vellano Jubiler założyli synowie jubilera. Wyrośli wśród rzemiosła, w którym liczy się każdy detal. Kochają piłkę. Z tych dwóch światów powstała biżuteria dla młodego pokolenia kibiców.</p>",
+            "text": "<p>Vellano Jubiler założyli synowie jubilera, którzy kochają piłkę. Każdy herb powstaje z setek cyrkonii osadzanych ręcznie, kamień przy kamieniu, na mosiężnej bazie z powłoką rodowaną. Zestaw waży 46 g, a łańcuszek o splocie linkowym i pudełko na prezent są w komplecie. To biżuteria wykonana z jubilerską starannością, a nie gadżet kibica.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -1046,44 +1046,6 @@
                     "text"
                   ]
                 },
-                "row_4": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Czy zawieszka pasuje także dla kobiety?",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Tak. Kibicowanie nie ma płci, a herb wygląda równie dobrze na koszulce, bluzie i sukience.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text"
-                  ]
-                },
                 "row_5": {
                   "type": "_accordion-row",
                   "settings": {
@@ -1121,12 +1083,206 @@
                   "block_order": [
                     "text"
                   ]
+                },
+                "row_material": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Z czego jest wykonana zawieszka?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Z mosiądzu z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych cyrkonii w barwach klubu, osadzanych ręcznie, jedna przy drugiej.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text"
+                  ]
+                },
+                "row_set": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Co dokładnie jest w zestawie?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Zawieszka z herbem, łańcuszek o splocie linkowym 51 cm (20 cali), pudełko Vellano Jubiler z wysuwaną szufladką i miękkie etui. Ucho zawieszki mieści łańcuszek o grubości do 5 mm, więc możesz nosić ją także na własnym.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text"
+                  ]
+                },
+                "row_size": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Jak duża jest zawieszka i ile waży?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>To duża, wyrazista zawieszka, dobrze widoczna na bluzie i na koszulce. Łańcuszek 51 cm zwykle układa się w okolicy obojczyków, a cały zestaw waży 46 g.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text"
+                  ]
+                },
+                "row_gift": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Czy zawieszka nadaje się na prezent?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Tak. Przychodzi w pudełku z wysuwaną szufladką i w miękkim etui, więc jest od razu gotowa do wręczenia. Nie musisz znać się na piłce – wystarczy wybrać herb klubu, któremu kibicuje bliska Ci osoba.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text"
+                  ]
+                },
+                "row_care": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Jak dbać o zawieszkę?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Zdejmuj ją przed kąpielą, pływaniem i treningiem, a perfumy i kosmetyki nakładaj, zanim ją założysz. Przecieraj ją miękką, suchą ściereczką i przechowuj w etui, osobno od innej biżuterii – kamienie i powłoka dłużej zachowają blask.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text"
+                  ]
                 }
               },
               "block_order": [
-                "row_1",
+                "row_material",
+                "row_set",
+                "row_size",
+                "row_gift",
                 "row_3",
-                "row_4",
+                "row_care",
+                "row_1",
                 "row_5"
               ]
             }
@@ -1342,8 +1498,8 @@
     "vellano_wykonanie",
     "vellano_prezent",
     "vellano_zestaw",
-    "vellano_o_marce",
     "vellano_faq",
+    "vellano_o_marce",
     "vellano_newsletter"
   ]
 }
