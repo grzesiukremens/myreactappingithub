@@ -1,0 +1,656 @@
+{%- doc -%}
+  Vellano – wybór dostawy w podsumowaniu koszyka (szuflada koszyka i strona koszyka, snippet cart-summary).
+  Shopify na planie Basic nie pokazuje w kasie mapy paczkomatów dla Polski, więc punkt odbioru klient wybiera tutaj,
+  a w kasie zaznacza metodę o tej samej nazwie (wszystkie metody są darmowe).
+
+  - „Paczkomat lub punkt”: jedna mapa Furgonetka z punktami InPost, DPD, DHL, ORLEN Paczka i Poczty Polskiej
+    (https://furgonetka.pl/api/mapa). Metoda wynika z rodzaju wybranego punktu (point.type).
+    Klucz API mapy jest w metapolu sklepu custom.furgonetka_map_key (klient mapy z domenami sklepu).
+  - „Kurier”: InPost, DPD, DHL, Pocztex.
+
+  Wybór trafia do atrybutów koszyka (widać je w zamówieniu w „Dodatkowe szczegóły”):
+  Dostawa = nazwa metody jak w kasie, Punkt odbioru = kod punktu, Adres punktu = nazwa i adres punktu.
+  Zapis: /cart/update.js zaraz po wyborze oraz ukryte pola form="cart-form" wysyłane razem z przyciskiem do kasy.
+  Przycisk do kasy jest blokowany, dopóki dostawa (i punkt) nie jest wybrana.
+
+  @param {string} [section_id] - ID sekcji (unikalne nazwy pól, gdy na stronie są dwa koszyki)
+
+  @example
+  {% render 'vellano-delivery-picker', section_id: section_id %}
+{%- enddoc -%}
+
+{%- liquid
+  assign uid = section_id | default: 'cart' | handleize
+  assign api_key = shop.metafields.custom.furgonetka_map_key.value | strip
+
+  assign method = cart.attributes['Dostawa'] | strip
+  assign point_code = cart.attributes['Punkt odbioru'] | strip
+  assign point_address = cart.attributes['Adres punktu'] | strip
+
+  assign point_methods = 'InPost Paczkomat 24/7|DPD Pickup – punkt lub automat|DHL POP – punkt lub automat|ORLEN Paczka|Poczta Polska – odbiór w punkcie' | split: '|'
+  assign courier_methods = 'Kurier InPost|Kurier DPD|Kurier DHL|Kurier Pocztex' | split: '|'
+  assign courier_labels = 'InPost|DPD|DHL|Pocztex' | split: '|'
+
+  assign mode = 'point'
+  if courier_methods contains method
+    assign mode = 'courier'
+  endif
+
+  assign has_point = false
+  if point_methods contains method and point_code != blank
+    assign has_point = true
+  endif
+
+  assign has_choice = false
+  if mode == 'courier' or has_point
+    assign has_choice = true
+  endif
+-%}
+
+{%- if cart.item_count > 0 -%}
+  <vellano-delivery
+    class="vellano-delivery"
+    data-api-key="{{ api_key | escape }}"
+    data-map-src="https://furgonetka.pl/js/dist/map/map.js"
+    {% if has_point %}
+      data-point-method="{{ method | escape }}"
+      data-point-code="{{ point_code | escape }}"
+      data-point-address="{{ point_address | escape }}"
+    {% endif %}
+  >
+    <fieldset class="vellano-delivery__fieldset">
+      <legend class="vellano-delivery__legend">
+        <span class="vellano-delivery__title">Dostawa</span>
+        <span class="vellano-delivery__free">Bezpłatnie</span>
+      </legend>
+
+      <div class="vellano-delivery__modes">
+        <label class="vellano-delivery__mode">
+          <input
+            type="radio"
+            name="vellano-delivery-mode-{{ uid }}"
+            value="point"
+            data-vd-mode
+            {% if mode == 'point' %}
+              checked
+            {% endif %}
+          >
+          <span>Paczkomat lub punkt</span>
+        </label>
+        <label class="vellano-delivery__mode">
+          <input
+            type="radio"
+            name="vellano-delivery-mode-{{ uid }}"
+            value="courier"
+            data-vd-mode
+            {% if mode == 'courier' %}
+              checked
+            {% endif %}
+          >
+          <span>Kurier</span>
+        </label>
+      </div>
+
+      <div class="vellano-delivery__panel" data-vd-panel="point" {% if mode != 'point' %}hidden{% endif %}>
+        <div class="vellano-delivery__point" data-vd-point {% unless has_point %}hidden{% endunless %}>
+          <span class="vellano-delivery__point-body">
+            <span class="vellano-delivery__point-method" data-vd-point-method>{% if has_point %}{{ method | escape }}{% endif %}</span>
+            <span class="vellano-delivery__point-address" data-vd-point-address>
+              {%- if has_point -%}
+                {{ point_address | default: point_code | escape }}
+              {%- endif -%}
+            </span>
+          </span>
+          <button type="button" class="vellano-delivery__change" data-vd-open>Zmień</button>
+        </div>
+        <button
+          type="button"
+          class="vellano-delivery__map-button"
+          data-vd-open
+          data-vd-choose
+          {% if has_point %}
+            hidden
+          {% endif %}
+        >
+          Wybierz paczkomat lub punkt na mapie
+        </button>
+        <p class="vellano-delivery__carriers">InPost · DPD · DHL · ORLEN Paczka · Poczta Polska</p>
+      </div>
+
+      <div class="vellano-delivery__panel" data-vd-panel="courier" {% if mode != 'courier' %}hidden{% endif %}>
+        <div class="vellano-delivery__couriers">
+          {%- for courier in courier_methods -%}
+            <label class="vellano-delivery__courier">
+              <input
+                type="radio"
+                name="vellano-delivery-courier-{{ uid }}"
+                value="{{ courier | escape }}"
+                data-vd-courier
+                {% if method == courier %}
+                  checked
+                {% endif %}
+              >
+              <span>{{ courier_labels[forloop.index0] }}</span>
+            </label>
+          {%- endfor -%}
+        </div>
+        <p class="vellano-delivery__carriers">Doręczenie pod adres podany w kasie</p>
+      </div>
+
+      <p class="vellano-delivery__hint" data-vd-hint {% unless has_choice %}hidden{% endunless %}>
+        W kasie zaznacz: <strong data-vd-hint-method>{% if has_choice %}{{ method | escape }}{% endif %}</strong>
+      </p>
+      <p class="vellano-delivery__error" data-vd-error role="alert" hidden></p>
+    </fieldset>
+
+    <input type="hidden" form="cart-form" name="attributes[Dostawa]" value="{{ method | escape }}" data-vd-field="method">
+    <input type="hidden" form="cart-form" name="attributes[Punkt odbioru]" value="{{ point_code | escape }}" data-vd-field="code">
+    <input type="hidden" form="cart-form" name="attributes[Adres punktu]" value="{{ point_address | escape }}" data-vd-field="address">
+
+    <dialog class="vellano-delivery__dialog" data-vd-dialog aria-label="Wybierz punkt odbioru">
+      <div class="vellano-delivery__dialog-bar">
+        <span class="vellano-delivery__dialog-title">Wybierz paczkomat lub punkt</span>
+        <button type="button" class="vellano-delivery__dialog-close" data-vd-close aria-label="Zamknij mapę">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="vellano-delivery__map" id="vellano-delivery-map-{{ uid }}" data-vd-map>
+        <p class="vellano-delivery__map-status" data-vd-status>Ładowanie mapy…</p>
+      </div>
+    </dialog>
+  </vellano-delivery>
+
+  <script>
+    (function () {
+      if (window.vellanoDeliveryInit) return;
+      window.vellanoDeliveryInit = true;
+
+      var POINT_METHODS = {
+        inpost: 'InPost Paczkomat 24/7',
+        dpd: 'DPD Pickup – punkt lub automat',
+        dhl: 'DHL POP – punkt lub automat',
+        orlen: 'ORLEN Paczka',
+        poczta: 'Poczta Polska – odbiór w punkcie'
+      };
+      var scriptPromise = null;
+
+      function $(root, selector) {
+        return root.querySelector(selector);
+      }
+
+      function field(root, name) {
+        return $(root, '[data-vd-field="' + name + '"]');
+      }
+
+      function mode(root) {
+        var checked = $(root, '[data-vd-mode]:checked');
+        return checked ? checked.value : 'point';
+      }
+
+      function setError(root, message) {
+        var error = $(root, '[data-vd-error]');
+        error.textContent = message || '';
+        error.hidden = !message;
+        root.classList.toggle('vellano-delivery--invalid', Boolean(message));
+      }
+
+      function cartUrl() {
+        var base = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+        return base + 'cart/update.js';
+      }
+
+      function save(root, method, code, address) {
+        field(root, 'method').value = method;
+        field(root, 'code').value = code;
+        field(root, 'address').value = address;
+
+        var hint = $(root, '[data-vd-hint]');
+        $(root, '[data-vd-hint-method]').textContent = method;
+        hint.hidden = !method;
+        if (method) setError(root, '');
+
+        return fetch(cartUrl(), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ attributes: { 'Dostawa': method, 'Punkt odbioru': code, 'Adres punktu': address } })
+        }).catch(function () {});
+      }
+
+      function showPoint(root) {
+        var data = root.dataset;
+        var hasPoint = Boolean(data.pointCode);
+        $(root, '[data-vd-point]').hidden = !hasPoint;
+        $(root, '[data-vd-choose]').hidden = hasPoint;
+        $(root, '[data-vd-point-method]').textContent = data.pointMethod || '';
+        $(root, '[data-vd-point-address]').textContent = data.pointAddress || data.pointCode || '';
+      }
+
+      function switchMode(root) {
+        var current = mode(root);
+        root.querySelectorAll('[data-vd-panel]').forEach(function (panel) {
+          panel.hidden = panel.getAttribute('data-vd-panel') !== current;
+        });
+
+        if (current === 'point') {
+          var data = root.dataset;
+          if (data.pointCode) {
+            save(root, data.pointMethod, data.pointCode, data.pointAddress || '');
+          } else {
+            save(root, '', '', '');
+          }
+        } else {
+          var courier = $(root, '[data-vd-courier]:checked');
+          save(root, courier ? courier.value : '', '', '');
+        }
+      }
+
+      function loadMapScript(src) {
+        if (window.Furgonetka && window.Furgonetka.Map) return Promise.resolve();
+        if (scriptPromise) return scriptPromise;
+        scriptPromise = new Promise(function (resolve, reject) {
+          var script = document.createElement('script');
+          script.src = src;
+          script.async = true;
+          script.onload = function () {
+            window.Furgonetka && window.Furgonetka.Map ? resolve() : reject();
+          };
+          script.onerror = function () {
+            scriptPromise = null;
+            reject();
+          };
+          document.head.appendChild(script);
+        });
+        return scriptPromise;
+      }
+
+      function openMap(root) {
+        var apiKey = root.dataset.apiKey;
+        if (!apiKey) {
+          setError(root, 'Mapa punktów jest chwilowo niedostępna. Wybierz kuriera albo napisz do nas.');
+          return;
+        }
+
+        var dialog = $(root, '[data-vd-dialog]');
+        var container = $(root, '[data-vd-map]');
+        var status = $(root, '[data-vd-status]');
+        if (status) status.textContent = 'Ładowanie mapy…';
+        if (!dialog.open) dialog.showModal();
+
+        loadMapScript(root.dataset.mapSrc)
+          .then(function () {
+            container.innerHTML = '';
+            new window.Furgonetka.Map({
+              apiKey: apiKey,
+              courierServices: ['inpost', 'dpd', 'dhl', 'orlen', 'poczta'],
+              pointTypesFilter: ['no_orlen'],
+              mapBounds: 'pl',
+              locale: 'pl',
+              container: '#' + container.id,
+              callback: function (params) {
+                var point = (params && params.point) || {};
+                var method = POINT_METHODS[point.type] || point.type || '';
+                var code = point.code ? String(point.code) : '';
+                var address = point.name ? String(point.name) : code;
+                root.dataset.pointMethod = method;
+                root.dataset.pointCode = code;
+                root.dataset.pointAddress = address;
+                showPoint(root);
+                save(root, method, code, address);
+                dialog.close();
+              },
+              closeModalCallback: function () {
+                if (dialog.open) dialog.close();
+              }
+            }).show();
+          })
+          .catch(function () {
+            container.innerHTML = '<p class="vellano-delivery__map-status">Nie udało się wczytać mapy. Sprawdź połączenie i spróbuj ponownie.</p>';
+          });
+      }
+
+      function validate(root) {
+        if (mode(root) === 'courier') {
+          return $(root, '[data-vd-courier]:checked') ? '' : 'Wybierz kuriera, który dostarczy przesyłkę.';
+        }
+        return root.dataset.pointCode ? '' : 'Wybierz paczkomat lub punkt odbioru.';
+      }
+
+      function pickerFor(button) {
+        var ctas = button.closest('.cart__ctas');
+        var local = ctas && ctas.parentElement && ctas.parentElement.querySelector('vellano-delivery');
+        return local || document.querySelector('vellano-delivery');
+      }
+
+      document.addEventListener('change', function (event) {
+        var target = event.target;
+        var root = target.closest && target.closest('vellano-delivery');
+        if (!root) return;
+        if (target.matches('[data-vd-mode]')) switchMode(root);
+        if (target.matches('[data-vd-courier]')) save(root, target.value, '', '');
+      });
+
+      document.addEventListener('click', function (event) {
+        var target = event.target.closest && event.target.closest('[data-vd-open], [data-vd-close], button[name="checkout"]');
+        if (!target) return;
+
+        if (target.matches('[data-vd-open]')) {
+          openMap(target.closest('vellano-delivery'));
+          return;
+        }
+
+        if (target.matches('[data-vd-close]')) {
+          var dialog = target.closest('[data-vd-dialog]');
+          if (dialog && dialog.open) dialog.close();
+          return;
+        }
+
+        var root = pickerFor(target);
+        if (!root) return;
+        var message = validate(root);
+        if (message) {
+          event.preventDefault();
+          event.stopPropagation();
+          setError(root, message);
+          root.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      }, true);
+
+      // Escape zamyka tylko mapę, nie całą szufladę koszyka.
+      document.addEventListener('keydown', function (event) {
+        if (event.key !== 'Escape') return;
+        var dialog = document.querySelector('vellano-delivery [data-vd-dialog][open]');
+        if (!dialog) return;
+        event.preventDefault();
+        event.stopPropagation();
+        dialog.close();
+      }, true);
+
+      if (!customElements.get('vellano-delivery')) {
+        customElements.define('vellano-delivery', class extends HTMLElement {});
+      }
+    })();
+  </script>
+{%- endif -%}
+
+{% stylesheet %}
+  .vellano-delivery {
+    --vd-line: rgb(var(--color-foreground-rgb) / 0.14);
+    --vd-muted: rgb(var(--color-foreground-rgb) / 0.66);
+
+    display: block;
+    margin-block: 4px 16px;
+  }
+
+  .vellano-delivery__fieldset {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  .vellano-delivery__legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    padding: 0;
+    margin-block-end: 12px;
+    font-family: var(--font-body--family);
+  }
+
+  .vellano-delivery__title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .vellano-delivery__free {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--vd-muted);
+  }
+
+  .vellano-delivery__modes,
+  .vellano-delivery__couriers {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .vellano-delivery__couriers {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .vellano-delivery__mode,
+  .vellano-delivery__courier {
+    position: relative;
+    display: block;
+    min-width: 0;
+    cursor: pointer;
+  }
+
+  .vellano-delivery__mode input,
+  .vellano-delivery__courier input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .vellano-delivery__mode span,
+  .vellano-delivery__courier span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--vd-line);
+    border-radius: 2px;
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--color-foreground);
+    transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .vellano-delivery__courier span {
+    font-size: 0.8125rem;
+    padding-inline: 4px;
+  }
+
+  .vellano-delivery__mode input:checked + span,
+  .vellano-delivery__courier input:checked + span {
+    border-color: var(--color-foreground);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .vellano-delivery__mode input:focus-visible + span,
+  .vellano-delivery__courier input:focus-visible + span {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .vellano-delivery__panel {
+    display: grid;
+    gap: 8px;
+  }
+
+  .vellano-delivery__panel[hidden],
+  .vellano-delivery__point[hidden],
+  .vellano-delivery__map-button[hidden],
+  .vellano-delivery__hint[hidden],
+  .vellano-delivery__error[hidden] {
+    display: none;
+  }
+
+  .vellano-delivery__map-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1px dashed rgb(var(--color-foreground-rgb) / 0.45);
+    border-radius: 2px;
+    background: transparent;
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    cursor: pointer;
+  }
+
+  .vellano-delivery__map-button:hover {
+    border-style: solid;
+  }
+
+  .vellano-delivery__point {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-foreground);
+    border-radius: 2px;
+  }
+
+  .vellano-delivery__point-body {
+    display: grid;
+    gap: 2px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .vellano-delivery__point-method {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .vellano-delivery__point-address {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--vd-muted);
+    overflow-wrap: anywhere;
+  }
+
+  .vellano-delivery__change {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 0 4px;
+    border: 0;
+    background: none;
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    color: var(--color-foreground);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .vellano-delivery__carriers {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--vd-muted);
+  }
+
+  .vellano-delivery__hint {
+    margin: 0;
+    padding: 10px 12px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.05);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--color-foreground);
+  }
+
+  .vellano-delivery__hint strong {
+    font-weight: 600;
+  }
+
+  .vellano-delivery__error {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: #b42318;
+  }
+
+  .vellano-delivery--invalid .vellano-delivery__map-button,
+  .vellano-delivery--invalid .vellano-delivery__courier span {
+    border-color: #b42318;
+  }
+
+  .vellano-delivery__dialog {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #fff;
+    color: #141414;
+  }
+
+  .vellano-delivery__dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vellano-delivery__dialog::backdrop {
+    background: rgb(20 20 20 / 0.5);
+  }
+
+  .vellano-delivery__dialog-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 8px 8px 16px;
+    border-block-end: 1px solid rgb(20 20 20 / 0.1);
+  }
+
+  .vellano-delivery__dialog-title {
+    font-family: var(--font-body--family);
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .vellano-delivery__dialog-close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .vellano-delivery__map {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .vellano-delivery__map-status {
+    margin: 0;
+    padding: 24px 16px;
+    font-size: 0.875rem;
+    text-align: center;
+    color: rgb(20 20 20 / 0.66);
+  }
+
+  @media screen and (min-width: 750px) {
+    .vellano-delivery__dialog {
+      width: min(960px, calc(100vw - 48px));
+      height: min(720px, calc(100dvh - 48px));
+      margin: auto;
+      border-radius: 4px;
+      box-shadow: 0 24px 64px rgb(20 20 20 / 0.24);
+    }
+  }
+{% endstylesheet %}
