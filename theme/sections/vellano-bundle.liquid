@@ -5,11 +5,11 @@
   1) formularz produktu (tag Liquid form 'product') dodający bieżący produkt w ilości 2 – opakowany w Horizonowy
      <product-form-component>, więc z JS dodaje do koszyka bez przeładowania i otwiera szufladę koszyka,
      a bez JS zwykły POST na /cart/add;
-  2) link „Wybierz drugi herb” (ustawienie `link`, domyślnie kolekcja wszystkie-zawieszki).
+  2) link „Wybierz drugi herb” (ustawienie `link`, domyślnie sekcja z klubami na stronie głównej, /#wybierz-klub).
   Spokojne tło #F7F5F1, bez czerwieni i bez przekreślonych cen. Kwoty są w edytowalnym tekście.
   Sekcja jest dostępna tylko w szablonach produktu (enabled_on), bo przycisk dodaje oglądany produkt.
   @example
-  <!-- templates/product.json → "vellano_bundle": { "type": "vellano-bundle", "settings": { "link": "shopify://collections/wszystkie-zawieszki" } } -->
+  <!-- templates/product.json → "vellano_bundle": { "type": "vellano-bundle", "settings": { "link": "/#wybierz-klub" } } -->
 {% endcomment %}
 
 {%- liquid
@@ -22,7 +22,7 @@
 
   assign second_link = section.settings.link
   if second_link == blank
-    assign second_link = collections['wszystkie-zawieszki'].url | default: routes.all_products_collection_url
+    assign second_link = routes.root_url | append: '#wybierz-klub'
   endif
 
   assign heading = section.settings.heading | strip
@@ -279,7 +279,7 @@
       "type": "url",
       "id": "link",
       "label": "Link",
-      "info": "Puste pole = kolekcja „Wszystkie zawieszki”.",
+      "info": "Puste pole = sekcja z klubami na stronie głównej (/#wybierz-klub).",
       "visible_if": "{{ section.settings.show_link }}"
     },
     {

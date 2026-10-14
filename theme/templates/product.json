@@ -535,7 +535,7 @@
         "add_label": "Dodaj 2 sztuki tego herbu",
         "show_link": true,
         "link_label": "Wybierz drugi herb",
-        "link": "shopify://collections/wszystkie-zawieszki",
+        "link": "/#wybierz-klub",
         "section_width": "page-width",
         "background_color": "#F7F5F1",
         "padding-block-start": 48,

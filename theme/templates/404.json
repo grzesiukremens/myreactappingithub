@@ -64,7 +64,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Wybierz swój klub",
-            "link": "shopify://collections/wszystkie-zawieszki",
+            "link": "/#wybierz-klub",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
@@ -280,7 +280,7 @@
       },
       "name": "t:names.product_list",
       "settings": {
-        "collection": "wszystkie-zawieszki",
+        "collection": "prezent-dla-kibica",
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "max_products": 3,

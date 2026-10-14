@@ -2,6 +2,13 @@
 
 Architektura premium dla motywu Horizon. Elementy z datami granicznymi, pielęgnacją i bilecikiem zostały wyłączone decyzją właściciela.
 
+Zmiany po starcie (14.10.2026, decyzja właściciela): kolekcje „Wszystkie zawieszki” i „Prezent na Święta” są usunięte.
+Linki, które prowadziły do „Wszystkich zawieszek” (pusty koszyk, 404, „Wybierz drugi herb”, strony klubów, strona Wykonanie),
+prowadzą teraz do sekcji z klubami na stronie głównej (`/#wybierz-klub`). Przekierowania URL: `/collections/wszystkie-zawieszki` →
+`/#wybierz-klub` i `/collections/prezent-na-swieta` → `/collections/prezent-dla-kibica`. Listy produktów na stronie głównej,
+w koszyku i na 404 biorą produkty z kolekcji „Prezent dla kibica” (te same 3 zawieszki). Stopka „Vellano Jubiler” ma tylko
+O marce i Opakowanie.
+
 ## Mapa strony
 
 | Adres | Tytuł | Szablon | Cel |

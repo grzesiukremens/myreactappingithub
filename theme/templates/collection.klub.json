@@ -659,7 +659,7 @@
         ],
         "card_label": "Zobacz zawieszkę",
         "all_label": "Wszystkie zawieszki",
-        "all_link": "shopify://collections/wszystkie-zawieszki",
+        "all_link": "/#wybierz-klub",
         "background_color": "#F7F5F1",
         "padding-block-start": 48,
         "padding-block-end": 64

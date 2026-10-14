@@ -265,7 +265,7 @@
       },
       "name": "t:names.product_list",
       "settings": {
-        "collection": "wszystkie-zawieszki",
+        "collection": "prezent-dla-kibica",
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "max_products": 3,

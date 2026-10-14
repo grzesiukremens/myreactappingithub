@@ -108,49 +108,6 @@
   ]
  },
  {
-  "title": "Wszystkie zawieszki",
-  "handle": "wszystkie-zawieszki",
-  "descriptionHtml": "<p>Trzy kluby, trzy herby, jedno wykonanie. Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym, a jej herb ułożono z setek cyrkonii.</p><p>Real Madryt – biel Królewskich. FC Barcelona – blaugrana Dumy Katalonii. Manchester United – czerwień Czerwonych Diabłów.</p><p>Każda kosztuje 149 zł, ma w zestawie łańcuszek o splocie linkowym, 51 cm, i przychodzi w pudełku Vellano Jubiler. Dwie zawieszki kupisz za 259 zł zamiast 298 zł.</p>",
-  "seo": {
-   "title": "Oficjalne zawieszki klubowe z łańcuszkiem | Vellano Jubiler",
-   "description": "Oficjalne zawieszki z łańcuszkiem: Real Madryt, FC Barcelona, Manchester United. Herby z cyrkonii. 149 zł, darmowa dostawa."
-  },
-  "image": {
-   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/zawieszka-real-madryt-na-lancuszku.webp?v=1791492844",
-   "altText": "Zawieszki z łańcuszkiem Vellano Jubiler"
-  },
-  "metafields": [
-   {
-    "namespace": "custom",
-    "key": "hero_eyebrow",
-    "type": "single_line_text_field",
-    "value": "Kolekcja"
-   },
-   {
-    "namespace": "custom",
-    "key": "hero_heading",
-    "type": "single_line_text_field",
-    "value": "Wybierz swój klub."
-   },
-   {
-    "namespace": "custom",
-    "key": "hero_body",
-    "type": "multi_line_text_field",
-    "value": "Trzy oficjalne zawieszki z łańcuszkiem. Każda w barwach swojego herbu, każda za 149 zł."
-   }
-  ],
-  "ruleSet": {
-   "appliedDisjunctively": false,
-   "rules": [
-    {
-     "column": "TYPE",
-     "relation": "EQUALS",
-     "condition": "Zawieszka z łańcuszkiem"
-    }
-   ]
-  }
- },
- {
   "title": "Prezent dla kibica",
   "handle": "prezent-dla-kibica",
   "descriptionHtml": "<p>Nie musisz znać się na piłce. Wystarczy, że wiesz, komu kibicuje bliska Ci osoba.</p><p>Każda zawieszka jest oficjalnym produktem licencjonowanym, ma łańcuszek w zestawie i przychodzi w jasnoszarym, matowym pudełku z wysuwaną szufladką oraz w miękkim etui Vellano Jubiler – gotowa do wręczenia. Darmowa dostawa, wysyłka w 2–3 dni robocze i gwarancja dostawy przed Świętami.</p><p>Dwóch kibiców w rodzinie? 2 zawieszki za 259 zł zamiast 298 zł.</p><p>Prezent dla kibica, który ma już koszulkę.</p>",
@@ -180,49 +137,6 @@
     "key": "hero_body",
     "type": "multi_line_text_field",
     "value": "Oficjalna zawieszka z łańcuszkiem w pudełku Vellano Jubiler – prezent dla kibica, który ma już koszulkę. Darmowa dostawa i gwarancja dostawy przed Świętami."
-   }
-  ],
-  "ruleSet": {
-   "appliedDisjunctively": false,
-   "rules": [
-    {
-     "column": "TYPE",
-     "relation": "EQUALS",
-     "condition": "Zawieszka z łańcuszkiem"
-    }
-   ]
-  }
- },
- {
-  "title": "Prezent na Święta",
-  "handle": "prezent-na-swieta",
-  "descriptionHtml": "<p>Dobry prezent mówi: wiem, co kochasz. Dla kibica to herb ukochanego klubu – tym razem nie na koszulce, lecz blisko serca.</p><p>Każda zawieszka Vellano Jubiler jest oficjalnym produktem licencjonowanym. Herb ułożono z setek cyrkonii, a w zestawie jest łańcuszek o splocie linkowym, 51 cm. Pod choinkę trafia w jasnoszarym pudełku z wysuwaną szufladką i w miękkim etui Vellano Jubiler.</p><p>Gwarancja dostawy przed Świętami. Darmowa dostawa. Wysyłka w 2–3 dni robocze.</p><p>Dwóch kibiców pod jedną choinką? 2 zawieszki za 259 zł zamiast 298 zł.</p>",
-  "seo": {
-   "title": "Prezent na Święta dla kibica – zawieszka | Vellano Jubiler",
-   "description": "Prezent na Święta dla kibica: oficjalna zawieszka z łańcuszkiem w pudełku Vellano Jubiler. Gwarancja dostawy przed Świętami, darmowa dostawa."
-  },
-  "image": {
-   "src": "https://cdn.shopify.com/s/files/1/1070/4958/2934/files/opakowanie-vellano-jubiler.webp?v=1791491960",
-   "altText": "Opakowanie prezentowe Vellano Jubiler"
-  },
-  "metafields": [
-   {
-    "namespace": "custom",
-    "key": "hero_eyebrow",
-    "type": "single_line_text_field",
-    "value": "Prezent na Święta"
-   },
-   {
-    "namespace": "custom",
-    "key": "hero_heading",
-    "type": "single_line_text_field",
-    "value": "Herb pod choinkę."
-   },
-   {
-    "namespace": "custom",
-    "key": "hero_body",
-    "type": "multi_line_text_field",
-    "value": "Oficjalna zawieszka z łańcuszkiem w jasnoszarym pudełku Vellano Jubiler. Gwarancja dostawy przed Świętami, darmowa dostawa i wysyłka w 2–3 dni robocze."
    }
   ],
   "ruleSet": {

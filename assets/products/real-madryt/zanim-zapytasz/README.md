@@ -7,7 +7,7 @@ pole `image` w metapolu `custom.zanim_zapytasz` wskazuje nazwę pliku z Treści 
 |---|---|---|
 | 1. Z czego jest wykonana? | cała zawieszka pod kątem na białym tle | brak – czeka na plik od właściciela |
 | 2. Jak wygląda z bliska? | makro korony i herbu pod kątem | rm2.png |
-| 3. Jak duża jest i jak leży na szyi? | zawieszka na szyi (ciemny sweter) | brak – czeka na plik od właściciela |
+| 3. Jak duża jest i jak leży na szyi? | zawieszka na szyi (ciemny sweter) | vellano-rm-pytanie-3.webp (od właściciela, 14.10.2026) |
 | 4. Czy łańcuszek jest w zestawie? | zdjęcie łańcuszka (wspólne) | vellano-lancuszek-splot-linkowy.webp |
 | 5. Czy mogę nosić ją na własnym łańcuszku? | ucho z cyrkoniami i łańcuszek z bliska | Luksusowy_klejnot_z_korona_i_lancuchem.png |
 | 6. Jak będzie zapakowana? | zdjęcie opakowania | opakowanie-vellano-jubiler.webp |

@@ -336,7 +336,7 @@
       },
       "name": "Wybierz swój klub",
       "settings": {
-        "collection": "wszystkie-zawieszki",
+        "collection": "prezent-dla-kibica",
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "max_products": 3,

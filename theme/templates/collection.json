@@ -359,7 +359,7 @@
           "type": "question",
           "settings": {
             "question": "Kupuję dla dwóch kibiców. Czy jest zestaw?",
-            "answer": "<p>Tak. 2 zawieszki kosztują 259 zł zamiast 298 zł. Herby wybierasz dowolnie – dla taty i syna, dla rodzeństwa albo dla dwóch kibiców różnych klubów. Rabat nalicza się automatycznie w koszyku.</p>",
+            "answer": "<p>Tak. 2 zawieszki kosztują 259 zł zamiast 298 zł. Herby wybierasz dowolnie – dwa takie same albo dwa różne. Rabat nalicza się automatycznie w koszyku.</p>",
             "image": "shopify://shop_images/vellano-prezent-zestaw-dwa.webp",
             "image_alt": "Dwie zawieszki Vellano Jubiler obok siebie"
           }
