@@ -11,6 +11,12 @@
   Mobile (do 749 px): treść na jasnym tle; zdjęcie jako miniatura nad tekstem, na pełną szerokość albo ukryte,
   żeby karta produktu pojawiła się szybko. Desktop (od 750 px): dwie kolumny, zdjęcie po prawej albo po lewej.
   Gdy sekcja jest pierwsza w szablonie, zdjęcie ładuje się od razu (fetchpriority high).
+  Tryb „prezent” (metapole kolekcji custom.hero_animacja = true, np. Prezent dla kibica): zdjęcie z wyciętym tłem
+  bez tła kafelka, wjeżdża od dołu, potem delikatnie unosi się nad własnym cieniem; co kilka sekund przechodzi po nim
+  pas światła maskowany kształtem zdjęcia, a na łańcuszku i napisie zapalają się drobne błyski
+  (tylko dla zdjęcia 1838 × 1504 px z wyciętym opakowaniem, vellano-opakowanie-prezent-wyciete.webp,
+  bo położenie błysków pasuje do tego zdjęcia; Shopify zapisuje zdjęcie kolekcji pod starą nazwą pliku).
+  Na telefonie zdjęcie jest wtedy średniej wielkości zamiast miniatury. Przy „ogranicz ruch” zdjęcie stoi.
   @example
   <!-- templates/collection.klub.json → "vellano_club_hero": { "type": "vellano-club-hero", "settings": { "mobile_media": "thumbnail", "badge_text": "Oficjalny produkt licencjonowany" } } -->
 {% endcomment %}
@@ -56,6 +62,11 @@
     assign body = section.settings.text
   endif
 
+  assign gift_mode = false
+  if resource != blank and image != blank and resource.metafields.custom.hero_animacja.value == true
+    assign gift_mode = true
+  endif
+
   assign eyebrow = eyebrow | strip
   assign heading = heading | strip
   assign subheading = subheading | strip
@@ -77,7 +88,9 @@
     assign image_ratio = image.aspect_ratio | default: 0.8
   endif
 
-  if section.settings.mobile_media == 'thumbnail'
+  if gift_mode
+    assign image_sizes = '(min-width: 1440px) 720px, (min-width: 750px) 50vw, 86vw'
+  elsif section.settings.mobile_media == 'thumbnail'
     assign image_sizes = '(min-width: 1440px) 720px, (min-width: 750px) 50vw, 128px'
   else
     assign image_sizes = '(min-width: 1440px) 720px, (min-width: 750px) 50vw, 100vw'
@@ -89,6 +102,9 @@
     echo ' vellano-club-hero--align-' | append: section.settings.mobile_alignment
     if image == blank
       echo ' vellano-club-hero--no-media'
+    endif
+    if gift_mode
+      echo ' vellano-club-hero--gift'
     endif
   endcapture
 -%}
@@ -109,17 +125,58 @@
 >
   {%- if image != blank -%}
     <div class="vellano-club-hero__media">
-      {{
-        image
-        | image_url: width: 1600
-        | image_tag:
-          widths: '128, 256, 375, 550, 750, 1000, 1200, 1600',
-          sizes: image_sizes,
-          loading: image_loading,
-          fetchpriority: image_priority,
-          alt: image_alt,
-          class: 'vellano-club-hero__image'
-      }}
+      {%- if gift_mode -%}
+        <div class="vellano-gift">
+          <div class="vellano-gift__shadow" aria-hidden="true">
+            {{
+              image
+              | image_url: width: 1600
+              | image_tag:
+                widths: '128, 256, 375, 550, 750, 1000, 1200, 1600',
+                sizes: image_sizes,
+                loading: image_loading,
+                alt: '',
+                class: 'vellano-gift__shadow-image'
+            }}
+          </div>
+          <div class="vellano-gift__float">
+            {{
+              image
+              | image_url: width: 1600
+              | image_tag:
+                widths: '128, 256, 375, 550, 750, 1000, 1200, 1600',
+                sizes: image_sizes,
+                loading: image_loading,
+                fetchpriority: image_priority,
+                alt: image_alt,
+                class: 'vellano-club-hero__image vellano-gift__image'
+            }}
+            <span
+              class="vellano-gift__shine"
+              style="--gift-mask: url('{{ image | image_url: width: 900 }}');"
+              aria-hidden="true"
+            ></span>
+            {%- if image.width == 1838 and image.height == 1504 -%}
+              <i class="vellano-gift__spark" style="left: 52.29%; top: 46.68%; animation-delay: 0.6s;"></i>
+              <i class="vellano-gift__spark" style="left: 47.88%; top: 52.73%; animation-delay: 2s;"></i>
+              <i class="vellano-gift__spark" style="left: 48.1%; top: 57.65%; animation-delay: 3.4s;"></i>
+              <i class="vellano-gift__spark vellano-gift__spark--small" style="left: 26.55%; top: 26.99%; animation-delay: 4.6s;"></i>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- else -%}
+        {{
+          image
+          | image_url: width: 1600
+          | image_tag:
+            widths: '128, 256, 375, 550, 750, 1000, 1200, 1600',
+            sizes: image_sizes,
+            loading: image_loading,
+            fetchpriority: image_priority,
+            alt: image_alt,
+            class: 'vellano-club-hero__image'
+        }}
+      {%- endif -%}
     </div>
   {%- endif -%}
 
@@ -273,6 +330,214 @@
     }
   }
 
+  /* Tryb „prezent”: zdjęcie z wyciętym tłem unosi się nad własnym, rozmytym cieniem. */
+  .vellano-club-hero--gift > .vellano-club-hero__media {
+    overflow: visible;
+    background-color: transparent;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vellano-club-hero--gift.vellano-club-hero--mobile-thumbnail > .vellano-club-hero__media {
+      width: min(84%, 360px);
+      margin-block-end: 16px;
+    }
+  }
+
+  .vellano-gift,
+  .vellano-gift__float {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .vellano-club-hero .vellano-gift__image {
+    object-fit: contain;
+    filter: drop-shadow(0 10px 14px rgb(20 20 20 / 0.1));
+  }
+
+  /* Cień na „podłodze”: ta sama sylwetka, przyciemniona i rozmyta, lekko pod zdjęciem. Zostaje w miejscu. */
+  .vellano-gift__shadow {
+    position: absolute;
+    inset: 0;
+    translate: 0 3.5%;
+    opacity: 0.2;
+    filter: brightness(0) blur(14px);
+    pointer-events: none;
+  }
+
+  .vellano-gift__shadow-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .vellano-gift__shine,
+  .vellano-gift__spark {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .vellano-gift {
+      animation: vellano-gift-in 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .vellano-gift__float {
+      animation: vellano-gift-float 7s ease-in-out 1.2s infinite;
+      will-change: translate, rotate;
+    }
+
+    .vellano-gift__shadow {
+      animation: vellano-gift-shadow 7s ease-in-out 1.2s infinite;
+    }
+
+    /* Pas światła maskowany kształtem zdjęcia, jak w hero strony głównej. */
+    .vellano-gift__shine {
+      display: block;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      -webkit-mask-image: var(--gift-mask);
+      mask-image: var(--gift-mask);
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+    }
+
+    .vellano-gift__shine::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 300%;
+      background: linear-gradient(
+        105deg,
+        rgb(255 255 255 / 0) 0%,
+        rgb(255 255 255 / 0) 46%,
+        rgb(255 255 255 / 0.14) 48.4%,
+        rgb(255 255 255 / 0.5) 50%,
+        rgb(255 255 255 / 0.14) 51.6%,
+        rgb(255 255 255 / 0) 54%,
+        rgb(255 255 255 / 0) 100%
+      );
+      translate: -60% 0;
+      animation: vellano-gift-shine 7s ease-in-out 1.8s infinite;
+    }
+
+    .vellano-gift__spark {
+      display: block;
+      position: absolute;
+      width: 3%;
+      aspect-ratio: 1;
+      translate: -50% -50%;
+      opacity: 0;
+      background: radial-gradient(circle, rgb(255 255 255 / 0.95) 0 9%, rgb(255 255 255 / 0) 32%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: vellano-gift-twinkle 5.6s ease-in-out infinite;
+    }
+
+    .vellano-gift__spark--small {
+      width: 2.2%;
+    }
+
+    .vellano-gift__spark::before,
+    .vellano-gift__spark::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .vellano-gift__spark::before {
+      inset: 46% 0;
+      background: linear-gradient(90deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.95) 50%, rgb(255 255 255 / 0));
+    }
+
+    .vellano-gift__spark::after {
+      inset: 0 46%;
+      background: linear-gradient(180deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.95) 50%, rgb(255 255 255 / 0));
+    }
+  }
+
+  @keyframes vellano-gift-in {
+    from {
+      opacity: 0;
+      translate: 0 18px;
+      scale: 0.985;
+    }
+
+    to {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+    }
+  }
+
+  @keyframes vellano-gift-float {
+    0%,
+    100% {
+      translate: 0 0;
+      rotate: -0.25deg;
+    }
+
+    50% {
+      translate: 0 -1.6%;
+      rotate: 0.3deg;
+    }
+  }
+
+  @keyframes vellano-gift-shadow {
+    0%,
+    100% {
+      opacity: 0.2;
+      scale: 1;
+    }
+
+    50% {
+      opacity: 0.13;
+      scale: 0.965;
+    }
+  }
+
+  @keyframes vellano-gift-shine {
+    0% {
+      translate: -60% 0;
+    }
+
+    26%,
+    100% {
+      translate: -6.667% 0;
+    }
+  }
+
+  @keyframes vellano-gift-twinkle {
+    0%,
+    62%,
+    100% {
+      opacity: 0;
+      scale: 0.3;
+      rotate: 0deg;
+    }
+
+    72% {
+      opacity: 1;
+      scale: 1;
+      rotate: 45deg;
+    }
+
+    84% {
+      opacity: 0;
+      scale: 0.4;
+      rotate: 90deg;
+    }
+  }
+
   @media screen and (min-width: 750px) {
     .vellano-club-hero:not(.vellano-club-hero--no-media) {
       grid-template-columns:
@@ -297,6 +562,12 @@
       width: auto;
       max-height: 70svh;
       margin: 0;
+    }
+
+    /* Zdjęcie prezentu zachowuje swoje proporcje (bez obcinania wysokości), żeby błyski i maska pasowały do zdjęcia. */
+    .vellano-club-hero--gift > .vellano-club-hero__media {
+      max-height: none;
+      align-self: center;
     }
 
     .vellano-club-hero:not(.vellano-club-hero--no-media) > .vellano-club-hero__content {

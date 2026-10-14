@@ -20,3 +20,13 @@ Sekcje na stronie głównej:
 - „Na prezent” (media-with-content) → vellano-opakowanie-prezent.png,
 - „Wykonanie” (vellano-details) → vellano-fcb-pytanie-2.webp, vellano-mu-pytanie-1.webp, rm2.png, vellano-lancuszek-splot-linkowy.webp,
 - „Zestaw dla dwóch kibiców” (vellano-duo) → karta-real-madryt-na-lancuszku.png, karta-manchester-united-na-lancuszku.png, karta-fc-barcelona-na-lancuszku.png (zdjęcia z wyciętym tłem z kafelków).
+
+## Prezent dla kibica – zdjęcie w nagłówku kolekcji (14.10.2026)
+
+| Plik w Shopify | Opis | Źródło |
+|---|---|---|
+| vellano-opakowanie-prezent-wyciete.webp (1838 × 1504, przezroczyste tło) | to samo ujęcie co vellano-opakowanie-prezent.png, wycięte z tła i przycięte | Higgsfield remove_background, job 81e09f4c-1e25-4d76-a7f9-f85b20ebdc21; alfa < 12 → 0, ≥ 250 → 255 |
+
+Ustawione jako zdjęcie kolekcji „Prezent dla kibica” (Shopify zapisał je pod starą nazwą collections/opakowanie-vellano-jubiler.webp).
+Metapole kolekcji custom.hero_animacja = true włącza w sekcji vellano-club-hero tryb prezentu: wjazd od dołu, unoszenie nad cieniem,
+pas światła i błyski (błyski tylko dla zdjęcia 1838 × 1504).
