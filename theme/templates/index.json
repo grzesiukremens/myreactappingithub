@@ -22,7 +22,7 @@
         "heading": "Oficjalna biżuteria kibica.",
         "heading_tag": "h1",
         "heading_preset": "h1",
-        "text": "<p>Herb Twojego klubu ułożony z setek ręcznie osadzanych cyrkonii.</p>",
+        "text": "<p>Herb Twojego klubu ułożony z setek cyrkonii.</p>",
         "button_label": "Wybierz swój klub",
         "button_link": "/#wybierz-klub",
         "link_label": "Prezent dla kibica",
@@ -366,7 +366,7 @@
           "type": "detail",
           "settings": {
             "image": "shopify://shop_images/vellano-fcb-pytanie-2.webp",
-            "caption": "Cyrkonie osadzane ręcznie, kamień przy kamieniu"
+            "caption": "Cyrkonie osadzane kamień przy kamieniu"
           }
         },
         "d_mu": {
@@ -663,7 +663,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Vellano Jubiler założyli synowie jubilera, którzy kochają piłkę. Każdy herb powstaje z setek cyrkonii osadzanych ręcznie, kamień przy kamieniu, na mosiężnej bazie z powłoką rodowaną. Zestaw waży 46 g, a łańcuszek o splocie linkowym i pudełko na prezent są w komplecie. To biżuteria wykonana z jubilerską starannością, a nie gadżet kibica.</p>",
+            "text": "<p>Vellano Jubiler założyli synowie jubilera, którzy kochają piłkę. Każdy herb powstaje z setek cyrkonii osadzanych kamień przy kamieniu, na mosiężnej bazie z powłoką rodowaną. Zestaw waży 46 g, a łańcuszek o splocie linkowym i pudełko na prezent są w komplecie. To biżuteria wykonana z jubilerską starannością, a nie gadżet kibica.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -958,7 +958,7 @@
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Z mosiądzu z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych cyrkonii w barwach klubu, osadzanych ręcznie, jedna przy drugiej.</p>",
+                        "text": "<p>Z mosiądzu z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych cyrkonii w barwach klubu, osadzanych jedna przy drugiej.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",

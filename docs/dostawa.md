@@ -8,11 +8,11 @@ i „Ekspresowa” (65 zł) usunięte.
 
 | Metoda (nazwa w kasie) | Opis w kasie |
 |---|---|
-| InPost Paczkomat 24/7 | – |
-| DPD Pickup – punkt lub automat | – |
-| DHL POP – punkt lub automat | – |
-| ORLEN Paczka | – |
-| Poczta Polska – odbiór w punkcie | – |
+| InPost Paczkomat 24/7 | – (wyłączona) |
+| DPD Pickup – punkt lub automat | – (wyłączona) |
+| DHL POP – punkt lub automat | – (wyłączona) |
+| ORLEN Paczka | – (wyłączona) |
+| Poczta Polska – odbiór w punkcie | – (wyłączona) |
 | Kurier InPost | Doręczenie pod adres dostawy |
 | Kurier DPD | Doręczenie pod adres dostawy |
 | Kurier DHL | Doręczenie pod adres dostawy |
@@ -28,5 +28,6 @@ a kod wyboru jest w historii gita (commit 577654b), gdyby był potrzebny. Plik s
 został w kopii motywu (API nie pozwala usuwać plików), ale nic go nie renderuje.
 
 Plan Basic nie ma w kasie mapy paczkomatów dla Polski, więc przy metodach punktowych kasa nie pyta o konkretny punkt.
-Do decyzji właściciela: aplikacja z wyborem punktu po zakupie (np. „InPost Paczkomaty Orlen Paczka” od Codie, działa na Basic),
-wyższy plan Shopify z mapą w kasie albo tylko kurierzy.
+Decyzja właściciela (14.10.2026): na razie tylko kurierzy. Metody punktowe są wyłączone (active: false), nie usunięte –
+wystarczy je włączyć, gdy dojdzie aplikacja z wyborem punktu (np. „InPost Paczkomaty Orlen Paczka” od Codie, wybór po zakupie,
+działa na Basic) albo wyższy plan Shopify z mapą w kasie.

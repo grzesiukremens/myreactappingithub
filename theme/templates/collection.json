@@ -386,7 +386,7 @@
           "type": "question",
           "settings": {
             "question": "Z czego jest wykonana?",
-            "answer": "<p>Z mosiądzu z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych cyrkonii w barwach klubu, osadzanych ręcznie, jedna przy drugiej.</p>",
+            "answer": "<p>Z mosiądzu z powłoką rodowaną, która daje jasny, chłodny połysk. Herb tworzą setki drobnych cyrkonii w barwach klubu, osadzanych jedna przy drugiej.</p>",
             "image": "shopify://shop_images/rm2.png",
             "image_alt": "Herb z cyrkonii z bliska"
           }

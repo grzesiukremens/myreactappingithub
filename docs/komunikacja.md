@@ -1,5 +1,7 @@
 # Styl komunikacji Vellano Jubiler
 
+> Decyzja właściciela (14.10.2026): nie piszemy, że cyrkonie są osadzane **ręcznie** (żadnych form „ręcznie osadzane”, „osadzane ręcznie”). Piszemy np. „setki cyrkonii”, „starannie osadzonych cyrkonii”, „kamień przy kamieniu”.
+
 Wzorowany na Apart, W.KRUK i Ania Kruk, dopasowany do person z `klienci.md`.
 
 ## Forma zwracania się

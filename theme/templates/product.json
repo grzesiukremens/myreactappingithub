@@ -467,7 +467,7 @@
         "pill_1": {
           "type": "pill",
           "settings": {
-            "text": "Ręcznie osadzane cyrkonie"
+            "text": "Setki cyrkonii"
           }
         },
         "pill_2": {
@@ -497,7 +497,7 @@
       ],
       "settings": {
         "heading": "Herb wysadzany cyrkoniami",
-        "text": "<p>Herb ułożono z setek drobnych cyrkonii. Każdy kamień osadzany jest ręcznie, jeden przy drugim, tak by wypełnić cały kształt i oddać barwy klubu.</p><p>Gęsto osadzone kamienie przy każdym ruchu łapią światło, więc zawieszka błyszczy z każdego kąta.</p><p>Dostajesz komplet: zawieszkę z herbem i łańcuszek o splocie linkowym 51 cm.</p>",
+        "text": "<p>Herb ułożono z setek drobnych cyrkonii. Kamienie osadzane są jeden przy drugim, tak by wypełnić cały kształt i oddać barwy klubu.</p><p>Gęsto osadzone kamienie przy każdym ruchu łapią światło, więc zawieszka błyszczy z każdego kąta.</p><p>Dostajesz komplet: zawieszkę z herbem i łańcuszek o splocie linkowym 51 cm.</p>",
         "quote": "„Herb klubu zasługuje na jubilerskie wykonanie.”",
         "quote_author": "Synowie jubilera, założyciele Vellano Jubiler",
         "show_stars": false,
