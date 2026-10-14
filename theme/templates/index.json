@@ -400,7 +400,7 @@
       "settings": {
         "eyebrow": "Wykonanie",
         "heading": "Setki cyrkonii. Jeden herb.",
-        "text": "<p>Herb ułożony z setek drobnych cyrkonii, osadzanych ręcznie, kamień przy kamieniu. Mosiężna rama lśni chłodnym połyskiem powłoki rodowanej – tak samo w każdym klubie.</p>",
+        "text": "<p>Każdy herb zdobią setki starannie osadzonych cyrkonii, które oddają charakterystyczne barwy i detale klubu. Rodowane wykończenie nadaje zawieszce elegancki, srebrzysty połysk.</p>",
         "link_label": "Poznaj wykonanie",
         "link": "/pages/wykonanie",
         "media_position": "right",
@@ -581,21 +581,24 @@
           "type": "herb",
           "settings": {
             "image": "shopify://shop_images/karta-real-madryt-na-lancuszku.png",
-            "label": "Real Madryt"
+            "label": "Real Madryt",
+            "product": "zawieszka-real-madryt-z-lancuszkiem"
           }
         },
         "herb_mu": {
           "type": "herb",
           "settings": {
             "image": "shopify://shop_images/karta-manchester-united-na-lancuszku.png",
-            "label": "Manchester United"
+            "label": "Manchester United",
+            "product": "zawieszka-manchester-united-z-lancuszkiem"
           }
         },
         "herb_fcb": {
           "type": "herb",
           "settings": {
             "image": "shopify://shop_images/karta-fc-barcelona-na-lancuszku.png",
-            "label": "FC Barcelona"
+            "label": "FC Barcelona",
+            "product": "zawieszka-fc-barcelona-z-lancuszkiem"
           }
         }
       },
@@ -610,13 +613,14 @@
         "price": "259 zł",
         "compare_price": "298 zł",
         "save_label": "Oszczędzasz 39 zł",
-        "note": "<p>Dowolne dwa herby. Promocja nalicza się automatycznie w koszyku.</p>",
+        "note": "<p>Promocja nalicza się automatycznie w koszyku.</p>",
         "button_label": "Wybierz dwa herby",
         "button_link": "/#wybierz-klub",
         "background_color": "#141414",
         "text_color": "#FFFFFF",
         "padding-block-start": 64,
-        "padding-block-end": 64
+        "padding-block-end": 64,
+        "add_label": "Dodaj oba do koszyka"
       }
     },
     "vellano_o_marce": {

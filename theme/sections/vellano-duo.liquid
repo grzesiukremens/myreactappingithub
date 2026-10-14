@@ -2,11 +2,18 @@
   Section contract.
   Vellano – „Zestaw dla dwóch kibiców” na stronie głównej: ciemny pas z ofertą 2 zawieszki za 259 zł.
   Rabat nalicza rabat automatyczny Shopify w koszyku; sekcja tylko go pokazuje (kwoty są w ustawieniach).
-  Grafika: pierwsze dwa bloki „Herb” stoją obok siebie (zdjęcia z wyciętym tłem, kadr pionowy od góry,
-  żeby łańcuszki wychodziły poza kadr). Kolejne bloki są przygotowane pod pokazywanie innych par.
+
+  „Złóż swój zestaw”: każdy blok „Herb” to zdjęcie z wyciętym tłem + produkt. Dwie zawieszki stoją obok siebie,
+  pod każdą są małe herby do wyboru. Po zmianie zawieszka płynnie się podmienia (opada na łańcuszku)
+  i przechodzi po niej pas światła maskowany jej kształtem, jak w hero strony głównej. Zanim klient czegoś dotknie,
+  pary zmieniają się same co ~3 s (tylko gdy sekcja jest widoczna; przy „ogranicz ruch” nie).
+  Przycisk „Dodaj oba do koszyka” to zwykły formularz /cart/add z dwiema pozycjami (działa też bez JS),
+  po dodaniu Shopify przenosi do koszyka. Dwa takie same herby = ta sama zawieszka 2 sztuki.
+  Gdy któryś herb nie ma produktu, sekcja pokazuje statyczną parę i przycisk z linkiem (`button_link`).
+
   Telefon: wszystko wyśrodkowane, grafika nad ceną. Od 990 px: grafika z lewej, treść z prawej.
   @example
-  <!-- templates/index.json → "vellano_zestaw": { "type": "vellano-duo", "blocks": { "rm": { "type": "herb", "settings": { "image": "shopify://shop_images/karta-real-madryt-na-lancuszku.png", "label": "Real Madryt" } } }, "block_order": ["rm"] } -->
+  <!-- templates/index.json → "vellano_zestaw": { "type": "vellano-duo", "blocks": { "rm": { "type": "herb", "settings": { "image": "shopify://shop_images/karta-real-madryt-na-lancuszku.png", "label": "Real Madryt", "product": "zawieszka-real-madryt-z-lancuszkiem" } } }, "block_order": ["rm"] } -->
 {% endcomment %}
 
 {%- liquid
@@ -16,6 +23,26 @@
   assign compare_price = section.settings.compare_price | strip
   assign save_label = section.settings.save_label | strip
   assign button_label = section.settings.button_label | strip
+
+  assign herb_count = section.blocks.size
+  assign configurable = false
+  if herb_count > 0
+    assign configurable = true
+    for block in section.blocks
+      if block.settings.product == blank or block.settings.image == blank
+        assign configurable = false
+      endif
+    endfor
+  endif
+
+  assign first_index = 0
+  assign second_index = 1
+  if herb_count < 2
+    assign second_index = 0
+  endif
+
+  assign first_block = section.blocks[first_index]
+  assign second_block = section.blocks[second_index]
 -%}
 
 {% render 'vellano-ui-styles' %}
@@ -30,7 +57,7 @@
   class="section section--page-width color-custom-{{ section.id }} spacing-style"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="vellano-duo vellano-ui">
+  <div class="vellano-duo vellano-ui" {% if configurable %}data-vellano-duo{% endif %}>
     {%- if eyebrow != blank or heading != blank -%}
       <header class="vellano-duo__header">
         {%- if eyebrow != blank -%}
@@ -42,26 +69,103 @@
       </header>
     {%- endif -%}
 
-    {%- if section.blocks.size > 0 -%}
-      <div class="vellano-duo__visual">
-        {%- for block in section.blocks limit: 2 -%}
-          <div class="vellano-duo__herb" {{ block.shopify_attributes }}>
-            {%- if block.settings.image != blank -%}
-              {{
-                block.settings.image
-                | image_url: width: 900
-                | image_tag:
-                  widths: '300, 450, 600, 750, 900',
-                  sizes: '(min-width: 990px) 280px, 46vw',
-                  loading: 'lazy',
-                  alt: block.settings.label,
-                  class: 'vellano-duo__image'
-              }}
-            {%- else -%}
-              {{ 'image' | placeholder_svg_tag: 'vellano-duo__image vellano-duo__image--placeholder' }}
-            {%- endif -%}
+    {%- if herb_count > 0 -%}
+      <div class="vellano-duo__builder">
+        <div class="vellano-duo__visual">
+          {%- for slot in (1..2) -%}
+            {%- liquid
+              if slot == 1
+                assign active_index = first_index
+              else
+                assign active_index = second_index
+              endif
+            -%}
+            <div class="vellano-duo__slot" data-duo-stage="{{ slot }}">
+              {%- for block in section.blocks -%}
+                {%- if configurable or forloop.index0 == active_index -%}
+                  <div
+                    class="vellano-duo__herb{% if forloop.index0 == active_index %} is-active{% endif %}"
+                    data-duo-herb="{{ forloop.index0 }}"
+                    {% if slot == 1 %}
+                      {{ block.shopify_attributes }}
+                    {% endif %}
+                  >
+                    {%- if block.settings.image != blank -%}
+                      {{
+                        block.settings.image
+                        | image_url: width: 900
+                        | image_tag:
+                          widths: '300, 450, 600, 750, 900',
+                          sizes: '(min-width: 990px) 280px, 46vw',
+                          loading: 'lazy',
+                          alt: '',
+                          class: 'vellano-duo__image'
+                      }}
+                      {%- if configurable -%}
+                        <span
+                          class="vellano-duo__shine"
+                          style="--duo-mask: url('{{ block.settings.image | image_url: width: 600 }}');"
+                          aria-hidden="true"
+                        ></span>
+                      {%- endif -%}
+                    {%- else -%}
+                      {{ 'image' | placeholder_svg_tag: 'vellano-duo__image vellano-duo__image--placeholder' }}
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if configurable -%}
+          <div class="vellano-duo__pickers">
+            {%- for slot in (1..2) -%}
+              {%- liquid
+                if slot == 1
+                  assign active_index = first_index
+                else
+                  assign active_index = second_index
+                endif
+              -%}
+              <fieldset class="vellano-duo__picker">
+                <legend class="visually-hidden">
+                  {%- if slot == 1 -%}Pierwsza zawieszka{%- else -%}Druga zawieszka{%- endif -%}
+                </legend>
+                {%- for block in section.blocks -%}
+                  {%- assign herb_variant = block.settings.product.selected_or_first_available_variant -%}
+                  <label class="vellano-duo__chip">
+                    <input
+                      type="radio"
+                      name="vellano-duo-{{ section.id }}-{{ slot }}"
+                      value="{{ forloop.index0 }}"
+                      data-duo-slot="{{ slot }}"
+                      data-duo-variant="{{ herb_variant.id }}"
+                      data-duo-label="{{ block.settings.label | default: block.settings.product.title | escape }}"
+                      {% if forloop.index0 == active_index %}
+                        checked
+                      {% endif %}
+                      {% unless herb_variant.available %}
+                        disabled
+                      {% endunless %}
+                    >
+                    <span class="vellano-duo__chip-media">
+                      {{
+                        block.settings.image
+                        | image_url: width: 240
+                        | image_tag: loading: 'lazy', alt: '', class: 'vellano-duo__chip-image'
+                      }}
+                    </span>
+                    <span class="visually-hidden">{{ block.settings.label | default: block.settings.product.title | escape }}</span>
+                  </label>
+                {%- endfor -%}
+              </fieldset>
+            {%- endfor -%}
           </div>
-        {%- endfor -%}
+          <p class="vellano-duo__pair" data-duo-pair aria-live="polite">
+            {{- first_block.settings.label | escape }} + {{ second_block.settings.label | escape -}}
+          </p>
+        {%- endif -%}
       </div>
     {%- endif -%}
 
@@ -86,7 +190,18 @@
         <div class="vellano-duo__note rte">{{ section.settings.note }}</div>
       {%- endif -%}
 
-      {%- if button_label != blank and section.settings.button_link != blank -%}
+      {%- if configurable -%}
+        <form class="vellano-duo__form" action="{{ routes.cart_add_url }}" method="post">
+          <input type="hidden" name="items[0][id]" value="{{ first_block.settings.product.selected_or_first_available_variant.id }}" data-duo-input="1">
+          <input type="hidden" name="items[0][quantity]" value="1">
+          <input type="hidden" name="items[1][id]" value="{{ second_block.settings.product.selected_or_first_available_variant.id }}" data-duo-input="2">
+          <input type="hidden" name="items[1][quantity]" value="1">
+          <button type="submit" class="button vellano-duo__button">
+            {{- section.settings.add_label | default: 'Dodaj oba do koszyka' | escape -}}
+            {%- if price != blank %} – {{ price | escape }}{% endif -%}
+          </button>
+        </form>
+      {%- elsif button_label != blank and section.settings.button_link != blank -%}
         <a class="button vellano-duo__button" href="{{ section.settings.button_link }}">
           {{- button_label | escape -}}
         </a>
@@ -94,6 +209,123 @@
     </div>
   </div>
 </div>
+
+{%- if configurable -%}
+  <script>
+    (function () {
+      if (window.vellanoDuoInit) return;
+      window.vellanoDuoInit = true;
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      function setup(root) {
+        if (root.dataset.duoReady) return;
+        root.dataset.duoReady = '1';
+
+        var count = root.querySelectorAll('[data-duo-slot="1"]').length;
+        var pair = root.querySelector('[data-duo-pair]');
+        var interacted = false;
+        var visible = false;
+        var timer = 0;
+        var step = 0;
+
+        function radio(slot, index) {
+          return root.querySelector('[data-duo-slot="' + slot + '"][value="' + index + '"]');
+        }
+
+        function current(slot) {
+          var checked = root.querySelector('[data-duo-slot="' + slot + '"]:checked');
+          return checked ? Number(checked.value) : 0;
+        }
+
+        function shine(layer) {
+          var el = layer && layer.querySelector('.vellano-duo__shine');
+          if (!el || reduce.matches) return;
+          el.classList.remove('is-shining');
+          void el.offsetWidth;
+          el.classList.add('is-shining');
+        }
+
+        function show(slot, index) {
+          var stage = root.querySelector('[data-duo-stage="' + slot + '"]');
+          var input = radio(slot, index);
+          if (!stage || !input || input.disabled) return;
+
+          var next = stage.querySelector('[data-duo-herb="' + index + '"]');
+          var active = stage.querySelector('.vellano-duo__herb.is-active');
+          if (next !== active) {
+            if (active) active.classList.remove('is-active');
+            next.classList.add('is-active');
+          }
+          shine(next);
+
+          input.checked = true;
+          root.querySelector('[data-duo-input="' + slot + '"]').value = input.dataset.duoVariant;
+          if (pair) {
+            pair.textContent = radio(1, current(1)).dataset.duoLabel + ' + ' + radio(2, current(2)).dataset.duoLabel;
+          }
+        }
+
+        // Kolejne pary bez dotykania: zawsze zmienia się jedna zawieszka (dla 3 herbów wszystkie kombinacje + dwa takie same).
+        var moves = count === 3
+          ? [[2, 2], [1, 1], [1, 2], [2, 1], [1, 0]]
+          : null;
+
+        function tick() {
+          if (interacted || !visible || document.hidden) return;
+          if (moves) {
+            var move = moves[step % moves.length];
+            show(move[0], move[1]);
+          } else {
+            var slot = (step % 2) + 1;
+            show(slot, (current(slot) + 1) % count);
+          }
+          step += 1;
+        }
+
+        function start() {
+          if (timer || interacted || reduce.matches || count < 2) return;
+          timer = window.setInterval(tick, 3200);
+        }
+
+        function stop() {
+          window.clearInterval(timer);
+          timer = 0;
+        }
+
+        root.addEventListener('change', function (event) {
+          var input = event.target;
+          if (!input.matches('[data-duo-slot]')) return;
+          interacted = true;
+          stop();
+          show(Number(input.dataset.duoSlot), Number(input.value));
+        });
+
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (entries) {
+            visible = entries[0].isIntersecting;
+            if (visible) {
+              start();
+            } else {
+              stop();
+            }
+          }, { threshold: 0.35 }).observe(root.querySelector('.vellano-duo__visual'));
+        }
+      }
+
+      function init() {
+        document.querySelectorAll('[data-vellano-duo]').forEach(setup);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+      document.addEventListener('shopify:section:load', init);
+    })();
+  </script>
+{%- endif -%}
 
 {% stylesheet %}
   .vellano-duo {
@@ -123,8 +355,9 @@
     pointer-events: none;
   }
 
-  /* Kadr pionowy z górnej części zdjęcia 1122 × 1402: mieści szeroki herb MU, a łańcuszek wychodzi górą. */
-  .vellano-duo__herb {
+  /* Kadr pionowy z górnej części zdjęcia 1122 × 1402: mieści szeroki herb MU, a łańcuszek wychodzi górą.
+     W każdym miejscu leżą wszystkie herby jeden na drugim; widać tylko aktywny. */
+  .vellano-duo__slot {
     position: relative;
     flex: 0 1 50%;
     min-width: 0;
@@ -132,8 +365,36 @@
     overflow: hidden;
   }
 
-  .vellano-duo__herb + .vellano-duo__herb {
+  .vellano-duo__slot + .vellano-duo__slot {
     margin-inline-start: -4%;
+  }
+
+  /* Podmiana: nowa zawieszka opada na łańcuszku na swoje miejsce, poprzednia unosi się i znika. */
+  .vellano-duo__herb {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 -4%;
+    rotate: -1.2deg;
+    transform-origin: 50% 0;
+    transition:
+      opacity 0.4s ease,
+      translate 0.5s ease,
+      rotate 0.5s ease,
+      visibility 0s linear 0.5s;
+  }
+
+  .vellano-duo__herb.is-active {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+    rotate: 0deg;
+    transition:
+      opacity 0.55s ease,
+      translate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+      rotate 1.1s cubic-bezier(0.3, 1.5, 0.5, 1),
+      visibility 0s;
   }
 
   .vellano-duo__image {
@@ -142,6 +403,169 @@
     height: 100%;
     object-fit: cover;
     object-position: 50% 0;
+  }
+
+  /* Pas światła maskowany kształtem zawieszki (ta sama technika co w hero strony głównej). */
+  .vellano-duo__shine {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    -webkit-mask-image: var(--duo-mask);
+    mask-image: var(--duo-mask);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: 50% 0;
+    mask-position: 50% 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .vellano-duo__shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300%;
+    background: linear-gradient(
+      105deg,
+      rgb(255 255 255 / 0) 0%,
+      rgb(255 255 255 / 0) 46%,
+      rgb(255 255 255 / 0.16) 48.4%,
+      rgb(255 255 255 / 0.6) 50%,
+      rgb(255 255 255 / 0.16) 51.6%,
+      rgb(255 255 255 / 0) 54%,
+      rgb(255 255 255 / 0) 100%
+    );
+    translate: -60% 0;
+  }
+
+  .vellano-duo__shine.is-shining {
+    opacity: 1;
+  }
+
+  .vellano-duo__shine.is-shining::before {
+    animation: vellano-duo-shine 1.3s cubic-bezier(0.45, 0, 0.25, 1) 0.35s both;
+  }
+
+  @keyframes vellano-duo-shine {
+    from {
+      translate: -60% 0;
+    }
+
+    to {
+      translate: -6.667% 0;
+    }
+  }
+
+  .vellano-duo__builder {
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .vellano-duo__pickers {
+    display: flex;
+    justify-content: center;
+    gap: 4%;
+    width: min(100%, 380px);
+    margin-inline: auto;
+  }
+
+  .vellano-duo__picker {
+    display: flex;
+    flex: 0 1 50%;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .vellano-duo__chip {
+    position: relative;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    cursor: pointer;
+  }
+
+  .vellano-duo__chip input {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .vellano-duo__chip-media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: rgb(255 255 255 / 0.05);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+    transition: box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* Miniatura pokazuje sam herb: kadr z dolnej części zdjęcia zawieszki na łańcuszku. */
+  .vellano-duo__chip-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 82%;
+    scale: 1.75;
+    transform-origin: 50% 64%;
+  }
+
+  .vellano-duo__chip input:checked + .vellano-duo__chip-media {
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.2),
+      0 0 0 2px var(--color-background, #141414),
+      0 0 0 3px #ffffff;
+  }
+
+  .vellano-duo__chip input:focus-visible + .vellano-duo__chip-media {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+  }
+
+  .vellano-duo__chip input:disabled + .vellano-duo__chip-media {
+    opacity: 0.3;
+  }
+
+  .vellano-duo__pair {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: rgb(var(--color-foreground-rgb) / 0.78);
+    text-align: center;
+  }
+
+  .vellano-duo__form {
+    display: contents;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vellano-duo__herb,
+    .vellano-duo__herb.is-active {
+      translate: none;
+      rotate: none;
+      transition: none;
+    }
+
+    .vellano-duo__shine {
+      display: none;
+    }
   }
 
   .vellano-duo__image--placeholder {
@@ -252,9 +676,13 @@
       align-items: flex-start;
     }
 
-    .vellano-duo__visual {
+    .vellano-duo__builder {
       grid-area: visual;
       align-self: center;
+    }
+
+    .vellano-duo__visual,
+    .vellano-duo__pickers {
       width: min(100%, 520px);
     }
 
@@ -291,12 +719,18 @@
           "type": "image_picker",
           "id": "image",
           "label": "Zdjęcie z wyciętym tłem",
-          "info": "Zawieszka na łańcuszku, przezroczyste tło (np. karta-…-na-lancuszku.png). Na stronie widać pierwsze dwa herby."
+          "info": "Zawieszka na łańcuszku, przezroczyste tło (np. karta-…-na-lancuszku.png). Na starcie widać dwa pierwsze herby."
         },
         {
           "type": "text",
           "id": "label",
           "label": "Nazwa klubu"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produkt",
+          "info": "Zawieszka dodawana do koszyka po wybraniu tego herbu. Gdy któryś herb nie ma produktu, sekcja pokazuje zwykły przycisk z linkiem."
         }
       ]
     }
@@ -348,8 +782,16 @@
     },
     {
       "type": "text",
+      "id": "add_label",
+      "label": "Tekst przycisku „dodaj oba”",
+      "info": "Po tekście dopisuje się cena zestawu.",
+      "default": "Dodaj oba do koszyka"
+    },
+    {
+      "type": "text",
       "id": "button_label",
-      "label": "Tekst przycisku",
+      "label": "Tekst przycisku z linkiem",
+      "info": "Używany tylko, gdy herby nie mają przypisanych produktów.",
       "default": "Wybierz dwa herby"
     },
     {
