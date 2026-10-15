@@ -7,6 +7,8 @@
   a gdy go brak – closest.product.featured_media. Bez zdjęcia układ jest jednokolumnowy.
   Mobile (do 989 px): pigułki (przewijane poziomo, scroll-snap) → zdjęcie → nagłówek i tekst → cytat.
   Desktop (od 990 px): tekst i cytat w lewej kolumnie, zdjęcie w prawej (ustawienie `media_position`).
+  Znacznik [klub] w nagłówku i tekście zamienia się na nazwę klubu w dopełniaczu z metapola produktu
+  custom.klub_dopelniacz (np. „Manchesteru United”); bez metapola wstawia się „klubu”.
   @example
   <!-- templates/product.json → "vellano_highlights": { "type": "vellano-highlights", "blocks": { "pill_1": { "type": "pill", "settings": { "text": "Łańcuszek w zestawie" } } }, "block_order": ["pill_1"] } -->
 {% endcomment %}
@@ -31,7 +33,13 @@
     assign media_alt = media_image.alt | default: product_resource.title | escape
   endif
 
-  assign heading = section.settings.heading | strip
+  assign vellano_club = product_resource.metafields.custom.klub_dopelniacz.value | strip
+  if vellano_club == blank
+    assign vellano_club = 'klubu'
+  endif
+
+  assign heading = section.settings.heading | strip | replace: '[klub]', vellano_club
+  assign highlights_text = section.settings.text | replace: '[klub]', vellano_club
   assign quote = section.settings.quote | strip
 
   capture modifier_classes
@@ -79,13 +87,13 @@
       </div>
     {%- endif -%}
 
-    {%- if heading != blank or section.settings.text != blank -%}
+    {%- if heading != blank or highlights_text != blank -%}
       <div class="vellano-highlights__content">
         {%- if heading != blank -%}
           <h2 class="vellano-highlights__heading">{{ heading | escape }}</h2>
         {%- endif -%}
-        {%- if section.settings.text != blank -%}
-          <div class="vellano-highlights__text rte">{{ section.settings.text }}</div>
+        {%- if highlights_text != blank -%}
+          <div class="vellano-highlights__text rte">{{ highlights_text }}</div>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -372,6 +380,7 @@
       "type": "richtext",
       "id": "text",
       "label": "Tekst",
+      "info": "[klub] zamienia się na nazwę klubu w dopełniaczu z metapola produktu „Klub w dopełniaczu” (np. Manchesteru United).",
       "default": "<p>Herb ułożono z setek drobnych cyrkonii. Kamienie osadzane są jeden przy drugim, tak by wypełnić cały kształt i oddać barwy klubu.</p><p>Gęsto osadzone kamienie pracują razem: przy każdym ruchu łapią światło, więc zawieszka błyszczy z każdego kąta – na wprost, z boku i pod światło.</p><p>Dostajesz komplet: zawieszkę z herbem i łańcuszek o splocie linkowym 51 cm. Nie musisz niczego dobierać – zakładasz ją od razu po wyjęciu z pudełka.</p><p>To efekt biżuterii wysadzanej kamieniami w cenie, która nie wymaga wyjątkowej okazji.</p><p><strong>Herb Twojego klubu – na mecz i na co dzień.</strong></p>"
     },
     {
