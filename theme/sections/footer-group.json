@@ -266,11 +266,19 @@
             "case": "none"
           },
           "blocks": {}
+        },
+        "social_vellano": {
+          "type": "social-links",
+          "settings": {
+            "tiktok_url": "https://www.tiktok.com/@vellano.pl"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "footer_copyright_jweRK8",
-        "footer_policy_list_VCdnpa"
+        "footer_policy_list_VCdnpa",
+        "social_vellano"
       ],
       "name": "t:names.utilities",
       "settings": {
