@@ -311,7 +311,7 @@
         "more_clubs": {
           "type": "text",
           "settings": {
-            "text": "<p>Twojego klubu jeszcze nie ma? Zapisz się do newslettera na dole strony – napiszemy, gdy pojawią się nowe herby.</p>",
+            "text": "<p>Twojego klubu jeszcze nie ma? Zapisz się do <a href=\"#newsletter\">newslettera</a> na dole strony – napiszemy, gdy pojawią się nowe herby.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",

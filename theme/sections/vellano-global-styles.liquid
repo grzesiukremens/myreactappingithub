@@ -91,6 +91,19 @@
     }
   }
 
+  /* Kotwica #newsletter (nadaje ją skrypt poniżej nagłówkowi zapisu w stopce) i linki do niej,
+     np. „Zapisz się do newslettera” pod kartami klubów na stronie głównej. */
+  #newsletter {
+    scroll-margin-top: calc(var(--header-height, 96px) + 24px);
+  }
+
+  a[href='#newsletter'] {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
   /* Dolny pasek stopki: przycisk z regulaminami i link nazwy sklepu jako pełne cele dotyku (min. 44 px). */
   .utilities .policy-list-trigger,
   .utilities .footer-utilities__text a {
@@ -518,16 +531,34 @@
       });
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function () {
-        enhance();
-      });
-    } else {
+    /* Kotwica #newsletter na nagłówku zapisu w stopce (blok tekstu z nagłówkiem tuż przed formularzem),
+       żeby linki „newsletter” w treściach prowadziły do formularza na każdej stronie. */
+    function markNewsletter() {
+      if (document.getElementById('newsletter')) return;
+      var form = document.querySelector('.shopify-section-group-footer-group .email-signup-block');
+      if (!form) return;
+      var target = form;
+      var previous = form.previousElementSibling;
+      while (previous && !previous.querySelector('h2, h3')) previous = previous.previousElementSibling;
+      if (previous) target = previous;
+      target.id = 'newsletter';
+      if (window.location.hash === '#newsletter') target.scrollIntoView();
+    }
+
+    function init() {
       enhance();
+      markNewsletter();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
     }
 
     document.addEventListener('shopify:section:load', function (event) {
       enhance(event.target);
+      markNewsletter();
     });
   })();
 </script>
