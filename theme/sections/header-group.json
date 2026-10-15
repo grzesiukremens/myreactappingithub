@@ -45,7 +45,7 @@
         "announcement_swieta": {
           "type": "_announcement",
           "settings": {
-            "text": "Gwarancja dostawy przed Świętami",
+            "text": "Zamów do 18.12 – dostawa przed Świętami",
             "link": "shopify://pages/dostawa",
             "font": "var(--font-body--family)",
             "font_size": "0.875rem",

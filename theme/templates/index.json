@@ -22,7 +22,7 @@
         "heading": "Oficjalna biżuteria kibica.",
         "heading_tag": "h1",
         "heading_preset": "h1",
-        "text": "<p>Herb Twojego klubu ułożony z setek cyrkonii.</p>",
+        "text": "<p>Herb Twojego klubu w wyjątkowej, jubilerskiej odsłonie.</p>",
         "button_label": "Wybierz swój klub",
         "button_link": "/#wybierz-klub",
         "link_label": "Prezent dla kibica",
@@ -66,7 +66,7 @@
           "type": "item",
           "settings": {
             "icon": "gift",
-            "text": "Gwarancja dostawy przed Świętami",
+            "text": "Zamów do 18.12 – dostawa przed Świętami",
             "link": "shopify://pages/dostawa"
           }
         }
@@ -224,7 +224,7 @@
               "type": "custom-liquid",
               "name": "Nazwa (bez „z łańcuszkiem”)",
               "settings": {
-                "custom_liquid": "{%- assign vellano_title = closest.product.title | remove: ' z łańcuszkiem' | strip -%}<h3 class=\"vellano-card-title\">{{ vellano_title | escape }}</h3>"
+                "custom_liquid": "{%- assign vellano_title = closest.product.title | remove: ' z łańcuszkiem' | strip | replace_first: 'Oficjalna zawieszka ', 'Oficjalna zawieszka z łańcuszkiem ' -%}<h3 class=\"vellano-card-title\">{{ vellano_title | escape }}</h3>"
               },
               "blocks": {}
             },
@@ -540,7 +540,7 @@
                 "point_1_icon": "box",
                 "point_2": "Darmowa dostawa",
                 "point_2_icon": "truck",
-                "point_3": "Gwarancja dostawy przed Świętami",
+                "point_3": "Zamów do 18.12 – dostawa przed Świętami",
                 "point_3_icon": "gift",
                 "show_returns": false,
                 "returns_label": "Zwroty",

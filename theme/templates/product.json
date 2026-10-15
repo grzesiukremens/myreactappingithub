@@ -204,7 +204,7 @@
                     "point_1_icon": "truck",
                     "point_2": "Wysyłka w 2–3 dni robocze",
                     "point_2_icon": "clock",
-                    "point_3": "Gwarancja dostawy przed Świętami",
+                    "point_3": "Zamów do 18.12 – dostawa przed Świętami",
                     "point_3_icon": "gift",
                     "returns_label": "Zwroty",
                     "returns_link": "shopify://pages/zwroty",
@@ -296,7 +296,7 @@
                 "point_1_icon": "truck",
                 "point_2": "Wysyłka w 2–3 dni robocze",
                 "point_2_icon": "clock",
-                "point_3": "Gwarancja dostawy przed Świętami",
+                "point_3": "Zamów do 18.12 – dostawa przed Świętami",
                 "point_3_icon": "gift",
                 "returns_label": "Zwroty",
                 "returns_link": "shopify://pages/zwroty",
@@ -364,7 +364,7 @@
                     "text_dostawa": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Darmowa dostawa przy każdym zamówieniu, bez minimalnej kwoty.</p><p>Wysyłka w 2–3 dni robocze.</p><p>Obowiązuje gwarancja dostawy przed Świętami.</p><p><a href=\"/pages/dostawa\">Szczegóły dostawy</a></p>",
+                        "text": "<p>Darmowa dostawa przy każdym zamówieniu, bez minimalnej kwoty.</p><p>Wysyłka w 2–3 dni robocze.</p><p>Gwarantujemy dostawę przed Świętami przy zamówieniu złożonym do 18 grudnia.</p><p><a href=\"/pages/dostawa\">Szczegóły dostawy</a></p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",

@@ -226,7 +226,7 @@
           "type": "item",
           "settings": {
             "icon": "gift",
-            "text": "Gwarancja dostawy przed Świętami",
+            "text": "Zamów do 18.12 – dostawa przed Świętami",
             "link": "shopify://pages/dostawa"
           }
         }
@@ -341,7 +341,7 @@
           "type": "question",
           "settings": {
             "question": "Czy prezent zdąży przed Świętami?",
-            "answer": "<p>Tak. Wysyłamy w 2–3 dni robocze i obowiązuje gwarancja dostawy przed Świętami. Dostawa jest darmowa.</p>",
+            "answer": "<p>Tak, jeśli zamówisz do 18 grudnia – wtedy gwarantujemy dostawę przed Świętami. Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa.</p>",
             "image": "shopify://shop_images/vellano-prezent-swieta.png",
             "image_alt": "Pudełko Vellano Jubiler z etui i gałązką jodły"
           }

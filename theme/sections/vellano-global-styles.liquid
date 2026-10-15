@@ -499,6 +499,98 @@
       display: none;
     }
   }
+
+  /* Pasek „Kup teraz” na karcie produktu (Horizon: sticky-add-to-cart, ustawienie „enable_sticky_add_to_cart”).
+     Na telefonie: biały pas przy dolnej krawędzi z cienką linią, miniatura, nazwa klubu, cena i przycisk z napisem.
+     Wysuwa się od dołu, gdy główny przycisk zniknie z ekranu; Horizon chowa go przy stopce. Nazwę klubu ustawia skrypt poniżej. */
+  @media screen and (max-width: 749px) {
+    sticky-add-to-cart .sticky-add-to-cart__bar {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas:
+        'image info button'
+        'image price button';
+      align-items: center;
+      column-gap: 12px;
+      row-gap: 2px;
+      padding: 10px 16px calc(10px + var(--safe-area-inset-bottom, 0px));
+      background-color: #fff;
+      color: #141414;
+      border-top: 1px solid #e6e2da;
+      box-shadow: 0 -10px 30px rgb(20 20 20 / 0.08);
+      transform: translate(-50%) translateY(100%);
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__bar[data-stuck='true'] {
+      transform: translate(-50%) translateY(0);
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__bar::before {
+      display: none;
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__image {
+      grid-area: image;
+      width: 52px;
+      height: 52px;
+      border: 1px solid #efebe4;
+      border-radius: 0;
+      background-color: #fff;
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__image-img {
+      object-fit: contain;
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__info {
+      grid-area: info;
+      align-self: end;
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__title {
+      font-family: var(--font-heading--family);
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__price {
+      grid-area: price;
+      align-self: start;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgb(20 20 20 / 0.7);
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__button {
+      grid-area: button;
+      width: auto;
+      min-width: 0;
+      aspect-ratio: auto;
+      height: 48px;
+      padding: 0 20px;
+      white-space: nowrap;
+      border-radius: 0;
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__bar .add-to-cart-text__content {
+      display: inline;
+    }
+
+    sticky-add-to-cart .sticky-add-to-cart__button .add-to-cart-text > .svg-wrapper {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) and (prefers-reduced-motion: no-preference) {
+    sticky-add-to-cart .sticky-add-to-cart__bar {
+      transition-duration: 0.45s;
+      transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+  }
 {% endstylesheet %}
 
 <script>
@@ -559,9 +651,25 @@
       if (window.location.hash === '#newsletter') target.scrollIntoView();
     }
 
+    /* Pasek „Kup teraz” na karcie produktu: zamiast długiej nazwy („Oficjalna zawieszka … z łańcuszkiem”)
+       sama nazwa klubu, żeby zmieściła się obok ceny i przycisku. Pełna nazwa zostaje w atrybucie title. */
+    function enhanceStickyBar(root) {
+      (root || document).querySelectorAll('sticky-add-to-cart .sticky-add-to-cart__title').forEach(function (title) {
+        if (title.dataset.vellanoTitle) return;
+        var full = title.textContent.trim();
+        var club = full.replace(/^Oficjalna zawieszka\s+/i, '').replace(/\s+z łańcuszkiem$/i, '').trim();
+        title.dataset.vellanoTitle = full;
+        if (club && club !== full) {
+          title.textContent = club;
+          title.setAttribute('title', full);
+        }
+      });
+    }
+
     function init() {
       enhance();
       markNewsletter();
+      enhanceStickyBar();
     }
 
     if (document.readyState === 'loading') {
@@ -573,6 +681,7 @@
     document.addEventListener('shopify:section:load', function (event) {
       enhance(event.target);
       markNewsletter();
+      enhanceStickyBar(event.target);
     });
   })();
 </script>

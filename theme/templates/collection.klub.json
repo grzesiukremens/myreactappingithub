@@ -226,7 +226,7 @@
           "type": "item",
           "settings": {
             "icon": "gift",
-            "text": "Gwarancja dostawy przed Świętami",
+            "text": "Zamów do 18.12 – dostawa przed Świętami",
             "link": "shopify://pages/dostawa"
           }
         }
@@ -472,7 +472,7 @@
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Obowiązuje też gwarancja dostawy przed Świętami.</p>",
+                        "text": "<p>Wysyłamy w 2–3 dni robocze, a dostawa jest darmowa przy każdym zamówieniu. Przy zamówieniu do 18 grudnia gwarantujemy dostawę przed Świętami.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
