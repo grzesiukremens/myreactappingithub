@@ -8,8 +8,10 @@
   - spokojniejszy pasek ogłoszeń: interlinia przy zawijaniu tekstu i brak przenikania przy prefers-reduced-motion,
   - stopka na grafitowym tle: subtelne linie akordeonu, cele dotyku linków min. 44 px (także w dolnym pasku),
     widoczny focus pola e-mail,
-  - wspólna karta produktu (przydomek, cena, „Kup teraz” na dole karty),
-  - przycisk „Kup teraz” bez ikony i bez przycisków szybkiej płatności,
+  - wspólna karta produktu (przydomek, cena, „Dodaj do koszyka” na dole karty),
+  - przycisk dodawania do koszyka bez ikony i bez przycisków szybkiej płatności,
+  - na stronie produktu dwa przyciski: „Kup teraz” (skrypt dodaje produkt do koszyka i przechodzi od razu
+    do kasy) oraz „Dodaj do koszyka” w wersji obrysowanej,
   - strzałki przesuwania zdjęć w stylu Vellano, widoczne także na telefonie; skrypt dokłada strzałki
     do galerii karty produktu na telefonie (Horizon w układzie siatki ich nie renderuje).
   Kolory pochodzą z tokenów motywu (--color-foreground, --color-input-text). Sekcji nie dodaje się do szablonów.
@@ -334,7 +336,7 @@
   }
 
   /* ---------------------------------------------------------------------------
-     Przycisk „Kup teraz”: pełna szerokość, wersaliki, bez ikony koszyka.
+     Przycisk „Dodaj do koszyka”: pełna szerokość, wersaliki, bez ikony koszyka.
      Przyciski szybkiej płatności (Shop Pay itp.) są wyłączone w szablonie;
      reguła poniżej to zabezpieczenie, gdyby blok został włączony w edytorze.
      --------------------------------------------------------------------------- */
@@ -359,6 +361,23 @@
 
   .accelerated-checkout-block {
     display: none !important;
+  }
+
+  /* Strona produktu: „Kup teraz” (pełny, dodawany skryptem) nad obrysowanym „Dodaj do koszyka”. */
+  .product-form-buttons .vellano-buy-now {
+    width: 100%;
+    min-height: 52px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .product-form-buttons .vellano-buy-now[aria-busy='true'] {
+    opacity: 0.7;
+    cursor: progress;
+  }
+
+  .product-form-buttons .vellano-buy-now {
+    margin-bottom: 8px;
   }
 
   /* ---------------------------------------------------------------------------
@@ -666,10 +685,61 @@
       });
     }
 
+    /* Strona produktu: przycisk „Kup teraz” obok „Dodaj do koszyka”. Dodaje produkt z formularza do koszyka
+       (/cart/add.js) i przechodzi do kasy. Przy błędzie oddaje kliknięcie zwykłemu przyciskowi, żeby motyw
+       pokazał swój komunikat. Działa tylko w głównej sekcji produktu (nie w kartach i nie w zestawie). */
+    function addBuyNow(root) {
+      if (!/\/products\//.test(window.location.pathname)) return;
+      var shopRoot = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+      (root || document).querySelectorAll('product-form-component form[data-type="add-to-cart-form"]').forEach(function (form) {
+        var section = form.closest('.shopify-section');
+        if (!section || !/__main$/.test(section.id) || form.dataset.vellanoBuyNow) return;
+        var addButton = form.querySelector('.add-to-cart-button, button[name="add"]');
+        if (!addButton) return;
+        form.dataset.vellanoBuyNow = 'true';
+        var anchor = addButton.closest('add-to-cart-component') || addButton;
+        var buyNow = document.createElement('button');
+        buyNow.type = 'button';
+        buyNow.className = 'button vellano-buy-now';
+        buyNow.textContent = 'Kup teraz';
+        buyNow.disabled = addButton.disabled;
+        anchor.parentNode.insertBefore(buyNow, anchor);
+        addButton.classList.remove('button');
+        addButton.classList.add('button-secondary');
+        new MutationObserver(function () {
+          buyNow.disabled = addButton.disabled;
+        }).observe(addButton, { attributes: true, attributeFilter: ['disabled'] });
+        buyNow.addEventListener('click', function () {
+          if (buyNow.disabled) return;
+          buyNow.disabled = true;
+          buyNow.setAttribute('aria-busy', 'true');
+          fetch(shopRoot + 'cart/add.js', { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
+            .then(function (response) {
+              if (!response.ok) throw new Error('cart/add ' + response.status);
+              window.location.href = shopRoot + 'checkout';
+            })
+            .catch(function () {
+              buyNow.disabled = addButton.disabled;
+              buyNow.removeAttribute('aria-busy');
+              addButton.click();
+            });
+        });
+      });
+    }
+
+    /* Pasek na dole ekranu ma mało miejsca, więc jego przycisk dostaje krótszy napis. */
+    function shortenStickyButton(root) {
+      (root || document).querySelectorAll('sticky-add-to-cart .add-to-cart-text__content > span:first-child').forEach(function (label) {
+        if (label.textContent.trim() === 'Dodaj do koszyka') label.textContent = 'Do koszyka';
+      });
+    }
+
     function init() {
       enhance();
       markNewsletter();
       enhanceStickyBar();
+      addBuyNow();
+      shortenStickyButton();
     }
 
     if (document.readyState === 'loading') {
@@ -682,6 +752,8 @@
       enhance(event.target);
       markNewsletter();
       enhanceStickyBar(event.target);
+      addBuyNow(event.target);
+      shortenStickyButton(event.target);
     });
   })();
 </script>
