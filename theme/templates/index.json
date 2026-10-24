@@ -610,8 +610,8 @@
       "settings": {
         "eyebrow": "Zestaw dla dwóch kibiców",
         "heading": "Dwa herby. Jedna cena.",
-        "price": "259 zł",
-        "compare_price": "298 zł",
+        "price": "199 zł",
+        "compare_price": "238 zł",
         "save_label": "Oszczędzasz 39 zł",
         "note": "<p>Promocja nalicza się automatycznie w koszyku.</p>",
         "button_label": "Wybierz dwa herby",
@@ -882,7 +882,7 @@
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>To 2 zawieszki za 259 zł zamiast 298 zł. Herby wybierasz dowolnie, a rabat nalicza się w koszyku.</p>",
+                        "text": "<p>To 2 zawieszki za 199 zł zamiast 238 zł. Herby wybierasz dowolnie, a rabat nalicza się w koszyku.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",

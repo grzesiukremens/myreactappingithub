@@ -155,7 +155,7 @@
         "set_note": {
           "type": "text",
           "settings": {
-            "text": "<p>Dwa herby dla dwóch kibiców: 2 zawieszki za 259 zł zamiast 298 zł. Rabat nalicza się w koszyku.</p>",
+            "text": "<p>Dwa herby dla dwóch kibiców: 2 zawieszki za 199 zł zamiast 238 zł. Rabat nalicza się w koszyku.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -359,7 +359,7 @@
           "type": "question",
           "settings": {
             "question": "Kupuję dla dwóch kibiców. Czy jest zestaw?",
-            "answer": "<p>Tak. 2 zawieszki kosztują 259 zł zamiast 298 zł. Herby wybierasz dowolnie – dwa takie same albo dwa różne. Rabat nalicza się automatycznie w koszyku.</p>",
+            "answer": "<p>Tak. 2 zawieszki kosztują 199 zł zamiast 238 zł. Herby wybierasz dowolnie – dwa takie same albo dwa różne. Rabat nalicza się automatycznie w koszyku.</p>",
             "image": "shopify://shop_images/vellano-prezent-zestaw-dwa.webp",
             "image_alt": "Dwie zawieszki Vellano Jubiler obok siebie"
           }
